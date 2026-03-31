@@ -3,68 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modo2</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            color: #333;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        .header {
-            background-color: #1c1c1e;
-            color: cyan;
-            padding: 15px;
-            width: 100%;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .nav {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 10px 0;
-        }
-        .nav a {
-            text-decoration: none;
-            color: cyan;
-            font-weight: bold;
-        }
-        .content {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-        .version {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            font-size: 12px;
-            color: #666;
-        }
-    </style>
-</head>
-<body>
-    <div class="header">
-        <h1>Modo2</h1>
-        <div class="version">Versión 1.0</div>
-    </div>
-    <div class="nav">
-        <a href="#">Incursiones</a>
-        <a href="#">Crew</a>
-        <a href="#">Hangar</a>
-        <a href="#">Contacto</a>
-    </div>
-    <div class="content">
-        <h2>Bienvenido a Modo2</h2>
-        <p>Esta es una plataforma minimalista y moderna.</p>
-    </div>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="assets/js/main.js" defer></script>
+    <title>MODO 2 | Asociación de Drones FPV y Tecnología</title>
+    </head>
+<body class="cyber-theme">
+    
+    <header>
+        <nav class="nav-container">
+            <div class="logo">
+                <img src="assets/logo.png" alt="MODO 2 Logo" class="animated-logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#manifesto">MANIFIESTO</a></li>
+                <li><a href="#art16">NORMATIVA</a></li>
+                <li><a href="#operaciones">OPERACIONES</a></li>
+                <li><a href="#unirse" class="cta-small">UNIRSE</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="glitch" data-text="SISTEMA OPERATIVO MODO 2">SISTEMA OPERATIVO MODO 2</h1>
+                <p class="tagline">DOMINA EL AIRE | Crew Tecnológica de Élite</p>
+                <div class="status-bar">
+                    <span class="status-blink">●</span> FASE: CONSTITUCIÓN PROYECTO ORIGEN
+                </div>
+                <div class="fundadores-counter">
+                    PLAZAS SOCIO FUNDADOR: <span id="counter">X</span> / 40
+                </div>
+            </div>
+        </section>
+
+        <section id="manifesto" class="content-block">
+            <div class="scanline"></div>
+            <h2>01. MANIFIESTO</h2>
+            <div class="text-container">
+                <p>No somos un club de aeromodelismo tradicional. Somos una Crew de pilotos y creadores unidos por la técnica, la adrenalina y la legalidad.</p>
+                <p>Nuestra misión es profesionalizar el vuelo FPV en Aragón, creando un puente entre el talento aficionado y los proyectos de alta competición e ingeniería.</p>
+            </div>
+        </section>
+
+        <section id="art16" class="legal-block">
+            <div class="border-frame">
+                <h2>02. MARCO LEGAL (ART. 16)</h2>
+                <p>Operamos bajo el amparo del <strong>Reglamento (UE) 2019/947</strong>. MODO 2 gestiona sus propias autorizaciones de operación, permitiendo a nuestros socios volar fuera de las restricciones de la categoría abierta en entornos controlados.</p>
+                <a href="docs/estatutos-modo2.pdf" class="btn-outline">DESCARGAR ESTATUTOS PDF</a>
+            </div>
+        </section>
+
+        <section id="facciones" class="crew-grid">
+            <h2>03. ELIGE TU FACCIÓN</h2>
+            <div class="crew-container">
+                <article class="fac-card" id="incursores">
+                    <img src="assets/incursores_icon.png" alt="Icono Incursores">
+                    <h3>INCURSORES</h3>
+                    <p>Velocidad. Freestyle. Adrenalina. Especialistas en pilotaje técnico y competición.</p>
+                </article>
+                <article class="fac-card" id="arquitectos">
+                    <img src="assets/arquitectos_icon.png" alt="Icono Arquitectos">
+                    <h3>ARQUITECTOS</h3>
+                    <p>Cinematografía. Electrónica. Ingeniería. Los creadores de la infraestructura y el arte visual.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="operaciones" class="content-block">
+            <h2>04. SECTOR CARIÑENA (ZGU)</h2>
+            <div class="ops-info">
+                <div class="map-placeholder">
+                    <p>[ MAPA OPERATIVO: COORDINADAS EN TRÁMITE ]</p>
+                </div>
+                <div class="ops-details">
+                    <ul>
+                        <li><strong>UBICACIÓN:</strong> Cariñena, Zaragoza.</li>
+                        <li><strong>ESTADO:</strong> Negociación de Sede / ZGU.</li>
+                        <li><strong>SERVICIOS:</strong> Zona de Boxes, Carga Lipo, Red FPV propia.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="unirse" class="cta-section">
+            <div class="glowing-box">
+                <h2>¿ESTÁS LISTO PARA EL DESPEGUE?</h2>
+                <p>Buscamos a los 40 pioneros para el Proyecto Origen.</p>
+                <a href="https://tally.so/r/tu-link" class="cta-button glowing-button">SOLICITAR INGRESO A LA CREW</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="sponsors">
+            <p>CON EL APOYO DE:</p>
+            <div class="logo-row">
+                <img src="assets/laboral-kutxa.png" alt="Laboral Kutxa" class="grayscale">
+                <img src="assets/google-nonprofits.png" alt="Google for Nonprofits" class="grayscale">
+            </div>
+        </div>
+        <div class="footer-links">
+            <a href="#">INSTAGRAM</a> | <a href="#">DISCORD</a> | <a href="#">AESA</a>
+        </div>
+        <p class="copy">&copy; 2026 MODO 2 ASOCIACIÓN. <br> MONZALBARBA, ARAGÓN.</p>
+    </footer>
+
 </body>
 </html>
