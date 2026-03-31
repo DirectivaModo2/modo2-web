@@ -37,6 +37,23 @@
         }
         .btn:hover { background: var(--magenta); color: var(--carbon); }
         #manifiesto { max-width: 600px; margin-top: 40px; padding: 20px; border-top: 1px solid #333; }
+/* Efecto de líneas de monitor (Scanlines) */
+        body::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 2;
+            background-size: 100% 4px, 3px 100%;
+            pointer-events: none;
+        }
+
+        h1, h2, h3 {
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
     </style>
 </head>
 <body>
@@ -46,13 +63,24 @@
     
     <a href="https://tally.so/r/tu-formulario" class="btn">UNIRSE A LA CREW</a>
 
-    <section id="manifiesto">
-        <h2>ARTÍCULO 16</h2>
-        <p>"No pedimos permiso. Hackeamos el aire. Somos la interferencia."</p>
+<section id="manifiesto">
+        <h2 style="color: var(--magenta);">[ PROTOCOLO ART. 16 ]</h2>
+        <p>"No pedimos permiso. Hackeamos el aire. Somos la interferencia. Si no hay riesgo, no hay señal."</p>
     </section>
 
-    <footer style="margin-top: 50px; font-size: 0.8rem; opacity: 0.5;">
-        &copy; 2026 MODO 2 - TECNOLOGÍA INDUSTRIAL
+    <section id="crew" style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; padding: 40px 20px;">
+        <div style="border: 1px solid #333; padding: 20px; width: 280px; background: rgba(255,0,255,0.02);">
+            <h3 style="color: var(--magenta);">// INCURSORES</h3>
+            <p style="font-size: 0.8rem; opacity: 0.8;">Unidades de vuelo FPV. Especialistas en entornos urbanos y proximidad hostil.</p>
+        </div>
+        <div style="border: 1px solid #333; padding: 20px; width: 280px; background: rgba(255,0,255,0.02);">
+            <h3 style="color: var(--magenta);">// ARQUITECTOS</h3>
+            <p style="font-size: 0.8rem; opacity: 0.8;">Desarrollo de hardware, software y estaciones de tierra personalizadas.</p>
+        </div>
+    </section>
+
+    <footer style="margin-top: 50px; font-size: 0.7rem; opacity: 0.5; border-top: 1px solid #2a2a2a; padding-top: 20px; width: 80%;">
+        ESTADO: CONEXIÓN ENCRIPTADA // © 2026 MODO 2
     </footer>
 
 </body>
