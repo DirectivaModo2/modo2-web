@@ -1,14 +1,13 @@
 /* --- VARIABLES ESTILO ARWES --- */
 :root {
-    --bg-color: #020808; /* Casi negro azulado */
-    --line-color: #06d6a0; /* Cian/Verde Arwes */
-    --accent-color: #00f2ff; /* Azul eléctrico */
+    --bg-color: #020808;
+    --line-color: #06d6a0;
+    --accent-color: #00f2ff;
     --text-color: #a1ecfb;
     --font-main: 'Titillium Web', sans-serif;
     --font-code: 'Source Code Pro', monospace;
 }
 
-/* --- CUERPO Y FONDO INTELIGENTE --- */
 body {
     margin: 0;
     padding: 0;
@@ -18,7 +17,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Imagen de fondo con efecto 'Muted' */
 body::before {
     content: "";
     position: fixed;
@@ -27,12 +25,11 @@ body::before {
     background-image: url('../merch_01.png');
     background-size: cover;
     background-position: center;
-    opacity: 0.15; /* MUY IMPORTANTE: Esto hace que el texto sea legible */
+    opacity: 0.15;
     z-index: -2;
     filter: grayscale(100%) contrast(120%);
 }
 
-/* Efecto Scanlines (Líneas de monitor viejo) */
 body::after {
     content: "";
     position: fixed;
@@ -45,7 +42,6 @@ body::after {
     z-index: 1000;
 }
 
-/* --- CONTENEDORES ESTILO FRAME --- */
 section {
     max-width: 1000px;
     margin: 40px auto;
@@ -57,24 +53,25 @@ section {
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
 }
 
-/* --- TÍTULOS CON GLITCH --- */
+/* --- TÍTULOS Y ANIMACIONES --- */
 h1, h2, h3 {
     font-family: var(--font-code);
     text-transform: uppercase;
     letter-spacing: 4px;
     color: var(--accent-color);
     text-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
-    @keyframes glitch-blink {
-    0% { opacity: 1; }
-    90% { opacity: 1; }
-    92% { opacity: 0; }
-    94% { opacity: 1; }
-    100% { opacity: 1; }
 }
 
 h1, h2 {
     animation: glitch-blink 4s infinite;
 }
+
+@keyframes glitch-blink {
+    0% { opacity: 1; }
+    90% { opacity: 1; }
+    92% { opacity: 0; }
+    94% { opacity: 1; }
+    100% { opacity: 1; }
 }
 
 /* --- NAVEGACIÓN --- */
@@ -84,10 +81,15 @@ header {
     background: rgba(2, 8, 8, 0.9);
 }
 
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .nav-links {
     list-style: none;
     display: flex;
-    justify-content: flex-end;
     gap: 30px;
 }
 
@@ -95,38 +97,23 @@ header {
     color: var(--line-color);
     text-decoration: none;
     font-size: 14px;
-    transition: 0.3s;
 }
 
-.nav-links a:hover {
-    color: white;
-    text-shadow: 0 0 5px var(--line-color);
+/* --- LOGO HUD --- */
+.logo img {
+    height: 50px;
+    width: auto;
+    display: block;
+    filter: drop-shadow(0 0 8px var(--accent-color)) brightness(1.5);
 }
 
-/* --- BOTONES ARWES --- */
 .cta-button {
     background: transparent;
     color: var(--accent-color);
     border: 1px solid var(--accent-color);
     padding: 15px 30px;
     font-family: var(--font-code);
-    cursor: pointer;
-    transition: all 0.2s;
     text-decoration: none;
     display: inline-block;
     box-shadow: 0 0 5px var(--accent-color);
-}
-
-.cta-button:hover {
-    background: rgba(0, 242, 255, 0.2);
-    box-shadow: 0 0 20px var(--accent-color);
-}
-
-/* Ajuste del logo para que no rompa el diseño */
-.logo img {
-    height: 50px; /* Ajusta el tamaño a tu gusto */
-    width: auto;
-    display: block;
-    filter: drop-shadow(0 0 5px var(--accent-color)) brightness(1.2);
-    /* Esto hará que si el logo es oscuro, brille con el color cian de la web */
 }
