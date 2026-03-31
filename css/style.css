@@ -1,26 +1,118 @@
-/* Configuración de fondo con fallback negro */
-body {
-    background-color: #121212; /* Fondo negro de seguridad si falla la imagen */
-    background-image: url('../merch_01.png'); /* Sube un nivel desde la carpeta CSS a la raíz */
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-    color: var(--text-color);
-    font-family: var(--font-main);
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-    text-transform: uppercase;
+/* --- VARIABLES ESTILO ARWES --- */
+:root {
+    --bg-color: #020808; /* Casi negro azulado */
+    --line-color: #06d6a0; /* Cian/Verde Arwes */
+    --accent-color: #00f2ff; /* Azul eléctrico */
+    --text-color: #a1ecfb;
+    --font-main: 'Titillium Web', sans-serif;
+    --font-code: 'Source Code Pro', monospace;
 }
 
-/* Hero con transparencia para que se vea el fondo general o negro */
-.hero {
-    height: 60vh;
+/* --- CUERPO Y FONDO INTELIGENTE --- */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-main);
+    overflow-x: hidden;
+}
+
+/* Imagen de fondo con efecto 'Muted' */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image: url('../merch_01.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.15; /* MUY IMPORTANTE: Esto hace que el texto sea legible */
+    z-index: -2;
+    filter: grayscale(100%) contrast(120%);
+}
+
+/* Efecto Scanlines (Líneas de monitor viejo) */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
+                linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+    background-size: 100% 3px, 3px 100%;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+/* --- CONTENEDORES ESTILO FRAME --- */
+section {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+    background: rgba(4, 20, 20, 0.7);
+    border: 1px solid var(--line-color);
+    box-shadow: inset 0 0 15px rgba(6, 214, 160, 0.2);
+    position: relative;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+}
+
+/* --- TÍTULOS CON GLITCH --- */
+h1, h2, h3 {
+    font-family: var(--font-code);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--accent-color);
+    text-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
+}
+
+/* --- NAVEGACIÓN --- */
+header {
+    padding: 10px 40px;
+    border-bottom: 1px solid var(--line-color);
+    background: rgba(2, 8, 8, 0.9);
+}
+
+.nav-links {
+    list-style: none;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    border-bottom: 1px solid #333;
-    background: rgba(18, 18, 18, 0.7); /* Capa oscura semitransparente */
+    justify-content: flex-end;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: var(--line-color);
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: white;
+    text-shadow: 0 0 5px var(--line-color);
+}
+
+/* --- BOTONES ARWES --- */
+.cta-button {
+    background: transparent;
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+    padding: 15px 30px;
+    font-family: var(--font-code);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 0 5px var(--accent-color);
+}
+
+.cta-button:hover {
+    background: rgba(0, 242, 255, 0.2);
+    box-shadow: 0 0 20px var(--accent-color);
+}
+
+/* Ajuste del logo para que no rompa el diseño */
+.logo img {
+    height: 40px;
+    filter: drop-shadow(0 0 5px var(--accent-color));
 }
