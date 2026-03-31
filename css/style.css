@@ -64,6 +64,17 @@ h1, h2, h3 {
     letter-spacing: 4px;
     color: var(--accent-color);
     text-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
+    @keyframes glitch-blink {
+    0% { opacity: 1; }
+    90% { opacity: 1; }
+    92% { opacity: 0; }
+    94% { opacity: 1; }
+    100% { opacity: 1; }
+}
+
+h1, h2 {
+    animation: glitch-blink 4s infinite;
+}
 }
 
 /* --- NAVEGACIÓN --- */
@@ -113,6 +124,9 @@ header {
 
 /* Ajuste del logo para que no rompa el diseño */
 .logo img {
-    height: 40px;
-    filter: drop-shadow(0 0 5px var(--accent-color));
+    height: 50px; /* Ajusta el tamaño a tu gusto */
+    width: auto;
+    display: block;
+    filter: drop-shadow(0 0 5px var(--accent-color)) brightness(1.2);
+    /* Esto hará que si el logo es oscuro, brille con el color cian de la web */
 }
