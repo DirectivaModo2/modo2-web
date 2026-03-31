@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MODO 2 | FPV CREW</title>
     <style>
-        /* Estilos integrados para evitar fallos de carga inicial */
         :root {
             --carbon: #121212;
             --magenta: #ff00ff;
             --white: #f0f0f0;
         }
+
         body {
             background-color: var(--carbon);
             color: var(--white);
@@ -19,25 +19,14 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             min-height: 100vh;
             text-align: center;
             border: 15px solid #2a2a2a;
+            padding-top: 100px; /* Espacio para el menú */
         }
-        h1 { color: var(--magenta); text-shadow: 0 0 10px var(--magenta); }
-        .btn {
-            border: 2px solid var(--magenta);
-            color: var(--magenta);
-            padding: 15px 30px;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-weight: bold;
-            margin-top: 20px;
-            display: inline-block;
-        }
-        .btn:hover { background: var(--magenta); color: var(--carbon); }
-        #manifiesto { max-width: 600px; margin-top: 40px; padding: 20px; border-top: 1px solid #333; }
-/* Efecto de líneas de monitor (Scanlines) */
+
+        /* Scanlines */
         body::before {
             content: " ";
             display: block;
@@ -45,22 +34,16 @@
             top: 0; left: 0; bottom: 0; right: 0;
             background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
                         linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            z-index: 2;
+            z-index: 999;
             background-size: 100% 4px, 3px 100%;
             pointer-events: none;
         }
 
-        h1, h2, h3 {
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-        /* Menú de navegación estilo HUD */
-        nav {
-            position: fixed;
-            top: 20px;
-            right: 40px;
-            z-index: 100;
-        }
+        h1, h2, h3 { letter-spacing: 2px; text-transform: uppercase; }
+        h1 { color: var(--magenta); text-shadow: 0 0 10px var(--magenta); margin-bottom: 5px; }
+
+        /* Navegación */
+        nav { position: fixed; top: 20px; right: 40px; z-index: 1000; }
         nav a {
             color: var(--white);
             text-decoration: none;
@@ -68,73 +51,84 @@
             margin-left: 20px;
             border: 1px solid #333;
             padding: 5px 10px;
-            background: rgba(0,0,0,0.5);
+            background: rgba(0,0,0,0.8);
             transition: 0.3s;
         }
-        nav a:hover {
-            border-color: var(--magenta);
+        nav a:hover { border-color: var(--magenta); color: var(--magenta); }
+
+        .btn {
+            border: 2px solid var(--magenta);
             color: var(--magenta);
+            padding: 15px 30px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin: 20px 0;
+            display: inline-block;
+            transition: 0.3s;
+        }
+        .btn:hover { background: var(--magenta); color: var(--carbon); box-shadow: 0 0 20px var(--magenta); }
+
+        /* Contenedor Video */
+        .video-container {
+            width: 100%;
+            max-width: 350px;
+            aspect-ratio: 9 / 16;
+            border: 2px solid var(--magenta);
+            box-shadow: 0 0 15px rgba(255,0,255,0.3);
+            position: relative;
+            overflow: hidden;
+            margin: 40px auto;
+            background: #000;
         }
 
-        /* Contenedor de video para Incursiones */
-        .video-container {
-            width: 80%;
-            max-width: 800px;
-            aspect-ratio: 16 / 9;
-            border: 1px solid var(--magenta);
-            margin: 40px 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 0, 255, 0.05);
-            position: relative;
-        }
-        .video-container::after {
-            content: "REPRODUCCIÓN RESTRINGIDA - MODO 2";
-            font-size: 0.6rem;
-            position: absolute;
-            bottom: -20px;
-            left: 0;
-            color: var(--magenta);
-            opacity: 0.7;
-        }
+        #manifiesto { max-width: 600px; margin-top: 40px; padding: 20px; border-top: 1px solid #333; }
+        
+        .crew-grid { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; padding: 40px 20px; }
+        .crew-card { border: 1px solid #333; padding: 20px; width: 280px; background: rgba(255,0,255,0.02); }
     </style>
 </head>
 <body>
-<nav>
+
+    <nav>
+        <a href="#incursiones">// INCURSIONES</a>
         <a href="#manifiesto">// MANIFIESTO</a>
         <a href="#crew">// CREW</a>
-        <a href="#incursiones">// INCURSIONES</a>
     </nav>
 
-    <section id="incursiones" style="display: flex; flex-direction: column; align-items: center; padding: 60px 20px;">
-        <h2 style="color: var(--magenta); margin-bottom: 10px;">[ ÚLTIMAS INCURSIONES ]</h2>
+    <header>
+        <h1>SISTEMA OPERATIVO MODO 2</h1>
+        <p style="font-size: 0.8rem; opacity: 0.7;">ESTADO: PROTOCOLO DE INCURSIÓN ACTIVADO</p>
+        <a href="https://tally.so/r/tu-formulario" class="btn">UNIRSE A LA CREW</a>
+    </header>
+
+    <section id="incursiones">
+        <h2 style="color: var(--magenta);">[ ÚLTIMA INCURSIÓN ]</h2>
         <div class="video-container">
-            <p style="font-size: 0.8rem; opacity: 0.4;">[ ESPERANDO SEÑAL DE VÍDEO... ]</p>
+            <iframe src="https://www.instagram.com/reel/DSw_uVXCPn4/embed" width="100%" height="100%" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+            <div style="position: absolute; top: 10px; left: 10px; color: var(--magenta); font-size: 0.6rem; pointer-events: none;">
+                REC ● FEED_01<br>LOC: UNKNOWN_ZONE
+            </div>
         </div>
     </section>
-    <h1>SISTEMA OPERATIVO MODO 2</h1>
-    <p>ESTADO: PROTOCOLO DE INCURSIÓN ACTIVADO</p>
-    
-    <a href="https://tally.so/r/tu-formulario" class="btn">UNIRSE A LA CREW</a>
 
-<section id="manifiesto">
+    <section id="manifiesto">
         <h2 style="color: var(--magenta);">[ PROTOCOLO ART. 16 ]</h2>
         <p>"No pedimos permiso. Hackeamos el aire. Somos la interferencia. Si no hay riesgo, no hay señal."</p>
     </section>
 
-    <section id="crew" style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; padding: 40px 20px;">
-        <div style="border: 1px solid #333; padding: 20px; width: 280px; background: rgba(255,0,255,0.02);">
+    <section id="crew" class="crew-grid">
+        <div class="crew-card">
             <h3 style="color: var(--magenta);">// INCURSORES</h3>
             <p style="font-size: 0.8rem; opacity: 0.8;">Unidades de vuelo FPV. Especialistas en entornos urbanos y proximidad hostil.</p>
         </div>
-        <div style="border: 1px solid #333; padding: 20px; width: 280px; background: rgba(255,0,255,0.02);">
+        <div class="crew-card">
             <h3 style="color: var(--magenta);">// ARQUITECTOS</h3>
             <p style="font-size: 0.8rem; opacity: 0.8;">Desarrollo de hardware, software y estaciones de tierra personalizadas.</p>
         </div>
     </section>
 
-    <footer style="margin-top: 50px; font-size: 0.7rem; opacity: 0.5; border-top: 1px solid #2a2a2a; padding-top: 20px; width: 80%;">
+    <footer style="margin-top: 50px; font-size: 0.7rem; opacity: 0.5; border-top: 1px solid #2a2a2a; padding: 20px 0; width: 80%;">
         ESTADO: CONEXIÓN ENCRIPTADA // © 2026 MODO 2
     </footer>
 
