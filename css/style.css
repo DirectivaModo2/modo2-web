@@ -101,10 +101,19 @@ header {
 
 /* --- LOGO HUD --- */
 .logo img {
-    height: 50px;
+    height: 50px; /* Tamaño controlado */
     width: auto;
     display: block;
+    /* Este filtro hace que el logo brille en el color de la asociación */
     filter: drop-shadow(0 0 8px var(--accent-color)) brightness(1.5);
+    position: relative;
+    z-index: 2000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    min-width: 150px; /* Espacio reservado */
 }
 
 .cta-button {
