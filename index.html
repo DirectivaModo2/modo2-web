@@ -14,6 +14,10 @@
             --white: #f0f0f0;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background-color: var(--carbon);
             color: var(--white);
@@ -29,7 +33,7 @@
             padding-top: 100px;
         }
 
-        /* Scanlines */
+        /* Scanlines HUD */
         body::before {
             content: " ";
             display: block;
@@ -45,7 +49,20 @@
         h1, h2, h3 { letter-spacing: 2px; text-transform: uppercase; }
         h1 { color: var(--magenta); text-shadow: 0 0 10px var(--magenta); margin-bottom: 5px; }
 
-        /* Efecto para el cambio de texto con JS */
+        h2:hover {
+            animation: glitch 0.3s linear infinite;
+            cursor: crosshair;
+        }
+
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+
         header p { transition: opacity 0.5s ease; }
 
         nav { position: fixed; top: 20px; right: 40px; z-index: 1000; }
@@ -85,23 +102,16 @@
             margin: 40px auto;
             background: #000;
         }
-
         #manifiesto { max-width: 600px; margin-top: 40px; padding: 20px; border-top: 1px solid #333; }
         .crew-grid { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; padding: 40px 20px; }
         .crew-card { border: 1px solid #333; padding: 20px; width: 280px; background: rgba(255,0,255,0.02); }
-
         #contacto a:hover { background: var(--magenta); color: var(--carbon); }
     </style>
 
     <script>
         window.onload = function() {
             const statusText = document.querySelector('header p');
-            const messages = [
-                "ESTADO: PROTOCOLO DE INCURSIÓN ACTIVADO",
-                "ESTADO: ESCANEANDO FRECUENCIAS 5.8GHz",
-                "ESTADO: ENLACE DE DATOS ESTABLE",
-                "ESTADO: ESPERANDO ÓRDENES DE LA CREW"
-            ];
+            const messages = [                "ESTADO: PROTOCOLO DE INCURSIÓN ACTIVADO",                "ESTADO: ESCANEANDO FRECUENCIAS 5.8GHz",                "ESTADO: ENLACE DE DATOS ESTABLE",                "ESTADO: ESPERANDO ÓRDENES DE LA CREW"            ];
             
             setInterval(() => {
                 statusText.style.opacity = 0;
@@ -120,6 +130,7 @@
         <a href="#incursiones">// INCURSIONES</a>
         <a href="#manifiesto">// MANIFIESTO</a>
         <a href="#crew">// CREW</a>
+        <a href="#hangar">// HANGAR</a>
         <a href="#contacto">// CONTACTO</a>
     </nav>
 
@@ -152,6 +163,29 @@
         <div class="crew-card">
             <h3 style="color: var(--magenta);">// ARQUITECTOS</h3>
             <p style="font-size: 0.8rem; opacity: 0.8;">Desarrollo de hardware, software y estaciones de tierra personalizadas.</p>
+        </div>
+    </section>
+
+    <section id="hangar" style="padding: 60px 20px; border-top: 1px solid #333;">
+        <h2 style="color: var(--magenta);">[ HANGAR DE HARDWARE ]</h2>
+        <p style="font-size: 0.8rem; opacity: 0.6; margin-bottom: 30px;">// ESPECIFICACIONES TÉCNICAS RECOMENDADAS</p>
+        <div class="crew-grid">
+            <div class="crew-card" style="border-style: dashed;">
+                <h4 style="margin: 0; color: var(--magenta);">FRAME // 5" RECON</h4>
+                <ul style="list-style: none; padding: 0; font-size: 0.7rem; text-align: left; opacity: 0.8; line-height: 1.6;">
+                    <li>> Carbono 3K Alta Resistencia</li>
+                    <li>> Geometría: Deadcat / TrueX</li>
+                    <li>> Stack: F7 55A ESC</li>
+                </ul>
+            </div>
+            <div class="crew-card" style="border-style: dashed;">
+                <h4 style="margin: 0; color: var(--magenta);">LINK // ELRS 2.4GHz</h4>
+                <ul style="list-style: none; padding: 0; font-size: 0.7rem; text-align: left; opacity: 0.8; line-height: 1.6;">
+                    <li>> Latencia: < 2ms</li>
+                    <li>> Packet Rate: 500Hz</li>
+                    <li>> Telemetría Full Duplex</li>
+                </ul>
+            </div>
         </div>
     </section>
 
