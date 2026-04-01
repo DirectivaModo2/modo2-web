@@ -96,6 +96,9 @@
             color: var(--amber);
         }
 
+        .text-white { color: var(--white); }
+        .text-cyan { color: var(--cyan); }
+
         /* Glitch Effect */
         .glitch-wrapper {
             position: relative;
@@ -270,7 +273,7 @@
             left: 0;
         }
 
-        /* User Dashboard */
+        /* User Dashboard with Login */
         .user-dashboard {
             background: var(--black-panel);
             border: 1px solid rgba(0, 242, 255, 0.2);
@@ -323,6 +326,25 @@
             color: var(--amber);
         }
 
+        .login-btn {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            padding: 0.5rem 1.5rem;
+            background: transparent;
+            border: 1px solid var(--cyan);
+            color: var(--cyan);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .login-btn:hover {
+            background: var(--cyan);
+            color: var(--black);
+            box-shadow: 0 0 15px var(--cyan-glow);
+        }
+
         .xp-bar-container {
             width: 250px;
         }
@@ -370,6 +392,18 @@
             color: var(--amber);
             text-transform: uppercase;
             letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .status-badge:hover {
+            background: rgba(255, 184, 0, 0.1);
+            box-shadow: 0 0 15px var(--amber-glow);
+        }
+
+        .status-badge.connected {
+            border-color: var(--cyan);
+            color: var(--cyan);
         }
 
         /* Hero Section */
@@ -382,7 +416,6 @@
         .system-command {
             font-family: var(--font-mono);
             font-size: 0.9rem;
-            color: var(--cyan);
             margin-bottom: 2rem;
             letter-spacing: 0.15em;
             text-transform: uppercase;
@@ -406,7 +439,6 @@
         .counter-header {
             font-family: var(--font-mono);
             font-size: 0.75rem;
-            color: var(--cyan);
             margin-bottom: 1rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
@@ -717,7 +749,6 @@
         .benefits-title {
             font-family: var(--font-mono);
             font-size: 0.9rem;
-            color: var(--amber);
             margin-bottom: 1.5rem;
             letter-spacing: 0.15em;
             text-transform: uppercase;
@@ -783,6 +814,66 @@
             font-size: 0.75rem;
             color: var(--white);
             opacity: 0.8;
+        }
+
+        /* 12 Rings Specialization */
+        .rings-container {
+            margin: 2rem 0;
+        }
+
+        .rings-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media(min-width: 768px) {
+            .rings-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .ring-group {
+            background: rgba(0, 242, 255, 0.03);
+            border: 1px solid rgba(0, 242, 255, 0.1);
+            padding: 1.5rem;
+        }
+
+        .ring-group-title {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--cyan);
+            margin-bottom: 1rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(0, 242, 255, 0.2);
+            padding-bottom: 0.5rem;
+        }
+
+        .ring-item {
+            margin-bottom: 1rem;
+        }
+
+        .ring-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .ring-name {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--white);
+            margin-bottom: 0.3rem;
+        }
+
+        .ring-name span {
+            color: var(--cyan);
+        }
+
+        .ring-desc {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--gray);
+            line-height: 1.5;
         }
 
         /* Flight Logs Section */
@@ -1027,6 +1118,21 @@
             box-shadow: 0 0 15px rgba(0, 242, 255, 0.1);
         }
 
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            accent-color: var(--cyan);
+        }
+
+        .checkbox-group label {
+            margin-bottom: 0;
+        }
+
         .submit-btn {
             width: 100%;
             padding: 1rem;
@@ -1139,6 +1245,11 @@
             box-shadow: 0 0 30px var(--magenta-glow);
         }
 
+        /* Login Modal */
+        .login-modal-content {
+            max-width: 400px;
+        }
+
         /* Back Button */
         .back-button {
             display: inline-flex;
@@ -1171,6 +1282,43 @@
             z-index: 0;
             pointer-events: none;
             opacity: 0;
+        }
+
+        /* User Database Display (Hidden by default) */
+        .user-db-panel {
+            display: none;
+            background: var(--black-panel);
+            border: 1px solid var(--cyan);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .user-db-panel.active {
+            display: block;
+        }
+
+        .user-db-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+        }
+
+        .user-db-table th,
+        .user-db-table td {
+            padding: 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(0, 242, 255, 0.1);
+        }
+
+        .user-db-table th {
+            color: var(--cyan);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .user-db-table td {
+            color: var(--white);
         }
 
         /* Responsive */
@@ -1245,15 +1393,15 @@
             </div>
         </header>
 
-        <!-- User Dashboard -->
+        <!-- User Dashboard with Login -->
         <div class="user-dashboard">
-            <div class="user-info">
+            <div class="user-info" id="userInfo">
                 <div class="user-avatar">
                     <svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="35" r="15" stroke="currentColor" stroke-width="2" fill="none"/><path d="M30 80C30 65 40 55 50 55C60 55 70 65 70 80" stroke="currentColor" stroke-width="2" fill="none"/></svg>
                 </div>
                 <div class="user-details">
-                    <h4>CMDR_VISITOR</h4>
-                    <div class="user-level">LV: 0 OBSERVADOR</div>
+                    <h4 id="userName">CMDR_VISITOR</h4>
+                    <div class="user-level" id="userLevel">LV: 0 OBSERVADOR</div>
                 </div>
             </div>
             <div class="xp-bar-container">
@@ -1265,17 +1413,35 @@
                     <div class="xp-fill" id="xpFill"></div>
                 </div>
             </div>
-            <div class="status-badge">NO CONECTADO</div>
+            <button class="status-badge" id="loginBtn" onclick="openLoginModal()">NO CONECTADO</button>
+        </div>
+
+        <!-- User Database Panel (For verification) -->
+        <div class="user-db-panel" id="userDbPanel">
+            <h3 class="section-title">> BASE_DE_DATOS_USUARIOS</h3>
+            <table class="user-db-table">
+                <thead>
+                    <tr>
+                        <th>USUARIO</th>
+                        <th>CONTRASEÑA</th>
+                        <th>RECORDAR</th>
+                        <th>XP</th>
+                    </tr>
+                </thead>
+                <tbody id="userDbBody">
+                    <!-- Populated by JS -->
+                </tbody>
+            </table>
         </div>
 
         <!-- Home Page -->
         <div id="home-page" class="content-page active">
             <section class="hero">
-                <p class="system-command">EJECUTANDO: PROYECTO_ORIGEN.EXE // PROFESIONALIZACIÓN_UAS_ARAGÓN</p>
+                <p class="system-command">EJECUTANDO: <span class="text-white">PROYECTO_</span><span class="text-cyan">ORIGEN.EXE</span> // PROFESIONALIZACIÓN_UAS_ARAGÓN</p>
                 
                 <!-- Recruitment Counter -->
                 <div class="recruitment-counter">
-                    <div class="counter-header">⚡ RECLUTAMIENTO PROYECTO ORIGEN</div>
+                    <div class="counter-header"><span class="text-cyan">RECLUTAMIENTO</span> <span class="text-white">PROYECTO ORIGEN</span></div>
                     <div class="counter-main">
                         <div class="counter-number" id="recruitmentCount">0</div>
                         <div class="counter-label">/ 40 PLAZAS DISPONIBLES</div>
@@ -1350,7 +1516,7 @@
                             </div>
                             <div class="benefit-item">
                                 <div class="benefit-icon">▸</div>
-                                <div class="benefit-text">Legado Físico - Inscripción del nombre en la "Placa de Honor" del parque y zona de Boxes</div>
+                                <div class="benefit-text">Legado Físico - Inscripción del nombre en la "Placa de Honor" de la SEDE en la zona de Boxes</div>
                             </div>
                             <div class="benefit-item">
                                 <div class="benefit-icon">▸</div>
@@ -1376,25 +1542,28 @@
                 <div class="hud-panel full-width">
                     <h2 class="section-title">
                         <svg viewBox="0 0 100 100" fill="none"><path d="M20 80L20 40L50 20L80 40L80 80" stroke="currentColor" stroke-width="2" fill="none"/><line x1="35" y1="80" x2="35" y2="50" stroke="currentColor" stroke-width="1.5"/><line x1="65" y1="80" x2="65" y2="50" stroke="currentColor" stroke-width="1.5"/><line x1="20" y1="80" x2="80" y2="80" stroke="currentColor" stroke-width="1.5"/></svg>
-                        > SECTOR_CARIÑENA_ZGU
+                        > SEDE_PROVINCIA_ZARAGOZA
                     </h2>
                     <div class="terminal-text">
-                        <p>> ESTADO: ADJUDICACIÓN MUNICIPAL APROBADA</p>
-                        <p>> VISTO BUENO INICIAL AESA: CONFIRMADO</p>
+                        <p>> ESTADO: INTERÉS MUNICIPAL CONFIRMADO</p>
+                        <p>> UBICACIÓN: Provincia de Zaragoza, cerca de la ciudad de Zaragoza</p>
+                        <p>> VISTO BUENO INICIAL AESA: EN PROCESO</p>
                         <br>
                         <p>> INFRAESTRUCTURA BASE:</p>
                         <ul>
                             <li>Zona cubierta con mesas de picnic y bancos</li>
-                            <li>Capacidad máxima: 16 personas</li>
-                            <li>Servicios de hostelería y restauración a menos de 150 metros</li>
-                            <li>Acceso cómodo para vehículos y equipamiento</li>
+                            <li>Capacidad in situ: 16 personas en la SEDE</li>
+                            <li>Rotación de turnos: 8 pilotos máximo en caso de saturación</li>
+                            <li>Objetivo: 4 personas volando simultáneamente, rotando por turnos</li>
+                            <li>Servicios de hostelería y restauración a poco más de 150 metros</li>
+                            <li>Acceso cómodo y bien asfaltado y comunicado para vehículos y equipamiento</li>
                         </ul>
                         <br>
                         <p>> ARCHIVOS TÉCNICOS:</p>
                         <p style="color: var(--amber);">⚠ VISUALIZACIÓN DE ESTRUCTURAS BLOQUEADA</p>
                         <p style="color: var(--gray);">Renders y planos técnicos confidenciales por seguridad. Acceso exclusivo para unidades validadas (socios).</p>
                     </div>
-                    <div class="sector-status">SECTOR CARIÑENA: EN TRÁMITE DE AUTORIZACIÓN FINAL</div>
+                    <div class="sector-status">SEDE: EN TRÁMITE DE AUTORIZACIÓN FINAL</div>
                 </div>
             </div>
         </div>
@@ -1415,6 +1584,7 @@
                     
                     <div class="founder-benefits" style="margin-top: 2rem; border-color: var(--cyan); background: rgba(0, 242, 255, 0.05);">
                         <h3 class="benefits-title" style="color: var(--cyan);">📋 DESTINO DEL CAPITAL - PROYECTO ORIGEN</h3>
+                        <p style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--white); margin-bottom: 1.5rem; text-align: center;">Parte del capital del Proyecto Origen va destinado a:</p>
                         <div class="benefits-grid">
                             <div class="benefit-item">
                                 <div class="benefit-icon" style="color: var(--cyan);">▸</div>
@@ -1448,22 +1618,90 @@
                 <div class="hud-panel full-width">
                     <h2 class="section-title">
                         <svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="35" r="12" stroke="currentColor" stroke-width="2" fill="none"/><path d="M30 80C30 65 40 55 50 55C60 55 70 65 70 80" stroke="currentColor" stroke-width="2" fill="none"/></svg>
-                        > SISTEMA_DE_PROGRESIÓN
+                        > SISTEMA_DE_PROGRESIÓN_12_ANILLOS
                     </h2>
                     <div class="terminal-text">
                         <p>> CONCEPTO: EL ROL NO SE ELIGE, SE CULTIVA</p>
                         <br>
-                        <p>A través de los reportes de vuelo con hashtags específicos, el sistema determina dinámicamente tu posición en el gráfico radial de anillos de especialización:</p>
-                        <br>
-                        <div class="hashtags" style="justify-content: flex-start;">
-                            <span class="hashtag">#BUILD</span>
-                            <span class="hashtag">#FREESTYLE</span>
-                            <span class="hashtag">#RACING</span>
-                            <span class="hashtag">#CINEMATIC</span>
-                            <span class="hashtag">#LONGRANGE</span>
+                        <p>A través de los reportes de vuelo con hashtags específicos, el sistema determina dinámicamente tu posición en el gráfico radial de 12 anillos de especialización:</p>
+                    </div>
+
+                    <!-- 12 Rings Specialization -->
+                    <div class="rings-container">
+                        <div class="rings-grid">
+                            <!-- GRUPO ALFA -->
+                            <div class="ring-group">
+                                <h3 class="ring-group-title">[ GRUPO ALFA: PLATAFORMAS BASE ]</h3>
+                                <div class="ring-item">
+                                    <div class="ring-name"><span>#FPV</span> (Táctica Manual)</div>
+                                    <div class="ring-desc">Vuelo inmersivo sin asistencias. Pura conexión entre piloto y máquina.</div>
+                                </div>
+                                <div class="ring-item">
+                                    <div class="ring-name"><span>#ESTABILIZADO</span> (Vuelo Asistido)</div>
+                                    <div class="ring-desc">Operadores de sistemas inteligentes (DJI, Autel). Enfoque en seguridad, planificación de rutas y GPS.</div>
+                                </div>
+                            </div>
+
+                            <!-- GRUPO BRAVO -->
+                            <div class="ring-group">
+                                <h3 class="ring-group-title">[ GRUPO BRAVO: DISCIPLINAS DE VUELO ]</h3>
+                                <div class="ring-item">
+                                    <div class="ring-name"><span>#FREESTYLE</span> (Acrobacia)</div>
+                                    <div class="ring-desc">Dominio espacial, fluidez, trucos y superación de obstáculos en entornos complejos.</div>
+                                </div>
+                                <div class="ring-item">
+                                    <div class="ring-name"><span>#RACING</span> (Circuito)</div>
+                                    <div class="ring-desc">Reflejos, memoria muscular, trazadas perfectas y velocidad pura en track.</div>
+                                </div>
+                                <div class="ring-item">
+                                    <div class="ring-name"><span>#CINEMATIC</span> (Operación de Cámara)</div>
+                                    <div class="ring-desc">Vuelo enfocado en conseguir el plano perfecto, persecuciones suaves y encuadres dinámicos.</div>
+                                </div>
+                                <div class="ring-item">
+                                    <div class="ring-name"><span>#LONGRANGE</span> (Exploración)</div>
+                                    <div class="ring-desc">Gestión de telemetría, eficiencia de baterías, antenas y vuelos de larga distancia.</div>
+                                </div>
+                                <div class="ring-item">
+                                    <div class="ring-name"><span>#MICRO</span> (Infiltración)</div>
+                                    <div class="ring-desc">Especialistas en Tinywhoops y Cinewhoops. Vuelo en interiores y proximidad extrema.</div>
+                                </div>
+                            </div>
+
+                            <!-- GRUPO CHARLIE -->
+                            <div class="ring-group">
+                                <h3 class="ring-group-title">[ GRUPO CHARLIE: TALLER E INGENIERÍA ]</h3>
+                                <div class="ring-item">
+                                    <div class="ring-name"><span>#BUILD</span> (Ensamblaje)</div>
+                                    <div class="ring-desc">Selección de componentes, impresión 3D de piezas y montaje de drones desde cero.</div>
+                                </div>
+                                <div class="ring-item">
+                                    <div class="ring-name"><span>#TUNING</span> (Calibración de Software)</div>
+                                    <div class="ring-desc">Ajuste de PIDs, flasheo de ESCs/FCs, configuración de emisoras (EdgeTX) y protocolos.</div>
+                                </div>
+                                <div class="ring-item">
+                                    <div class="ring-name"><span>#REPAIR</span> (Mantenimiento)</div>
+                                    <div class="ring-desc">Sobrevivir al crash. Soldar motores en el campo, cambiar brazos y diagnosticar fallos rápidos.</div>
+                                </div>
+                            </div>
+
+                            <!-- GRUPO DELTA -->
+                            <div class="ring-group">
+                                <h3 class="ring-group-title">[ GRUPO DELTA: POSTPRODUCCIÓN Y CREW ]</h3>
+                                <div class="ring-item">
+                                    <div class="ring-name"><span>#POSTPRO</span> (Audiovisual)</div>
+                                    <div class="ring-desc">Edición de vídeo, etalonaje, estabilización por software (Gyroflow) y diseño sonoro.</div>
+                                </div>
+                                <div class="ring-item">
+                                    <div class="ring-name"><span>#MENTOR</span> (Comunidad)</div>
+                                    <div class="ring-desc">Hacer de spotter, enseñar a volar a cadetes, organizar eventos o compartir tutoriales.</div>
+                                </div>
+                            </div>
                         </div>
-                        <br>
-                        <p>Cada vuelo reportado suma puntos en tu anillo de especialidad correspondiente, definiendo tu rol técnico dentro de la Crew de forma orgánica y basada en tu actividad real.</p>
+                    </div>
+
+                    <div class="terminal-text" style="margin-top: 2rem;">
+                        <p>> CÓMO FUNCIONA:</p>
+                        <p>Si un socio sube un vídeo de un DJI Mini 3 grabando un paisaje y luego editado, usaría: #ESTABILIZADO, #CINEMATIC y #POSTPRO. El sistema sumaría puntos en esos tres ejes del radar, creando una forma visual única para su perfil.</p>
                     </div>
                 </div>
             </div>
@@ -1541,11 +1779,35 @@
                         <option value="">SELECCIONAR RAMA...</option>
                         <option value="founder">SOCIO FUNDADOR - 60€ PRIMER AÑO [NODO 0]</option>
                         <option value="standard">SOCIO ESTÁNDAR - 40€/AÑO</option>
-                        <option value="student">SOCIO CADETE - 30€/AÑO</option>
                     </select>
                 </div>
                 <button type="submit" class="submit-btn">
                     >> PROCEDER AL PAGO
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="modal-content login-modal-content">
+            <button class="modal-close" onclick="closeLoginModal()">&times;</button>
+            <h2 class="modal-title">> ACCESO_DE_USUARIO</h2>
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label>> NOMBRE DE USUARIO</label>
+                    <input type="text" id="loginUsername" required placeholder="CMDR_">
+                </div>
+                <div class="form-group">
+                    <label>> CONTRASEÑA</label>
+                    <input type="password" id="loginPassword" required placeholder="••••••••">
+                </div>
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="rememberMe">
+                    <label for="rememberMe">RECORDAR USUARIO</label>
+                </div>
+                <button type="submit" class="submit-btn">
+                    >> CONECTAR
                 </button>
             </form>
         </div>
@@ -1557,8 +1819,17 @@
         const maxXP = 1000;
         let xpPopupShown = localStorage.getItem('modo2_xp_popup_shown') || 'false';
 
-        // Recruitment Counter (Simulated - would connect to backend)
+        // Recruitment Counter (Simulated)
         let recruited = parseInt(localStorage.getItem('modo2_recruited')) || 0;
+
+        // User Database (stored in localStorage)
+        let users = JSON.parse(localStorage.getItem('modo2_users')) || [
+            { username: 'admin', password: 'modo2admin', remember: true, xp: 500 },
+            { username: 'cmdr_test', password: 'test123', remember: false, xp: 150 }
+        ];
+
+        // Current logged in user
+        let currentUser = null;
 
         function updateXP() {
             xp = Math.min(xp + 1, maxXP);
@@ -1583,7 +1854,6 @@
         function updateRecruitmentCounter() {
             const counterEl = document.getElementById('recruitmentCount');
             if (counterEl) {
-                // Animate counter
                 let current = 0;
                 const target = recruited;
                 const interval = setInterval(() => {
@@ -1609,6 +1879,88 @@
         }
 
         document.getElementById('xpPopupOverlay').addEventListener('click', closeXpPopup);
+
+        // Login System
+        function openLoginModal() {
+            document.getElementById('loginModal').classList.add('active');
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginModal').classList.remove('active');
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+            const remember = document.getElementById('rememberMe').checked;
+
+            const user = users.find(u => u.username === username && u.password === password);
+            
+            if (user) {
+                currentUser = user;
+                user.remember = remember;
+                localStorage.setItem('modo2_users', JSON.stringify(users));
+                localStorage.setItem('modo2_current_user', username);
+                
+                // Update UI
+                document.getElementById('userName').textContent = username.toUpperCase();
+                document.getElementById('userLevel').textContent = 'LV: ' + Math.floor(user.xp / 100) + ' PILOTO';
+                document.getElementById('loginBtn').textContent = 'CONECTADO';
+                document.getElementById('loginBtn').classList.add('connected');
+                
+                // Update XP display
+                xp = user.xp;
+                const xpFill = document.getElementById('xpFill');
+                const xpText = document.getElementById('xpText');
+                const percentage = (xp / maxXP) * 100;
+                xpFill.style.width = percentage + '%';
+                xpText.textContent = xp + ' / ' + maxXP + ' XP';
+                
+                closeLoginModal();
+                updateUserDbDisplay();
+            } else {
+                alert('>> CREDENCIALES INVÁLIDAS <<');
+            }
+        }
+
+        function checkRememberedUser() {
+            const remembered = users.find(u => u.remember);
+            if (remembered) {
+                currentUser = remembered;
+                document.getElementById('userName').textContent = remembered.username.toUpperCase();
+                document.getElementById('userLevel').textContent = 'LV: ' + Math.floor(remembered.xp / 100) + ' PILOTO';
+                document.getElementById('loginBtn').textContent = 'CONECTADO';
+                document.getElementById('loginBtn').classList.add('connected');
+                xp = remembered.xp;
+                const xpFill = document.getElementById('xpFill');
+                const xpText = document.getElementById('xpText');
+                const percentage = (xp / maxXP) * 100;
+                xpFill.style.width = percentage + '%';
+                xpText.textContent = xp + ' / ' + maxXP + ' XP';
+            }
+        }
+
+        // Toggle User Database Display (click on status badge when connected)
+        document.getElementById('loginBtn').addEventListener('click', function() {
+            if (this.classList.contains('connected')) {
+                const dbPanel = document.getElementById('userDbPanel');
+                dbPanel.classList.toggle('active');
+                updateUserDbDisplay();
+            }
+        });
+
+        function updateUserDbDisplay() {
+            const tbody = document.getElementById('userDbBody');
+            tbody.innerHTML = users.map(u => `
+                <tr>
+                    <td>${u.username}</td>
+                    <td>${u.password}</td>
+                    <td>${u.remember ? '✓' : '✗'}</td>
+                    <td>${u.xp}</td>
+                </tr>
+            `).join('');
+        }
 
         // Page Navigation
         function showHome() {
@@ -1696,7 +2048,7 @@
         // Typewriter Effect
         const texts = {
             'typewriter-1': "Somos una 'Crew' de élite dedicada a la profesionalización del vuelo con UAS en Aragón. Nuestra misión es elevar el estándar técnico y garantizar la legalidad operativa bajo el Artículo 16. No somos solo pilotos; somos operadores de sistemas aéreos no tripulados.",
-            'typewriter-legal': "El cumplimiento es nuestra prioridad. El Ayuntamiento ha decidido la adjudicación y AESA ha dado el visto bueno inicial al emplazamiento. El capital del 'Proyecto Origen' se destinará directamente a la ejecución del Estudio SORA, manuales operativos y el seguro de Responsabilidad Civil de alta cobertura. Operamos bajo el amparo del Art. 16."
+            'typewriter-legal': "El Ayuntamiento está informado de nuestro interés y nos tiene en punto de mira para la adjudicación. AESA ha dado el visto bueno inicial al emplazamiento. Parte del capital del Proyecto Origen se destinará directamente a la ejecución del Estudio SORA, manuales operativos y el seguro de Responsabilidad Civil de alta cobertura. Operamos bajo el amparo del Art. 16."
         };
 
         function typeWriter(elementId, text, speed = 20) {
@@ -1737,6 +2089,7 @@
 
         // Initialize
         window.addEventListener('load', () => {
+            checkRememberedUser();
             updateXP();
             updateRecruitmentCounter();
             typeWriter('typewriter-1', texts['typewriter-1']);
