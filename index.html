@@ -26,6 +26,8 @@
             --amber-glow: rgba(255, 184, 0, 0.4);
             --green: #00ff88;
             --green-glow: rgba(0, 255, 136, 0.4);
+            --red: #ff3333;
+            --red-glow: rgba(255, 51, 51, 0.4);
             --black: #020405;
             --black-panel: #050a0c;
             --white: #e0e6ed;
@@ -94,6 +96,7 @@
         .text-magenta { color: var(--magenta); }
         .text-amber { color: var(--amber); }
         .text-green { color: var(--green); }
+        .text-red { color: var(--red); }
 
         /* Glitch Effect */
         .glitch-wrapper { position: relative; display: inline-block; }
@@ -235,10 +238,8 @@
         .counter-number { font-family: var(--font-display); font-size: 3.5rem; font-weight: 900; color: var(--magenta); text-shadow: 0 0 25px var(--magenta-glow); line-height: 1; }
         .counter-label { font-family: var(--font-mono); font-size: 0.85rem; color: var(--white); text-transform: uppercase; letter-spacing: 0.1em; max-width: 200px; line-height: 1.6; }
         .counter-subtext { font-family: var(--font-mono); font-size: 0.65rem; color: var(--gray); margin-top: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; }
-        .status-available { font-family: var(--font-mono); font-size: 0.7rem; color: var(--magenta); margin-top: 1rem; text-transform: uppercase; letter-spacing: 0.15em; }
-        .status-available::before { content: '⚠ '; color: var(--magenta); animation: blink 1s infinite; }
-
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+        .status-available { font-family: var(--font-mono); font-size: 0.7rem; color: var(--amber); margin-top: 1rem; text-transform: uppercase; letter-spacing: 0.15em; }
+        .status-available::before { content: '🔒 '; color: var(--amber); }
 
         /* Icon Navigation */
         .icon-nav-row { display: flex; justify-content: center; align-items: center; gap: 2.5rem; margin: 1.5rem 0 1rem 0; flex-wrap: wrap; }
@@ -357,12 +358,61 @@
         .form-group label { display: block; font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan); margin-bottom: 0.5rem; letter-spacing: 0.1em; text-transform: uppercase; }
         .form-group input, .form-group select { width: 100%; padding: 12px; background: rgba(0, 242, 255, 0.05); border: 1px solid rgba(0, 242, 255, 0.2); color: var(--white); font-family: var(--font-mono); font-size: 0.95rem; transition: all 0.3s; }
         .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--cyan); box-shadow: 0 0 15px rgba(0, 242, 255, 0.1); }
+        .form-group input:disabled, .form-group select:disabled { 
+            background: rgba(255, 51, 51, 0.05); 
+            border-color: var(--red); 
+            color: var(--gray);
+            cursor: not-allowed;
+        }
         .checkbox-group { display: flex; align-items: center; gap: 0.5rem; }
         .checkbox-group input[type="checkbox"] { width: auto; accent-color: var(--cyan); }
+        .checkbox-group input[type="checkbox"]:disabled { accent-color: var(--red); }
         .checkbox-group label { margin-bottom: 0; }
-        .submit-btn { width: 100%; padding: 1rem; margin-top: 1rem; background: var(--cyan); color: var(--black); border: none; font-family: var(--font-display); font-size: 0.9rem; font-weight: 700; text-transform: uppercase; cursor: pointer; transition: all 0.3s ease; letter-spacing: 0.15em; }
-        .submit-btn:hover { background: var(--white); box-shadow: 0 0 30px var(--cyan-glow); }
-        .submit-btn:disabled { background: var(--gray); cursor: not-allowed; box-shadow: none; }
+        
+        /* BLOCKED BUTTON STYLE */
+        .submit-btn { 
+            width: 100%; 
+            padding: 1rem; 
+            margin-top: 1rem; 
+            background: var(--red); 
+            color: var(--white); 
+            border: 1px solid var(--red);
+            font-family: var(--font-display); 
+            font-size: 0.9rem; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            cursor: not-allowed;
+            letter-spacing: 0.15em;
+            animation: blockedPulse 2s infinite;
+        }
+
+        @keyframes blockedPulse {
+            0%, 100% { 
+                box-shadow: 0 0 10px var(--red-glow);
+                opacity: 1;
+            }
+            50% { 
+                box-shadow: 0 0 20px var(--red-glow);
+                opacity: 0.7;
+            }
+        }
+
+        .blocked-notice {
+            background: rgba(255, 51, 51, 0.1);
+            border: 1px solid var(--red);
+            padding: 1rem;
+            margin-top: 1rem;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--red);
+            text-align: center;
+            letter-spacing: 0.1em;
+        }
+
+        .blocked-notice::before {
+            content: '⚠ ';
+        }
+
         .login-modal-content { max-width: 400px; }
 
         /* Back Button */
@@ -589,7 +639,7 @@
                     <div class="counter-header"><span class="text-magenta">RECLUTAMIENTO</span> <span class="text-white">PROYECTO ORIGEN</span></div>
                     <div class="counter-main"><div class="counter-number" id="availableSpots">40</div><div class="counter-label">/ 40 PLAZAS DISPONIBLES</div></div>
                     <div class="counter-subtext">* Los 3 fundadores actuales no ocupan estas plazas de captación</div>
-                    <div class="status-available">ESTADO: ABIERTO - CUPO DISPONIBLE</div>
+                    <div class="status-available">ESTADO: CERRADO - PRÓXIMAMENTE</div>
                 </div>
                 <div class="icon-nav-row">
                     <a href="#" class="icon-nav-item" onclick="showPage('protocolo'); return false;"><svg viewBox="0 0 100 100"><rect x="20" y="25" width="60" height="50" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="30" y1="40" x2="70" y2="40" stroke="currentColor" stroke-width="1"/><line x1="30" y1="55" x2="65" y2="55" stroke="currentColor" stroke-width="1"/></svg><span class="icon-nav-label">PROTOCOLO</span></a>
@@ -633,11 +683,78 @@
         <footer><div class="social-links"><a href="#" class="social-btn">Instagram</a><a href="#" class="social-btn">Discord</a><a href="#" class="social-btn">YouTube</a></div><p class="copyright">© 2026 MODO 2 Asociación // ART. 16 COMPLIANT</p></footer>
     </div>
 
-    <!-- Registration Modal -->
-    <div class="modal-overlay" id="registerModal"><div class="modal-content"><button class="modal-close" onclick="closeModal()">&times;</button><h2 class="modal-title">> INSCRIPCIÓN</h2><form id="registerForm" onsubmit="handleRegister(event)"><div class="form-group"><label>> IDENTIFICADOR</label><input type="text" id="regName" required></div><div class="form-group"><label>> EMAIL</label><input type="email" id="regEmail" required></div><div class="form-group"><label>> TELÉFONO</label><input type="tel" id="regPhone" required></div><div class="form-group"><label>> CONTRASEÑA</label><input type="password" id="regPassword" required></div><div class="form-group"><label>> MEMBRESÍA</label><select id="regMembership" required><option value="">SELECCIONAR...</option><option value="founder">SOCIO FUNDADOR - 60€</option><option value="standard">SOCIO ESTÁNDAR - 40€</option></select></div><button type="submit" class="submit-btn" id="registerBtn">>> PROCEDER</button></form></div></div>
+    <!-- Registration Modal - BLOCKED -->
+    <div class="modal-overlay" id="registerModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h2 class="modal-title">> INSCRIPCIÓN</h2>
+            <form id="registerForm" onsubmit="handleRegister(event)">
+                <div class="form-group">
+                    <label>> IDENTIFICADOR</label>
+                    <input type="text" id="regName" required disabled>
+                </div>
+                <div class="form-group">
+                    <label>> EMAIL</label>
+                    <input type="email" id="regEmail" required disabled>
+                </div>
+                <div class="form-group">
+                    <label>> TELÉFONO</label>
+                    <input type="tel" id="regPhone" required disabled>
+                </div>
+                <div class="form-group">
+                    <label>> CONTRASEÑA</label>
+                    <input type="password" id="regPassword" required disabled>
+                </div>
+                <div class="form-group">
+                    <label>> MEMBRESÍA</label>
+                    <select id="regMembership" required disabled>
+                        <option value="">SELECCIONAR...</option>
+                        <option value="founder">SOCIO FUNDADOR - 60€</option>
+                        <option value="standard">SOCIO ESTÁNDAR - 40€</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-btn" id="registerBtn" disabled>
+                    ⚠ SISTEMA ACTUALMENTE BLOQUEADO
+                </button>
+                <div class="blocked-notice">
+                    SISTEMA DE PAGOS TEMPORALMENTE INACTIVO<br>
+                    VOLVERÁ A ESTAR DISPONIBLE PRÓXIMAMENTE
+                </div>
+            </form>
+        </div>
+    </div>
 
-    <!-- Login Modal -->
-    <div class="modal-overlay" id="loginModal"><div class="modal-content login-modal-content"><button class="modal-close" onclick="closeLoginModal()">&times;</button><h2 class="modal-title">> ACCESO</h2><form id="loginForm" onsubmit="handleLogin(event)"><div class="form-group"><label>> USUARIO / EMAIL</label><input type="text" id="loginUsername" required></div><div class="form-group"><label>> CONTRASEÑA</label><input type="password" id="loginPassword" required></div><div class="form-group checkbox-group"><input type="checkbox" id="rememberMe"><label for="rememberMe">RECORDAR</label></div><button type="submit" class="submit-btn" id="loginBtnSubmit">>> CONECTAR</button></form><p class="mono" style="margin-top: 1rem; text-align: center; color: var(--gray);">¿Sin cuenta? <a href="#" onclick="closeLoginModal(); openModal();" style="color: var(--cyan);">REGISTRARSE</a></p></div></div>
+    <!-- Login Modal - BLOCKED -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="modal-content login-modal-content">
+            <button class="modal-close" onclick="closeLoginModal()">&times;</button>
+            <h2 class="modal-title">> ACCESO</h2>
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label>> USUARIO / EMAIL</label>
+                    <input type="text" id="loginUsername" required disabled>
+                </div>
+                <div class="form-group">
+                    <label>> CONTRASEÑA</label>
+                    <input type="password" id="loginPassword" required disabled>
+                </div>
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="rememberMe" disabled>
+                    <label for="rememberMe">RECORDAR</label>
+                </div>
+                <button type="submit" class="submit-btn" id="loginBtnSubmit" disabled>
+                    ⚠ SISTEMA ACTUALMENTE BLOQUEADO
+                </button>
+                <div class="blocked-notice">
+                    SISTEMA DE ACCESO TEMPORALMENTE INACTIVO<br>
+                    VOLVERÁ A ESTAR DISPONIBLE PRÓXIMAMENTE
+                </div>
+            </form>
+            <p class="mono" style="margin-top: 1rem; text-align: center; color: var(--gray);">
+                ¿Sin cuenta? <span style="color: var(--red);">REGISTRO BLOQUEADO</span>
+            </p>
+        </div>
+    </div>
 
     <script>
         // Firebase Configuration
@@ -753,142 +870,16 @@
         function openModal() { document.getElementById('registerModal').classList.add('active'); }
         function closeModal() { document.getElementById('registerModal').classList.remove('active'); }
 
-        // Firebase Registration
-        async function handleRegister(e) {
+        // BLOCKED Registration - Shows message only
+        function handleRegister(e) {
             e.preventDefault();
-            if (!firebaseInitialized) { alert('MAINFRAME DESCONECTADO'); return; }
-            const btn = document.getElementById('registerBtn');
-            btn.disabled = true;
-            btn.textContent = '>> PROCESANDO...';
-            try {
-                const userCredential = await auth.createUserWithEmailAndPassword(
-                    document.getElementById('regEmail').value,
-                    document.getElementById('regPassword').value
-                );
-                await db.collection('users').doc(userCredential.user.uid).set({
-                    displayName: document.getElementById('regName').value,
-                    email: document.getElementById('regEmail').value,
-                    phone: document.getElementById('regPhone').value,
-                    membership: document.getElementById('regMembership').value,
-                    level: 0, xp: 0, rank: 'INVITADO', status: 'pending',
-                    createdAt: firebase.firestore.FieldValue.serverTimestamp()
-                });
-                alert('>> REGISTRO COMPLETADO <<\nPENDIENTE DE VALIDACIÓN');
-                closeModal();
-                document.getElementById('registerForm').reset();
-            } catch (error) {
-                alert('>> ERROR <<\n' + error.message);
-            } finally {
-                btn.disabled = false;
-                btn.textContent = '>> PROCEDER';
-            }
+            alert('>> SISTEMA DE PAGOS BLOQUEADO <<\n\nEl sistema de inscripciones estará disponible próximamente.\n\nDisculpa las molestias.');
         }
 
-        // Firebase Login
-        async function handleLogin(e) {
+        // BLOCKED Login - Shows message only
+        function handleLogin(e) {
             e.preventDefault();
-            if (!firebaseInitialized) { alert('MAINFRAME DESCONECTADO'); return; }
-            const btn = document.getElementById('loginBtnSubmit');
-            btn.disabled = true;
-            btn.textContent = '>> AUTENTICANDO...';
-            try {
-                await auth.setPersistence(
-                    document.getElementById('rememberMe').checked 
-                        ? firebase.auth.Auth.Persistence.LOCAL 
-                        : firebase.auth.Auth.Persistence.SESSION
-                );
-                const userCredential = await auth.signInWithEmailAndPassword(
-                    document.getElementById('loginUsername').value,
-                    document.getElementById('loginPassword').value
-                );
-                const userDoc = await db.collection('users').doc(userCredential.user.uid).get();
-                if (userDoc.exists) {
-                    currentUserData = userDoc.data();
-                    document.getElementById('userName').textContent = (currentUserData.displayName || userCredential.user.email).toUpperCase();
-                    document.getElementById('userLevel').textContent = 'NIVEL ' + (currentUserData.level || 0);
-                    const loginBtn = document.getElementById('loginBtn');
-                    loginBtn.textContent = currentUserData.status === 'connected' ? 'CONECTADO' : 'PENDIENTE';
-                    loginBtn.className = 'status-badge ' + (currentUserData.status === 'connected' ? 'connected' : 'pending');
-                    loginBtn.onclick = handleLogout;
-                    updateXPDisplay(currentUserData.xp || 0);
-                    closeLoginModal();
-                    displayUserDataInTable();
-                }
-            } catch (error) {
-                alert('>> ERROR <<\n' + error.message);
-            } finally {
-                btn.disabled = false;
-                btn.textContent = '>> CONECTAR';
-            }
-        }
-
-        // Firebase Logout
-        async function handleLogout() {
-            if (!firebaseInitialized) return;
-            await auth.signOut();
-            currentUserData = null;
-            document.getElementById('userName').textContent = 'INVITADO';
-            document.getElementById('userLevel').textContent = 'ACCESO RESTRINGIDO';
-            document.getElementById('userRank').textContent = '--';
-            const loginBtn = document.getElementById('loginBtn');
-            loginBtn.textContent = 'INVITADO / ACCESO RESTRINGIDO';
-            loginBtn.className = 'status-badge';
-            loginBtn.onclick = openLoginModal;
-            updateXPDisplay(0);
-            alert('>> SESIÓN CERRADA <<');
-        }
-
-        // Auth State Listener
-        if (firebaseInitialized) {
-            auth.onAuthStateChanged(async (user) => {
-                if (user) {
-                    const userDoc = await db.collection('users').doc(user.uid).get();
-                    if (userDoc.exists) {
-                        currentUserData = userDoc.data();
-                        document.getElementById('userName').textContent = (currentUserData.displayName || user.email).toUpperCase();
-                        document.getElementById('userLevel').textContent = 'NIVEL ' + (currentUserData.level || 0);
-                        const loginBtn = document.getElementById('loginBtn');
-                        loginBtn.textContent = currentUserData.status === 'connected' ? 'CONECTADO' : 'PENDIENTE';
-                        loginBtn.className = 'status-badge ' + (currentUserData.status === 'connected' ? 'connected' : 'pending');
-                        loginBtn.onclick = handleLogout;
-                        updateXPDisplay(currentUserData.xp || 0);
-                    }
-                }
-            });
-        }
-
-        // User DB Display
-        document.addEventListener('DOMContentLoaded', () => {
-            const loginBtn = document.getElementById('loginBtn');
-            if (loginBtn) {
-                loginBtn.addEventListener('click', function() {
-                    if (this.classList.contains('connected') || this.classList.contains('pending')) {
-                        const dbPanel = document.getElementById('userDbPanel');
-                        dbPanel.classList.toggle('active');
-                        if (firebaseInitialized && currentUserData) displayUserDataInTable();
-                    }
-                });
-            }
-        });
-
-        function displayUserDataInTable() {
-            const tbody = document.getElementById('userDbBody');
-            if (tbody && currentUserData) {
-                tbody.innerHTML = `<tr><td>${currentUserData.displayName || 'N/A'}</td><td>${auth.currentUser?.email || 'N/A'}</td><td class="${currentUserData.status === 'connected' ? 'text-green' : 'text-amber'}">${currentUserData.status?.toUpperCase() || 'PENDING'}</td><td>${currentUserData.level || 0}</td><td>${currentUserData.rank || 'INVITADO'}</td><td>${(currentUserData.xp || 0).toLocaleString()}</td></tr>`;
-            }
-        }
-
-        // Page Navigation
-        function showHome() {
-            document.querySelectorAll('.content-page').forEach(p => p.classList.remove('active'));
-            document.getElementById('home-page').classList.add('active');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function showPage(pageId) {
-            document.querySelectorAll('.content-page').forEach(p => p.classList.remove('active'));
-            document.getElementById(pageId + '-page').classList.add('active');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            alert('>> SISTEMA DE ACCESO BLOQUEADO <<\n\nEl sistema de acceso estará disponible próximamente.\n\nDisculpa las molestias.');
         }
 
         // Typewriter
