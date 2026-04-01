@@ -31,7 +31,6 @@
 
         body {
             background-color: var(--black);
-            /* Atmospheric Nebula Background */
             background-image: 
                 radial-gradient(circle at 20% 30%, rgba(0, 242, 255, 0.08) 0%, transparent 40%),
                 radial-gradient(circle at 80% 70%, rgba(0, 128, 128, 0.08) 0%, transparent 40%),
@@ -44,7 +43,6 @@
             position: relative;
         }
 
-        /* Scanlines Overlay */
         .scanlines {
             position: fixed;
             top: 0;
@@ -66,7 +64,6 @@
             z-index: 1;
         }
 
-        /* Typography Utilities */
         h1, h2, h3 {
             font-family: var(--font-display);
             text-transform: uppercase;
@@ -79,7 +76,6 @@
         }
 
         .mono {
-            font-family: 'Courier New', monospace; /* Fallback */
             font-family: var(--font-body);
             font-weight: 300;
             font-size: 0.85rem;
@@ -160,7 +156,6 @@
             margin-bottom: 5px;
         }
 
-        /* Line effect under icons */
         .nav-icon-wrapper::after {
             content: '';
             position: absolute;
@@ -181,14 +176,14 @@
         /* Hero Section */
         .hero {
             text-align: center;
-            padding: 3rem 0 6rem 0;
+            padding: 2rem 0 4rem 0;
             position: relative;
         }
 
         .main-title {
             font-size: 5rem;
             font-weight: 900;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             letter-spacing: 0.3em;
             line-height: 1;
         }
@@ -212,7 +207,7 @@
             border: 1px solid rgba(0, 242, 255, 0.3);
             background: rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(2px);
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
         }
 
         .counter-number {
@@ -233,91 +228,146 @@
             50% { opacity: 0.6; }
         }
 
-        /* Icon Navigation Row */
+        /* Icon Navigation Row - Minimalist with hover labels */
         .icon-nav-row {
             display: flex;
             justify-content: center;
-            gap: 5rem;
-            margin: 2rem 0 6rem 0;
+            align-items: center;
+            gap: 3rem;
+            margin: 1rem 0 4rem 0;
             flex-wrap: wrap;
         }
 
         .icon-nav-item {
+            position: relative;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 1rem;
+            gap: 0.5rem;
             text-decoration: none;
             color: var(--white);
             transition: all 0.3s ease;
-            opacity: 0.7;
+            opacity: 0.6;
         }
 
         .icon-nav-item:hover {
             opacity: 1;
-            transform: translateY(-5px);
+            transform: translateY(-3px);
             color: var(--cyan);
         }
 
         .icon-nav-item svg {
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             stroke: var(--cyan);
             fill: none;
-            stroke-width: 1;
+            stroke-width: 1.2;
             filter: drop-shadow(0 0 5px rgba(0, 242, 255, 0.3));
+            transition: all 0.3s ease;
         }
 
+        .icon-nav-item:hover svg {
+            filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.6));
+        }
+
+        /* Hover label - hidden by default */
         .icon-nav-label {
+            position: absolute;
+            bottom: -25px;
             font-family: var(--font-body);
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
+            color: var(--cyan);
+            opacity: 0;
+            transform: translateY(5px);
+            transition: all 0.3s ease;
+            white-space: nowrap;
         }
 
-        /* CTA Button */
+        .icon-nav-item:hover .icon-nav-label {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Join Button - Integrated with icons */
+        .join-btn-wrapper {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+
+        .join-btn-wrapper:hover {
+            opacity: 1;
+            transform: translateY(-3px);
+        }
+
+        .join-btn-icon {
+            width: 42px;
+            height: 42px;
+            background: var(--cyan);
+            clip-path: polygon(15% 0, 100% 0, 100% 70%, 85% 100%, 0 100%, 0 30%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.3);
+        }
+
+        .join-btn-wrapper:hover .join-btn-icon {
+            background: var(--white);
+            box-shadow: 0 0 25px rgba(0, 242, 255, 0.5);
+        }
+
+        .join-btn-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: var(--black);
+            fill: none;
+            stroke-width: 2.5;
+        }
+
+        .join-btn-label {
+            position: absolute;
+            bottom: -25px;
+            font-family: var(--font-body);
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--cyan);
+            opacity: 0;
+            transform: translateY(5px);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .join-btn-wrapper:hover .join-btn-label {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* CTA Section */
         .cta-section {
             text-align: center;
-            padding: 2rem 0;
-            margin-bottom: 6rem;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 1.2rem 4rem;
-            font-family: var(--font-display);
-            font-size: 1rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: var(--black);
-            background: var(--cyan);
-            border: none;
-            /* Polygon shape */
-            clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
-            cursor: pointer;
-            transition: all 0.4s ease;
-            text-decoration: none;
-            position: relative;
-            box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
-        }
-
-        .cta-button:hover {
-            background: var(--white);
-            box-shadow: 0 0 40px rgba(0, 242, 255, 0.4);
-            transform: scale(1.02);
+            padding: 1rem 0;
+            margin-bottom: 5rem;
         }
 
         .cta-subtitle {
-            margin-top: 1.5rem;
             font-family: var(--font-body);
             font-size: 0.75rem;
             color: var(--cyan);
             letter-spacing: 0.15em;
             opacity: 0.7;
+            text-transform: uppercase;
         }
 
-        /* Content Sections - Minimalist */
+        /* Content Sections */
         .content-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -340,7 +390,6 @@
             transition: all 0.3s ease;
         }
 
-        /* L-shaped corner accent */
         .minimal-panel::before {
             content: '';
             position: absolute;
@@ -561,7 +610,6 @@
             box-shadow: 0 0 50px rgba(0, 242, 255, 0.1);
         }
 
-        /* Corner accents for modal */
         .modal-content::before, .modal-content::after {
             content: '';
             position: absolute;
@@ -671,17 +719,13 @@
 </head>
 <body>
 
-    <!-- Scanlines Overlay -->
     <div class="scanlines"></div>
-    
-    <!-- Background Animation Container -->
     <div id="drone-trails-container"></div>
 
     <div class="container">
         <!-- Header -->
         <header>
             <a href="#" class="logo-container">
-                <!-- MODO 2 LOGO SVG -->
                 <svg class="logo-svg" viewBox="0 0 100 115" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g class="logo-hexagon">
                         <path d="M50 2L93.3 27.5V77.5L50 103L6.7 77.5V27.5L50 2Z" fill="#020405" stroke="#00f2ff" stroke-width="1.5"/>
@@ -700,7 +744,6 @@
                 </div>
             </a>
             
-            <!-- Header Navigation Icons -->
             <div class="header-nav">
                 <a href="#manifiesto" class="nav-icon-wrapper" title="Manifiesto">
                     <svg viewBox="0 0 100 100"><rect x="20" y="20" width="60" height="60" stroke="currentColor" stroke-width="2" fill="none"/><line x1="30" y1="35" x2="70" y2="35" stroke="currentColor" stroke-width="1.5"/><line x1="30" y1="50" x2="70" y2="50" stroke="currentColor" stroke-width="1.5"/><line x1="30" y1="65" x2="60" y2="65" stroke="currentColor" stroke-width="1.5"/></svg>
@@ -722,15 +765,10 @@
 
         <!-- Hero Section -->
         <section class="hero">
-            <h1 class="main-title text-glow">MODO <span class="brand-cyan">2</span></h1>
-            <p class="mission-phrase">Profesionalización y Legalidad UAS</p>
+            <h1 class="main-title text-glow">MODO <span style="color: var(--cyan);">2</span></h1>
+            <p class="mission-phrase">Profesionalización y Legalidad FPV</p>
             
-            <div class="counter-box">
-                <span class="mono">PLAZAS SOCIOS FUNDADORES:</span>
-                <span class="counter-number counter-full">0/40</span>
-            </div>
-
-            <!-- Minimalist Icon Navigation -->
+            <!-- Icon Navigation Row with Join Button -->
             <div class="icon-nav-row">
                 <a href="#manifiesto" class="icon-nav-item">
                     <svg viewBox="0 0 100 100"><rect x="20" y="25" width="60" height="50" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="30" y1="40" x2="70" y2="40" stroke="currentColor" stroke-width="1"/><line x1="30" y1="55" x2="65" y2="55" stroke="currentColor" stroke-width="1"/></svg>
@@ -748,21 +786,31 @@
                     <svg viewBox="0 0 100 100"><circle cx="50" cy="40" r="10" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M35 75C35 65 42 55 50 55C58 55 65 65 65 75" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
                     <span class="icon-nav-label">Crew</span>
                 </a>
+                
+                <!-- Join Button - Integrated with icons -->
+                <div class="join-btn-wrapper" onclick="openModal()">
+                    <div class="join-btn-icon">
+                        <svg viewBox="0 0 100 100"><path d="M50 30L50 70M30 50L70 50" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+                    </div>
+                    <span class="join-btn-label">UNIRSE AL SQUAD</span>
+                </div>
+            </div>
+
+            <!-- Counter below the join section -->
+            <div class="counter-box">
+                <span class="mono">PLAZAS SOCIO FUNDADOR:</span>
+                <span class="counter-number counter-full">40/40</span>
             </div>
         </section>
 
-        <!-- CTA Button Section -->
+        <!-- CTA Section -->
         <div class="cta-section">
-            <button class="cta-button" onclick="openModal()">
-                HACERSE SOCIO
-            </button>
             <p class="cta-subtitle">>> ESTE ES EL PRIMER PASO PARA DOMINAR EL AIRE <<</p>
         </div>
 
         <!-- Main Content Grid -->
         <div class="content-grid">
             
-            <!-- Manifiesto -->
             <div class="minimal-panel full-width" id="manifiesto">
                 <h2 class="section-title">
                     <svg viewBox="0 0 100 100" fill="none"><rect x="20" y="20" width="60" height="60" stroke="currentColor" stroke-width="2" fill="none"/><line x1="30" y1="35" x2="70" y2="35" stroke="currentColor" stroke-width="1.5"/><line x1="30" y1="50" x2="70" y2="50" stroke="currentColor" stroke-width="1.5"/><line x1="30" y1="65" x2="60" y2="65" stroke="currentColor" stroke-width="1.5"/></svg>
@@ -771,7 +819,6 @@
                 <div class="terminal-text" id="typewriter-1"></div><span class="cursor"></span>
             </div>
 
-            <!-- Normativa -->
             <div class="minimal-panel" id="normativa">
                 <h2 class="section-title">
                     <svg viewBox="0 0 100 100" fill="none"><rect x="30" y="20" width="40" height="60" stroke="currentColor" stroke-width="2" fill="none"/><line x1="40" y1="35" x2="60" y2="35" stroke="currentColor" stroke-width="1.5"/><line x1="40" y1="50" x2="60" y2="50" stroke="currentColor" stroke-width="1.5"/><circle cx="50" cy="65" r="10" stroke="currentColor" stroke-width="2" fill="none"/><path d="M46 65L49 68L54 62" stroke="currentColor" stroke-width="2"/></svg>
@@ -780,7 +827,6 @@
                 <div class="terminal-text" id="typewriter-2"></div><span class="cursor"></span>
             </div>
 
-            <!-- Operaciones -->
             <div class="minimal-panel" id="operaciones">
                 <h2 class="section-title">
                     <svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="50" cy="50" r="6" fill="currentColor"/><line x1="50" y1="20" x2="50" y2="30" stroke="currentColor" stroke-width="2"/><line x1="50" y1="70" x2="50" y2="80" stroke="currentColor" stroke-width="2"/><line x1="20" y1="50" x2="30" y2="50" stroke="currentColor" stroke-width="2"/><line x1="70" y1="50" x2="80" y2="50" stroke="currentColor" stroke-width="2"/></svg>
@@ -793,7 +839,6 @@
 
         <!-- Factions -->
         <div class="factions-container">
-            <!-- INCURSORES -->
             <div class="faction-card">
                 <div class="faction-icon">
                     <svg viewBox="0 0 100 100" fill="none"><path d="M50 20L50 70" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M35 30L65 30" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M35 40L25 30L30 45Z" fill="currentColor" opacity="0.6"/><path d="M65 40L75 30L70 45Z" fill="currentColor" opacity="0.6"/></svg>
@@ -802,7 +847,6 @@
                 <p class="mono" style="font-size: 0.7rem; letter-spacing: 0.15em;">FREESTYLE / RACING / CINEMATIC</p>
             </div>
 
-            <!-- ARQUITECTOS -->
             <div class="faction-card">
                 <div class="faction-icon">
                     <svg viewBox="0 0 100 100" fill="none"><path d="M50 15L80 35V65L50 85L20 65V35L50 15Z" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="50" cy="50" r="20" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4"/><rect x="48" y="25" width="4" height="8" fill="currentColor"/><rect x="48" y="67" width="4" height="8" fill="currentColor"/></svg>
@@ -885,7 +929,7 @@
     </div>
 
     <script>
-        // --- DRONE TRAIL ANIMATION ---
+        // Drone Trail Animation
         const colors = ['#00f2ff', '#ff0055', '#00f2ff', '#008080'];
         const trailsContainer = document.getElementById('drone-trails-container');
 
@@ -946,7 +990,7 @@
 
         setTimeout(startDroneTrails, 1000);
 
-        // --- TYPEWRITER EFFECT ---
+        // Typewriter Effect
         const texts = {
             'typewriter-1': "Somos una 'Crew' de élite dedicada a la profesionalización del vuelo FPV en Aragón. Nuestra misión es elevar el estándar técnico y garantizar la legalidad operativa bajo el Artículo 16. No somos solo pilotos; somos operadores de sistemas aéreos no tripulados.",
             'typewriter-2': "El cumplimiento es nuestra prioridad. Todas las operaciones se realizan bajo estricta normativa AESA. Protocolos de seguridad activos. Zona de exclusión aérea respetada. Seguro de responsabilidad civil verificado.",
@@ -968,7 +1012,7 @@
             type();
         }
 
-        // --- MODAL FUNCTIONS ---
+        // Modal Functions
         function openModal() {
             document.getElementById('registerModal').classList.add('active');
         }
@@ -988,13 +1032,12 @@
             alert('>> REDIRIGIENDO A PASARELA DE PAGO... <<');
         }
 
-        // --- INITIALIZE ---
+        // Initialize
         window.addEventListener('load', () => {
             setTimeout(() => typeWriter('typewriter-1', texts['typewriter-1']), 500);
             setTimeout(() => typeWriter('typewriter-2', texts['typewriter-2']), 1500);
             setTimeout(() => typeWriter('typewriter-3', texts['typewriter-3']), 2500);
         });
-
     </script>
 </body>
 </html>
