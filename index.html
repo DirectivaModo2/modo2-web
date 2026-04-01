@@ -1,56 +1,25 @@
-
-                        <!DOCTYPE html>
-                        <html lang="en">
-                        <head>
-                            <meta charset="UTF-8">
-                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              <style>
-                body {
-                  background-color: white; /* Ensure the iframe has a white background */
-                }
-
-                
-              </style>
-                        </head>
-                        <body>
-                            <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MODO 2 | SISTEMA OPERATIVO</title>
-    
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Titillium+Web:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
     <div class="scanlines"></div>
     <div id="drone-trails-container"></div>
-
-    <!-- Firebase Status Indicator -->
     <div class="firebase-status" id="firebaseStatus">MAINFRAME: INICIALIZANDO...</div>
-
-    <!-- XP Max Popup -->
     <div class="xp-popup-overlay" id="xpPopupOverlay"></div>
     <div class="xp-popup" id="xpPopup">
         <h3 class="xp-popup-title">⚠ ¡NIVEL MÁXIMO ALCANZADO!</h3>
-        <p class="xp-popup-message">
-            ¿A qué esperas para unirte?<br><br>
-            Ya has llegado a la categoría de <strong style="color: var(--magenta);">OBSERVADOR COTILLA</strong>. 
-            Has visitado la web 1000 veces y aún no formas parte del SQUAD.<br><br>
-            Deja de mirar y empieza a volar.
-        </p>
+        <p class="xp-popup-message">¿A qué esperas para unirte?<br><br>Ya has llegado a la categoría de <strong style="color: var(--magenta);">OBSERVADOR COTILLA</strong>.<br><br>Deja de mirar y empieza a volar.</p>
         <button class="xp-popup-btn" onclick="closeXpPopup()">>> ENTENDIDO</button>
     </div>
-
     <div class="container">
-        <!-- Header -->
         <header>
             <a href="#" class="logo-container" onclick="showHome(); return false;">
                 <svg class="logo-svg" viewBox="0 0 100 115" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -70,32 +39,17 @@
                     <span class="glitch" data-text="MODO 2"><span class="brand-white">MODO</span> <span class="brand-cyan">2</span></span>
                 </div>
             </a>
-            
             <div class="header-nav">
-                <a href="#" class="nav-icon-wrapper" title="Protocolo" onclick="showPage('protocolo'); return false;">
-                    <svg viewBox="0 0 100 100"><rect x="20" y="20" width="60" height="60" stroke="currentColor" stroke-width="2" fill="none"/><line x1="30" y1="35" x2="70" y2="35" stroke="currentColor" stroke-width="1.5"/><line x1="30" y1="50" x2="70" y2="50" stroke="currentColor" stroke-width="1.5"/><line x1="30" y1="65" x2="60" y2="65" stroke="currentColor" stroke-width="1.5"/></svg>
-                </a>
-                <a href="#" class="nav-icon-wrapper" title="Infraestructura" onclick="showPage('infraestructura'); return false;">
-                    <svg viewBox="0 0 100 100"><path d="M20 80L20 40L50 20L80 40L80 80" stroke="currentColor" stroke-width="2" fill="none"/><line x1="35" y1="80" x2="35" y2="50" stroke="currentColor" stroke-width="1.5"/><line x1="65" y1="80" x2="65" y2="50" stroke="currentColor" stroke-width="1.5"/><line x1="20" y1="80" x2="80" y2="80" stroke="currentColor" stroke-width="1.5"/></svg>
-                </a>
-                <a href="#" class="nav-icon-wrapper" title="Legal" onclick="showPage('legal'); return false;">
-                    <svg viewBox="0 0 100 100"><rect x="30" y="20" width="40" height="60" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="50" cy="55" r="12" stroke="currentColor" stroke-width="2" fill="none"/><path d="M46 55L49 58L54 52" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </a>
-                <a href="#" class="nav-icon-wrapper" title="Crew" onclick="showPage('crew'); return false;">
-                    <svg viewBox="0 0 100 100"><circle cx="50" cy="35" r="12" stroke="currentColor" stroke-width="2" fill="none"/><path d="M30 80C30 65 40 55 50 55C60 55 70 65 70 80" stroke="currentColor" stroke-width="2" fill="none"/></svg>
-                </a>
-                <a href="#" class="nav-icon-wrapper" title="Unirse" onclick="openModal(); return false;">
-                    <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="35" stroke="currentColor" stroke-width="2" fill="none"/><path d="M50 30L50 50L65 58" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </a>
+                <a href="#" class="nav-icon-wrapper" onclick="showPage('protocolo'); return false;"><svg viewBox="0 0 100 100"><rect x="20" y="20" width="60" height="60" stroke="currentColor" stroke-width="2" fill="none"/><line x1="30" y1="35" x2="70" y2="35" stroke="currentColor" stroke-width="1.5"/><line x1="30" y1="50" x2="70" y2="50" stroke="currentColor" stroke-width="1.5"/><line x1="30" y1="65" x2="60" y2="65" stroke="currentColor" stroke-width="1.5"/></svg></a>
+                <a href="#" class="nav-icon-wrapper" onclick="showPage('infraestructura'); return false;"><svg viewBox="0 0 100 100"><path d="M20 80L20 40L50 20L80 40L80 80" stroke="currentColor" stroke-width="2" fill="none"/><line x1="35" y1="80" x2="35" y2="50" stroke="currentColor" stroke-width="1.5"/><line x1="65" y1="80" x2="65" y2="50" stroke="currentColor" stroke-width="1.5"/><line x1="20" y1="80" x2="80" y2="80" stroke="currentColor" stroke-width="1.5"/></svg></a>
+                <a href="#" class="nav-icon-wrapper" onclick="showPage('legal'); return false;"><svg viewBox="0 0 100 100"><rect x="30" y="20" width="40" height="60" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="50" cy="55" r="12" stroke="currentColor" stroke-width="2" fill="none"/><path d="M46 55L49 58L54 52" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                <a href="#" class="nav-icon-wrapper" onclick="showPage('crew'); return false;"><svg viewBox="0 0 100 100"><circle cx="50" cy="35" r="12" stroke="currentColor" stroke-width="2" fill="none"/><path d="M30 80C30 65 40 55 50 55C60 55 70 65 70 80" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
+                <a href="#" class="nav-icon-wrapper" onclick="openModal(); return false;"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="35" stroke="currentColor" stroke-width="2" fill="none"/><path d="M50 30L50 50L65 58" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
             </div>
         </header>
-
-        <!-- User Dashboard -->
         <div class="user-dashboard">
             <div class="user-info" id="userInfo">
-                <div class="user-avatar">
-                    <svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="35" r="15" stroke="currentColor" stroke-width="2" fill="none"/><path d="M30 80C30 65 40 55 50 55C60 55 70 65 70 80" stroke="currentColor" stroke-width="2" fill="none"/></svg>
-                </div>
+                <div class="user-avatar"><svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="35" r="15" stroke="currentColor" stroke-width="2" fill="none"/><path d="M30 80C30 65 40 55 50 55C60 55 70 65 70 80" stroke="currentColor" stroke-width="2" fill="none"/></svg></div>
                 <div class="user-details">
                     <h4 id="userName">INVITADO</h4>
                     <div class="user-level" id="userLevel">ACCESO RESTRINGIDO</div>
@@ -103,648 +57,58 @@
                 </div>
             </div>
             <div class="xp-bar-container">
-                <div class="xp-label">
-                    <span>EXPERIENCIA</span>
-                    <span id="xpText">0 XP</span>
-                </div>
-                <div class="xp-bar">
-                    <div class="xp-fill" id="xpFill"></div>
-                </div>
+                <div class="xp-label"><span>EXPERIENCIA</span><span id="xpText">0 XP</span></div>
+                <div class="xp-bar"><div class="xp-fill" id="xpFill"></div></div>
                 <div class="level-display" id="levelDisplay">NIVEL 0</div>
             </div>
             <button class="status-badge" id="loginBtn">INVITADO / ACCESO RESTRINGIDO</button>
         </div>
-
-        <!-- User Database Panel -->
         <div class="user-db-panel" id="userDbPanel">
-            <h3 class="section-title">> BASE_DE_DATOS_USUARIOS - FIRESTORE</h3>
-            <p class="mono" style="margin-bottom: 1rem; color: var(--gray);">* Datos sincronizados con Firebase Mainframe</p>
-            <table class="user-db-table">
-                <thead>
-                    <tr>
-                        <th>USUARIO</th>
-                        <th>EMAIL</th>
-                        <th>ESTADO</th>
-                        <th>NIVEL</th>
-                        <th>RANGO</th>
-                        <th>XP</th>
-                    </tr>
-                </thead>
-                <tbody id="userDbBody"></tbody>
-            </table>
+            <h3 class="section-title">> BASE_DE_DATOS_USUARIOS</h3>
+            <table class="user-db-table"><thead><tr><th>USUARIO</th><th>EMAIL</th><th>ESTADO</th><th>NIVEL</th><th>RANGO</th><th>XP</th></tr></thead><tbody id="userDbBody"></tbody></table>
         </div>
-
-        <!-- Home Page -->
         <div id="home-page" class="content-page active">
             <section class="hero">
-                <p class="system-command">EJECUTANDO: <span class="text-white">PROYECTO_</span><span class="text-cyan">ORIGEN.EXE</span> // PROFESIONALIZACIÓN_UAS_ARAGÓN</p>
-                
+                <p class="system-command">EJECUTANDO: <span class="text-white">PROYECTO_</span><span class="text-cyan">ORIGEN.EXE</span></p>
                 <div class="recruitment-counter">
                     <div class="counter-header"><span class="text-magenta">RECLUTAMIENTO</span> <span class="text-white">PROYECTO ORIGEN</span></div>
-                    <div class="counter-main">
-                        <div class="counter-number" id="availableSpots">40</div>
-                        <div class="counter-label">/ 40 PLAZAS DISPONIBLES</div>
-                    </div>
-                    <div class="counter-subtext">* Los 3 fundadores actuales no ocupan estas plazas de captación</div>
-                    <div class="status-available">ESTADO: ABIERTO - CUPO DISPONIBLE</div>
+                    <div class="counter-main"><div class="counter-number" id="availableSpots">40</div><div class="counter-label">/ 40 PLAZAS DISPONIBLES</div></div>
+                    <div class="status-available">ESTADO: ABIERTO</div>
                 </div>
-
                 <div class="icon-nav-row">
-                    <a href="#" class="icon-nav-item" onclick="showPage('protocolo'); return false;">
-                        <svg viewBox="0 0 100 100"><rect x="20" y="25" width="60" height="50" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="30" y1="40" x2="70" y2="40" stroke="currentColor" stroke-width="1"/><line x1="30" y1="55" x2="65" y2="55" stroke="currentColor" stroke-width="1"/></svg>
-                        <span class="icon-nav-label">PROTOCOLO</span>
-                    </a>
-                    <a href="#" class="icon-nav-item" onclick="showPage('infraestructura'); return false;">
-                        <svg viewBox="0 0 100 100"><path d="M20 80L20 40L50 20L80 40L80 80" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="35" y1="80" x2="35" y2="50" stroke="currentColor" stroke-width="1"/><line x1="65" y1="80" x2="65" y2="50" stroke="currentColor" stroke-width="1"/><line x1="20" y1="80" x2="80" y2="80" stroke="currentColor" stroke-width="1"/></svg>
-                        <span class="icon-nav-label">INFRAESTRUCTURA</span>
-                    </a>
-                    <a href="#" class="icon-nav-item" onclick="showPage('legal'); return false;">
-                        <svg viewBox="0 0 100 100"><rect x="30" y="20" width="40" height="60" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="50" cy="50" r="10" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M47 50L50 53L53 47" stroke="currentColor" stroke-width="1.5"/></svg>
-                        <span class="icon-nav-label">LEGAL</span>
-                    </a>
-                    <a href="#" class="icon-nav-item" onclick="showPage('crew'); return false;">
-                        <svg viewBox="0 0 100 100"><circle cx="50" cy="40" r="10" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M35 75C35 65 42 55 50 55C58 55 65 65 65 75" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-                        <span class="icon-nav-label">CREW</span>
-                    </a>
-                    
-                    <div class="join-btn-wrapper" onclick="openModal()">
-                        <div class="join-btn-icon">
-                            <svg viewBox="0 0 100 100"><path d="M50 30L50 70M30 50L70 50" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
-                        </div>
-                        <span class="join-btn-label">INICIAR INSCRIPCIÓN</span>
-                    </div>
+                    <a href="#" class="icon-nav-item" onclick="showPage('protocolo'); return false;"><svg viewBox="0 0 100 100"><rect x="20" y="25" width="60" height="50" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="30" y1="40" x2="70" y2="40" stroke="currentColor" stroke-width="1"/><line x1="30" y1="55" x2="65" y2="55" stroke="currentColor" stroke-width="1"/></svg><span class="icon-nav-label">PROTOCOLO</span></a>
+                    <a href="#" class="icon-nav-item" onclick="showPage('infraestructura'); return false;"><svg viewBox="0 0 100 100"><path d="M20 80L20 40L50 20L80 40L80 80" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="35" y1="80" x2="35" y2="50" stroke="currentColor" stroke-width="1"/><line x1="65" y1="80" x2="65" y2="50" stroke="currentColor" stroke-width="1"/><line x1="20" y1="80" x2="80" y2="80" stroke="currentColor" stroke-width="1"/></svg><span class="icon-nav-label">INFRAESTRUCTURA</span></a>
+                    <a href="#" class="icon-nav-item" onclick="showPage('legal'); return false;"><svg viewBox="0 0 100 100"><rect x="30" y="20" width="40" height="60" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="50" cy="50" r="10" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M47 50L50 53L53 47" stroke="currentColor" stroke-width="1.5"/></svg><span class="icon-nav-label">LEGAL</span></a>
+                    <a href="#" class="icon-nav-item" onclick="showPage('crew'); return false;"><svg viewBox="0 0 100 100"><circle cx="50" cy="40" r="10" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M35 75C35 65 42 55 50 55C58 55 65 65 65 75" stroke="currentColor" stroke-width="1.5" fill="none"/></svg><span class="icon-nav-label">CREW</span></a>
+                    <div class="join-btn-wrapper" onclick="openModal()"><div class="join-btn-icon"><svg viewBox="0 0 100 100"><path d="M50 30L50 70M30 50L70 50" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></div><span class="join-btn-label">INICIAR INSCRIPCIÓN</span></div>
                 </div>
             </section>
-
-            <div class="cta-section">
-                <p class="cta-subtitle">>> ESTE ES EL PRIMER PASO PARA DOMINAR EL AIRE <<</p>
-            </div>
+            <div class="cta-section"><p class="cta-subtitle">>> ESTE ES EL PRIMER PASO PARA DOMINAR EL AIRE <<</p></div>
         </div>
-
-        <!-- Protocolo Page -->
         <div id="protocolo-page" class="content-page">
-            <a href="#" class="back-button" onclick="showHome(); return false;">
-                <svg viewBox="0 0 100 100" fill="none"><path d="M70 50L30 50M30 50L45 35M30 50L45 65" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                VOLVER AL INICIO
-            </a>
-            <div class="content-grid">
-                <div class="hud-panel full-width">
-                    <h2 class="section-title">
-                        <svg viewBox="0 0 100 100" fill="none"><rect x="20" y="20" width="60" height="60" stroke="currentColor" stroke-width="2" fill="none"/><line x1="30" y1="35" x2="70" y2="35" stroke="currentColor" stroke-width="1.5"/><line x1="30" y1="50" x2="70" y2="50" stroke="currentColor" stroke-width="1.5"/><line x1="30" y1="65" x2="60" y2="65" stroke="currentColor" stroke-width="1.5"/></svg>
-                        > PROTOCOLO_DE_INICIO
-                    </h2>
-                    <div class="terminal-text" id="typewriter-1"></div><span class="cursor"></span>
-                    
-                    <div class="pricing-box">
-                        <div class="pricing-amount">60€</div>
-                        <div class="pricing-period">PRIMER AÑO // PROYECTO ORIGEN</div>
-                        <div class="pricing-sub">A partir del segundo año: 40€ anuales</div>
-                    </div>
-
-                    <div class="founder-benefits">
-                        <h3 class="benefits-title">⚡ BENEFICIOS EXCLUSIVOS "NODO 0"</h3>
-                        <div class="benefits-grid">
-                            <div class="benefit-item">
-                                <div class="benefit-icon">▸</div>
-                                <div class="benefit-text">Inscripción 0€ de por vida</div>
-                            </div>
-                            <div class="benefit-item">
-                                <div class="benefit-icon">▸</div>
-                                <div class="benefit-text">Legado Físico en la SEDE</div>
-                            </div>
-                            <div class="benefit-item">
-                                <div class="benefit-icon">▸</div>
-                                <div class="benefit-text">Estatus Digital Permanente</div>
-                            </div>
-                            <div class="benefit-item">
-                                <div class="benefit-icon">▸</div>
-                                <div class="benefit-text">Prioridad Operativa</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="transparency-box">
-                        <h3 class="transparency-title">📊 TRANSPARENCIA FINANCIERA</h3>
-                        <div class="transparency-grid">
-                            <div class="transparency-item"><div class="transparency-icon">▸</div><div class="transparency-text">Estudio SORA - 35%</div></div>
-                            <div class="transparency-item"><div class="transparency-icon">▸</div><div class="transparency-text">Seguro RC - 25%</div></div>
-                            <div class="transparency-item"><div class="transparency-icon">▸</div><div class="transparency-text">Manuales - 20%</div></div>
-                            <div class="transparency-item"><div class="transparency-icon">▸</div><div class="transparency-text">Infraestructura - 15%</div></div>
-                            <div class="transparency-item"><div class="transparency-icon">▸</div><div class="transparency-text">Reserva Legal - 5%</div></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <a href="#" class="back-button" onclick="showHome(); return false;"><svg viewBox="0 0 100 100" fill="none"><path d="M70 50L30 50M30 50L45 35M30 50L45 65" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>VOLVER AL INICIO</a>
+            <div class="content-grid"><div class="hud-panel full-width"><h2 class="section-title">> PROTOCOLO_DE_INICIO</h2><div class="terminal-text" id="typewriter-1"></div><span class="cursor"></span></div></div>
         </div>
-
-        <!-- Infraestructura Page -->
         <div id="infraestructura-page" class="content-page">
-            <a href="#" class="back-button" onclick="showHome(); return false;">
-                <svg viewBox="0 0 100 100" fill="none"><path d="M70 50L30 50M30 50L45 35M30 50L45 65" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                VOLVER AL INICIO
-            </a>
-            <div class="content-grid">
-                <div class="hud-panel full-width">
-                    <h2 class="section-title">
-                        <svg viewBox="0 0 100 100" fill="none"><path d="M20 80L20 40L50 20L80 40L80 80" stroke="currentColor" stroke-width="2" fill="none"/><line x1="35" y1="80" x2="35" y2="50" stroke="currentColor" stroke-width="1.5"/><line x1="65" y1="80" x2="65" y2="50" stroke="currentColor" stroke-width="1.5"/><line x1="20" y1="80" x2="80" y2="80" stroke="currentColor" stroke-width="1.5"/></svg>
-                        > SEDE_PROVINCIA_ZARAGOZA
-                    </h2>
-                    <div class="terminal-text">
-                        <p>> ESTADO: INTERÉS MUNICIPAL CONFIRMADO</p>
-                        <p>> UBICACIÓN: Provincia de Zaragoza</p>
-                        <p>> AESA: EN PROCESO</p>
-                        <br>
-                        <p>> CAPACIDAD: 16 personas in situ</p>
-                        <p>> TURNOS: 8 pilotos máximo / 4 volando simultáneo</p>
-                        <p>> SERVICIOS: Hostelería a 150m</p>
-                        <p>> ACCESO: Asfaltado y comunicado</p>
-                        <br>
-                        <p style="color: var(--amber);">⚠ PLANOS TÉCNICOS BLOQUEADOS</p>
-                    </div>
-                    <div class="sector-status">SEDE: EN TRÁMITE</div>
-                </div>
-            </div>
+            <a href="#" class="back-button" onclick="showHome(); return false;"><svg viewBox="0 0 100 100" fill="none"><path d="M70 50L30 50M30 50L45 35M30 50L45 65" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>VOLVER AL INICIO</a>
+            <div class="content-grid"><div class="hud-panel full-width"><h2 class="section-title">> SEDE_ZARAGOZA</h2><div class="terminal-text"><p>> ESTADO: INTERÉS MUNICIPAL CONFIRMADO</p><p>> CAPACIDAD: 16 personas</p><p>> TURNOS: 4 volando simultáneo</p></div><div class="sector-status">SEDE: EN TRÁMITE</div></div></div>
         </div>
-
-        <!-- Legal Page -->
         <div id="legal-page" class="content-page">
-            <a href="#" class="back-button" onclick="showHome(); return false;">
-                <svg viewBox="0 0 100 100" fill="none"><path d="M70 50L30 50M30 50L45 35M30 50L45 65" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                VOLVER AL INICIO
-            </a>
-            <div class="content-grid">
-                <div class="hud-panel full-width">
-                    <h2 class="section-title">
-                        <svg viewBox="0 0 100 100" fill="none"><rect x="30" y="20" width="40" height="60" stroke="currentColor" stroke-width="2" fill="none"/><line x1="40" y1="35" x2="60" y2="35" stroke="currentColor" stroke-width="1.5"/><line x1="40" y1="50" x2="60" y2="50" stroke="currentColor" stroke-width="1.5"/><circle cx="50" cy="65" r="10" stroke="currentColor" stroke-width="2" fill="none"/><path d="M46 65L49 68L54 62" stroke="currentColor" stroke-width="2"/></svg>
-                        > MARCO_LEGAL
-                    </h2>
-                    <div class="terminal-text" id="typewriter-legal"></div><span class="cursor"></span>
-                </div>
-            </div>
+            <a href="#" class="back-button" onclick="showHome(); return false;"><svg viewBox="0 0 100 100" fill="none"><path d="M70 50L30 50M30 50L45 35M30 50L45 65" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>VOLVER AL INICIO</a>
+            <div class="content-grid"><div class="hud-panel full-width"><h2 class="section-title">> MARCO_LEGAL</h2><div class="terminal-text" id="typewriter-legal"></div><span class="cursor"></span></div></div>
         </div>
-
-        <!-- Crew Page -->
         <div id="crew-page" class="content-page">
-            <a href="#" class="back-button" onclick="showHome(); return false;">
-                <svg viewBox="0 0 100 100" fill="none"><path d="M70 50L30 50M30 50L45 35M30 50L45 65" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                VOLVER AL INICIO
-            </a>
-            <div class="content-grid">
-                <div class="hud-panel full-width">
-                    <h2 class="section-title">> SISTEMA_DE_PROGRESIÓN_12_ANILLOS</h2>
-                    <div class="terminal-text"><p>> EL ROL NO SE ELIGE, SE CULTIVA</p></div>
-                    <div class="rings-container">
-                        <div class="rings-grid">
-                            <div class="ring-group">
-                                <h3 class="ring-group-title">[ ALFA: PLATAFORMAS ]</h3>
-                                <div class="ring-item"><div class="ring-name"><span>#FPV</span></div></div>
-                                <div class="ring-item"><div class="ring-name"><span>#ESTABILIZADO</span></div></div>
-                            </div>
-                            <div class="ring-group">
-                                <h3 class="ring-group-title">[ BRAVO: VUELO ]</h3>
-                                <div class="ring-item"><div class="ring-name"><span>#FREESTYLE</span></div></div>
-                                <div class="ring-item"><div class="ring-name"><span>#RACING</span></div></div>
-                                <div class="ring-item"><div class="ring-name"><span>#CINEMATIC</span></div></div>
-                                <div class="ring-item"><div class="ring-name"><span>#LONGRANGE</span></div></div>
-                                <div class="ring-item"><div class="ring-name"><span>#MICRO</span></div></div>
-                            </div>
-                            <div class="ring-group">
-                                <h3 class="ring-group-title">[ CHARLIE: TALLER ]</h3>
-                                <div class="ring-item"><div class="ring-name"><span>#BUILD</span></div></div>
-                                <div class="ring-item"><div class="ring-name"><span>#TUNING</span></div></div>
-                                <div class="ring-item"><div class="ring-name"><span>#REPAIR</span></div></div>
-                            </div>
-                            <div class="ring-group">
-                                <h3 class="ring-group-title">[ DELTA: CREW ]</h3>
-                                <div class="ring-item"><div class="ring-name"><span>#POSTPRO</span></div></div>
-                                <div class="ring-item"><div class="ring-name"><span>#MENTOR</span></div></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <a href="#" class="back-button" onclick="showHome(); return false;"><svg viewBox="0 0 100 100" fill="none"><path d="M70 50L30 50M30 50L45 35M30 50L45 65" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>VOLVER AL INICIO</a>
+            <div class="content-grid"><div class="hud-panel full-width"><h2 class="section-title">> SISTEMA_12_ANILLOS</h2><div class="rings-container"><div class="rings-grid"><div class="ring-group"><h3 class="ring-group-title">[ ALFA: PLATAFORMAS ]</h3><div class="ring-item"><div class="ring-name"><span>#FPV</span></div></div><div class="ring-item"><div class="ring-name"><span>#ESTABILIZADO</span></div></div></div><div class="ring-group"><h3 class="ring-group-title">[ BRAVO: VUELO ]</h3><div class="ring-item"><div class="ring-name"><span>#FREESTYLE</span></div></div><div class="ring-item"><div class="ring-name"><span>#RACING</span></div></div><div class="ring-item"><div class="ring-name"><span>#CINEMATIC</span></div></div></div><div class="ring-group"><h3 class="ring-group-title">[ CHARLIE: TALLER ]</h3><div class="ring-item"><div class="ring-name"><span>#BUILD</span></div></div><div class="ring-item"><div class="ring-name"><span>#TUNING</span></div></div></div><div class="ring-group"><h3 class="ring-group-title">[ DELTA: CREW ]</h3><div class="ring-item"><div class="ring-name"><span>#POSTPRO</span></div></div><div class="ring-item"><div class="ring-name"><span>#MENTOR</span></div></div></div></div></div></div></div>
         </div>
-
-        <!-- Flight Logs -->
-        <div class="flight-logs-section">
-            <h3 class="logs-title">> TERMINAL_DE_ACTIVIDAD</h3>
-            <p class="logs-description">Sincroniza tus logs con hashtags para acumular XP</p>
-            <div class="hashtags">
-                <span class="hashtag">#MODO2_INCURSOR</span>
-                <span class="hashtag">#MODO2_ARQUITECTO</span>
-                <span class="hashtag">#MODO2_ARAGON</span>
-            </div>
-        </div>
-
-        <!-- Footer -->
-        <footer>
-            <div class="social-links">
-                <a href="#" class="social-btn">Instagram</a>
-                <a href="#" class="social-btn">Discord</a>
-                <a href="#" class="social-btn">YouTube</a>
-            </div>
-            <p class="copyright">© 2026 MODO 2 Asociación // ART. 16 COMPLIANT</p>
-        </footer>
+        <div class="flight-logs-section"><h3 class="logs-title">> TERMINAL_DE_ACTIVIDAD</h3><div class="hashtags"><span class="hashtag">#MODO2_INCURSOR</span><span class="hashtag">#MODO2_ARQUITECTO</span><span class="hashtag">#MODO2_ARAGON</span></div></div>
+        <footer><div class="social-links"><a href="#" class="social-btn">Instagram</a><a href="#" class="social-btn">Discord</a><a href="#" class="social-btn">YouTube</a></div><p class="copyright">© 2026 MODO 2 Asociación // ART. 16 COMPLIANT</p></footer>
     </div>
-
-    <!-- Registration Modal -->
-    <div class="modal-overlay" id="registerModal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeModal()">&times;</button>
-            <h2 class="modal-title">> INSCRIPCIÓN</h2>
-            <form id="registerForm" onsubmit="handleRegister(event)">
-                <div class="form-group"><label>> IDENTIFICADOR</label><input type="text" id="regName" required></div>
-                <div class="form-group"><label>> EMAIL</label><input type="email" id="regEmail" required></div>
-                <div class="form-group"><label>> TELÉFONO</label><input type="tel" id="regPhone" required></div>
-                <div class="form-group"><label>> CONTRASEÑA</label><input type="password" id="regPassword" required></div>
-                <div class="form-group">
-                    <label>> MEMBRESÍA</label>
-                    <select id="regMembership" required>
-                        <option value="">SELECCIONAR...</option>
-                        <option value="founder">SOCIO FUNDADOR - 60€</option>
-                        <option value="standard">SOCIO ESTÁNDAR - 40€</option>
-                    </select>
-                </div>
-                <button type="submit" class="submit-btn" id="registerBtn">>> PROCEDER</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Login Modal -->
-    <div class="modal-overlay" id="loginModal">
-        <div class="modal-content login-modal-content">
-            <button class="modal-close" onclick="closeLoginModal()">&times;</button>
-            <h2 class="modal-title">> ACCESO</h2>
-            <form id="loginForm" onsubmit="handleLogin(event)">
-                <div class="form-group"><label>> USUARIO / EMAIL</label><input type="text" id="loginUsername" required></div>
-                <div class="form-group"><label>> CONTRASEÑA</label><input type="password" id="loginPassword" required></div>
-                <div class="form-group checkbox-group">
-                    <input type="checkbox" id="rememberMe">
-                    <label for="rememberMe">RECORDAR</label>
-                </div>
-                <button type="submit" class="submit-btn" id="loginBtnSubmit">>> CONECTAR</button>
-            </form>
-            <p class="mono" style="margin-top: 1rem; text-align: center; color: var(--gray);">
-                ¿Sin cuenta? <a href="#" onclick="closeLoginModal(); openModal();" style="color: var(--cyan);">REGISTRARSE</a>
-            </p>
-        </div>
-    </div>
-
-    <!-- FIREBASE SDKs - ORDER IS CRITICAL -->
+    <div class="modal-overlay" id="registerModal"><div class="modal-content"><button class="modal-close" onclick="closeModal()">&times;</button><h2 class="modal-title">> INSCRIPCIÓN</h2><form id="registerForm" onsubmit="handleRegister(event)"><div class="form-group"><label>> IDENTIFICADOR</label><input type="text" id="regName" required></div><div class="form-group"><label>> EMAIL</label><input type="email" id="regEmail" required></div><div class="form-group"><label>> TELÉFONO</label><input type="tel" id="regPhone" required></div><div class="form-group"><label>> CONTRASEÑA</label><input type="password" id="regPassword" required></div><div class="form-group"><label>> MEMBRESÍA</label><select id="regMembership" required><option value="">SELECCIONAR...</option><option value="founder">SOCIO FUNDADOR - 60€</option><option value="standard">SOCIO ESTÁNDAR - 40€</option></select></div><button type="submit" class="submit-btn" id="registerBtn">>> PROCEDER</button></form></div></div>
+    <div class="modal-overlay" id="loginModal"><div class="modal-content login-modal-content"><button class="modal-close" onclick="closeLoginModal()">&times;</button><h2 class="modal-title">> ACCESO</h2><form id="loginForm" onsubmit="handleLogin(event)"><div class="form-group"><label>> USUARIO / EMAIL</label><input type="text" id="loginUsername" required></div><div class="form-group"><label>> CONTRASEÑA</label><input type="password" id="loginPassword" required></div><div class="form-group checkbox-group"><input type="checkbox" id="rememberMe"><label for="rememberMe">RECORDAR</label></div><button type="submit" class="submit-btn" id="loginBtnSubmit">>> CONECTAR</button></form><p class="mono" style="margin-top: 1rem; text-align: center; color: var(--gray);">¿Sin cuenta? <a href="#" onclick="closeLoginModal(); openModal();" style="color: var(--cyan);">REGISTRARSE</a></p></div></div>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-    
-    <!-- Main Application Script -->
     <script src="assets/js/main.js"></script>
 </body>
 </html>
-
-
-
-              <script>
-                              // assets/js/main.js
-/* 
- * MODO 2 - FIREBASE MAINFRAME
- * Project: modo2-mainframe-b9f2e
- */
-
-// Firebase Configuration
-const firebaseConfig = {
-    apiKey: "AIzaSyCkB54CuTQZ9sVj42eSIYjYA9s83WgTJHo",
-    authDomain: "modo2-mainframe-b9f2e.firebaseapp.com",
-    projectId: "modo2-mainframe-b9f2e",
-    storageBucket: "modo2-mainframe-b9f2e.firebasestorage.app",
-    messagingSenderId: "253905847546",
-    appId: "1:253905847546:web:718d87ae9f723ae39c3543"
-};
-
-// Initialize Firebase
-let app, auth, db;
-let firebaseInitialized = false;
-
-try {
-    app = firebase.initializeApp(firebaseConfig);
-    auth = firebase.auth();
-    db = firebase.firestore();
-    firebaseInitialized = true;
-    updateFirebaseStatus('connected', 'MAINFRAME: CONECTADO');
-    console.log('>> FIREBASE MAINFRAME: ONLINE <<');
-} catch (error) {
-    console.error('>> FIREBASE ERROR:', error);
-    updateFirebaseStatus('error', 'MAINFRAME: ERROR');
-}
-
-function updateFirebaseStatus(status, text) {
-    const el = document.getElementById('firebaseStatus');
-    if (el) {
-        el.textContent = text;
-        el.className = 'firebase-status ' + status;
-    }
-}
-
-// Progression System
-let xp = 0;
-let level = 0;
-let currentUserData = null;
-let xpPopupShown = localStorage.getItem('modo2_xp_popup_shown') || 'false';
-let availableSpots = 40;
-
-function calculateLevel(totalXP) {
-    for (let i = 1; i <= 200; i++) {
-        if (totalXP < Math.floor(100 * Math.pow(i, 1.5))) return i - 1;
-    }
-    return 200;
-}
-
-function getRank(lvl) {
-    if (lvl === 0) return 'INVITADO';
-    if (lvl <= 3) return 'CADETE - RECLUTA';
-    if (lvl <= 6) return 'CADETE - INICIADO';
-    if (lvl <= 10) return 'CADETE - ASPIRANTE';
-    if (lvl <= 15) return 'PILOTO NOVEL - OBSERVADOR';
-    if (lvl <= 22) return 'PILOTO NOVEL - OBS. COTILLA';
-    if (lvl <= 30) return 'PILOTO NOVEL - OBS. CONCIENZUDO';
-    if (lvl <= 40) return 'ESPECIALISTA - TÉCNICO';
-    if (lvl <= 50) return 'ESPECIALISTA - ANALISTA';
-    if (lvl <= 60) return 'ESPECIALISTA - OPERADOR';
-    if (lvl <= 80) return 'VETERANO';
-    if (lvl <= 100) return 'VETERANO ÉLITE';
-    if (lvl <= 150) return 'LEYENDA';
-    return 'LEYENDA VIVA';
-}
-
-function updateXPDisplay(userXP = 0) {
-    xp = userXP;
-    level = calculateLevel(xp);
-    
-    const nextLevelXP = Math.floor(100 * Math.pow(level + 1, 1.5));
-    const prevLevelXP = level > 0 ? Math.floor(100 * Math.pow(level, 1.5)) : 0;
-    const percentage = Math.min(((xp - prevLevelXP) / (nextLevelXP - prevLevelXP)) * 100, 100);
-    
-    const xpFill = document.getElementById('xpFill');
-    const xpText = document.getElementById('xpText');
-    const levelDisplay = document.getElementById('levelDisplay');
-    const userRank = document.getElementById('userRank');
-    
-    if (xpFill) xpFill.style.width = percentage + '%';
-    if (xpText) xpText.textContent = xp.toLocaleString() + ' XP';
-    if (levelDisplay) levelDisplay.textContent = 'NIVEL ' + level;
-    if (userRank) userRank.textContent = getRank(level);
-    
-    if (xp >= 1000 && xpPopupShown !== 'true') showXpPopup();
-}
-
-function showXpPopup() {
-    document.getElementById('xpPopup').classList.add('active');
-    document.getElementById('xpPopupOverlay').classList.add('active');
-    localStorage.setItem('modo2_xp_popup_shown', 'true');
-}
-
-function closeXpPopup() {
-    document.getElementById('xpPopup').classList.remove('active');
-    document.getElementById('xpPopupOverlay').classList.remove('active');
-}
-
-// Modal Functions
-function openLoginModal() { document.getElementById('loginModal').classList.add('active'); }
-function closeLoginModal() { document.getElementById('loginModal').classList.remove('active'); }
-function openModal() { document.getElementById('registerModal').classList.add('active'); }
-function closeModal() { document.getElementById('registerModal').classList.remove('active'); }
-
-// Registration
-async function handleRegister(e) {
-    e.preventDefault();
-    if (!firebaseInitialized) { alert('>> MAINFRAME DESCONECTADO <<'); return; }
-
-    const btn = document.getElementById('registerBtn');
-    btn.disabled = true;
-    btn.textContent = '>> PROCESANDO...';
-
-    try {
-        const userCredential = await auth.createUserWithEmailAndPassword(
-            document.getElementById('regEmail').value,
-            document.getElementById('regPassword').value
-        );
-        
-        await db.collection('users').doc(userCredential.user.uid).set({
-            displayName: document.getElementById('regName').value,
-            email: document.getElementById('regEmail').value,
-            phone: document.getElementById('regPhone').value,
-            membership: document.getElementById('regMembership').value,
-            level: 0, xp: 0, rank: 'INVITADO', status: 'pending',
-            createdAt: firebase.firestore.FieldValue.serverTimestamp()
-        });
-
-        alert('>> REGISTRO COMPLETADO <<\nPENDIENTE DE VALIDACIÓN');
-        closeModal();
-        document.getElementById('registerForm').reset();
-    } catch (error) {
-        alert('>> ERROR <<\n' + error.message);
-    } finally {
-        btn.disabled = false;
-        btn.textContent = '>> PROCEDER';
-    }
-}
-
-// Login
-async function handleLogin(e) {
-    e.preventDefault();
-    if (!firebaseInitialized) { alert('>> MAINFRAME DESCONECTADO <<'); return; }
-
-    const btn = document.getElementById('loginBtnSubmit');
-    btn.disabled = true;
-    btn.textContent = '>> AUTENTICANDO...';
-
-    try {
-        await auth.setPersistence(
-            document.getElementById('rememberMe').checked 
-                ? firebase.auth.Auth.Persistence.LOCAL 
-                : firebase.auth.Auth.Persistence.SESSION
-        );
-
-        const userCredential = await auth.signInWithEmailAndPassword(
-            document.getElementById('loginUsername').value,
-            document.getElementById('loginPassword').value
-        );
-
-        const userDoc = await db.collection('users').doc(userCredential.user.uid).get();
-        if (userDoc.exists) {
-            currentUserData = userDoc.data();
-            document.getElementById('userName').textContent = (currentUserData.displayName || userCredential.user.email).toUpperCase();
-            document.getElementById('userLevel').textContent = 'NIVEL ' + (currentUserData.level || 0);
-            
-            const loginBtn = document.getElementById('loginBtn');
-            loginBtn.textContent = currentUserData.status === 'connected' ? 'CONECTADO' : 'PENDIENTE';
-            loginBtn.className = 'status-badge ' + (currentUserData.status === 'connected' ? 'connected' : 'pending');
-            loginBtn.onclick = handleLogout;
-            
-            updateXPDisplay(currentUserData.xp || 0);
-            closeLoginModal();
-            displayUserDataInTable();
-        }
-    } catch (error) {
-        alert('>> ERROR <<\n' + error.message);
-    } finally {
-        btn.disabled = false;
-        btn.textContent = '>> CONECTAR';
-    }
-}
-
-// Logout
-async function handleLogout() {
-    if (!firebaseInitialized) return;
-    await auth.signOut();
-    currentUserData = null;
-    
-    document.getElementById('userName').textContent = 'INVITADO';
-    document.getElementById('userLevel').textContent = 'ACCESO RESTRINGIDO';
-    document.getElementById('userRank').textContent = '--';
-    
-    const loginBtn = document.getElementById('loginBtn');
-    loginBtn.textContent = 'INVITADO / ACCESO RESTRINGIDO';
-    loginBtn.className = 'status-badge';
-    loginBtn.onclick = openLoginModal;
-    
-    updateXPDisplay(0);
-    alert('>> SESIÓN CERRADA <<');
-}
-
-// Auth State Listener
-if (firebaseInitialized) {
-    auth.onAuthStateChanged(async (user) => {
-        if (user) {
-            const userDoc = await db.collection('users').doc(user.uid).get();
-            if (userDoc.exists) {
-                currentUserData = userDoc.data();
-                document.getElementById('userName').textContent = (currentUserData.displayName || user.email).toUpperCase();
-                document.getElementById('userLevel').textContent = 'NIVEL ' + (currentUserData.level || 0);
-                
-                const loginBtn = document.getElementById('loginBtn');
-                loginBtn.textContent = currentUserData.status === 'connected' ? 'CONECTADO' : 'PENDIENTE';
-                loginBtn.className = 'status-badge ' + (currentUserData.status === 'connected' ? 'connected' : 'pending');
-                loginBtn.onclick = handleLogout;
-                
-                updateXPDisplay(currentUserData.xp || 0);
-            }
-        }
-    });
-}
-
-// User DB Display
-document.addEventListener('DOMContentLoaded', () => {
-    const loginBtn = document.getElementById('loginBtn');
-    if (loginBtn) {
-        loginBtn.addEventListener('click', function() {
-            if (this.classList.contains('connected') || this.classList.contains('pending')) {
-                const dbPanel = document.getElementById('userDbPanel');
-                dbPanel.classList.toggle('active');
-                if (firebaseInitialized && currentUserData) displayUserDataInTable();
-            }
-        });
-    }
-});
-
-function displayUserDataInTable() {
-    const tbody = document.getElementById('userDbBody');
-    if (tbody && currentUserData) {
-        tbody.innerHTML = `<tr>
-            <td>${currentUserData.displayName || 'N/A'}</td>
-            <td>${auth.currentUser?.email || 'N/A'}</td>
-            <td class="${currentUserData.status === 'connected' ? 'text-green' : 'text-amber'}">${currentUserData.status?.toUpperCase() || 'PENDING'}</td>
-            <td>${currentUserData.level || 0}</td>
-            <td>${currentUserData.rank || 'INVITADO'}</td>
-            <td>${(currentUserData.xp || 0).toLocaleString()}</td>
-        </tr>`;
-    }
-}
-
-// Page Navigation
-function showHome() {
-    document.querySelectorAll('.content-page').forEach(p => p.classList.remove('active'));
-    document.getElementById('home-page').classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function showPage(pageId) {
-    document.querySelectorAll('.content-page').forEach(p => p.classList.remove('active'));
-    document.getElementById(pageId + '-page').classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-// Typewriter
-const texts = {
-    'typewriter-1': "Somos una 'Crew' de élite dedicada a la profesionalización del vuelo con UAS en Aragón. Nuestra misión es elevar el estándar técnico y garantizar la legalidad operativa bajo el Artículo 16.",
-    'typewriter-legal': "El Ayuntamiento está informado. AESA ha dado visto bueno inicial. Capital destinado a Estudio SORA, manuales y seguro RC. Operamos bajo Art. 16."
-};
-
-function typeWriter(elementId, text, speed = 20) {
-    const el = document.getElementById(elementId);
-    if (!el) return;
-    let i = 0;
-    el.innerHTML = "";
-    function type() {
-        if (i < text.length) { el.innerHTML += text.charAt(i); i++; setTimeout(type, speed); }
-    }
-    type();
-}
-
-// Drone Trails
-const colors = ['#00f2ff', '#ff0055', '#00f2ff', '#008080'];
-const trailsContainer = document.getElementById('drone-trails-container');
-
-function createDroneTrail() {
-    const trail = document.createElement('div');
-    trail.className = 'drone-trail';
-    const startY = Math.random() * window.innerHeight;
-    const startFromLeft = Math.random() > 0.5;
-    const length = 100 + Math.random() * 300;
-    const duration = 4 + Math.random() * 5;
-    const color = colors[Math.floor(Math.random() * colors.length)];
-    
-    trail.style.cssText = `width: ${length}px; height: 1px;
-        background: linear-gradient(${startFromLeft ? 'to right' : 'to left'}, ${color}, transparent);
-        top: ${startY}px; ${startFromLeft ? 'left' : 'right'}: -300px;
-        box-shadow: 0 0 10px ${color};`;
-    
-    trailsContainer.appendChild(trail);
-    
-    const startTime = Date.now();
-    function animate() {
-        const progress = (Date.now() - startTime) / (duration * 1000);
-        if (progress < 1) {
-            const opacity = Math.max(0, Math.min(1, progress < 0.2 ? progress / 0.2 : (1 - progress) / 0.3)) * 0.4;
-            trail.style.opacity = opacity;
-            const moveDistance = progress * (window.innerWidth + length);
-            trail.style[startFromLeft ? 'left' : 'right'] = `${-length + moveDistance}px`;
-            requestAnimationFrame(animate);
-        } else {
-            trail.remove();
-        }
-    }
-    requestAnimationFrame(animate);
-}
-
-function startDroneTrails() {
-    createDroneTrail();
-    setTimeout(startDroneTrails, 3000 + Math.random() * 5000);
-}
-
-// Initialize
-window.addEventListener('load', () => {
-    updateXPDisplay(0);
-    typeWriter('typewriter-1', texts['typewriter-1']);
-    typeWriter('typewriter-legal', texts['typewriter-legal']);
-    setTimeout(startDroneTrails, 1000);
-    
-    // Modal close on outside click
-    document.getElementById('registerModal').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
-    document.getElementById('loginModal').addEventListener('click', e => { if (e.target === e.currentTarget) closeLoginModal(); });
-    document.getElementById('xpPopupOverlay').addEventListener('click', closeXpPopup);
-});
-
-
-              </script>
-                        </body>
-                        </html>
-                    
