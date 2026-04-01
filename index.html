@@ -3,112 +3,1175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;700&family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
-    <script src="assets/js/main.js" defer></script>
-    <title>MODO 2 | Asociación de Drones y Tecnología</title>
-    </head>
-<body class="cyber-theme">
+    <title>MODO 2 | SISTEMA OPERATIVO</title>
     
-   <header>
-    <nav class="nav-container">
-        <div class="logo">
-    <img src="Logo.png" alt="MODO 2 Logo">
-</div>
-        <ul class="nav-links">
-            <li><a href="#manifesto">MANIFIESTO</a></li>
-            <li><a href="#art16">NORMATIVA</a></li>
-            <li><a href="#operaciones">OPERACIONES</a></li>
-            <li><a href="#unirse" class="cta-small">UNIRSE</a></li>
-        </ul>
-    </nav>
-</header>   
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600&family=Titillium+Web:wght@400;700;900&display=swap" rel="stylesheet">
 
-    <main>
+    <style>
+        :root {
+            --cyan: #00f2ff;
+            --cyan-dim: rgba(0, 242, 255, 0.2);
+            --black: #020808;
+            --black-panel: #050f10;
+            --magenta: #ff0055;
+            --white: #e0e0e0;
+            --grid-color: rgba(0, 242, 255, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            cursor: crosshair;
+        }
+
+        body {
+            background-color: var(--black);
+            color: var(--white);
+            font-family: 'Titillium Web', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+            position: relative;
+            scroll-behavior: smooth;
+        }
+
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: 
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        .bg-scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-size: 100% 2px, 3px 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .mono {
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            color: var(--cyan);
+        }
+
+        h1, h2, h3 {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hud-panel {
+            background: var(--black-panel);
+            border: 1px solid var(--cyan-dim);
+            position: relative;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            clip-path: polygon(
+                20px 0, 100% 0, 
+                100% calc(100% - 20px), calc(100% - 20px) 100%, 
+                0 100%, 0 20px
+            );
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 242, 255, 0.05);
+        }
+
+        .hud-panel::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border: 1px solid transparent;
+            background: 
+                linear-gradient(to right, var(--cyan) 2px, transparent 2px) 0 0,
+                linear-gradient(to bottom, var(--cyan) 2px, transparent 2px) 0 0,
+                linear-gradient(to left, var(--cyan) 2px, transparent 2px) 100% 0,
+                linear-gradient(to bottom, var(--cyan) 2px, transparent 2px) 100% 0,
+                linear-gradient(to left, var(--cyan) 2px, transparent 2px) 100% 100%,
+                linear-gradient(to top, var(--cyan) 2px, transparent 2px) 100% 100%,
+                linear-gradient(to right, var(--cyan) 2px, transparent 2px) 0 100%,
+                linear-gradient(to top, var(--cyan) 2px, transparent 2px) 0 100%;
+            background-size: 10px 10px;
+            background-repeat: no-repeat;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .hud-panel:hover {
+            box-shadow: 0 0 20px var(--cyan-dim);
+            border-color: var(--cyan);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--cyan-dim);
+            margin-bottom: 3rem;
+        }
+
+        .logo {
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo span { color: var(--cyan); }
+
+        .nav-icons {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-left: 3rem;
+        }
+
+        .nav-icon-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            transition: all 0.3s ease;
+            opacity: 0.7;
+        }
+
+        .nav-icon-link:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .nav-icon-link svg {
+            width: 40px;
+            height: 40px;
+        }
+
+        .nav-icon-link:hover svg {
+            filter: drop-shadow(0 0 8px var(--cyan));
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            position: relative;
+            padding: 5px 0;
+            transition: color 0.3s;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 0%;
+            height: 2px;
+            background: var(--cyan);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover { color: var(--cyan); }
+        nav a:hover::after { width: 100%; }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            position: relative;
+        }
+
+        .glitch-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .glitch {
+            font-size: 4rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            position: relative;
+            color: var(--white);
+            letter-spacing: 5px;
+        }
+
+        .glitch::before, .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .glitch::before {
+            left: 2px;
+            text-shadow: -1px 0 var(--magenta);
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+        }
+
+        .glitch::after {
+            left: -2px;
+            text-shadow: -1px 0 var(--cyan);
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim2 5s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim {
+            0% { clip: rect(30px, 9999px, 10px, 0); }
+            5% { clip: rect(70px, 9999px, 90px, 0); }
+            10% { clip: rect(10px, 9999px, 80px, 0); }
+            15% { clip: rect(50px, 9999px, 20px, 0); }
+            20% { clip: rect(20px, 9999px, 60px, 0); }
+            100% { clip: rect(80px, 9999px, 40px, 0); }
+        }
+        @keyframes glitch-anim2 {
+            0% { clip: rect(10px, 9999px, 90px, 0); }
+            5% { clip: rect(80px, 9999px, 10px, 0); }
+            10% { clip: rect(40px, 9999px, 60px, 0); }
+            15% { clip: rect(20px, 9999px, 30px, 0); }
+            20% { clip: rect(60px, 9999px, 10px, 0); }
+            100% { clip: rect(30px, 9999px, 70px, 0); }
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--cyan);
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .counter-box {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(0,0,0,0.5);
+            border: 1px solid var(--cyan);
+            padding: 10px 20px;
+            font-family: 'Source Code Pro', monospace;
+        }
+
+        .counter-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--white);
+        }
+
+        .counter-full {
+            color: var(--magenta);
+            animation: pulse-alert 2s infinite;
+        }
+
+        @keyframes pulse-alert {
+            0%, 100% { text-shadow: 0 0 5px var(--magenta); }
+            50% { text-shadow: 0 0 15px var(--magenta); }
+        }
+
+        /* Navigation Icons Section */
+        .nav-icons-section {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .nav-icon-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--white);
+            transition: all 0.3s ease;
+            padding: 1rem;
+            border: 1px solid var(--cyan-dim);
+            background: rgba(0, 242, 255, 0.02);
+            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+        }
+
+        .nav-icon-item:hover {
+            background: rgba(0, 242, 255, 0.1);
+            border-color: var(--cyan);
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px var(--cyan-dim);
+        }
+
+        .nav-icon-item svg {
+            width: 50px;
+            height: 50px;
+        }
+
+        .nav-icon-label {
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* CTA Button */
+        .cta-section {
+            text-align: center;
+            padding: 3rem 0;
+            margin: 2rem 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.5rem 4rem;
+            font-family: 'Titillium Web', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--black);
+            background: var(--cyan);
+            border: none;
+            clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .cta-button:hover {
+            background: var(--white);
+            box-shadow: 0 0 30px var(--cyan);
+            transform: scale(1.05);
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-subtitle {
+            margin-top: 1rem;
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.8rem;
+            color: var(--cyan);
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        @media(min-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .full-width {
+                grid-column: span 2;
+            }
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--cyan);
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            padding-right: 20px;
+        }
+
+        .terminal-text {
+            font-family: 'Source Code Pro', monospace;
+            color: #ccc;
+            font-size: 0.95rem;
+            min-height: 100px;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 15px;
+            background: var(--cyan);
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        .factions-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        @media(min-width: 768px) {
+            .factions-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .faction-card {
+            background: rgba(0, 242, 255, 0.02);
+            border: 1px solid var(--cyan-dim);
+            padding: 2rem;
+            text-align: center;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .faction-card:hover {
+            background: rgba(0, 242, 255, 0.05);
+            transform: translateY(-5px);
+        }
+
+        .faction-title {
+            font-size: 1.8rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .faction-icon {
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .faction-icon svg {
+            width: 80px;
+            height: 80px;
+        }
+
+        /* Sponsors & Crew Section */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        @media(min-width: 768px) {
+            .info-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .info-card {
+            background: var(--black-panel);
+            border: 1px solid var(--cyan-dim);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .info-icon {
+            margin-bottom: 1rem;
+        }
+
+        .info-icon svg {
+            width: 60px;
+            height: 60px;
+        }
+
+        .info-title {
+            font-size: 1.3rem;
+            color: var(--cyan);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .info-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .info-list li {
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.8rem;
+            color: var(--white);
+            padding: 5px 15px;
+            border: 1px solid var(--cyan-dim);
+            background: rgba(0, 242, 255, 0.05);
+        }
+
+        footer {
+            border-top: 1px solid var(--cyan-dim);
+            padding: 3rem 0;
+            margin-top: 4rem;
+            background: #000;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .social-btn {
+            color: #666;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: 0.3s;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .social-btn:hover {
+            color: var(--cyan);
+            text-shadow: 0 0 10px var(--cyan);
+        }
+
+        .sponsors {
+            display: flex;
+            gap: 2rem;
+            opacity: 0.5;
+            filter: grayscale(100%);
+            transition: 0.5s;
+        }
+
+        .sponsors:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        .sponsor-placeholder {
+            height: 30px;
+            width: 100px;
+            background: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            color: #fff;
+        }
+
+        .flicker-anim {
+            animation: flicker 4s infinite;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 1; }
+            3% { opacity: 0.4; }
+            6% { opacity: 1; }
+            7% { opacity: 0.4; }
+            8% { opacity: 1; }
+            9% { opacity: 1; }
+            10% { opacity: 0.1; }
+            11% { opacity: 1; }
+            100% { opacity: 1; }
+        }
+
+        /* SVG Animations */
+        .svg-glow {
+            filter: drop-shadow(0 0 5px var(--cyan));
+        }
+
+        .svg-pulse {
+            animation: svgPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes svgPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .status-pending {
+            color: var(--magenta);
+            font-size: 0.75rem;
+            margin-top: 5px;
+            display: inline-block;
+            padding: 3px 8px;
+            border: 1px solid var(--magenta);
+            border-radius: 2px;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--black-panel);
+            border: 2px solid var(--cyan);
+            padding: 3rem;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 2rem;
+            color: var(--cyan);
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            color: var(--cyan);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.8rem;
+            color: var(--cyan);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            background: rgba(0, 242, 255, 0.05);
+            border: 1px solid var(--cyan-dim);
+            color: var(--white);
+            font-family: 'Source Code Pro', monospace;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--cyan);
+            box-shadow: 0 0 10px var(--cyan-dim);
+        }
+
+        .payment-info {
+            background: rgba(255, 0, 85, 0.1);
+            border: 1px solid var(--magenta);
+            padding: 1rem;
+            margin: 1.5rem 0;
+            font-size: 0.85rem;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--cyan);
+            color: var(--black);
+            border: none;
+            font-family: 'Titillium Web', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: var(--white);
+            box-shadow: 0 0 20px var(--cyan);
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Backgrounds -->
+    <div class="bg-grid"></div>
+    <div class="bg-scanlines"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <!-- MODO 2 LOGO SVG -->
+                <svg width="50" height="50" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-glow">
+                    <path d="M50 2L90 22V78L50 98L10 78V22L50 2Z" fill="#020808" stroke="#00f2ff" stroke-width="2"/>
+                    <path d="M50 15L75 28V72L50 85L25 72V28L50 15Z" fill="none" stroke="#00f2ff" stroke-width="1.5" opacity="0.6"/>
+                    <path d="M35 45C35 45 30 45 30 55C30 65 35 65 35 65L45 65C45 65 50 68 50 68C50 68 55 65 55 65L65 65C65 65 70 65 70 55C70 45 65 45 65 45" fill="none" stroke="#00f2ff" stroke-width="1.5"/>
+                    <circle cx="40" cy="55" r="5" fill="none" stroke="#00f2ff" stroke-width="1.5"/>
+                    <path d="M40 52L40 58M38 54L40 52L42 54" stroke="#00f2ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="60" cy="55" r="4" fill="none" stroke="#00f2ff" stroke-width="1.5"/>
+                    <circle cx="60" cy="55" r="1.5" fill="#00f2ff" class="svg-pulse"/>
+                    <line x1="42" y1="32" x2="42" y2="42" stroke="#00f2ff" stroke-width="2" stroke-linecap="round"/>
+                    <line x1="58" y1="32" x2="58" y2="42" stroke="#00f2ff" stroke-width="2" stroke-linecap="round"/>
+                    <line x1="20" y1="35" x2="20" y2="65" stroke="#00f2ff" stroke-width="0.5" opacity="0.4"/>
+                    <line x1="80" y1="35" x2="80" y2="65" stroke="#00f2ff" stroke-width="0.5" opacity="0.4"/>
+                </svg>
+                MODO <span>2</span>
+            </div>
+            
+            <!-- Navigation Icons (No text, just icons) -->
+            <div class="nav-icons">
+                <a href="#manifiesto" class="nav-icon-link" title="Manifiesto">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-glow">
+                        <rect x="15" y="20" width="70" height="60" stroke="#00f2ff" stroke-width="2" fill="none"/>
+                        <line x1="25" y1="35" x2="75" y2="35" stroke="#00f2ff" stroke-width="1.5"/>
+                        <line x1="25" y1="45" x2="75" y2="45" stroke="#00f2ff" stroke-width="1.5"/>
+                        <line x1="25" y1="55" x2="65" y2="55" stroke="#00f2ff" stroke-width="1.5"/>
+                        <line x1="25" y1="65" x2="70" y2="65" stroke="#00f2ff" stroke-width="1.5"/>
+                        <circle cx="75" cy="30" r="5" fill="#00f2ff" class="svg-pulse"/>
+                    </svg>
+                </a>
+
+                <a href="#normativa" class="nav-icon-link" title="Normativa">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-glow">
+                        <rect x="25" y="15" width="50" height="70" stroke="#00f2ff" stroke-width="2" fill="none"/>
+                        <line x1="35" y1="30" x2="65" y2="30" stroke="#00f2ff" stroke-width="1.5"/>
+                        <line x1="35" y1="42" x2="65" y2="42" stroke="#00f2ff" stroke-width="1.5"/>
+                        <line x1="35" y1="54" x2="65" y2="54" stroke="#00f2ff" stroke-width="1.5"/>
+                        <line x1="35" y1="66" x2="65" y2="66" stroke="#00f2ff" stroke-width="1.5"/>
+                        <circle cx="50" cy="50" r="15" stroke="#00f2ff" stroke-width="2" fill="none"/>
+                        <path d="M45 50L48 53L55 46" stroke="#00f2ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+
+                <a href="#operaciones" class="nav-icon-link" title="Operaciones">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-glow">
+                        <circle cx="50" cy="50" r="35" stroke="#00f2ff" stroke-width="2" fill="none"/>
+                        <circle cx="50" cy="50" r="8" fill="#00f2ff" class="svg-pulse"/>
+                        <line x1="50" y1="15" x2="50" y2="25" stroke="#00f2ff" stroke-width="2"/>
+                        <line x1="50" y1="75" x2="50" y2="85" stroke="#00f2ff" stroke-width="2"/>
+                        <line x1="15" y1="50" x2="25" y2="50" stroke="#00f2ff" stroke-width="2"/>
+                        <line x1="75" y1="50" x2="85" y2="50" stroke="#00f2ff" stroke-width="2"/>
+                        <path d="M25 25L35 35M75 25L65 35M25 75L35 65M75 75L65 65" stroke="#00f2ff" stroke-width="1.5"/>
+                    </svg>
+                </a>
+
+                <a href="#crew" class="nav-icon-link" title="Crew">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-glow">
+                        <circle cx="50" cy="35" r="15" stroke="#00f2ff" stroke-width="2" fill="none"/>
+                        <path d="M25 85C25 70 35 60 50 60C65 60 75 70 75 85" stroke="#00f2ff" stroke-width="2" fill="none"/>
+                        <circle cx="30" cy="40" r="8" stroke="#00f2ff" stroke-width="1.5" fill="none" opacity="0.5"/>
+                        <circle cx="70" cy="40" r="8" stroke="#00f2ff" stroke-width="1.5" fill="none" opacity="0.5"/>
+                    </svg>
+                </a>
+
+                <a href="#" class="nav-icon-link" title="Unirse" onclick="openModal(); return false;">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-glow">
+                        <circle cx="50" cy="50" r="40" stroke="#00f2ff" stroke-width="2" fill="none"/>
+                        <path d="M50 25L50 50L70 60" stroke="#00f2ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="50" cy="50" r="5" fill="#00f2ff" class="svg-pulse"/>
+                    </svg>
+                </a>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
         <section class="hero">
-            <div class="hero-content">
+            <div class="glitch-wrapper">
                 <h1 class="glitch" data-text="SISTEMA OPERATIVO MODO 2">SISTEMA OPERATIVO MODO 2</h1>
-                <p class="tagline">DOMINA EL AIRE | Crew Tecnológica de Élite</p>
-                <div class="status-bar">
-                    <span class="status-blink">●</span> FASE: CONSTITUCIÓN PROYECTO ORIGEN
-                </div>
-                <div class="fundadores-counter">
-                    PLAZAS SOCIO FUNDADOR: <span id="counter">X</span> / 40
-                </div>
+            </div>
+            <p class="hero-subtitle">SECTOR CARIÑENA (ZGU) // ARAGÓN</p>
+            
+            <div class="counter-box">
+                <span class="mono">PLAZAS SOCIO FUNDADOR:</span>
+                <span class="counter-number counter-full">40/40</span>
             </div>
         </section>
 
-        <section id="manifesto" class="content-block">
-            <div class="scanline"></div>
-            <h2>01. MANIFIESTO</h2>
-            <div class="text-container">
-                <p>No somos un club de aeromodelismo tradicional. Somos una Crew de pilotos y creadores unidos por la técnica, la adrenalina y la legalidad.</p>
-                <p>Nuestra misión es profesionalizar el vuelo en Aragón, creando un puente entre el talento aficionado y los proyectos de alta competición e ingeniería.</p>
-            </div>
-        </section>
+        <!-- Navigation Icons Section -->
+        <div class="nav-icons-section">
+            <a href="#manifiesto" class="nav-icon-item">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-glow">
+                    <rect x="15" y="20" width="70" height="60" stroke="#00f2ff" stroke-width="2" fill="none"/>
+                    <line x1="25" y1="35" x2="75" y2="35" stroke="#00f2ff" stroke-width="1.5"/>
+                    <line x1="25" y1="45" x2="65" y2="45" stroke="#00f2ff" stroke-width="1.5"/>
+                    <line x1="25" y1="55" x2="70" y2="55" stroke="#00f2ff" stroke-width="1.5"/>
+                    <line x1="25" y1="65" x2="60" y2="65" stroke="#00f2ff" stroke-width="1.5"/>
+                    <circle cx="75" cy="30" r="5" fill="#00f2ff" class="svg-pulse"/>
+                </svg>
+                <span class="nav-icon-label">Manifiesto</span>
+            </a>
 
-        <section id="art16" class="legal-block">
-            <div class="border-frame">
-                <h2>02. MARCO LEGAL (ART. 16)</h2>
-                <p>Operamos bajo el amparo del <strong>Reglamento (UE) 2019/947</strong>. MODO 2 gestiona sus propias autorizaciones de operación.</p>
-                <a href="docs/estatutos-modo2.pdf" class="btn-outline">DESCARGAR ESTATUTOS PDF</a>
-            </div>
-        </section>
+            <a href="#normativa" class="nav-icon-item">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-glow">
+                    <rect x="25" y="15" width="50" height="70" stroke="#00f2ff" stroke-width="2" fill="none"/>
+                    <line x1="35" y1="30" x2="65" y2="30" stroke="#00f2ff" stroke-width="1.5"/>
+                    <line x1="35" y1="42" x2="65" y2="42" stroke="#00f2ff" stroke-width="1.5"/>
+                    <line x1="35" y1="54" x2="65" y2="54" stroke="#00f2ff" stroke-width="1.5"/>
+                    <line x1="35" y1="66" x2="65" y2="66" stroke="#00f2ff" stroke-width="1.5"/>
+                    <circle cx="50" cy="50" r="15" stroke="#00f2ff" stroke-width="2" fill="none"/>
+                    <path d="M45 50L48 53L55 46" stroke="#00f2ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="nav-icon-label">Normativa</span>
+            </a>
 
-        <section id="facciones" class="crew-grid">
-            <h2>03. ELIGE TU FACCIÓN</h2>
-            <div class="crew-container">
-                <article class="fac-card" id="incursores">
-                    <img src="assets/incursores_icon.png" alt="Icono Incursores">
-                    <h3>INCURSORES</h3>
-                    <p>Velocidad. Freestyle. Adrenalina. Especialistas en pilotaje técnico y competición.</p>
-                </article>
-                <article class="fac-card" id="arquitectos">
-                    <img src="assets/arquitectos_icon.png" alt="Icono Arquitectos">
-                    <h3>ARQUITECTOS</h3>
-                    <p>Cinematografía. Electrónica. Ingeniería. Los creadores de la infraestructura y el arte visual.</p>
-                </article>
-            </div>
-        </section>
+            <a href="#operaciones" class="nav-icon-item">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-glow">
+                    <circle cx="50" cy="50" r="35" stroke="#00f2ff" stroke-width="2" fill="none"/>
+                    <circle cx="50" cy="50" r="8" fill="#00f2ff" class="svg-pulse"/>
+                    <line x1="50" y1="15" x2="50" y2="25" stroke="#00f2ff" stroke-width="2"/>
+                    <line x1="50" y1="75" x2="50" y2="85" stroke="#00f2ff" stroke-width="2"/>
+                    <line x1="15" y1="50" x2="25" y2="50" stroke="#00f2ff" stroke-width="2"/>
+                    <line x1="75" y1="50" x2="85" y2="50" stroke="#00f2ff" stroke-width="2"/>
+                    <path d="M25 25L35 35M75 25L65 35M25 75L35 65M75 75L65 65" stroke="#00f2ff" stroke-width="1.5"/>
+                </svg>
+                <span class="nav-icon-label">Operaciones</span>
+            </a>
 
-        <section id="operaciones" class="content-block">
-            <h2>04. SECTOR CARIÑENA (ZGU)</h2>
-            <div class="ops-info">
-                <div class="map-placeholder">
-                    <p>[ MAPA OPERATIVO: COORDINADAS EN TRÁMITE ]</p>
-                </div>
-                <div class="ops-details">
-                    <ul>
-                        <li><strong>UBICACIÓN:</strong> Cariñena, Zaragoza.</li>
-                        <li><strong>ESTADO:</strong> Negociación de Sede / ZGU.</li>
-                        <li><strong>SERVICIOS:</strong> Zona de Boxes, Carga Lipo, Actividades, Formación.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section id="unirse" class="cta-section">
-            <div class="glowing-box">
-                <h2>¿ESTÁS LISTO PARA EL DESPEGUE?</h2>
-                <p>Buscamos a los 40 pioneros para el Proyecto Origen.</p>
-                <a href="https://tally.so/r/tu-link" class="cta-button glowing-button">SOLICITAR INGRESO A LA CREW</a>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="sponsors">
-            <p>CON EL APOYO DE:</p>
-            <div class="logo-row">
-                <img src="assets/laboral-kutxa.png" alt="Laboral Kutxa" class="grayscale">
-                <img src="assets/google-nonprofits.png" alt="Google for Nonprofits" class="grayscale">
-            </div>
+            <a href="#crew" class="nav-icon-item">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-glow">
+                    <circle cx="50" cy="35" r="15" stroke="#00f2ff" stroke-width="2" fill="none"/>
+                    <path d="M25 85C25 70 35 60 50 60C65 60 75 70 75 85" stroke="#00f2ff" stroke-width="2" fill="none"/>
+                    <circle cx="30" cy="40" r="8" stroke="#00f2ff" stroke-width="1.5" fill="none" opacity="0.5"/>
+                    <circle cx="70" cy="40" r="8" stroke="#00f2ff" stroke-width="1.5" fill="none" opacity="0.5"/>
+                </svg>
+                <span class="nav-icon-label">Crew</span>
+            </a>
         </div>
-        <div class="footer-links">
-            <a href="#">INSTAGRAM</a> | <a href="#">DISCORD</a> | <a href="#">AESA</a>
-        </div>
-        <p class="copy">&copy; 2026 MODO 2 ASOCIACIÓN. <br> ZARAGOZA, ARAGÓN.</p>
-    </footer>
 
+        <!-- CTA Button Section -->
+        <div class="cta-section">
+            <button class="cta-button" onclick="openModal()">
+                HACERSE SOCIO
+            </button>
+            <p class="cta-subtitle">>> ESTE ES EL PRIMER PASO PARA DOMINAR EL AIRE <<</p>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="content-grid">
+            
+            <!-- Manifiesto -->
+            <div class="hud-panel full-width" id="manifiesto">
+                <h2 class="section-title">
+                    <svg width="30" height="30" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle; margin-right: 10px;">
+                        <rect x="15" y="20" width="70" height="60" stroke="#00f2ff" stroke-width="2" fill="none"/>
+                        <line x1="25" y1="35" x2="75" y2="35" stroke="#00f2ff" stroke-width="1.5"/>
+                        <line x1="25" y1="45" x2="75" y2="45" stroke="#00f2ff" stroke-width="1.5"/>
+                        <line x1="25" y1="55" x2="65" y2="55" stroke="#00f2ff" stroke-width="1.5"/>
+                        <line x1="25" y1="65" x2="70" y2="65" stroke="#00f2ff" stroke-width="1.5"/>
+                    </svg>
+                    MANIFIESTO
+                </h2>
+                <div class="terminal-text" id="typewriter-1"></div><span class="cursor"></span>
+            </div>
+
+            <!-- Normativa -->
+            <div class="hud-panel" id="normativa">
+                <h2 class="section-title">
+                    <svg width="30" height="30" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle; margin-right: 10px;">
+                        <rect x="25" y="15" width="50" height="70" stroke="#00f2ff" stroke-width="2" fill="none"/>
+                        <line x1="35" y1="30" x2="65" y2="30" stroke="#00f2ff" stroke-width="1.5"/>
+                        <line x1="35" y1="42" x2="65" y2="42" stroke="#00f2ff" stroke-width="1.5"/>
+                        <line x1="35" y1="54" x2="65" y2="54" stroke="#00f2ff" stroke-width="1.5"/>
+                        <circle cx="50" cy="65" r="12" stroke="#00f2ff" stroke-width="2" fill="none"/>
+                        <path d="M45 65L48 68L55 60" stroke="#00f2ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    NORMATIVA
+                </h2>
+                <div class="terminal-text" id="typewriter-2"></div><span class="cursor"></span>
+            </div>
+
+            <!-- Operaciones -->
+            <div class="hud-panel" id="operaciones">
+                <h2 class="section-title">
+                    <svg width="30" height="30" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle; margin-right: 10px;">
+                        <circle cx="50" cy="50" r="35" stroke="#00f2ff" stroke-width="2" fill="none"/>
+                        <circle cx="50" cy="50" r="8" fill="#00f2ff" class="svg-pulse"/>
+                        <line x1="50" y1="15" x2="50" y2="28" stroke="#00f2ff" stroke-width="2"/>
+                        <line x1="50" y1="72" x2="50" y2="85" stroke="#00f2ff" stroke-width="2"/>
+                        <line x1="15" y1="50" x2="28" y2="50" stroke="#00f2ff" stroke-width="2"/>
+                        <line x1="72" y1="50" x2="85" y2="50" stroke="#00f2ff" stroke-width="2"/>
+                    </svg>
+                    OPERACIONES
+                </h2>
+                <div class="terminal-text" id="typewriter-3"></div><span class="cursor"></span>
+            </div>
+
+        </div>
+
+        <!-- Factions -->
+        <h2 class="section-title" style="text-align: center; width: 100%; margin-bottom: 2rem;">FACTIONES</h2>
+        <div class="factions-container">
+            
+            <!-- INCURSORES -->
+            <div class="faction-card flicker-anim">
+                <div class="faction-icon">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-glow">
+                        <circle cx="50" cy="50" r="45" stroke="#00f2ff" stroke-width="2" fill="none" opacity="0.3"/>
+                        <path d="M50 15L50 70" stroke="#00f2ff" stroke-width="4" stroke-linecap="round"/>
+                        <path d="M35 25L65 25" stroke="#00f2ff" stroke-width="3" stroke-linecap="round"/>
+                        <path d="M47 70L47 85L53 85L53 70" stroke="#00f2ff" stroke-width="3" fill="none"/>
+                        <path d="M35 35L20 25L25 40Z" fill="#00f2ff" opacity="0.6"/>
+                        <path d="M65 35L80 25L75 40Z" fill="#00f2ff" opacity="0.6"/>
+                        <circle cx="50" cy="15" r="3" fill="#00f2ff" class="svg-pulse"/>
+                        <circle cx="20" cy="25" r="2" fill="#00f2ff" opacity="0.5"/>
+                        <circle cx="80" cy="25" r="2" fill="#00f2ff" opacity="0.5"/>
+                    </svg>
+                </div>
+                <h3 class="faction-title">INCURSORES</h3>
+                <p class="mono">ROL: FREESTYLE / RACING / CINEMATIC</p>
+                <p style="margin-top: 10px; font-size: 0.9rem;">Pilotos de alta velocidad y precisión. Especialistas en entornos complejos y maniobras de riesgo controlado.</p>
+            </div>
+
+            <!-- ARQUITECTOS -->
+            <div class="faction-card flicker-anim">
+                <div class="faction-icon">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-glow">
+                        <path d="M50 10L85 30V70L50 90L15 70V30L50 10Z" stroke="#00f2ff" stroke-width="2" fill="none" opacity="0.3"/>
+                        <circle cx="50" cy="50" r="35" stroke="#00f2ff" stroke-width="2" stroke-dasharray="8 4" fill="none"/>
+                        <circle cx="50" cy="50" r="25" stroke="#00f2ff" stroke-width="2" fill="none"/>
+                        <circle cx="50" cy="50" r="10" fill="#00f2ff" class="svg-pulse"/>
+                        <rect x="48" y="12" width="4" height="8" fill="#00f2ff"/>
+                        <rect x="48" y="80" width="4" height="8" fill="#00f2ff"/>
+                        <rect x="12" y="48" width="8" height="4" fill="#00f2ff"/>
+                        <rect x="80" y="48" width="8" height="4" fill="#00f2ff"/>
+                    </svg>
+                </div>
+                <h3 class="faction-title">ARQUITECTOS</h3>
+                <p class="mono">ROL: DEV / HARDWARE / BUILD</p>
+                <p style="margin-top: 10px; font-size: 0.9rem;">Ingenieros y creadores. Mantenimiento de flota, desarrollo de software de vuelo y gestión de infraestructuras.</p>
+            </div>
+
+        </div>
+
+        <!-- Info Grid: Crew & Sponsors -->
+        <div class="info-grid" id="crew">
+            
+            <!-- Crew Card -->
+            <div class="info-card">
+                <div class="info-icon">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-glow">
+                        <circle cx="50" cy="35" r="15" stroke="#00f2ff" stroke-width="2" fill="none"/>
+                        <path d="M25 85C25 70 35 60 50 60C65 60 75 70 75 85" stroke="#00f2ff" stroke-width="2" fill="none"/>
+                        <circle cx="30" cy="40" r="8" stroke="#00f2ff" stroke-width="1.5" fill="none" opacity="0.5"/>
+                        <circle cx="70" cy="40" r="8" stroke="#00f2ff" stroke-width="1.5" fill="none" opacity="0.5"/>
+                        <path d="M20 85C20 75 25 68 32 63" stroke="#00f2ff" stroke-width="1.5" fill="none" opacity="0.5"/>
+                        <path d="M80 85C80 75 75 68 68 63" stroke="#00f2ff" stroke-width="1.5" fill="none" opacity="0.5"/>
+                    </svg>
+                </div>
+                <h3 class="info-title">CREW ACTIVA</h3>
+                <ul class="info-list">
+                    <li>PILOTOS CERTIFICADOS</li>
+                    <li>TÉCNICOS UAS</li>
+                    <li>DESARROLLADORES</li>
+                    <li>INSTRUCTORES</li>
+                </ul>
+            </div>
+
+            <!-- Sponsors Card -->
+            <div class="info-card">
+                <div class="info-icon">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-glow">
+                        <rect x="15" y="25" width="70" height="50" stroke="#00f2ff" stroke-width="2" fill="none"/>
+                        <line x1="15" y1="40" x2="85" y2="40" stroke="#00f2ff" stroke-width="1.5"/>
+                        <circle cx="30" cy="32" r="5" stroke="#00f2ff" stroke-width="1.5" fill="none"/>
+                        <circle cx="50" cy="32" r="5" stroke="#00f2ff" stroke-width="1.5" fill="none"/>
+                        <circle cx="70" cy="32" r="5" stroke="#00f2ff" stroke-width="1.5" fill="none"/>
+                        <line x1="30" y1="50" x2="30" y2="65" stroke="#00f2ff" stroke-width="1.5"/>
+                        <line x1="50" y1="50" x2="50" y2="65" stroke="#00f2ff" stroke-width="1.5"/>
+                        <line x1="70" y1="50" x2="70" y2="65" stroke="#00f2ff" stroke-width="1.5"/>
+                        <path d="M25 75L35 75M45 75L55 75M65 75L75 75" stroke="#00f2ff" stroke-width="1.5"/>
+                    </svg>
+                </div>
+                <h3 class="info-title">PARTNERS</h3>
+                <ul class="info-list">
+                    <li>TECH CORP</li>
+                    <li>FPV GEAR</li>
+                    <li>DRONE LAB</li>
+                    <li>AERO SYSTEMS</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <div class="social-links">
+                    <a href="#" class="social-btn">Instagram</a>
+                    <a href="#" class="social-btn">Discord</a>
+                    <a href="#" class="social-btn">YouTube</a>
+                </div>
+                <div class="sponsors">
+                    <div class="sponsor-placeholder">TECH CORP</div>
+                    <div class="sponsor-placeholder">FPV GEAR</div>
+                    <div class="sponsor-placeholder">DRONE LAB</div>
+                </div>
+                <p class="mono" style="color: #444; margin-top: 20px;">
+                    © 2026 MODO 2 ASSOCIATION. ART. 16 COMPLIANT.
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Registration Modal -->
+    <div class="modal-overlay" id="registerModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h2 class="modal-title">REGISTRO DE SOCIO</h2>
+            <form id="registerForm" onsubmit="handleRegister(event)">
+                <div class="form-group">
+                    <label>> NOMBRE COMPLETO</label>
+                    <input type="text" required placeholder="Introduce tu nombre">
+                </div>
+                <div class="form-group">
+                    <label>> EMAIL</label>
+                    <input type="email" required placeholder="email@ejemplo.com">
+                </div>
+                <div class="form-group">
+                    <label>> TELÉFONO</label>
+                    <input type="tel" required placeholder="+34 XXX XXX XXX">
+                </div>
+                <div class="form-group">
+                    <label>> TIPO DE MEMBRESÍA</label>
+                    <select required>
+                        <option value="">Seleccionar...</option>
+                        <option value="founder">SOCIO FUNDADOR - 150€</option>
+                        <option value="standard">SOCIO ESTÁNDAR - 50€/año</option>
+                        <option value="student">SOCIO ESTUDIANTE - 30€/año</option>
+                    </select>
+                </div>
+                <div class="payment-info">
+                    🔒 PAGAMENTO SEGURO VIA STRIPE / PAYPAL<br>
+                    Los datos se procesan de forma encriptada
+                </div>
+                <button type="submit" class="submit-btn">
+                    PROCEDER AL PAGO >>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // --- TYPEWRITER EFFECT ---
+        const texts = {
+            'typewriter-1': "Somos una 'Crew' de élite dedicada a la profesionalización del vuelo FPV en Aragón. Nuestra misión es elevar el estándar técnico y garantizar la legalidad operativa bajo el Artículo 16. No somos solo pilotos; somos operadores de sistemas aéreos no tripulados.",
+            'typewriter-2': "El cumplimiento es nuestra prioridad. Todas las operaciones se realizan bajo estricta normativa AESA. Protocolos de seguridad activos. Zona de exclusión aérea respetada. Seguro de responsabilidad civil verificado.",
+            'typewriter-3': "Base de operaciones Sector Cariñena (ZGU) en proceso de habilitación - gestiones municipales en curso. Actividades, formación y talleres semanales. Implementación de tecnologías emergentes del sector UAS."
+        };
+
+        function typeWriter(elementId, text, speed = 30) {
+            const element = document.getElementById(elementId);
+            let i = 0;
+            
+            element.innerHTML = ""; 
+
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // --- MODAL FUNCTIONS ---
+        function openModal() {
+            document.getElementById('registerModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('registerModal').classList.remove('active');
+        }
+
+        // Close modal on outside click
+        document.getElementById('registerModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Handle form submission
+        function handleRegister(e) {
+            e.preventDefault();
+            alert('>> REDIRIGIENDO A PASARELA DE PAGO... <<');
+            // Here you would integrate with Stripe, PayPal, or your payment processor
+            // window.location.href = '/payment-gateway';
+        }
+
+        // --- INITIALIZE ---
+        window.addEventListener('load', () => {
+            setTimeout(() => typeWriter('typewriter-1', texts['typewriter-1']), 500);
+            setTimeout(() => typeWriter('typewriter-2', texts['typewriter-2']), 1500);
+            setTimeout(() => typeWriter('typewriter-3', texts['typewriter-3']), 2500);
+            
+            setTimeout(() => {
+                const opsPanel = document.getElementById('operaciones');
+                const statusBadge = document.createElement('span');
+                statusBadge.className = 'status-pending';
+                statusBadge.innerHTML = '⏳ EN TRÁMITE';
+                opsPanel.querySelector('.section-title').after(statusBadge);
+            }, 3000);
+        });
+
+        // --- RANDOM FLICKER FOR HUD PANELS ---
+        const panels = document.querySelectorAll('.hud-panel, .info-card, .faction-card');
+        
+        function randomFlicker() {
+            panels.forEach(panel => {
+                if(Math.random() > 0.95) {
+                    panel.style.opacity = 0.7;
+                    setTimeout(() => {
+                        panel.style.opacity = 1;
+                    }, 100);
+                }
+            });
+            setTimeout(randomFlicker, 2000);
+        }
+
+        randomFlicker();
+
+    </script>
 </body>
 </html>
+
