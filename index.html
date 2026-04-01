@@ -369,8 +369,8 @@
         .checkbox-group input[type="checkbox"]:disabled { accent-color: var(--red); }
         .checkbox-group label { margin-bottom: 0; }
         
-        /* BLOCKED BUTTON STYLE */
-        .submit-btn { 
+        /* BLOCKED BUTTON STYLE (Registro) */
+        .submit-btn.blocked { 
             width: 100%; 
             padding: 1rem; 
             margin-top: 1rem; 
@@ -384,6 +384,28 @@
             cursor: not-allowed;
             letter-spacing: 0.15em;
             animation: blockedPulse 2s infinite;
+        }
+
+        /* ACTIVE BUTTON STYLE (Login) */
+        .submit-btn.active {
+            width: 100%;
+            padding: 1rem;
+            margin-top: 1rem;
+            background: var(--cyan);
+            color: var(--black);
+            border: 1px solid var(--cyan);
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            letter-spacing: 0.15em;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn.active:hover {
+            background: var(--white);
+            box-shadow: 0 0 30px var(--cyan-glow);
         }
 
         @keyframes blockedPulse {
@@ -677,7 +699,7 @@
         </div>
 
         <!-- Flight Logs -->
-        <div class="flight-logs-section"><h3 class="logs-title">> TERMINAL_DE_ACTIVIDAD</h3><p class="logs-description">Próximamente: Sincroniza tus logs con hashtags para acumular XP</p><div class="hashtags"><span class="hashtag">#MODO2_INCURSOR</span><span class="hashtag">#MODO2_ARQUITECTO</span><span class="hashtag">#MODO2_ARAGON</span></div></div>
+        <div class="flight-logs-section"><h3 class="logs-title">> TERMINAL_DE_ACTIVIDAD</h3><p class="logs-description">Próximamente: Sincroniza tus logros para acumular XP</p><div class="hashtags"><span class="hashtag">#MODO2_INCURSOR</span><span class="hashtag">#MODO2_ARQUITECTO</span><span class="hashtag">#MODO2_ARAGON</span></div></div>
 
         <!-- Footer -->
         <footer><div class="social-links"><a href="#" class="social-btn">Instagram</a><a href="#" class="social-btn">Discord</a><a href="#" class="social-btn">YouTube</a></div><p class="copyright">© 2026 MODO 2 Asociación // ART. 16 COMPLIANT</p></footer>
@@ -713,7 +735,7 @@
                         <option value="standard">SOCIO ESTÁNDAR - 40€</option>
                     </select>
                 </div>
-                <button type="submit" class="submit-btn" id="registerBtn" disabled>
+                <button type="submit" class="submit-btn blocked" id="registerBtn" disabled>
                     ⚠ SISTEMA ACTUALMENTE BLOQUEADO
                 </button>
                 <div class="blocked-notice">
@@ -724,7 +746,7 @@
         </div>
     </div>
 
-    <!-- Login Modal - BLOCKED -->
+    <!-- Login Modal - ACTIVE -->
     <div class="modal-overlay" id="loginModal">
         <div class="modal-content login-modal-content">
             <button class="modal-close" onclick="closeLoginModal()">&times;</button>
@@ -732,23 +754,19 @@
             <form id="loginForm" onsubmit="handleLogin(event)">
                 <div class="form-group">
                     <label>> USUARIO / EMAIL</label>
-                    <input type="text" id="loginUsername" required disabled>
+                    <input type="text" id="loginUsername" required>
                 </div>
                 <div class="form-group">
                     <label>> CONTRASEÑA</label>
-                    <input type="password" id="loginPassword" required disabled>
+                    <input type="password" id="loginPassword" required>
                 </div>
                 <div class="form-group checkbox-group">
-                    <input type="checkbox" id="rememberMe" disabled>
+                    <input type="checkbox" id="rememberMe">
                     <label for="rememberMe">RECORDAR</label>
                 </div>
-                <button type="submit" class="submit-btn" id="loginBtnSubmit" disabled>
-                    ⚠ SISTEMA ACTUALMENTE BLOQUEADO
+                <button type="submit" class="submit-btn active" id="loginBtnSubmit">
+                    >> CONECTAR
                 </button>
-                <div class="blocked-notice">
-                    SISTEMA DE ACCESO TEMPORALMENTE INACTIVO<br>
-                    VOLVERÁ A ESTAR DISPONIBLE PRÓXIMAMENTE
-                </div>
             </form>
             <p class="mono" style="margin-top: 1rem; text-align: center; color: var(--gray);">
                 ¿Sin cuenta? <span style="color: var(--red);">REGISTRO BLOQUEADO</span>
@@ -876,10 +894,148 @@
             alert('>> SISTEMA DE PAGOS BLOQUEADO <<\n\nEl sistema de inscripciones estará disponible próximamente.\n\nDisculpa las molestias.');
         }
 
-        // BLOCKED Login - Shows message only
-        function handleLogin(e) {
+        // ACTIVE Login - Firebase Auth
+        async function handleLogin(e) {
             e.preventDefault();
-            alert('>> SISTEMA DE ACCESO BLOQUEADO <<\n\nEl sistema de acceso estará disponible próximamente.\n\nDisculpa las molestias.');
+            
+            if (!firebaseInitialized) {
+                alert('>> ERROR: MAINFRAME DESCONECTADO <<');
+                return;
+            }
+
+            const btn = document.getElementById('loginBtnSubmit');
+            btn.disabled = true;
+            btn.textContent = '>> AUTENTICANDO...';
+
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+            const remember = document.getElementById('rememberMe').checked;
+
+            try {
+                // Set persistence based on remember me
+                if (remember) {
+                    await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+                } else {
+                    await auth.setPersistence(firebase.auth.Auth.Persistence.SESSION);
+                }
+
+                // Sign in with email
+                const userCredential = await auth.signInWithEmailAndPassword(username, password);
+                const user = userCredential.user;
+
+                // Get user data from Firestore
+                const userDoc = await db.collection('users').doc(user.uid).get();
+                
+                if (userDoc.exists) {
+                    currentUserData = userDoc.data();
+                    
+                    // Update UI
+                    document.getElementById('userName').textContent = (currentUserData.displayName || user.email).toUpperCase();
+                    document.getElementById('userLevel').textContent = 'NIVEL ' + (currentUserData.level || 0);
+                    
+                    const loginBtn = document.getElementById('loginBtn');
+                    loginBtn.textContent = currentUserData.status === 'connected' ? 'CONECTADO' : 'PENDIENTE';
+                    loginBtn.className = 'status-badge ' + (currentUserData.status === 'connected' ? 'connected' : 'pending');
+                    loginBtn.onclick = handleLogout;
+                    
+                    // Update XP display
+                    updateXPDisplay(currentUserData.xp || 0);
+                    
+                    // Update last login
+                    await db.collection('users').doc(user.uid).update({
+                        lastLogin: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+
+                    closeLoginModal();
+                    displayUserDataInTable();
+                }
+
+            } catch (error) {
+                console.error('Login error:', error);
+                alert('>> ERROR DE AUTENTICACIÓN <<\n\n' + error.message);
+            } finally {
+                btn.disabled = false;
+                btn.textContent = '>> CONECTAR';
+            }
+        }
+
+        // Firebase Logout
+        async function handleLogout() {
+            if (!firebaseInitialized) return;
+            
+            try {
+                await auth.signOut();
+                currentUserData = null;
+                
+                // Reset UI to guest state
+                document.getElementById('userName').textContent = 'INVITADO';
+                document.getElementById('userLevel').textContent = 'ACCESO RESTRINGIDO';
+                document.getElementById('userRank').textContent = '--';
+                
+                const loginBtn = document.getElementById('loginBtn');
+                loginBtn.textContent = 'INVITADO / ACCESO RESTRINGIDO';
+                loginBtn.className = 'status-badge';
+                loginBtn.onclick = openLoginModal;
+                
+                updateXPDisplay(0);
+                
+                alert('>> SESIÓN CERRADA <<');
+            } catch (error) {
+                console.error('Logout error:', error);
+            }
+        }
+
+        // Auth State Listener
+        if (firebaseInitialized) {
+            auth.onAuthStateChanged(async (user) => {
+                if (user) {
+                    const userDoc = await db.collection('users').doc(user.uid).get();
+                    if (userDoc.exists) {
+                        currentUserData = userDoc.data();
+                        document.getElementById('userName').textContent = (currentUserData.displayName || user.email).toUpperCase();
+                        document.getElementById('userLevel').textContent = 'NIVEL ' + (currentUserData.level || 0);
+                        const loginBtn = document.getElementById('loginBtn');
+                        loginBtn.textContent = currentUserData.status === 'connected' ? 'CONECTADO' : 'PENDIENTE';
+                        loginBtn.className = 'status-badge ' + (currentUserData.status === 'connected' ? 'connected' : 'pending');
+                        loginBtn.onclick = handleLogout;
+                        updateXPDisplay(currentUserData.xp || 0);
+                    }
+                }
+            });
+        }
+
+        // User DB Display
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginBtn = document.getElementById('loginBtn');
+            if (loginBtn) {
+                loginBtn.addEventListener('click', function() {
+                    if (this.classList.contains('connected') || this.classList.contains('pending')) {
+                        const dbPanel = document.getElementById('userDbPanel');
+                        dbPanel.classList.toggle('active');
+                        if (firebaseInitialized && currentUserData) displayUserDataInTable();
+                    }
+                });
+            }
+        });
+
+        function displayUserDataInTable() {
+            if (!firebaseInitialized || !currentUserData) return;
+            
+            const tbody = document.getElementById('userDbBody');
+            tbody.innerHTML = `<tr><td>${currentUserData.displayName || 'N/A'}</td><td>${auth.currentUser?.email || 'N/A'}</td><td class="${currentUserData.status === 'connected' ? 'text-green' : 'text-amber'}">${currentUserData.status?.toUpperCase() || 'PENDING'}</td><td>${currentUserData.level || 0}</td><td>${currentUserData.rank || 'INVITADO'}</td><td>${(currentUserData.xp || 0).toLocaleString()}</td></tr>`;
+        }
+
+        // Page Navigation
+        function showHome() {
+            document.querySelectorAll('.content-page').forEach(p => p.classList.remove('active'));
+            document.getElementById('home-page').classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showPage(pageId) {
+            document.querySelectorAll('.content-page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId + '-page').classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         // Typewriter
