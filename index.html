@@ -47,7 +47,6 @@
             min-height: 100vh;
         }
 
-        /* Scanlines */
         .scanlines {
             position: fixed;
             top: 0;
@@ -68,7 +67,6 @@
             z-index: 1;
         }
 
-        /* Typography */
         h1, h2, h3, h4 {
             font-family: var(--font-display);
             text-transform: uppercase;
@@ -97,7 +95,7 @@
             color: var(--amber);
         }
 
-        /* Glitch Effect for Logo */
+        /* Glitch Effect */
         .glitch-wrapper {
             position: relative;
             display: inline-block;
@@ -187,7 +185,7 @@
             align-items: center;
             padding: 1.5rem 0;
             border-bottom: 1px solid rgba(0, 242, 255, 0.2);
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
         }
 
         .logo-container {
@@ -271,12 +269,12 @@
             left: 0;
         }
 
-        /* User Dashboard (Simulated) */
+        /* User Dashboard */
         .user-dashboard {
             background: var(--black-panel);
             border: 1px solid rgba(0, 242, 255, 0.2);
             padding: 1.5rem 2rem;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             clip-path: polygon(
                 15px 0, 100% 0, 
                 100% calc(100% - 15px), calc(100% - 15px) 100%, 
@@ -348,10 +346,14 @@
         .xp-fill {
             height: 100%;
             background: linear-gradient(90deg, var(--cyan), #00a8ff);
-            width: 15%;
+            width: 0%;
             border-radius: 3px;
             position: relative;
-            animation: xpPulse 2s ease-in-out infinite;
+            transition: width 0.5s ease;
+        }
+
+        .xp-fill.maxed {
+            animation: xpPulse 1s ease-in-out infinite;
         }
 
         @keyframes xpPulse {
@@ -372,23 +374,15 @@
         /* Hero Section */
         .hero {
             text-align: center;
-            padding: 3rem 0 4rem 0;
+            padding: 2rem 0 3rem 0;
             position: relative;
-        }
-
-        .main-title {
-            font-size: 4rem;
-            font-weight: 900;
-            margin-bottom: 0.5rem;
-            letter-spacing: 0.4em;
-            line-height: 1.1;
         }
 
         .system-command {
             font-family: var(--font-mono);
             font-size: 0.9rem;
             color: var(--cyan);
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
             letter-spacing: 0.15em;
             text-transform: uppercase;
         }
@@ -403,7 +397,7 @@
             background: rgba(255, 0, 85, 0.05);
             border: 1px solid var(--magenta);
             padding: 1.5rem 2rem;
-            margin: 2rem auto;
+            margin: 1.5rem auto;
             max-width: 600px;
             clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
         }
@@ -467,7 +461,7 @@
             justify-content: center;
             align-items: center;
             gap: 2.5rem;
-            margin: 2rem 0 3rem 0;
+            margin: 1.5rem 0 1rem 0;
             flex-wrap: wrap;
         }
 
@@ -481,6 +475,7 @@
             color: var(--gray);
             transition: all 0.3s ease;
             opacity: 0.6;
+            cursor: pointer;
         }
 
         .icon-nav-item:hover {
@@ -580,8 +575,8 @@
         /* CTA Section */
         .cta-section {
             text-align: center;
-            padding: 1.5rem 0;
-            margin-bottom: 4rem;
+            padding: 1rem 0;
+            margin-bottom: 3rem;
         }
 
         .cta-subtitle {
@@ -593,12 +588,21 @@
             text-transform: uppercase;
         }
 
-        /* Content Grid */
+        /* Content Pages (Hidden by default) */
+        .content-page {
+            display: none;
+            padding: 3rem 0;
+        }
+
+        .content-page.active {
+            display: block;
+        }
+
         .content-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 3rem;
-            margin-bottom: 5rem;
+            margin-bottom: 3rem;
         }
 
         @media(min-width: 768px) {
@@ -663,7 +667,6 @@
             color: rgba(224, 230, 237, 0.85);
             font-size: 0.9rem;
             line-height: 1.8;
-            min-height: 90px;
         }
 
         .cursor {
@@ -675,109 +678,12 @@
             margin-left: 5px;
         }
 
-        /* Factions as Evolution Paths */
-        .factions-container {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2.5rem;
-            margin-bottom: 5rem;
-        }
-
-        @media(min-width: 768px) {
-            .factions-container {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .faction-card {
-            background: var(--black-panel);
-            border: 1px solid rgba(0, 242, 255, 0.1);
-            padding: 2rem;
-            text-align: center;
-            transition: 0.4s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .faction-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--cyan), transparent);
-            opacity: 0.5;
-        }
-
-        .faction-card:hover {
-            border-color: var(--cyan);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(0, 242, 255, 0.1);
-        }
-
-        .faction-icon svg {
-            width: 70px;
-            height: 70px;
-            stroke: var(--cyan);
-            filter: drop-shadow(0 0 10px var(--cyan-glow));
-        }
-
-        .faction-title {
-            font-size: 1.4rem;
-            margin: 1.5rem 0 0.5rem 0;
-            color: var(--white);
-        }
-
-        .faction-role {
-            font-family: var(--font-mono);
-            font-size: 0.7rem;
-            color: var(--gray);
-            margin-bottom: 1.5rem;
-            letter-spacing: 0.15em;
-        }
-
-        /* XP Bar for Factions */
-        .faction-xp-container {
-            margin-top: 1.5rem;
-        }
-
-        .faction-xp-label {
-            font-family: var(--font-mono);
-            font-size: 0.65rem;
-            color: var(--gray);
-            margin-bottom: 0.4rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .faction-xp-bar {
-            height: 4px;
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 2px;
-            overflow: hidden;
-        }
-
-        .faction-xp-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--cyan), #00a8ff);
-            width: 0%;
-            border-radius: 2px;
-            transition: width 1s ease;
-        }
-
-        .faction-card:hover .faction-xp-fill {
-            width: 25%;
-        }
-
         /* Flight Logs Section */
         .flight-logs-section {
             background: var(--black-panel);
             border: 1px solid rgba(0, 242, 255, 0.15);
             padding: 2.5rem;
-            margin-bottom: 5rem;
+            margin-bottom: 3rem;
             text-align: center;
         }
 
@@ -825,7 +731,7 @@
             display: grid;
             grid-template-columns: 1fr;
             gap: 2.5rem;
-            margin-bottom: 5rem;
+            margin-bottom: 3rem;
             border-top: 1px solid rgba(255, 255, 255, 0.08);
             padding-top: 3rem;
         }
@@ -1035,6 +941,121 @@
             box-shadow: 0 0 30px var(--cyan-glow);
         }
 
+        /* XP Max Popup */
+        .xp-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--black-panel);
+            border: 2px solid var(--magenta);
+            padding: 2.5rem;
+            max-width: 450px;
+            width: 90%;
+            z-index: 3000;
+            clip-path: polygon(
+                20px 0, 100% 0, 
+                100% calc(100% - 20px), calc(100% - 20px) 100%, 
+                0 100%, 0 20px
+            );
+            box-shadow: 0 0 60px rgba(255, 0, 85, 0.3);
+            display: none;
+        }
+
+        .xp-popup.active {
+            display: block;
+            animation: popupSlide 0.4s ease-out;
+        }
+
+        @keyframes popupSlide {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -60%);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        .xp-popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2999;
+            display: none;
+        }
+
+        .xp-popup-overlay.active {
+            display: block;
+        }
+
+        .xp-popup-title {
+            font-size: 1.3rem;
+            color: var(--magenta);
+            margin-bottom: 1rem;
+            text-align: center;
+            font-family: var(--font-mono);
+            letter-spacing: 0.15em;
+        }
+
+        .xp-popup-message {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--white);
+            text-align: center;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .xp-popup-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--magenta);
+            color: var(--white);
+            border: none;
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.15em;
+        }
+
+        .xp-popup-btn:hover {
+            background: var(--white);
+            color: var(--magenta);
+            box-shadow: 0 0 30px var(--magenta-glow);
+        }
+
+        /* Back Button */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--cyan);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            color: var(--white);
+        }
+
+        .back-button svg {
+            width: 16px;
+            height: 16px;
+            stroke: currentColor;
+        }
+
         /* Drone Trails */
         .drone-trail {
             position: fixed;
@@ -1047,7 +1068,6 @@
 
         /* Responsive */
         @media(max-width: 768px) {
-            .main-title { font-size: 2.5rem; }
             .header-nav { gap: 1rem; }
             .nav-icon-wrapper svg { width: 20px; height: 20px; }
             .icon-nav-row { gap: 2rem; }
@@ -1063,10 +1083,23 @@
     <div class="scanlines"></div>
     <div id="drone-trails-container"></div>
 
+    <!-- XP Max Popup -->
+    <div class="xp-popup-overlay" id="xpPopupOverlay"></div>
+    <div class="xp-popup" id="xpPopup">
+        <h3 class="xp-popup-title">⚠ ¡NIVEL MÁXIMO ALCANZADO!</h3>
+        <p class="xp-popup-message">
+            ¿A qué esperas para unirte?<br><br>
+            Ya has llegado a la categoría de <strong style="color: var(--magenta);">OBSERVADOR COTILLA</strong>. 
+            Has visitado la web 1000 veces y aún no formas parte del SQUAD.<br><br>
+            Deja de mirar y empieza a volar.
+        </p>
+        <button class="xp-popup-btn" onclick="closeXpPopup()">>> ENTENDIDO</button>
+    </div>
+
     <div class="container">
         <!-- Header -->
         <header>
-            <a href="#" class="logo-container">
+            <a href="#" class="logo-container" onclick="showHome(); return false;">
                 <svg class="logo-svg" viewBox="0 0 100 115" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g class="logo-hexagon">
                         <path d="M50 2L93.3 27.5V77.5L50 103L6.7 77.5V27.5L50 2Z" fill="#020405" stroke="#00f2ff" stroke-width="1.5"/>
@@ -1086,16 +1119,16 @@
             </a>
             
             <div class="header-nav">
-                <a href="#protocolo" class="nav-icon-wrapper" title="Protocolo">
+                <a href="#" class="nav-icon-wrapper" title="Protocolo" onclick="showPage('protocolo'); return false;">
                     <svg viewBox="0 0 100 100"><rect x="20" y="20" width="60" height="60" stroke="currentColor" stroke-width="2" fill="none"/><line x1="30" y1="35" x2="70" y2="35" stroke="currentColor" stroke-width="1.5"/><line x1="30" y1="50" x2="70" y2="50" stroke="currentColor" stroke-width="1.5"/><line x1="30" y1="65" x2="60" y2="65" stroke="currentColor" stroke-width="1.5"/></svg>
                 </a>
-                <a href="#normativa" class="nav-icon-wrapper" title="Normativa">
+                <a href="#" class="nav-icon-wrapper" title="Normativa" onclick="showPage('normativa'); return false;">
                     <svg viewBox="0 0 100 100"><rect x="30" y="20" width="40" height="60" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="50" cy="55" r="12" stroke="currentColor" stroke-width="2" fill="none"/><path d="M46 55L49 58L54 52" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </a>
-                <a href="#operaciones" class="nav-icon-wrapper" title="Operaciones">
+                <a href="#" class="nav-icon-wrapper" title="Operaciones" onclick="showPage('operaciones'); return false;">
                     <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="50" cy="50" r="6" fill="currentColor"/><line x1="50" y1="20" x2="50" y2="30" stroke="currentColor" stroke-width="2"/><line x1="50" y1="70" x2="50" y2="80" stroke="currentColor" stroke-width="2"/><line x1="20" y1="50" x2="30" y2="50" stroke="currentColor" stroke-width="2"/><line x1="70" y1="50" x2="80" y2="50" stroke="currentColor" stroke-width="2"/></svg>
                 </a>
-                <a href="#crew" class="nav-icon-wrapper" title="Crew">
+                <a href="#" class="nav-icon-wrapper" title="Crew" onclick="showPage('crew'); return false;">
                     <svg viewBox="0 0 100 100"><circle cx="50" cy="35" r="12" stroke="currentColor" stroke-width="2" fill="none"/><path d="M30 80C30 65 40 55 50 55C60 55 70 65 70 80" stroke="currentColor" stroke-width="2" fill="none"/></svg>
                 </a>
                 <a href="#" class="nav-icon-wrapper" title="Unirse" onclick="openModal(); return false;">
@@ -1104,7 +1137,7 @@
             </div>
         </header>
 
-        <!-- User Dashboard (Simulated) -->
+        <!-- User Dashboard -->
         <div class="user-dashboard">
             <div class="user-info">
                 <div class="user-avatar">
@@ -1112,141 +1145,158 @@
                 </div>
                 <div class="user-details">
                     <h4>CMDR_VISITOR</h4>
-                    <div class="user-level">LV. 1 CADETE</div>
+                    <div class="user-level">LV: 0 OBSERVADOR</div>
                 </div>
             </div>
             <div class="xp-bar-container">
                 <div class="xp-label">
                     <span>EXPERIENCIA</span>
-                    <span>150 / 1000 XP</span>
+                    <span id="xpText">0 / 1000 XP</span>
                 </div>
                 <div class="xp-bar">
-                    <div class="xp-fill"></div>
+                    <div class="xp-fill" id="xpFill"></div>
                 </div>
             </div>
             <div class="status-badge">NO CONECTADO</div>
         </div>
 
-        <!-- Hero Section -->
-        <section class="hero">
-            <h1 class="main-title glitch-wrapper">
-                <span class="glitch" data-text="SISTEMA OPERATIVO MODO 2">SISTEMA OPERATIVO <span style="color: var(--cyan);">MODO 2</span></span>
-            </h1>
-            <p class="system-command">EJECUTANDO: CORE_MISSION.EXE // PROFESIONALIZACIÓN_FPV_ARAGÓN</p>
-            
-            <!-- Founder Warning Box -->
-            <div class="founder-warning">
-                <div class="warning-header">⚠ ADVERTENCIA: ACCESO NIVEL 0</div>
-                <div class="founder-counter">
-                    <div class="counter-number">40</div>
-                    <div class="counter-label">PLAZAS FUNDADOR</div>
-                </div>
-                <div class="status-available">ESTADO: DISPONIBLE</div>
-            </div>
-
-            <!-- Icon Navigation -->
-            <div class="icon-nav-row">
-                <a href="#protocolo" class="icon-nav-item">
-                    <svg viewBox="0 0 100 100"><rect x="20" y="25" width="60" height="50" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="30" y1="40" x2="70" y2="40" stroke="currentColor" stroke-width="1"/><line x1="30" y1="55" x2="65" y2="55" stroke="currentColor" stroke-width="1"/></svg>
-                    <span class="icon-nav-label">PROTOCOLO</span>
-                </a>
-                <a href="#normativa" class="icon-nav-item">
-                    <svg viewBox="0 0 100 100"><path d="M35 25H65V75H35Z" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="50" cy="50" r="10" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M47 50L50 53L53 47" stroke="currentColor" stroke-width="1.5"/></svg>
-                    <span class="icon-nav-label">NORMATIVA</span>
-                </a>
-                <a href="#operaciones" class="icon-nav-item">
-                    <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="25" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="50" cy="50" r="5" fill="currentColor"/><line x1="50" y1="25" x2="50" y2="35" stroke="currentColor" stroke-width="1.5"/><line x1="50" y1="65" x2="50" y2="75" stroke="currentColor" stroke-width="1.5"/><line x1="25" y1="50" x2="35" y2="50" stroke="currentColor" stroke-width="1.5"/><line x1="65" y1="50" x2="75" y2="50" stroke="currentColor" stroke-width="1.5"/></svg>
-                    <span class="icon-nav-label">OPS</span>
-                </a>
-                <a href="#crew" class="icon-nav-item">
-                    <svg viewBox="0 0 100 100"><circle cx="50" cy="40" r="10" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M35 75C35 65 42 55 50 55C58 55 65 65 65 75" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-                    <span class="icon-nav-label">CREW</span>
-                </a>
+        <!-- Home Page -->
+        <div id="home-page" class="content-page active">
+            <section class="hero">
+                <p class="system-command">EJECUTANDO: CORE_MISSION.EXE // PROFESIONALIZACIÓN_UAS_ARAGÓN</p>
                 
-                <!-- Join Button -->
-                <div class="join-btn-wrapper" onclick="openModal()">
-                    <div class="join-btn-icon">
-                        <svg viewBox="0 0 100 100"><path d="M50 30L50 70M30 50L70 50" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+                <!-- Founder Warning Box -->
+                <div class="founder-warning">
+                    <div class="warning-header">⚠ ADVERTENCIA: ACCESO NIVEL 0</div>
+                    <div class="founder-counter">
+                        <div class="counter-number">40</div>
+                        <div class="counter-label">PLAZAS FUNDADOR</div>
                     </div>
-                    <span class="join-btn-label">UNIRSE AL SQUAD</span>
+                    <div class="status-available">ESTADO: DISPONIBLE</div>
                 </div>
-            </div>
-        </section>
 
-        <!-- CTA Section -->
-        <div class="cta-section">
-            <p class="cta-subtitle">>> ESTE ES EL PRIMER PASO PARA DOMINAR EL AIRE <<</p>
+                <!-- Icon Navigation -->
+                <div class="icon-nav-row">
+                    <a href="#" class="icon-nav-item" onclick="showPage('protocolo'); return false;">
+                        <svg viewBox="0 0 100 100"><rect x="20" y="25" width="60" height="50" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="30" y1="40" x2="70" y2="40" stroke="currentColor" stroke-width="1"/><line x1="30" y1="55" x2="65" y2="55" stroke="currentColor" stroke-width="1"/></svg>
+                        <span class="icon-nav-label">PROTOCOLO</span>
+                    </a>
+                    <a href="#" class="icon-nav-item" onclick="showPage('normativa'); return false;">
+                        <svg viewBox="0 0 100 100"><path d="M35 25H65V75H35Z" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="50" cy="50" r="10" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M47 50L50 53L53 47" stroke="currentColor" stroke-width="1.5"/></svg>
+                        <span class="icon-nav-label">NORMATIVA</span>
+                    </a>
+                    <a href="#" class="icon-nav-item" onclick="showPage('operaciones'); return false;">
+                        <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="25" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="50" cy="50" r="5" fill="currentColor"/><line x1="50" y1="25" x2="50" y2="35" stroke="currentColor" stroke-width="1.5"/><line x1="50" y1="65" x2="50" y2="75" stroke="currentColor" stroke-width="1.5"/><line x1="25" y1="50" x2="35" y2="50" stroke="currentColor" stroke-width="1.5"/><line x1="65" y1="50" x2="75" y2="50" stroke="currentColor" stroke-width="1.5"/></svg>
+                        <span class="icon-nav-label">OPS</span>
+                    </a>
+                    <a href="#" class="icon-nav-item" onclick="showPage('crew'); return false;">
+                        <svg viewBox="0 0 100 100"><circle cx="50" cy="40" r="10" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M35 75C35 65 42 55 50 55C58 55 65 65 65 75" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+                        <span class="icon-nav-label">CREW</span>
+                    </a>
+                    
+                    <!-- Join Button -->
+                    <div class="join-btn-wrapper" onclick="openModal()">
+                        <div class="join-btn-icon">
+                            <svg viewBox="0 0 100 100"><path d="M50 30L50 70M30 50L70 50" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+                        </div>
+                        <span class="join-btn-label">UNIRSE AL SQUAD</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <div class="cta-section">
+                <p class="cta-subtitle">>> ESTE ES EL PRIMER PASO PARA DOMINAR EL AIRE <<</p>
+            </div>
         </div>
 
-        <!-- Main Content Grid -->
-        <div class="content-grid">
-            
-            <div class="hud-panel full-width" id="protocolo">
-                <h2 class="section-title">
-                    <svg viewBox="0 0 100 100" fill="none"><rect x="20" y="20" width="60" height="60" stroke="currentColor" stroke-width="2" fill="none"/><line x1="30" y1="35" x2="70" y2="35" stroke="currentColor" stroke-width="1.5"/><line x1="30" y1="50" x2="70" y2="50" stroke="currentColor" stroke-width="1.5"/><line x1="30" y1="65" x2="60" y2="65" stroke="currentColor" stroke-width="1.5"/></svg>
-                    > PROTOCOLO_DE_INICIO
-                </h2>
-                <div class="terminal-text" id="typewriter-1"></div><span class="cursor"></span>
-            </div>
-
-            <div class="hud-panel" id="normativa">
-                <h2 class="section-title">
-                    <svg viewBox="0 0 100 100" fill="none"><rect x="30" y="20" width="40" height="60" stroke="currentColor" stroke-width="2" fill="none"/><line x1="40" y1="35" x2="60" y2="35" stroke="currentColor" stroke-width="1.5"/><line x1="40" y1="50" x2="60" y2="50" stroke="currentColor" stroke-width="1.5"/><circle cx="50" cy="65" r="10" stroke="currentColor" stroke-width="2" fill="none"/><path d="M46 65L49 68L54 62" stroke="currentColor" stroke-width="2"/></svg>
-                    > NORMATIVA_AESA
-                </h2>
-                <div class="terminal-text" id="typewriter-2"></div><span class="cursor"></span>
-            </div>
-
-            <div class="hud-panel" id="operaciones">
-                <h2 class="section-title">
-                    <svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="50" cy="50" r="6" fill="currentColor"/><line x1="50" y1="20" x2="50" y2="30" stroke="currentColor" stroke-width="2"/><line x1="50" y1="70" x2="50" y2="80" stroke="currentColor" stroke-width="2"/><line x1="20" y1="50" x2="30" y2="50" stroke="currentColor" stroke-width="2"/><line x1="70" y1="50" x2="80" y2="50" stroke="currentColor" stroke-width="2"/></svg>
-                    > ESTADO_OPERACIONES
-                </h2>
-                <div class="terminal-text" id="typewriter-3"></div><span class="cursor"></span>
-                <div class="sector-status">SECTOR CARIÑENA: ENCRIPTADO / EN TRÁMITE</div>
-            </div>
-
-        </div>
-
-        <!-- Factions as Evolution Paths -->
-        <h2 class="section-title" style="text-align: center; width: 100%; margin-bottom: 2rem; font-size: 1.3rem;">> RAMAS_DE_EVOLUCIÓN</h2>
-        <div class="factions-container">
-            <div class="faction-card">
-                <div class="faction-icon">
-                    <svg viewBox="0 0 100 100" fill="none"><path d="M50 20L50 70" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M35 30L65 30" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M35 40L25 30L30 45Z" fill="currentColor" opacity="0.6"/><path d="M65 40L75 30L70 45Z" fill="currentColor" opacity="0.6"/></svg>
-                </div>
-                <h3 class="faction-title">INCURSORES</h3>
-                <div class="faction-role">FREESTYLE // RACING // CINEMATIC</div>
-                <div class="faction-xp-container">
-                    <div class="faction-xp-label">
-                        <span>PROGRESO DE RAMA</span>
-                        <span>0%</span>
-                    </div>
-                    <div class="faction-xp-bar">
-                        <div class="faction-xp-fill"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="faction-card">
-                <div class="faction-icon">
-                    <svg viewBox="0 0 100 100" fill="none"><path d="M50 15L80 35V65L50 85L20 65V35L50 15Z" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="50" cy="50" r="20" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4"/><rect x="48" y="25" width="4" height="8" fill="currentColor"/><rect x="48" y="67" width="4" height="8" fill="currentColor"/></svg>
-                </div>
-                <h3 class="faction-title">ARQUITECTOS</h3>
-                <div class="faction-role">DEV // HARDWARE // BUILD</div>
-                <div class="faction-xp-container">
-                    <div class="faction-xp-label">
-                        <span>PROGRESO DE RAMA</span>
-                        <span>0%</span>
-                    </div>
-                    <div class="faction-xp-bar">
-                        <div class="faction-xp-fill"></div>
-                    </div>
+        <!-- Protocolo Page -->
+        <div id="protocolo-page" class="content-page">
+            <a href="#" class="back-button" onclick="showHome(); return false;">
+                <svg viewBox="0 0 100 100" fill="none"><path d="M70 50L30 50M30 50L45 35M30 50L45 65" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                VOLVER AL INICIO
+            </a>
+            <div class="content-grid">
+                <div class="hud-panel full-width">
+                    <h2 class="section-title">
+                        <svg viewBox="0 0 100 100" fill="none"><rect x="20" y="20" width="60" height="60" stroke="currentColor" stroke-width="2" fill="none"/><line x1="30" y1="35" x2="70" y2="35" stroke="currentColor" stroke-width="1.5"/><line x1="30" y1="50" x2="70" y2="50" stroke="currentColor" stroke-width="1.5"/><line x1="30" y1="65" x2="60" y2="65" stroke="currentColor" stroke-width="1.5"/></svg>
+                        > PROTOCOLO_DE_INICIO
+                    </h2>
+                    <div class="terminal-text" id="typewriter-1"></div><span class="cursor"></span>
                 </div>
             </div>
         </div>
 
-        <!-- Flight Logs Section -->
+        <!-- Normativa Page -->
+        <div id="normativa-page" class="content-page">
+            <a href="#" class="back-button" onclick="showHome(); return false;">
+                <svg viewBox="0 0 100 100" fill="none"><path d="M70 50L30 50M30 50L45 35M30 50L45 65" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                VOLVER AL INICIO
+            </a>
+            <div class="content-grid">
+                <div class="hud-panel full-width">
+                    <h2 class="section-title">
+                        <svg viewBox="0 0 100 100" fill="none"><rect x="30" y="20" width="40" height="60" stroke="currentColor" stroke-width="2" fill="none"/><line x1="40" y1="35" x2="60" y2="35" stroke="currentColor" stroke-width="1.5"/><line x1="40" y1="50" x2="60" y2="50" stroke="currentColor" stroke-width="1.5"/><circle cx="50" cy="65" r="10" stroke="currentColor" stroke-width="2" fill="none"/><path d="M46 65L49 68L54 62" stroke="currentColor" stroke-width="2"/></svg>
+                        > NORMATIVA_AESA
+                    </h2>
+                    <div class="terminal-text" id="typewriter-2"></div><span class="cursor"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Operaciones Page -->
+        <div id="operaciones-page" class="content-page">
+            <a href="#" class="back-button" onclick="showHome(); return false;">
+                <svg viewBox="0 0 100 100" fill="none"><path d="M70 50L30 50M30 50L45 35M30 50L45 65" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                VOLVER AL INICIO
+            </a>
+            <div class="content-grid">
+                <div class="hud-panel full-width">
+                    <h2 class="section-title">
+                        <svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="50" cy="50" r="6" fill="currentColor"/><line x1="50" y1="20" x2="50" y2="30" stroke="currentColor" stroke-width="2"/><line x1="50" y1="70" x2="50" y2="80" stroke="currentColor" stroke-width="2"/><line x1="20" y1="50" x2="30" y2="50" stroke="currentColor" stroke-width="2"/><line x1="70" y1="50" x2="80" y2="50" stroke="currentColor" stroke-width="2"/></svg>
+                        > ESTADO_OPERACIONES
+                    </h2>
+                    <div class="terminal-text" id="typewriter-3"></div><span class="cursor"></span>
+                    <div class="sector-status">SECTOR CARIÑENA: ENCRIPTADO / EN TRÁMITE</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Crew Page -->
+        <div id="crew-page" class="content-page">
+            <a href="#" class="back-button" onclick="showHome(); return false;">
+                <svg viewBox="0 0 100 100" fill="none"><path d="M70 50L30 50M30 50L45 35M30 50L45 65" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                VOLVER AL INICIO
+            </a>
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="35" r="12" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M35 75C35 65 42 55 50 55C58 55 65 65 65 75" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+                    </div>
+                    <h3 class="info-title">CREW ACTIVA</h3>
+                    <ul class="info-list">
+                        <li>PILOTOS CERT.</li>
+                        <li>TÉCNICOS UAS</li>
+                        <li>DEVS</li>
+                        <li>INSTRUCTORES</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <svg viewBox="0 0 100 100" fill="none"><rect x="20" y="30" width="60" height="40" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="20" y1="45" x2="80" y2="45" stroke="currentColor" stroke-width="1"/></svg>
+                    </div>
+                    <h3 class="info-title">PARTNERS</h3>
+                    <ul class="info-list">
+                        <li>TECH CORP</li>
+                        <li>FPV GEAR</li>
+                        <li>DRONE LAB</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Flight Logs Section (Always Visible) -->
         <div class="flight-logs-section">
             <h3 class="logs-title">> TERMINAL_DE_ACTIVIDAD</h3>
             <p class="logs-description">Próximamente: Sincroniza tus logs de vuelo con los hashtags de tu rama para acumular XP y subir de nivel en el sistema.</p>
@@ -1257,34 +1307,6 @@
             </div>
         </div>
 
-        <!-- Info Grid -->
-        <div class="info-grid" id="crew">
-            <div class="info-card">
-                <div class="info-icon">
-                    <svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="35" r="12" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M35 75C35 65 42 55 50 55C58 55 65 65 65 75" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-                </div>
-                <h3 class="info-title">CREW ACTIVA</h3>
-                <ul class="info-list">
-                    <li>PILOTOS CERT.</li>
-                    <li>TÉCNICOS UAS</li>
-                    <li>DEVS</li>
-                    <li>INSTRUCTORES</li>
-                </ul>
-            </div>
-
-            <div class="info-card">
-                <div class="info-icon">
-                    <svg viewBox="0 0 100 100" fill="none"><rect x="20" y="30" width="60" height="40" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="20" y1="45" x2="80" y2="45" stroke="currentColor" stroke-width="1"/></svg>
-                </div>
-                <h3 class="info-title">PARTNERS</h3>
-                <ul class="info-list">
-                    <li>TECH CORP</li>
-                    <li>FPV GEAR</li>
-                    <li>DRONE LAB</li>
-                </ul>
-            </div>
-        </div>
-
         <!-- Footer -->
         <footer>
             <div class="social-links">
@@ -1292,7 +1314,7 @@
                 <a href="#" class="social-btn">Discord</a>
                 <a href="#" class="social-btn">YouTube</a>
             </div>
-            <p class="copyright">© 2026 MODO 2 ASSOCIATION // ART. 16 COMPLIANT // SYSTEM ONLINE</p>
+            <p class="copyright">© 2026 MODO 2 Asociación // ART. 16 COMPLIANT // SISTEMA EN LÍNEA</p>
         </footer>
     </div>
 
@@ -1331,6 +1353,73 @@
     </div>
 
     <script>
+        // XP System with localStorage
+        let xp = parseInt(localStorage.getItem('modo2_xp')) || 0;
+        const maxXP = 1000;
+        let xpPopupShown = localStorage.getItem('modo2_xp_popup_shown') || 'false';
+
+        function updateXP() {
+            // Add 1 XP per visit
+            xp = Math.min(xp + 1, maxXP);
+            localStorage.setItem('modo2_xp', xp);
+            
+            // Update display
+            const xpFill = document.getElementById('xpFill');
+            const xpText = document.getElementById('xpText');
+            const percentage = (xp / maxXP) * 100;
+            
+            xpFill.style.width = percentage + '%';
+            xpText.textContent = xp + ' / ' + maxXP + ' XP';
+            
+            // Check if maxed and popup not shown
+            if (xp >= maxXP && xpPopupShown !== 'true') {
+                showXpPopup();
+            }
+            
+            // Add maxed class for animation
+            if (xp >= maxXP) {
+                xpFill.classList.add('maxed');
+            }
+        }
+
+        function showXpPopup() {
+            document.getElementById('xpPopup').classList.add('active');
+            document.getElementById('xpPopupOverlay').classList.add('active');
+            localStorage.setItem('modo2_xp_popup_shown', 'true');
+        }
+
+        function closeXpPopup() {
+            document.getElementById('xpPopup').classList.remove('active');
+            document.getElementById('xpPopupOverlay').classList.remove('active');
+        }
+
+        // Close popup on overlay click
+        document.getElementById('xpPopupOverlay').addEventListener('click', closeXpPopup);
+
+        // Page Navigation
+        function showHome() {
+            document.querySelectorAll('.content-page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById('home-page').classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showPage(pageId) {
+            document.querySelectorAll('.content-page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId + '-page').classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // Retype text when showing page
+            setTimeout(() => {
+                if (pageId === 'protocolo') typeWriter('typewriter-1', texts['typewriter-1']);
+                if (pageId === 'normativa') typeWriter('typewriter-2', texts['typewriter-2']);
+                if (pageId === 'operaciones') typeWriter('typewriter-3', texts['typewriter-3']);
+            }, 100);
+        }
+
         // Drone Trail Animation
         const colors = ['#00f2ff', '#ff0055', '#00f2ff', '#008080'];
         const trailsContainer = document.getElementById('drone-trails-container');
@@ -1394,13 +1483,14 @@
 
         // Typewriter Effect
         const texts = {
-            'typewriter-1': "Somos una 'Crew' de élite dedicada a la profesionalización del vuelo FPV en Aragón. Nuestra misión es elevar el estándar técnico y garantizar la legalidad operativa bajo el Artículo 16. No somos solo pilotos; somos operadores de sistemas aéreos no tripulados.",
+            'typewriter-1': "Somos una 'Crew' de élite dedicada a la profesionalización del vuelo con UAS en Aragón. Nuestra misión es elevar el estándar técnico y garantizar la legalidad operativa bajo el Artículo 16. No somos solo pilotos; somos operadores de sistemas aéreos no tripulados.",
             'typewriter-2': "El cumplimiento es nuestra prioridad. Todas las operaciones se realizan bajo estricta normativa AESA. Protocolos de seguridad activos. Zona de exclusión aérea respetada. Seguro de responsabilidad civil verificado.",
             'typewriter-3': "Base de operaciones Sector Cariñena (ZGU) en proceso de habilitación - gestiones municipales en curso. Actividades, formación y talleres semanales. Implementación de tecnologías emergentes del sector UAS."
         };
 
         function typeWriter(elementId, text, speed = 20) {
             const element = document.getElementById(elementId);
+            if (!element) return;
             let i = 0;
             element.innerHTML = ""; 
 
@@ -1436,9 +1526,10 @@
 
         // Initialize
         window.addEventListener('load', () => {
-            setTimeout(() => typeWriter('typewriter-1', texts['typewriter-1']), 500);
-            setTimeout(() => typeWriter('typewriter-2', texts['typewriter-2']), 1500);
-            setTimeout(() => typeWriter('typewriter-3', texts['typewriter-3']), 2500);
+            updateXP();
+            typeWriter('typewriter-1', texts['typewriter-1']);
+            typeWriter('typewriter-2', texts['typewriter-2']);
+            typeWriter('typewriter-3', texts['typewriter-3']);
         });
     </script>
 </body>
