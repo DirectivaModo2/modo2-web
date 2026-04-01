@@ -1,4 +1,19 @@
-<!DOCTYPE html>
+
+                        <!DOCTYPE html>
+                        <html lang="en">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <style>
+                body {
+                  background-color: white; /* Ensure the iframe has a white background */
+                }
+
+                
+              </style>
+                        </head>
+                        <body>
+                            <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -15,1473 +30,7 @@
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 
-    <style>
-        :root {
-            --cyan: #00f2ff;
-            --cyan-dim: rgba(0, 242, 255, 0.15);
-            --cyan-glow: rgba(0, 242, 255, 0.4);
-            --magenta: #ff0055;
-            --magenta-glow: rgba(255, 0, 85, 0.4);
-            --amber: #ffb800;
-            --amber-glow: rgba(255, 184, 0, 0.4);
-            --green: #00ff88;
-            --green-glow: rgba(0, 255, 136, 0.4);
-            --black: #020405;
-            --black-panel: #050a0c;
-            --white: #e0e6ed;
-            --gray: #6b7c85;
-            --font-display: 'Orbitron', sans-serif;
-            --font-mono: 'Share Tech Mono', monospace;
-            --font-body: 'Titillium Web', sans-serif;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            cursor: crosshair;
-        }
-
-        body {
-            background-color: var(--black);
-            background-image: 
-                radial-gradient(circle at 15% 25%, rgba(0, 242, 255, 0.06) 0%, transparent 35%),
-                radial-gradient(circle at 85% 75%, rgba(255, 0, 85, 0.04) 0%, transparent 35%),
-                linear-gradient(180deg, var(--black) 0%, #030608 100%);
-            color: var(--white);
-            font-family: var(--font-body);
-            overflow-x: hidden;
-            line-height: 1.7;
-            min-height: 100vh;
-        }
-
-        .scanlines {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0px, rgba(0, 0, 0, 0.1) 1px, transparent 1px, transparent 2px);
-            z-index: 999;
-            pointer-events: none;
-            opacity: 0.5;
-        }
-
-        .container {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        h1, h2, h3, h4 {
-            font-family: var(--font-display);
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: var(--white);
-        }
-
-        .mono {
-            font-family: var(--font-mono);
-            font-size: 0.85rem;
-            letter-spacing: 0.08em;
-            color: var(--cyan);
-        }
-
-        .mono-magenta {
-            font-family: var(--font-mono);
-            font-size: 0.85rem;
-            letter-spacing: 0.08em;
-            color: var(--magenta);
-        }
-
-        .mono-amber {
-            font-family: var(--font-mono);
-            font-size: 0.85rem;
-            letter-spacing: 0.08em;
-            color: var(--amber);
-        }
-
-        .mono-green {
-            font-family: var(--font-mono);
-            font-size: 0.85rem;
-            letter-spacing: 0.08em;
-            color: var(--green);
-        }
-
-        .text-white { color: var(--white); }
-        .text-cyan { color: var(--cyan); }
-        .text-magenta { color: var(--magenta); }
-        .text-amber { color: var(--amber); }
-        .text-green { color: var(--green); }
-
-        /* Glitch Effect */
-        .glitch-wrapper {
-            position: relative;
-            display: inline-block;
-        }
-
-        .glitch {
-            position: relative;
-            color: var(--white);
-        }
-
-        .glitch::before,
-        .glitch::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .glitch::before {
-            left: 2px;
-            text-shadow: -2px 0 var(--magenta);
-            clip: rect(44px, 450px, 56px, 0);
-            animation: glitch-anim 5s infinite linear alternate-reverse;
-        }
-
-        .glitch::after {
-            left: -2px;
-            text-shadow: -2px 0 var(--cyan);
-            clip: rect(44px, 450px, 56px, 0);
-            animation: glitch-anim2 5s infinite linear alternate-reverse;
-        }
-
-        @keyframes glitch-anim {
-            0% { clip: rect(31px, 9999px, 91px, 0); }
-            5% { clip: rect(72px, 9999px, 16px, 0); }
-            10% { clip: rect(5px, 9999px, 86px, 0); }
-            15% { clip: rect(69px, 9999px, 12px, 0); }
-            20% { clip: rect(24px, 9999px, 63px, 0); }
-            25% { clip: rect(81px, 9999px, 35px, 0); }
-            30% { clip: rect(14px, 9999px, 79px, 0); }
-            35% { clip: rect(57px, 9999px, 21px, 0); }
-            40% { clip: rect(93px, 9999px, 48px, 0); }
-            45% { clip: rect(36px, 9999px, 67px, 0); }
-            50% { clip: rect(78px, 9999px, 9px, 0); }
-            55% { clip: rect(2px, 9999px, 84px, 0); }
-            60% { clip: rect(65px, 9999px, 33px, 0); }
-            65% { clip: rect(19px, 9999px, 71px, 0); }
-            70% { clip: rect(87px, 9999px, 4px, 0); }
-            75% { clip: rect(42px, 9999px, 58px, 0); }
-            80% { clip: rect(96px, 9999px, 27px, 0); }
-            85% { clip: rect(11px, 9999px, 76px, 0); }
-            90% { clip: rect(54px, 9999px, 15px, 0); }
-            95% { clip: rect(89px, 9999px, 43px, 0); }
-            100% { clip: rect(33px, 9999px, 62px, 0); }
-        }
-
-        @keyframes glitch-anim2 {
-            0% { clip: rect(65px, 9999px, 19px, 0); }
-            5% { clip: rect(12px, 9999px, 74px, 0); }
-            10% { clip: rect(87px, 9999px, 36px, 0); }
-            15% { clip: rect(29px, 9999px, 91px, 0); }
-            20% { clip: rect(76px, 9999px, 8px, 0); }
-            25% { clip: rect(4px, 9999px, 53px, 0); }
-            30% { clip: rect(98px, 9999px, 27px, 0); }
-            35% { clip: rect(41px, 9999px, 69px, 0); }
-            40% { clip: rect(17px, 9999px, 82px, 0); }
-            45% { clip: rect(73px, 9999px, 14px, 0); }
-            50% { clip: rect(26px, 9999px, 95px, 0); }
-            55% { clip: rect(84px, 9999px, 31px, 0); }
-            60% { clip: rect(9px, 9999px, 67px, 0); }
-            65% { clip: rect(52px, 9999px, 18px, 0); }
-            70% { clip: rect(91px, 9999px, 46px, 0); }
-            75% { clip: rect(38px, 9999px, 79px, 0); }
-            80% { clip: rect(15px, 9999px, 54px, 0); }
-            85% { clip: rect(69px, 9999px, 23px, 0); }
-            90% { clip: rect(3px, 9999px, 88px, 0); }
-            95% { clip: rect(57px, 9999px, 35px, 0); }
-            100% { clip: rect(22px, 9999px, 71px, 0); }
-        }
-
-        /* Header */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 0;
-            border-bottom: 1px solid rgba(0, 242, 255, 0.2);
-            margin-bottom: 2rem;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            text-decoration: none;
-        }
-
-        .logo-svg {
-            width: 45px;
-            height: 52px;
-        }
-
-        .logo-hexagon {
-            transform-origin: center;
-            animation: rotateLogo 25s linear infinite;
-        }
-
-        @keyframes rotateLogo {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .brand-name {
-            font-family: var(--font-display);
-            font-size: 1.8rem;
-            font-weight: 900;
-            letter-spacing: 0.25em;
-        }
-
-        .brand-white { color: var(--white); }
-        .brand-cyan { 
-            color: var(--cyan); 
-            text-shadow: 0 0 15px var(--cyan-glow);
-        }
-
-        .header-nav {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .nav-icon-wrapper {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            cursor: pointer;
-            text-decoration: none;
-            color: var(--gray);
-            opacity: 0.7;
-            transition: all 0.3s ease;
-        }
-
-        .nav-icon-wrapper:hover {
-            opacity: 1;
-            color: var(--cyan);
-        }
-
-        .nav-icon-wrapper svg {
-            width: 22px;
-            height: 22px;
-            stroke: currentColor;
-            fill: none;
-            stroke-width: 1.5;
-        }
-
-        .nav-icon-wrapper::after {
-            content: '';
-            position: absolute;
-            bottom: -6px;
-            left: 50%;
-            width: 0;
-            height: 1px;
-            background: var(--cyan);
-            transition: width 0.3s ease, left 0.3s ease;
-        }
-
-        .nav-icon-wrapper:hover::after {
-            width: 100%;
-            left: 0;
-        }
-
-        /* User Dashboard with Login */
-        .user-dashboard {
-            background: var(--black-panel);
-            border: 1px solid rgba(0, 242, 255, 0.2);
-            padding: 1.5rem 2rem;
-            margin-bottom: 2rem;
-            clip-path: polygon(
-                15px 0, 100% 0, 
-                100% calc(100% - 15px), calc(100% - 15px) 100%, 
-                0 100%, 0 15px
-            );
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-        }
-
-        .user-info {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .user-avatar {
-            width: 50px;
-            height: 50px;
-            border: 2px solid var(--cyan);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0, 242, 255, 0.1);
-        }
-
-        .user-avatar svg {
-            width: 28px;
-            height: 28px;
-            stroke: var(--cyan);
-        }
-
-        .user-details h4 {
-            font-size: 1rem;
-            margin-bottom: 0.3rem;
-            color: var(--white);
-        }
-
-        .user-level {
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            color: var(--amber);
-        }
-
-        .user-rank {
-            font-family: var(--font-mono);
-            font-size: 0.65rem;
-            color: var(--gray);
-            margin-top: 0.2rem;
-        }
-
-        .login-btn {
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            padding: 0.5rem 1.5rem;
-            background: transparent;
-            border: 1px solid var(--magenta);
-            color: var(--magenta);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .login-btn:hover {
-            background: var(--magenta);
-            color: var(--white);
-            box-shadow: 0 0 15px var(--magenta-glow);
-        }
-
-        .logout-btn {
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            padding: 0.5rem 1.5rem;
-            background: transparent;
-            border: 1px solid var(--cyan);
-            color: var(--cyan);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .logout-btn:hover {
-            background: var(--cyan);
-            color: var(--black);
-            box-shadow: 0 0 15px var(--cyan-glow);
-        }
-
-        .xp-bar-container {
-            width: 300px;
-        }
-
-        .xp-label {
-            font-family: var(--font-mono);
-            font-size: 0.7rem;
-            color: var(--gray);
-            margin-bottom: 0.3rem;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .xp-bar {
-            height: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .xp-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--cyan), #00a8ff);
-            width: 0%;
-            border-radius: 4px;
-            position: relative;
-            transition: width 0.5s ease;
-        }
-
-        .xp-fill.maxed {
-            animation: xpPulse 1s ease-in-out infinite;
-        }
-
-        @keyframes xpPulse {
-            0%, 100% { box-shadow: 0 0 5px var(--cyan-glow); }
-            50% { box-shadow: 0 0 15px var(--cyan-glow); }
-        }
-
-        .status-badge {
-            font-family: var(--font-mono);
-            font-size: 0.7rem;
-            padding: 0.4rem 1rem;
-            border: 1px solid var(--magenta);
-            color: var(--magenta);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            background: rgba(255, 0, 85, 0.05);
-        }
-
-        .status-badge:hover {
-            background: rgba(255, 0, 85, 0.15);
-            box-shadow: 0 0 15px var(--magenta-glow);
-        }
-
-        .status-badge.connected {
-            border-color: var(--green);
-            color: var(--green);
-            background: rgba(0, 255, 136, 0.05);
-        }
-
-        .status-badge.pending {
-            border-color: var(--amber);
-            color: var(--amber);
-            background: rgba(255, 184, 0, 0.05);
-            animation: pulse-amber 2s infinite;
-        }
-
-        @keyframes pulse-amber {
-            0%, 100% { box-shadow: 0 0 5px var(--amber-glow); }
-            50% { box-shadow: 0 0 15px var(--amber-glow); }
-        }
-
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            padding: 2rem 0 3rem 0;
-            position: relative;
-        }
-
-        .system-command {
-            font-family: var(--font-mono);
-            font-size: 0.9rem;
-            margin-bottom: 2rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-        }
-
-        .system-command::before {
-            content: '> ';
-            color: var(--magenta);
-        }
-
-        /* Recruitment Counter - INVERTED LOGIC */
-        .recruitment-counter {
-            background: rgba(255, 0, 85, 0.05);
-            border: 1px solid var(--magenta);
-            padding: 1.5rem 2rem;
-            margin: 1.5rem auto;
-            max-width: 650px;
-            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
-            animation: counter-pulse 3s infinite;
-        }
-
-        @keyframes counter-pulse {
-            0%, 100% { box-shadow: 0 0 10px rgba(255, 0, 85, 0.2); }
-            50% { box-shadow: 0 0 25px rgba(255, 0, 85, 0.4); }
-        }
-
-        .counter-header {
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            margin-bottom: 1rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--magenta);
-        }
-
-        .counter-main {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .counter-number {
-            font-family: var(--font-display);
-            font-size: 3.5rem;
-            font-weight: 900;
-            color: var(--magenta);
-            text-shadow: 0 0 25px var(--magenta-glow);
-            line-height: 1;
-        }
-
-        .counter-label {
-            font-family: var(--font-mono);
-            font-size: 0.85rem;
-            color: var(--white);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            max-width: 200px;
-            line-height: 1.6;
-        }
-
-        .counter-subtext {
-            font-family: var(--font-mono);
-            font-size: 0.65rem;
-            color: var(--gray);
-            margin-top: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        .status-available {
-            font-family: var(--font-mono);
-            font-size: 0.7rem;
-            color: var(--magenta);
-            margin-top: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-        }
-
-        .status-available::before {
-            content: '⚠ ';
-            color: var(--magenta);
-            animation: blink 1s infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
-        }
-
-        /* Icon Navigation */
-        .icon-nav-row {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 2.5rem;
-            margin: 1.5rem 0 1rem 0;
-            flex-wrap: wrap;
-        }
-
-        .icon-nav-item {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-            text-decoration: none;
-            color: var(--gray);
-            transition: all 0.3s ease;
-            opacity: 0.6;
-            cursor: pointer;
-        }
-
-        .icon-nav-item:hover {
-            opacity: 1;
-            color: var(--cyan);
-            transform: translateY(-3px);
-        }
-
-        .icon-nav-item svg {
-            width: 38px;
-            height: 38px;
-            stroke: currentColor;
-            fill: none;
-            stroke-width: 1.2;
-        }
-
-        .icon-nav-label {
-            position: absolute;
-            bottom: -22px;
-            font-family: var(--font-mono);
-            font-size: 0.65rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--cyan);
-            opacity: 0;
-            transform: translateY(5px);
-            transition: all 0.3s ease;
-            white-space: nowrap;
-        }
-
-        .icon-nav-item:hover .icon-nav-label {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Join Button */
-        .join-btn-wrapper {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-            cursor: pointer;
-            opacity: 0.6;
-            transition: all 0.3s ease;
-        }
-
-        .join-btn-wrapper:hover {
-            opacity: 1;
-            transform: translateY(-3px);
-        }
-
-        .join-btn-icon {
-            width: 44px;
-            height: 44px;
-            background: var(--cyan);
-            clip-path: polygon(15% 0, 100% 0, 100% 70%, 85% 100%, 0 100%, 0 30%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 15px var(--cyan-glow);
-        }
-
-        .join-btn-wrapper:hover .join-btn-icon {
-            background: var(--white);
-            box-shadow: 0 0 25px var(--cyan-glow);
-        }
-
-        .join-btn-icon svg {
-            width: 24px;
-            height: 24px;
-            stroke: var(--black);
-            fill: none;
-            stroke-width: 2.5;
-        }
-
-        .join-btn-label {
-            position: absolute;
-            bottom: -22px;
-            font-family: var(--font-mono);
-            font-size: 0.65rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--cyan);
-            opacity: 0;
-            transform: translateY(5px);
-            transition: all 0.3s ease;
-            white-space: nowrap;
-        }
-
-        .join-btn-wrapper:hover .join-btn-label {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* CTA Section */
-        .cta-section {
-            text-align: center;
-            padding: 1rem 0;
-            margin-bottom: 3rem;
-        }
-
-        .cta-subtitle {
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            color: var(--cyan);
-            letter-spacing: 0.15em;
-            opacity: 0.8;
-            text-transform: uppercase;
-        }
-
-        /* Content Pages */
-        .content-page {
-            display: none;
-            padding: 3rem 0;
-        }
-
-        .content-page.active {
-            display: block;
-        }
-
-        .content-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        @media(min-width: 768px) {
-            .content-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            .full-width {
-                grid-column: span 2;
-            }
-        }
-
-        .hud-panel {
-            background: var(--black-panel);
-            border: 1px solid rgba(0, 242, 255, 0.15);
-            position: relative;
-            padding: 2rem;
-            transition: all 0.3s ease;
-        }
-
-        .hud-panel::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 15px; height: 15px;
-            border-top: 2px solid var(--cyan);
-            border-left: 2px solid var(--cyan);
-        }
-
-        .hud-panel::after {
-            content: '';
-            position: absolute;
-            bottom: 0; right: 0;
-            width: 15px; height: 15px;
-            border-bottom: 2px solid var(--cyan);
-            border-right: 2px solid var(--cyan);
-        }
-
-        .hud-panel:hover {
-            border-color: var(--cyan);
-            box-shadow: 0 0 30px rgba(0, 242, 255, 0.1);
-        }
-
-        .section-title {
-            font-size: 1.1rem;
-            color: var(--cyan);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            font-family: var(--font-mono);
-            letter-spacing: 0.1em;
-        }
-
-        .section-title svg {
-            width: 18px;
-            height: 18px;
-            stroke: var(--cyan);
-        }
-
-        .terminal-text {
-            font-family: var(--font-mono);
-            color: rgba(224, 230, 237, 0.85);
-            font-size: 0.9rem;
-            line-height: 1.8;
-        }
-
-        .terminal-text ul {
-            list-style: none;
-            margin: 1rem 0;
-        }
-
-        .terminal-text li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid rgba(0, 242, 255, 0.1);
-        }
-
-        .terminal-text li::before {
-            content: '> ';
-            color: var(--cyan);
-        }
-
-        .cursor {
-            display: inline-block;
-            width: 8px;
-            height: 16px;
-            background: var(--cyan);
-            animation: blink 1s infinite;
-            margin-left: 5px;
-        }
-
-        /* Founder Benefits Box */
-        .founder-benefits {
-            background: rgba(255, 184, 0, 0.05);
-            border: 1px solid var(--amber);
-            padding: 2rem;
-            margin: 2rem 0;
-        }
-
-        .benefits-title {
-            font-family: var(--font-mono);
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            text-align: center;
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1rem;
-        }
-
-        @media(min-width: 768px) {
-            .benefits-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .benefit-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.8rem;
-        }
-
-        .benefit-icon {
-            color: var(--amber);
-            font-size: 1.2rem;
-        }
-
-        .benefit-text {
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            color: var(--white);
-            line-height: 1.6;
-        }
-
-        /* Pricing Box */
-        .pricing-box {
-            background: rgba(0, 242, 255, 0.05);
-            border: 1px solid var(--cyan);
-            padding: 2rem;
-            text-align: center;
-            margin: 2rem 0;
-        }
-
-        .pricing-amount {
-            font-family: var(--font-display);
-            font-size: 3rem;
-            color: var(--cyan);
-            text-shadow: 0 0 20px var(--cyan-glow);
-            margin-bottom: 0.5rem;
-        }
-
-        .pricing-period {
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            color: var(--gray);
-            margin-bottom: 1rem;
-        }
-
-        .pricing-sub {
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            color: var(--white);
-            opacity: 0.8;
-        }
-
-        /* Financial Transparency Box */
-        .transparency-box {
-            background: rgba(0, 255, 136, 0.05);
-            border: 1px solid var(--green);
-            padding: 2rem;
-            margin: 2rem 0;
-        }
-
-        .transparency-title {
-            font-family: var(--font-mono);
-            font-size: 0.9rem;
-            color: var(--green);
-            margin-bottom: 1.5rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            text-align: center;
-        }
-
-        .transparency-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1rem;
-        }
-
-        @media(min-width: 768px) {
-            .transparency-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .transparency-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.8rem;
-        }
-
-        .transparency-icon {
-            color: var(--green);
-            font-size: 1.2rem;
-        }
-
-        .transparency-text {
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            color: var(--white);
-            line-height: 1.6;
-        }
-
-        /* 12 Rings Specialization */
-        .rings-container {
-            margin: 2rem 0;
-        }
-
-        .rings-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-
-        @media(min-width: 768px) {
-            .rings-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .ring-group {
-            background: rgba(0, 242, 255, 0.03);
-            border: 1px solid rgba(0, 242, 255, 0.1);
-            padding: 1.5rem;
-        }
-
-        .ring-group-title {
-            font-family: var(--font-mono);
-            font-size: 0.85rem;
-            color: var(--cyan);
-            margin-bottom: 1rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            border-bottom: 1px solid rgba(0, 242, 255, 0.2);
-            padding-bottom: 0.5rem;
-        }
-
-        .ring-item {
-            margin-bottom: 1rem;
-        }
-
-        .ring-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .ring-name {
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            color: var(--white);
-            margin-bottom: 0.3rem;
-        }
-
-        .ring-name span {
-            color: var(--cyan);
-        }
-
-        .ring-desc {
-            font-family: var(--font-mono);
-            font-size: 0.7rem;
-            color: var(--gray);
-            line-height: 1.5;
-        }
-
-        /* Flight Logs Section */
-        .flight-logs-section {
-            background: var(--black-panel);
-            border: 1px solid rgba(0, 242, 255, 0.15);
-            padding: 2.5rem;
-            margin-bottom: 3rem;
-            text-align: center;
-        }
-
-        .logs-title {
-            font-size: 1.3rem;
-            color: var(--cyan);
-            margin-bottom: 1rem;
-            font-family: var(--font-mono);
-            letter-spacing: 0.15em;
-        }
-
-        .logs-description {
-            font-family: var(--font-mono);
-            font-size: 0.85rem;
-            color: var(--gray);
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-
-        .hashtags {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .hashtag {
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            color: var(--cyan);
-            padding: 0.5rem 1rem;
-            border: 1px solid rgba(0, 242, 255, 0.3);
-            background: rgba(0, 242, 255, 0.05);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        .hashtag:hover {
-            background: rgba(0, 242, 255, 0.15);
-            border-color: var(--cyan);
-        }
-
-        /* Info Grid */
-        .info-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2.5rem;
-            margin-bottom: 3rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            padding-top: 3rem;
-        }
-
-        @media(min-width: 768px) {
-            .info-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .info-card {
-            text-align: center;
-        }
-
-        .info-icon svg {
-            width: 45px;
-            height: 45px;
-            stroke: var(--cyan);
-        }
-
-        .info-title {
-            font-size: 1rem;
-            color: var(--cyan);
-            margin: 1.5rem 0 1rem 0;
-            letter-spacing: 0.2em;
-            font-family: var(--font-mono);
-        }
-
-        .info-list {
-            list-style: none;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-
-        .info-list li {
-            font-family: var(--font-mono);
-            font-size: 0.7rem;
-            color: rgba(224, 230, 237, 0.6);
-            padding: 0.35rem 0.9rem;
-            border: 1px solid rgba(0, 242, 255, 0.2);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-        }
-
-        /* Sector Status */
-        .sector-status {
-            font-family: var(--font-mono);
-            font-size: 0.7rem;
-            color: var(--amber);
-            margin-top: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            display: inline-block;
-            padding: 0.4rem 1rem;
-            border: 1px solid var(--amber);
-        }
-
-        .sector-status::before {
-            content: '🔒 ';
-        }
-
-        /* Footer */
-        footer {
-            border-top: 1px solid rgba(0, 242, 255, 0.1);
-            padding: 3rem 0;
-            margin-top: 3rem;
-            text-align: center;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .social-btn {
-            color: rgba(224, 230, 237, 0.4);
-            text-decoration: none;
-            font-size: 0.85rem;
-            transition: 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-family: var(--font-mono);
-        }
-
-        .social-btn:hover {
-            color: var(--cyan);
-            text-shadow: 0 0 10px var(--cyan-glow);
-        }
-
-        .copyright {
-            font-size: 0.65rem;
-            color: rgba(224, 230, 237, 0.2);
-            font-family: var(--font-mono);
-            letter-spacing: 0.1em;
-        }
-
-        /* Modal */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(2, 4, 5, 0.95);
-            backdrop-filter: blur(8px);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-        }
-
-        .modal-overlay.active {
-            display: flex;
-        }
-
-        .modal-content {
-            background: var(--black-panel);
-            border: 1px solid var(--cyan);
-            padding: 3rem;
-            max-width: 550px;
-            width: 90%;
-            position: relative;
-            box-shadow: 0 0 60px rgba(0, 242, 255, 0.15);
-            clip-path: polygon(
-                20px 0, 100% 0, 
-                100% calc(100% - 20px), calc(100% - 20px) 100%, 
-                0 100%, 0 20px
-            );
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 1rem;
-            right: 1.5rem;
-            font-size: 2rem;
-            color: var(--cyan);
-            cursor: pointer;
-            background: none;
-            border: none;
-            line-height: 1;
-        }
-
-        .modal-title {
-            font-size: 1.4rem;
-            color: var(--cyan);
-            margin-bottom: 2rem;
-            text-align: center;
-            letter-spacing: 0.2em;
-            font-family: var(--font-mono);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            color: var(--cyan);
-            margin-bottom: 0.5rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-        }
-
-        .form-group input,
-        .form-group select {
-            width: 100%;
-            padding: 12px;
-            background: rgba(0, 242, 255, 0.05);
-            border: 1px solid rgba(0, 242, 255, 0.2);
-            color: var(--white);
-            font-family: var(--font-mono);
-            font-size: 0.95rem;
-            transition: all 0.3s;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--cyan);
-            box-shadow: 0 0 15px rgba(0, 242, 255, 0.1);
-        }
-
-        .checkbox-group {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .checkbox-group input[type="checkbox"] {
-            width: auto;
-            accent-color: var(--cyan);
-        }
-
-        .checkbox-group label {
-            margin-bottom: 0;
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 1rem;
-            margin-top: 1rem;
-            background: var(--cyan);
-            color: var(--black);
-            border: none;
-            font-family: var(--font-display);
-            font-size: 0.9rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            letter-spacing: 0.15em;
-        }
-
-        .submit-btn:hover {
-            background: var(--white);
-            box-shadow: 0 0 30px var(--cyan-glow);
-        }
-
-        .submit-btn:disabled {
-            background: var(--gray);
-            cursor: not-allowed;
-            box-shadow: none;
-        }
-
-        /* XP Max Popup */
-        .xp-popup {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: var(--black-panel);
-            border: 2px solid var(--magenta);
-            padding: 2.5rem;
-            max-width: 450px;
-            width: 90%;
-            z-index: 3000;
-            clip-path: polygon(
-                20px 0, 100% 0, 
-                100% calc(100% - 20px), calc(100% - 20px) 100%, 
-                0 100%, 0 20px
-            );
-            box-shadow: 0 0 60px rgba(255, 0, 85, 0.3);
-            display: none;
-        }
-
-        .xp-popup.active {
-            display: block;
-            animation: popupSlide 0.4s ease-out;
-        }
-
-        @keyframes popupSlide {
-            from {
-                opacity: 0;
-                transform: translate(-50%, -60%);
-            }
-            to {
-                opacity: 1;
-                transform: translate(-50%, -50%);
-            }
-        }
-
-        .xp-popup-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 2999;
-            display: none;
-        }
-
-        .xp-popup-overlay.active {
-            display: block;
-        }
-
-        .xp-popup-title {
-            font-size: 1.3rem;
-            color: var(--magenta);
-            margin-bottom: 1rem;
-            text-align: center;
-            font-family: var(--font-mono);
-            letter-spacing: 0.15em;
-        }
-
-        .xp-popup-message {
-            font-family: var(--font-mono);
-            font-size: 0.85rem;
-            color: var(--white);
-            text-align: center;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-        }
-
-        .xp-popup-btn {
-            width: 100%;
-            padding: 1rem;
-            background: var(--magenta);
-            color: var(--white);
-            border: none;
-            font-family: var(--font-display);
-            font-size: 0.9rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            letter-spacing: 0.15em;
-        }
-
-        .xp-popup-btn:hover {
-            background: var(--white);
-            color: var(--magenta);
-            box-shadow: 0 0 30px var(--magenta-glow);
-        }
-
-        /* Login Modal */
-        .login-modal-content {
-            max-width: 400px;
-        }
-
-        /* Back Button */
-        .back-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            color: var(--cyan);
-            text-decoration: none;
-            margin-bottom: 2rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .back-button:hover {
-            color: var(--white);
-        }
-
-        .back-button svg {
-            width: 16px;
-            height: 16px;
-            stroke: currentColor;
-        }
-
-        /* Drone Trails */
-        .drone-trail {
-            position: fixed;
-            height: 1px;
-            border-radius: 2px;
-            z-index: 0;
-            pointer-events: none;
-            opacity: 0;
-        }
-
-        /* User Database Display */
-        .user-db-panel {
-            display: none;
-            background: var(--black-panel);
-            border: 1px solid var(--cyan);
-            padding: 2rem;
-            margin: 2rem 0;
-        }
-
-        .user-db-panel.active {
-            display: block;
-        }
-
-        .user-db-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-        }
-
-        .user-db-table th,
-        .user-db-table td {
-            padding: 0.8rem;
-            text-align: left;
-            border-bottom: 1px solid rgba(0, 242, 255, 0.1);
-        }
-
-        .user-db-table th {
-            color: var(--cyan);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        .user-db-table td {
-            color: var(--white);
-        }
-
-        /* Level Progress Display */
-        .level-display {
-            font-family: var(--font-display);
-            font-size: 1.2rem;
-            color: var(--cyan);
-            margin-top: 0.3rem;
-        }
-
-        /* Firebase Status Indicator */
-        .firebase-status {
-            position: fixed;
-            bottom: 10px;
-            right: 10px;
-            font-family: var(--font-mono);
-            font-size: 0.65rem;
-            padding: 0.3rem 0.8rem;
-            border: 1px solid var(--gray);
-            color: var(--gray);
-            z-index: 100;
-        }
-
-        .firebase-status.connected {
-            border-color: var(--green);
-            color: var(--green);
-        }
-
-        .firebase-status.error {
-            border-color: var(--magenta);
-            color: var(--magenta);
-        }
-
-        /* Responsive */
-        @media(max-width: 768px) {
-            .header-nav { gap: 1rem; }
-            .nav-icon-wrapper svg { width: 20px; height: 20px; }
-            .icon-nav-row { gap: 2rem; }
-            .container { padding: 0 1.5rem; }
-            .user-dashboard { flex-direction: column; align-items: flex-start; }
-            .xp-bar-container { width: 100%; }
-            .counter-main { flex-direction: column; gap: 1rem; }
-            .counter-number { font-size: 2.5rem; }
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
@@ -1567,10 +116,10 @@
                 </div>
                 <div class="level-display" id="levelDisplay">NIVEL 0</div>
             </div>
-            <button class="status-badge" id="loginBtn" onclick="openLoginModal()">INVITADO / ACCESO RESTRINGIDO</button>
+            <button class="status-badge" id="loginBtn">INVITADO / ACCESO RESTRINGIDO</button>
         </div>
 
-        <!-- User Database Panel (For verification) -->
+        <!-- User Database Panel -->
         <div class="user-db-panel" id="userDbPanel">
             <h3 class="section-title">> BASE_DE_DATOS_USUARIOS - FIRESTORE</h3>
             <p class="mono" style="margin-bottom: 1rem; color: var(--gray);">* Datos sincronizados con Firebase Mainframe</p>
@@ -1585,9 +134,7 @@
                         <th>XP</th>
                     </tr>
                 </thead>
-                <tbody id="userDbBody">
-                    <!-- Populated by JS -->
-                </tbody>
+                <tbody id="userDbBody"></tbody>
             </table>
         </div>
 
@@ -1596,7 +143,6 @@
             <section class="hero">
                 <p class="system-command">EJECUTANDO: <span class="text-white">PROYECTO_</span><span class="text-cyan">ORIGEN.EXE</span> // PROFESIONALIZACIÓN_UAS_ARAGÓN</p>
                 
-                <!-- Recruitment Counter - INVERTED: Shows available spots decreasing -->
                 <div class="recruitment-counter">
                     <div class="counter-header"><span class="text-magenta">RECLUTAMIENTO</span> <span class="text-white">PROYECTO ORIGEN</span></div>
                     <div class="counter-main">
@@ -1607,7 +153,6 @@
                     <div class="status-available">ESTADO: ABIERTO - CUPO DISPONIBLE</div>
                 </div>
 
-                <!-- Icon Navigation -->
                 <div class="icon-nav-row">
                     <a href="#" class="icon-nav-item" onclick="showPage('protocolo'); return false;">
                         <svg viewBox="0 0 100 100"><rect x="20" y="25" width="60" height="50" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="30" y1="40" x2="70" y2="40" stroke="currentColor" stroke-width="1"/><line x1="30" y1="55" x2="65" y2="55" stroke="currentColor" stroke-width="1"/></svg>
@@ -1626,7 +171,6 @@
                         <span class="icon-nav-label">CREW</span>
                     </a>
                     
-                    <!-- Join Button -->
                     <div class="join-btn-wrapper" onclick="openModal()">
                         <div class="join-btn-icon">
                             <svg viewBox="0 0 100 100"><path d="M50 30L50 70M30 50L70 50" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
@@ -1636,7 +180,6 @@
                 </div>
             </section>
 
-            <!-- CTA Section -->
             <div class="cta-section">
                 <p class="cta-subtitle">>> ESTE ES EL PRIMER PASO PARA DOMINAR EL AIRE <<</p>
             </div>
@@ -1656,14 +199,12 @@
                     </h2>
                     <div class="terminal-text" id="typewriter-1"></div><span class="cursor"></span>
                     
-                    <!-- Pricing Box -->
                     <div class="pricing-box">
                         <div class="pricing-amount">60€</div>
                         <div class="pricing-period">PRIMER AÑO // PROYECTO ORIGEN</div>
                         <div class="pricing-sub">A partir del segundo año: 40€ anuales</div>
                     </div>
 
-                    <!-- Founder Benefits -->
                     <div class="founder-benefits">
                         <h3 class="benefits-title">⚡ BENEFICIOS EXCLUSIVOS "NODO 0"</h3>
                         <div class="benefits-grid">
@@ -1686,13 +227,12 @@
                         </div>
                     </div>
 
-                    <!-- Financial Transparency -->
                     <div class="transparency-box">
                         <h3 class="transparency-title">📊 TRANSPARENCIA FINANCIERA - PROYECTO ORIGEN</h3>
                         <div class="transparency-grid">
                             <div class="transparency-item">
                                 <div class="transparency-icon">▸</div>
-                                <div class="transparency-text">Estudio SORA (Specific Operations Risk Assessment) - 35%</div>
+                                <div class="transparency-text">Estudio SORA - 35%</div>
                             </div>
                             <div class="transparency-item">
                                 <div class="transparency-icon">▸</div>
@@ -1700,7 +240,7 @@
                             </div>
                             <div class="transparency-item">
                                 <div class="transparency-icon">▸</div>
-                                <div class="transparency-text">Manuales Operativos Certificados - 20%</div>
+                                <div class="transparency-text">Manuales Operativos - 20%</div>
                             </div>
                             <div class="transparency-item">
                                 <div class="transparency-icon">▸</div>
@@ -1711,7 +251,6 @@
                                 <div class="transparency-text">Fondo de Reserva Legal - 5%</div>
                             </div>
                         </div>
-                        <p class="mono" style="margin-top: 1.5rem; color: var(--gray); text-align: center;">> Todos los socios fundadores recibirán informe trimestral de ejecución presupuestaria</p>
                     </div>
                 </div>
             </div>
@@ -1769,23 +308,22 @@
                     
                     <div class="founder-benefits" style="margin-top: 2rem; border-color: var(--cyan); background: rgba(0, 242, 255, 0.05);">
                         <h3 class="benefits-title" style="color: var(--cyan);">📋 DESTINO DEL CAPITAL - PROYECTO ORIGEN</h3>
-                        <p style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--white); margin-bottom: 1.5rem; text-align: center;">Parte del capital del Proyecto Origen va destinado a:</p>
                         <div class="benefits-grid">
                             <div class="benefit-item">
                                 <div class="benefit-icon" style="color: var(--cyan);">▸</div>
-                                <div class="benefit-text">Ejecución del Estudio SORA (Specific Operations Risk Assessment)</div>
+                                <div class="benefit-text">Ejecución del Estudio SORA</div>
                             </div>
                             <div class="benefit-item">
                                 <div class="benefit-icon" style="color: var(--cyan);">▸</div>
-                                <div class="benefit-text">Desarrollo de manuales operativos certificados</div>
+                                <div class="benefit-text">Manuales operativos certificados</div>
                             </div>
                             <div class="benefit-item">
                                 <div class="benefit-icon" style="color: var(--cyan);">▸</div>
-                                <div class="benefit-text">Seguro de Responsabilidad Civil de alta cobertura</div>
+                                <div class="benefit-text">Seguro RC de alta cobertura</div>
                             </div>
                             <div class="benefit-item">
                                 <div class="benefit-icon" style="color: var(--cyan);">▸</div>
-                                <div class="benefit-text">Operación bajo amparo del Artículo 16</div>
+                                <div class="benefit-text">Operación bajo amparo del Art. 16</div>
                             </div>
                         </div>
                     </div>
@@ -1807,86 +345,35 @@
                     </h2>
                     <div class="terminal-text">
                         <p>> CONCEPTO: EL ROL NO SE ELIGE, SE CULTIVA</p>
-                        <br>
-                        <p>A través de los reportes de vuelo con hashtags específicos, el sistema determina dinámicamente tu posición en el gráfico radial de 12 anillos de especialización:</p>
                     </div>
 
-                    <!-- 12 Rings Specialization -->
                     <div class="rings-container">
                         <div class="rings-grid">
-                            <!-- GRUPO ALFA -->
                             <div class="ring-group">
                                 <h3 class="ring-group-title">[ GRUPO ALFA: PLATAFORMAS BASE ]</h3>
-                                <div class="ring-item">
-                                    <div class="ring-name"><span>#FPV</span> (Táctica Manual)</div>
-                                    <div class="ring-desc">Vuelo inmersivo sin asistencias. Pura conexión entre piloto y máquina.</div>
-                                </div>
-                                <div class="ring-item">
-                                    <div class="ring-name"><span>#ESTABILIZADO</span> (Vuelo Asistido)</div>
-                                    <div class="ring-desc">Operadores de sistemas inteligentes (DJI, Autel). Enfoque en seguridad, planificación de rutas y GPS.</div>
-                                </div>
+                                <div class="ring-item"><div class="ring-name"><span>#FPV</span></div><div class="ring-desc">Vuelo inmersivo sin asistencias.</div></div>
+                                <div class="ring-item"><div class="ring-name"><span>#ESTABILIZADO</span></div><div class="ring-desc">Operadores de sistemas inteligentes.</div></div>
                             </div>
-
-                            <!-- GRUPO BRAVO -->
                             <div class="ring-group">
                                 <h3 class="ring-group-title">[ GRUPO BRAVO: DISCIPLINAS DE VUELO ]</h3>
-                                <div class="ring-item">
-                                    <div class="ring-name"><span>#FREESTYLE</span> (Acrobacia)</div>
-                                    <div class="ring-desc">Dominio espacial, fluidez, trucos y superación de obstáculos en entornos complejos.</div>
-                                </div>
-                                <div class="ring-item">
-                                    <div class="ring-name"><span>#RACING</span> (Circuito)</div>
-                                    <div class="ring-desc">Reflejos, memoria muscular, trazadas perfectas y velocidad pura en track.</div>
-                                </div>
-                                <div class="ring-item">
-                                    <div class="ring-name"><span>#CINEMATIC</span> (Operación de Cámara)</div>
-                                    <div class="ring-desc">Vuelo enfocado en conseguir el plano perfecto, persecuciones suaves y encuadres dinámicos.</div>
-                                </div>
-                                <div class="ring-item">
-                                    <div class="ring-name"><span>#LONGRANGE</span> (Exploración)</div>
-                                    <div class="ring-desc">Gestión de telemetría, eficiencia de baterías, antenas y vuelos de larga distancia.</div>
-                                </div>
-                                <div class="ring-item">
-                                    <div class="ring-name"><span>#MICRO</span> (Infiltración)</div>
-                                    <div class="ring-desc">Especialistas en Tinywhoops y Cinewhoops. Vuelo en interiores y proximidad extrema.</div>
-                                </div>
+                                <div class="ring-item"><div class="ring-name"><span>#FREESTYLE</span></div><div class="ring-desc">Dominio espacial y acrobacia.</div></div>
+                                <div class="ring-item"><div class="ring-name"><span>#RACING</span></div><div class="ring-desc">Velocidad pura en track.</div></div>
+                                <div class="ring-item"><div class="ring-name"><span>#CINEMATIC</span></div><div class="ring-desc">Operación de cámara profesional.</div></div>
+                                <div class="ring-item"><div class="ring-name"><span>#LONGRANGE</span></div><div class="ring-desc">Exploración de larga distancia.</div></div>
+                                <div class="ring-item"><div class="ring-name"><span>#MICRO</span></div><div class="ring-desc">Infiltración en interiores.</div></div>
                             </div>
-
-                            <!-- GRUPO CHARLIE -->
                             <div class="ring-group">
-                                <h3 class="ring-group-title">[ GRUPO CHARLIE: TALLER E INGENIERÍA ]</h3>
-                                <div class="ring-item">
-                                    <div class="ring-name"><span>#BUILD</span> (Ensamblaje)</div>
-                                    <div class="ring-desc">Selección de componentes, impresión 3D de piezas y montaje de drones desde cero.</div>
-                                </div>
-                                <div class="ring-item">
-                                    <div class="ring-name"><span>#TUNING</span> (Calibración de Software)</div>
-                                    <div class="ring-desc">Ajuste de PIDs, flasheo de ESCs/FCs, configuración de emisoras (EdgeTX) y protocolos.</div>
-                                </div>
-                                <div class="ring-item">
-                                    <div class="ring-name"><span>#REPAIR</span> (Mantenimiento)</div>
-                                    <div class="ring-desc">Sobrevivir al crash. Soldar motores en el campo, cambiar brazos y diagnosticar fallos rápidos.</div>
-                                </div>
+                                <h3 class="ring-group-title">[ GRUPO CHARLIE: TALLER ]</h3>
+                                <div class="ring-item"><div class="ring-name"><span>#BUILD</span></div><div class="ring-desc">Ensamblaje desde cero.</div></div>
+                                <div class="ring-item"><div class="ring-name"><span>#TUNING</span></div><div class="ring-desc">Calibración de software.</div></div>
+                                <div class="ring-item"><div class="ring-name"><span>#REPAIR</span></div><div class="ring-desc">Mantenimiento y reparación.</div></div>
                             </div>
-
-                            <!-- GRUPO DELTA -->
                             <div class="ring-group">
-                                <h3 class="ring-group-title">[ GRUPO DELTA: POSTPRODUCCIÓN Y CREW ]</h3>
-                                <div class="ring-item">
-                                    <div class="ring-name"><span>#POSTPRO</span> (Audiovisual)</div>
-                                    <div class="ring-desc">Edición de vídeo, etalonaje, estabilización por software (Gyroflow) y diseño sonoro.</div>
-                                </div>
-                                <div class="ring-item">
-                                    <div class="ring-name"><span>#MENTOR</span> (Comunidad)</div>
-                                    <div class="ring-desc">Hacer de spotter, enseñar a volar a cadetes, organizar eventos o compartir tutoriales.</div>
-                                </div>
+                                <h3 class="ring-group-title">[ GRUPO DELTA: CREW ]</h3>
+                                <div class="ring-item"><div class="ring-name"><span>#POSTPRO</span></div><div class="ring-desc">Edición y postproducción.</div></div>
+                                <div class="ring-item"><div class="ring-name"><span>#MENTOR</span></div><div class="ring-desc">Comunidad y enseñanza.</div></div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="terminal-text" style="margin-top: 2rem;">
-                        <p>> CÓMO FUNCIONA:</p>
-                        <p>Si un socio sube un vídeo de un DJI Mini 3 grabando un paisaje y luego editado, usaría: #ESTABILIZADO, #CINEMATIC y #POSTPRO. El sistema sumaría puntos en esos tres ejes del radar, creando una forma visual única para su perfil.</p>
                     </div>
                 </div>
             </div>
@@ -1896,32 +383,22 @@
                         <svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="35" r="12" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M35 75C35 65 42 55 50 55C58 55 65 65 65 75" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
                     </div>
                     <h3 class="info-title">CREW ACTIVA</h3>
-                    <ul class="info-list">
-                        <li>PILOTOS CERT.</li>
-                        <li>TÉCNICOS UAS</li>
-                        <li>DEVS</li>
-                        <li>INSTRUCTORES</li>
-                    </ul>
+                    <ul class="info-list"><li>PILOTOS</li><li>TÉCNICOS</li><li>DEVS</li></ul>
                 </div>
-
                 <div class="info-card">
                     <div class="info-icon">
                         <svg viewBox="0 0 100 100" fill="none"><rect x="20" y="30" width="60" height="40" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="20" y1="45" x2="80" y2="45" stroke="currentColor" stroke-width="1"/></svg>
                     </div>
                     <h3 class="info-title">PARTNERS</h3>
-                    <ul class="info-list">
-                        <li>TECH CORP</li>
-                        <li>FPV GEAR</li>
-                        <li>DRONE LAB</li>
-                    </ul>
+                    <ul class="info-list"><li>TECH CORP</li><li>FPV GEAR</li><li>DRONE LAB</li></ul>
                 </div>
             </div>
         </div>
 
-        <!-- Flight Logs Section (Always Visible) -->
+        <!-- Flight Logs Section -->
         <div class="flight-logs-section">
             <h3 class="logs-title">> TERMINAL_DE_ACTIVIDAD</h3>
-            <p class="logs-description">Próximamente: Sincroniza tus logs de vuelo con los hashtags de tu rama para acumular XP y subir de nivel en el sistema.</p>
+            <p class="logs-description">Próximamente: Sincroniza tus logs de vuelo con los hashtags de tu rama para acumular XP.</p>
             <div class="hashtags">
                 <span class="hashtag">#MODO2_INCURSOR</span>
                 <span class="hashtag">#MODO2_ARQUITECTO</span>
@@ -1947,15 +424,15 @@
             <h2 class="modal-title">> INICIAR_PROTOCOLO_DE_INSCRIPCIÓN</h2>
             <form id="registerForm" onsubmit="handleRegister(event)">
                 <div class="form-group">
-                    <label>> IDENTIFICADOR (NOMBRE COMPLETO)</label>
+                    <label>> IDENTIFICADOR</label>
                     <input type="text" id="regName" required placeholder="CMDR_">
                 </div>
                 <div class="form-group">
-                    <label>> ENLACE DE COMUNICACIÓN (EMAIL)</label>
+                    <label>> EMAIL</label>
                     <input type="email" id="regEmail" required placeholder="email@dominio.com">
                 </div>
                 <div class="form-group">
-                    <label>> FRECUENCIA (TELÉFONO)</label>
+                    <label>> TELÉFONO</label>
                     <input type="tel" id="regPhone" required placeholder="+34 XXX XXX XXX">
                 </div>
                 <div class="form-group">
@@ -1963,16 +440,14 @@
                     <input type="password" id="regPassword" required placeholder="••••••••">
                 </div>
                 <div class="form-group">
-                    <label>> TIPO DE MEMBRESÍA</label>
+                    <label>> MEMBRESÍA</label>
                     <select id="regMembership" required>
-                        <option value="">SELECCIONAR RAMA...</option>
-                        <option value="founder">SOCIO FUNDADOR - 60€ PRIMER AÑO [NODO 0]</option>
+                        <option value="">SELECCIONAR...</option>
+                        <option value="founder">SOCIO FUNDADOR - 60€ [NODO 0]</option>
                         <option value="standard">SOCIO ESTÁNDAR - 40€/AÑO</option>
                     </select>
                 </div>
-                <button type="submit" class="submit-btn" id="registerBtn">
-                    >> PROCEDER AL PAGO
-                </button>
+                <button type="submit" class="submit-btn" id="registerBtn">>> PROCEDER AL PAGO</button>
             </form>
         </div>
     </div>
@@ -1984,7 +459,7 @@
             <h2 class="modal-title">> ACCESO_DE_USUARIO</h2>
             <form id="loginForm" onsubmit="handleLogin(event)">
                 <div class="form-group">
-                    <label>> NOMBRE DE USUARIO / EMAIL</label>
+                    <label>> USUARIO / EMAIL</label>
                     <input type="text" id="loginUsername" required placeholder="CMDR_ o email">
                 </div>
                 <div class="form-group">
@@ -1995,9 +470,7 @@
                     <input type="checkbox" id="rememberMe">
                     <label for="rememberMe">RECORDAR USUARIO</label>
                 </div>
-                <button type="submit" class="submit-btn" id="loginBtnSubmit">
-                    >> CONECTAR
-                </button>
+                <button type="submit" class="submit-btn" id="loginBtnSubmit">>> CONECTAR</button>
             </form>
             <p class="mono" style="margin-top: 1rem; text-align: center; color: var(--gray);">
                 ¿Sin cuenta? <a href="#" onclick="closeLoginModal(); openModal();" style="color: var(--cyan);">REGISTRARSE</a>
@@ -2005,352 +478,335 @@
         </div>
     </div>
 
-    <script>
-        /* 
-         * ================================================================
-         * MODO 2 - FIREBASE MAINFRAME INTEGRATION
-         * ================================================================
-         * Firebase Config from Console
-         * Project: modo2-mainframe-b9f2e
-         * ================================================================
-         */
+    <!-- Main JavaScript File -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
 
-        // Firebase Configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyCkB54CuTQZ9sVj42eSIYjYA9s83WgTJHo",
-            authDomain: "modo2-mainframe-b9f2e.firebaseapp.com",
-            projectId: "modo2-mainframe-b9f2e",
-            storageBucket: "modo2-mainframe-b9f2e.firebasestorage.app",
-            messagingSenderId: "253905847546",
-            appId: "1:253905847546:web:718d87ae9f723ae39c3543"
-        };
 
-        // Initialize Firebase
-        let app, auth, db;
-        let firebaseInitialized = false;
 
-        try {
-            app = firebase.initializeApp(firebaseConfig);
-            auth = firebase.auth();
-            db = firebase.firestore();
-            firebaseInitialized = true;
-            updateFirebaseStatus('connected', 'MAINFRAME: CONECTADO');
-            console.log('>> FIREBASE MAINFRAME: ONLINE <<');
-        } catch (error) {
-            console.error('>> FIREBASE ERROR:', error);
-            updateFirebaseStatus('error', 'MAINFRAME: ERROR DE CONEXIÓN');
+              <script>
+                              // assets/js/main.js
+/* 
+ * ================================================================
+ * MODO 2 - FIREBASE MAINFRAME INTEGRATION
+ * ================================================================
+ * Project: modo2-mainframe-b9f2e
+ * ================================================================
+ */
+
+// Firebase Configuration
+const firebaseConfig = {
+    apiKey: "AIzaSyCkB54CuTQZ9sVj42eSIYjYA9s83WgTJHo",
+    authDomain: "modo2-mainframe-b9f2e.firebaseapp.com",
+    projectId: "modo2-mainframe-b9f2e",
+    storageBucket: "modo2-mainframe-b9f2e.firebasestorage.app",
+    messagingSenderId: "253905847546",
+    appId: "1:253905847546:web:718d87ae9f723ae39c3543"
+};
+
+// Initialize Firebase
+let app, auth, db;
+let firebaseInitialized = false;
+
+try {
+    app = firebase.initializeApp(firebaseConfig);
+    auth = firebase.auth();
+    db = firebase.firestore();
+    firebaseInitialized = true;
+    updateFirebaseStatus('connected', 'MAINFRAME: CONECTADO');
+    console.log('>> FIREBASE MAINFRAME: ONLINE <<');
+} catch (error) {
+    console.error('>> FIREBASE ERROR:', error);
+    updateFirebaseStatus('error', 'MAINFRAME: ERROR DE CONEXIÓN');
+}
+
+function updateFirebaseStatus(status, text) {
+    const statusEl = document.getElementById('firebaseStatus');
+    if (statusEl) {
+        statusEl.textContent = text;
+        statusEl.className = 'firebase-status ' + status;
+    }
+}
+
+/* 
+ * ================================================================
+ * SISTEMA DE PROGRESIÓN MODO 2 - NIVELES 1-200
+ * ================================================================
+ */
+
+let xp = 0;
+let level = 0;
+let currentUserData = null;
+let xpPopupShown = localStorage.getItem('modo2_xp_popup_shown') || 'false';
+let availableSpots = 40;
+
+// Calculate level from XP (exponential curve)
+function calculateLevel(totalXP) {
+    let lvl = 0;
+    for (let i = 1; i <= 200; i++) {
+        const xpRequired = Math.floor(100 * Math.pow(i, 1.5));
+        if (totalXP < xpRequired) {
+            lvl = i - 1;
+            break;
         }
+        if (i === 200) lvl = 200;
+    }
+    return Math.max(0, lvl);
+}
 
-        function updateFirebaseStatus(status, text) {
-            const statusEl = document.getElementById('firebaseStatus');
-            statusEl.textContent = text;
-            statusEl.className = 'firebase-status ' + status;
-        }
+// Get rank based on level
+function getRank(lvl) {
+    if (lvl === 0) return 'INVITADO';
+    if (lvl >= 1 && lvl <= 3) return 'CADETE - RECLUTA';
+    if (lvl >= 4 && lvl <= 6) return 'CADETE - INICIADO';
+    if (lvl >= 7 && lvl <= 10) return 'CADETE - ASPIRANTE';
+    if (lvl >= 11 && lvl <= 15) return 'PILOTO NOVEL - OBSERVADOR';
+    if (lvl >= 16 && lvl <= 22) return 'PILOTO NOVEL - OBS. COTILLA';
+    if (lvl >= 23 && lvl <= 30) return 'PILOTO NOVEL - OBS. CONCIENZUDO';
+    if (lvl >= 31 && lvl <= 40) return 'ESPECIALISTA - TÉCNICO';
+    if (lvl >= 41 && lvl <= 50) return 'ESPECIALISTA - ANALISTA';
+    if (lvl >= 51 && lvl <= 60) return 'ESPECIALISTA - OPERADOR';
+    if (lvl >= 61 && lvl <= 80) return 'VETERANO';
+    if (lvl >= 81 && lvl <= 100) return 'VETERANO ÉLITE';
+    if (lvl >= 101 && lvl <= 150) return 'LEYENDA';
+    if (lvl >= 151) return 'LEYENDA VIVA';
+    return 'DESCONOCIDO';
+}
 
-        /* 
-         * ================================================================
-         * SISTEMA DE PROGRESIÓN MODO 2 - NIVELES 1-200
-         * ================================================================
-         */
+function getXPForNextLevel(lvl) {
+    return Math.floor(100 * Math.pow(lvl + 1, 1.5));
+}
 
-        let xp = 0;
-        let level = 0;
-        let currentUserData = null;
-        let xpPopupShown = localStorage.getItem('modo2_xp_popup_shown') || 'false';
+function updateXPDisplay(userXP = 0) {
+    xp = userXP;
+    level = calculateLevel(xp);
+    const nextLevelXP = getXPForNextLevel(level);
+    const prevLevelXP = level > 0 ? getXPForNextLevel(level - 1) : 0;
+    const xpInCurrentLevel = xp - prevLevelXP;
+    const xpNeeded = nextLevelXP - prevLevelXP;
+    const percentage = xpNeeded > 0 ? Math.min((xpInCurrentLevel / xpNeeded) * 100, 100) : 100;
+    
+    const xpFill = document.getElementById('xpFill');
+    const xpText = document.getElementById('xpText');
+    const levelDisplay = document.getElementById('levelDisplay');
+    const userRank = document.getElementById('userRank');
+    
+    if (xpFill) xpFill.style.width = percentage + '%';
+    if (xpText) xpText.textContent = xp.toLocaleString() + ' XP';
+    if (levelDisplay) levelDisplay.textContent = 'NIVEL ' + level;
+    if (userRank) userRank.textContent = getRank(level);
+    
+    if (xp >= 1000 && xpPopupShown !== 'true') showXpPopup();
+    if (level >= 100 && xpFill) xpFill.classList.add('maxed');
+}
 
-        // Recruitment Counter - INVERTED: Start at 40, decrease as people join
-        let availableSpots = 40;
-
-        // Calculate level from XP (exponential curve)
-        function calculateLevel(totalXP) {
-            let lvl = 0;
-            let xpRequired = 0;
-            
-            for (let i = 1; i <= 200; i++) {
-                xpRequired = Math.floor(100 * Math.pow(i, 1.5));
-                if (totalXP < xpRequired) {
-                    lvl = i - 1;
-                    break;
-                }
-                if (i === 200) {
-                    lvl = 200;
-                }
+function updateRecruitmentCounter() {
+    const counterEl = document.getElementById('availableSpots');
+    if (counterEl) {
+        let current = 40;
+        const target = availableSpots;
+        const interval = setInterval(() => {
+            if (current <= target) {
+                clearInterval(interval);
+            } else {
+                current--;
+                counterEl.textContent = current;
             }
+        }, 50);
+    }
+}
+
+function showXpPopup() {
+    document.getElementById('xpPopup').classList.add('active');
+    document.getElementById('xpPopupOverlay').classList.add('active');
+    localStorage.setItem('modo2_xp_popup_shown', 'true');
+}
+
+function closeXpPopup() {
+    document.getElementById('xpPopup').classList.remove('active');
+    document.getElementById('xpPopupOverlay').classList.remove('active');
+}
+
+// Modal Functions
+function openLoginModal() {
+    document.getElementById('loginModal').classList.add('active');
+}
+
+function closeLoginModal() {
+    document.getElementById('loginModal').classList.remove('active');
+}
+
+function openModal() {
+    document.getElementById('registerModal').classList.add('active');
+}
+
+function closeModal() {
+    document.getElementById('registerModal').classList.remove('active');
+}
+
+// Handle Registration with Firebase
+async function handleRegister(e) {
+    e.preventDefault();
+    
+    if (!firebaseInitialized) {
+        alert('>> ERROR: MAINFRAME DESCONECTADO <<');
+        return;
+    }
+
+    const btn = document.getElementById('registerBtn');
+    btn.disabled = true;
+    btn.textContent = '>> PROCESANDO...';
+
+    const name = document.getElementById('regName').value;
+    const email = document.getElementById('regEmail').value;
+    const phone = document.getElementById('regPhone').value;
+    const password = document.getElementById('regPassword').value;
+    const membership = document.getElementById('regMembership').value;
+
+    try {
+        const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+        const user = userCredential.user;
+
+        await db.collection('users').doc(user.uid).set({
+            displayName: name,
+            email: email,
+            phone: phone,
+            membership: membership,
+            level: 0,
+            xp: 0,
+            rank: 'INVITADO',
+            status: 'pending',
+            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+            lastLogin: firebase.firestore.FieldValue.serverTimestamp()
+        });
+
+        alert('>> REGISTRO COMPLETADO <<\n\nEstado: PENDIENTE DE VALIDACIÓN');
+        closeModal();
+        document.getElementById('registerForm').reset();
+
+    } catch (error) {
+        console.error('Registration error:', error);
+        alert('>> ERROR DE REGISTRO <<\n\n' + error.message);
+    } finally {
+        btn.disabled = false;
+        btn.textContent = '>> PROCEDER AL PAGO';
+    }
+}
+
+// Handle Login with Firebase
+async function handleLogin(e) {
+    e.preventDefault();
+    
+    if (!firebaseInitialized) {
+        alert('>> ERROR: MAINFRAME DESCONECTADO <<');
+        return;
+    }
+
+    const btn = document.getElementById('loginBtnSubmit');
+    btn.disabled = true;
+    btn.textContent = '>> AUTENTICANDO...';
+
+    const username = document.getElementById('loginUsername').value;
+    const password = document.getElementById('loginPassword').value;
+    const remember = document.getElementById('rememberMe').checked;
+
+    try {
+        if (remember) {
+            await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+        } else {
+            await auth.setPersistence(firebase.auth.Auth.Persistence.SESSION);
+        }
+
+        const userCredential = await auth.signInWithEmailAndPassword(username, password);
+        const user = userCredential.user;
+
+        const userDoc = await db.collection('users').doc(user.uid).get();
+        
+        if (userDoc.exists) {
+            currentUserData = userDoc.data();
             
-            return Math.max(0, lvl);
-        }
-
-        // Get rank based on level
-        function getRank(lvl) {
-            if (lvl === 0) return 'INVITADO';
-            if (lvl >= 1 && lvl <= 3) return 'CADETE - RECLUTA';
-            if (lvl >= 4 && lvl <= 6) return 'CADETE - INICIADO';
-            if (lvl >= 7 && lvl <= 10) return 'CADETE - ASPIRANTE';
-            if (lvl >= 11 && lvl <= 15) return 'PILOTO NOVEL - OBSERVADOR';
-            if (lvl >= 16 && lvl <= 22) return 'PILOTO NOVEL - OBS. COTILLA';
-            if (lvl >= 23 && lvl <= 30) return 'PILOTO NOVEL - OBS. CONCIENZUDO';
-            if (lvl >= 31 && lvl <= 40) return 'ESPECIALISTA - TÉCNICO';
-            if (lvl >= 41 && lvl <= 50) return 'ESPECIALISTA - ANALISTA';
-            if (lvl >= 51 && lvl <= 60) return 'ESPECIALISTA - OPERADOR';
-            if (lvl >= 61 && lvl <= 80) return 'VETERANO';
-            if (lvl >= 81 && lvl <= 100) return 'VETERANO ÉLITE';
-            if (lvl >= 101 && lvl <= 150) return 'LEYENDA';
-            if (lvl >= 151) return 'LEYENDA VIVA';
-            return 'DESCONOCIDO';
-        }
-
-        // Get XP required for next level
-        function getXPForNextLevel(lvl) {
-            return Math.floor(100 * Math.pow(lvl + 1, 1.5));
-        }
-
-        function updateXPDisplay(userXP = 0) {
-            xp = userXP;
-            level = calculateLevel(xp);
-            const nextLevelXP = getXPForNextLevel(level);
-            const prevLevelXP = level > 0 ? getXPForNextLevel(level - 1) : 0;
-            const xpInCurrentLevel = xp - prevLevelXP;
-            const xpNeeded = nextLevelXP - prevLevelXP;
-            const percentage = xpNeeded > 0 ? Math.min((xpInCurrentLevel / xpNeeded) * 100, 100) : 100;
+            document.getElementById('userName').textContent = (currentUserData.displayName || user.email).toUpperCase();
+            document.getElementById('userLevel').textContent = 'NIVEL ' + (currentUserData.level || 0);
             
-            const xpFill = document.getElementById('xpFill');
-            const xpText = document.getElementById('xpText');
-            const levelDisplay = document.getElementById('levelDisplay');
+            const loginBtn = document.getElementById('loginBtn');
+            loginBtn.textContent = currentUserData.status === 'connected' ? 'CONECTADO' : 'PENDIENTE DE VALIDACIÓN';
+            loginBtn.className = 'status-badge ' + (currentUserData.status === 'connected' ? 'connected' : 'pending');
+            loginBtn.onclick = handleLogout;
             
-            xpFill.style.width = percentage + '%';
-            xpText.textContent = xp.toLocaleString() + ' XP';
-            levelDisplay.textContent = 'NIVEL ' + level;
+            updateXPDisplay(currentUserData.xp || 0);
             
-            // Update rank display
-            const rank = getRank(level);
-            document.getElementById('userRank').textContent = rank;
-            
-            if (xp >= 1000 && xpPopupShown !== 'true') {
-                showXpPopup();
-            }
-            
-            if (level >= 100) {
-                xpFill.classList.add('maxed');
-            }
+            await db.collection('users').doc(user.uid).update({
+                lastLogin: firebase.firestore.FieldValue.serverTimestamp()
+            });
+
+            closeLoginModal();
+            displayUserDataInTable();
         }
 
-        function updateRecruitmentCounter() {
-            const counterEl = document.getElementById('availableSpots');
-            if (counterEl) {
-                let current = 40;
-                const target = availableSpots;
-                const interval = setInterval(() => {
-                    if (current <= target) {
-                        clearInterval(interval);
-                    } else {
-                        current--;
-                        counterEl.textContent = current;
-                    }
-                }, 50);
-            }
-        }
+    } catch (error) {
+        console.error('Login error:', error);
+        alert('>> ERROR DE AUTENTICACIÓN <<\n\n' + error.message);
+    } finally {
+        btn.disabled = false;
+        btn.textContent = '>> CONECTAR';
+    }
+}
 
-        function showXpPopup() {
-            document.getElementById('xpPopup').classList.add('active');
-            document.getElementById('xpPopupOverlay').classList.add('active');
-            localStorage.setItem('modo2_xp_popup_shown', 'true');
-        }
+// Handle Logout
+async function handleLogout() {
+    if (!firebaseInitialized) return;
+    
+    try {
+        await auth.signOut();
+        currentUserData = null;
+        
+        document.getElementById('userName').textContent = 'INVITADO';
+        document.getElementById('userLevel').textContent = 'ACCESO RESTRINGIDO';
+        document.getElementById('userRank').textContent = '--';
+        
+        const loginBtn = document.getElementById('loginBtn');
+        loginBtn.textContent = 'INVITADO / ACCESO RESTRINGIDO';
+        loginBtn.className = 'status-badge';
+        loginBtn.onclick = openLoginModal;
+        
+        updateXPDisplay(0);
+        
+        alert('>> SESIÓN CERRADA <<');
+    } catch (error) {
+        console.error('Logout error:', error);
+    }
+}
 
-        function closeXpPopup() {
-            document.getElementById('xpPopup').classList.remove('active');
-            document.getElementById('xpPopupOverlay').classList.remove('active');
-        }
-
-        document.getElementById('xpPopupOverlay').addEventListener('click', closeXpPopup);
-
-        // Firebase Auth Functions
-        function openLoginModal() {
-            document.getElementById('loginModal').classList.add('active');
-        }
-
-        function closeLoginModal() {
-            document.getElementById('loginModal').classList.remove('active');
-        }
-
-        function openModal() {
-            document.getElementById('registerModal').classList.add('active');
-        }
-
-        function closeModal() {
-            document.getElementById('registerModal').classList.remove('active');
-        }
-
-        // Handle Registration with Firebase
-        async function handleRegister(e) {
-            e.preventDefault();
-            
-            if (!firebaseInitialized) {
-                alert('>> ERROR: MAINFRAME DESCONECTADO <<\n\nInténtalo más tarde.');
-                return;
-            }
-
-            const btn = document.getElementById('registerBtn');
-            btn.disabled = true;
-            btn.textContent = '>> PROCESANDO...';
-
-            const name = document.getElementById('regName').value;
-            const email = document.getElementById('regEmail').value;
-            const phone = document.getElementById('regPhone').value;
-            const password = document.getElementById('regPassword').value;
-            const membership = document.getElementById('regMembership').value;
-
-            try {
-                // Create Firebase Auth user
-                const userCredential = await auth.createUserWithEmailAndPassword(email, password);
-                const user = userCredential.user;
-
-                // Create user document in Firestore
-                await db.collection('users').doc(user.uid).set({
-                    displayName: name,
-                    email: email,
-                    phone: phone,
-                    membership: membership,
-                    level: 0,
-                    xp: 0,
-                    rank: 'INVITADO',
-                    status: 'pending',
-                    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-                    lastLogin: firebase.firestore.FieldValue.serverTimestamp()
-                });
-
-                alert('>> REGISTRO COMPLETADO <<\n\nTu cuenta ha sido creada. Estado: PENDIENTE DE VALIDACIÓN\n\nRecibirás un email cuando tu cuenta sea aprobada por los administradores.');
-                closeModal();
+// Listen for auth state changes
+if (firebaseInitialized) {
+    auth.onAuthStateChanged(async (user) => {
+        if (user) {
+            const userDoc = await db.collection('users').doc(user.uid).get();
+            if (userDoc.exists) {
+                currentUserData = userDoc.data();
                 
-                // Reset form
-                document.getElementById('registerForm').reset();
-
-            } catch (error) {
-                console.error('Registration error:', error);
-                alert('>> ERROR DE REGISTRO <<\n\n' + error.message);
-            } finally {
-                btn.disabled = false;
-                btn.textContent = '>> PROCEDER AL PAGO';
-            }
-        }
-
-        // Handle Login with Firebase
-        async function handleLogin(e) {
-            e.preventDefault();
-            
-            if (!firebaseInitialized) {
-                alert('>> ERROR: MAINFRAME DESCONECTADO <<');
-                return;
-            }
-
-            const btn = document.getElementById('loginBtnSubmit');
-            btn.disabled = true;
-            btn.textContent = '>> AUTENTICANDO...';
-
-            const username = document.getElementById('loginUsername').value;
-            const password = document.getElementById('loginPassword').value;
-            const remember = document.getElementById('rememberMe').checked;
-
-            try {
-                // Set persistence based on remember me
-                if (remember) {
-                    await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
-                } else {
-                    await auth.setPersistence(firebase.auth.Auth.Persistence.SESSION);
-                }
-
-                // Sign in with email
-                const userCredential = await auth.signInWithEmailAndPassword(username, password);
-                const user = userCredential.user;
-
-                // Get user data from Firestore
-                const userDoc = await db.collection('users').doc(user.uid).get();
-                
-                if (userDoc.exists) {
-                    currentUserData = userDoc.data();
-                    
-                    // Update UI
-                    document.getElementById('userName').textContent = (currentUserData.displayName || user.email).toUpperCase();
-                    document.getElementById('userLevel').textContent = 'NIVEL ' + (currentUserData.level || 0);
-                    
-                    const loginBtn = document.getElementById('loginBtn');
-                    loginBtn.textContent = currentUserData.status === 'connected' ? 'CONECTADO' : 'PENDIENTE DE VALIDACIÓN';
-                    loginBtn.className = 'status-badge ' + (currentUserData.status === 'connected' ? 'connected' : 'pending');
-                    
-                    // Update XP display
-                    updateXPDisplay(currentUserData.xp || 0);
-                    
-                    // Update last login
-                    await db.collection('users').doc(user.uid).update({
-                        lastLogin: firebase.firestore.FieldValue.serverTimestamp()
-                    });
-
-                    closeLoginModal();
-                    updateUserDbDisplay();
-                }
-
-            } catch (error) {
-                console.error('Login error:', error);
-                alert('>> ERROR DE AUTENTICACIÓN <<\n\n' + error.message);
-            } finally {
-                btn.disabled = false;
-                btn.textContent = '>> CONECTAR';
-            }
-        }
-
-        // Handle Logout
-        async function handleLogout() {
-            if (!firebaseInitialized) return;
-            
-            try {
-                await auth.signOut();
-                currentUserData = null;
-                
-                // Reset UI to guest state
-                document.getElementById('userName').textContent = 'INVITADO';
-                document.getElementById('userLevel').textContent = 'ACCESO RESTRINGIDO';
-                document.getElementById('userRank').textContent = '--';
+                document.getElementById('userName').textContent = (currentUserData.displayName || user.email).toUpperCase();
+                document.getElementById('userLevel').textContent = 'NIVEL ' + (currentUserData.level || 0);
                 
                 const loginBtn = document.getElementById('loginBtn');
-                loginBtn.textContent = 'INVITADO / ACCESO RESTRINGIDO';
-                loginBtn.className = 'status-badge';
-                loginBtn.onclick = openLoginModal;
+                loginBtn.textContent = currentUserData.status === 'connected' ? 'CONECTADO' : 'PENDIENTE DE VALIDACIÓN';
+                loginBtn.className = 'status-badge ' + (currentUserData.status === 'connected' ? 'connected' : 'pending');
+                loginBtn.onclick = handleLogout;
                 
-                updateXPDisplay(0);
-                
-                alert('>> SESIÓN CERRADA <<');
-            } catch (error) {
-                console.error('Logout error:', error);
+                updateXPDisplay(currentUserData.xp || 0);
             }
+        } else {
+            currentUserData = null;
         }
+    });
+}
 
-        // Listen for auth state changes
-        if (firebaseInitialized) {
-            auth.onAuthStateChanged(async (user) => {
-                if (user) {
-                    // User is signed in
-                    const userDoc = await db.collection('users').doc(user.uid).get();
-                    if (userDoc.exists) {
-                        currentUserData = userDoc.data();
-                        
-                        document.getElementById('userName').textContent = (currentUserData.displayName || user.email).toUpperCase();
-                        document.getElementById('userLevel').textContent = 'NIVEL ' + (currentUserData.level || 0);
-                        
-                        const loginBtn = document.getElementById('loginBtn');
-                        loginBtn.textContent = currentUserData.status === 'connected' ? 'CONECTADO' : 'PENDIENTE DE VALIDACIÓN';
-                        loginBtn.className = 'status-badge ' + (currentUserData.status === 'connected' ? 'connected' : 'pending');
-                        loginBtn.onclick = handleLogout;
-                        
-                        updateXPDisplay(currentUserData.xp || 0);
-                    }
-                } else {
-                    // User is signed out
-                    currentUserData = null;
-                }
-            });
-        }
-
-        // Toggle User Database Display
-        document.getElementById('loginBtn').addEventListener('click', function() {
+// Toggle User Database Display
+document.addEventListener('DOMContentLoaded', () => {
+    const loginBtn = document.getElementById('loginBtn');
+    if (loginBtn) {
+        loginBtn.addEventListener('click', function() {
             if (this.classList.contains('connected') || this.classList.contains('pending')) {
                 const dbPanel = document.getElementById('userDbPanel');
                 dbPanel.classList.toggle('active');
@@ -2359,153 +815,152 @@
                 }
             }
         });
+    }
+});
 
-        function displayUserDataInTable() {
-            if (!firebaseInitialized || !currentUserData) return;
-            
-            const tbody = document.getElementById('userDbBody');
-            tbody.innerHTML = `
-                <tr>
-                    <td>${currentUserData.displayName || 'N/A'}</td>
-                    <td>${auth.currentUser?.email || 'N/A'}</td>
-                    <td class="${currentUserData.status === 'connected' ? 'text-green' : 'text-amber'}">${currentUserData.status?.toUpperCase() || 'PENDING'}</td>
-                    <td>${currentUserData.level || 0}</td>
-                    <td>${currentUserData.rank || 'INVITADO'}</td>
-                    <td>${(currentUserData.xp || 0).toLocaleString()}</td>
-                </tr>
-            `;
-        }
+function displayUserDataInTable() {
+    if (!firebaseInitialized || !currentUserData) return;
+    
+    const tbody = document.getElementById('userDbBody');
+    if (tbody) {
+        tbody.innerHTML = `
+            <tr>
+                <td>${currentUserData.displayName || 'N/A'}</td>
+                <td>${auth.currentUser?.email || 'N/A'}</td>
+                <td class="${currentUserData.status === 'connected' ? 'text-green' : 'text-amber'}">${currentUserData.status?.toUpperCase() || 'PENDING'}</td>
+                <td>${currentUserData.level || 0}</td>
+                <td>${currentUserData.rank || 'INVITADO'}</td>
+                <td>${(currentUserData.xp || 0).toLocaleString()}</td>
+            </tr>
+        `;
+    }
+}
 
-        function updateUserDbDisplay() {
-            displayUserDataInTable();
-        }
+// Page Navigation
+function showHome() {
+    document.querySelectorAll('.content-page').forEach(page => {
+        page.classList.remove('active');
+    });
+    document.getElementById('home-page').classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
-        // Page Navigation
-        function showHome() {
-            document.querySelectorAll('.content-page').forEach(page => {
-                page.classList.remove('active');
-            });
-            document.getElementById('home-page').classList.add('active');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+function showPage(pageId) {
+    document.querySelectorAll('.content-page').forEach(page => {
+        page.classList.remove('active');
+    });
+    document.getElementById(pageId + '-page').classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    setTimeout(() => {
+        if (pageId === 'protocolo') typeWriter('typewriter-1', texts['typewriter-1']);
+        if (pageId === 'legal') typeWriter('typewriter-legal', texts['typewriter-legal']);
+    }, 100);
+}
 
-        function showPage(pageId) {
-            document.querySelectorAll('.content-page').forEach(page => {
-                page.classList.remove('active');
-            });
-            document.getElementById(pageId + '-page').classList.add('active');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            
-            setTimeout(() => {
-                if (pageId === 'protocolo') typeWriter('typewriter-1', texts['typewriter-1']);
-                if (pageId === 'legal') typeWriter('typewriter-legal', texts['typewriter-legal']);
-            }, 100);
-        }
+// Drone Trail Animation
+const colors = ['#00f2ff', '#ff0055', '#00f2ff', '#008080'];
+const trailsContainer = document.getElementById('drone-trails-container');
 
-        // Drone Trail Animation
-        const colors = ['#00f2ff', '#ff0055', '#00f2ff', '#008080'];
-        const trailsContainer = document.getElementById('drone-trails-container');
-
-        function createDroneTrail() {
-            const trail = document.createElement('div');
-            trail.className = 'drone-trail';
+function createDroneTrail() {
+    const trail = document.createElement('div');
+    trail.className = 'drone-trail';
+    
+    const startY = Math.random() * window.innerHeight;
+    const startFromLeft = Math.random() > 0.5;
+    const length = 100 + Math.random() * 300;
+    const duration = 4 + Math.random() * 5;
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    
+    trail.style.cssText = `
+        width: ${length}px;
+        height: 1px;
+        background: linear-gradient(${startFromLeft ? 'to right' : 'to left'}, ${color}, transparent);
+        top: ${startY}px;
+        left: ${startFromLeft ? '-300px' : 'auto'};
+        right: ${!startFromLeft ? '-300px' : 'auto'};
+        box-shadow: 0 0 10px ${color};
+    `;
+    
+    trailsContainer.appendChild(trail);
+    
+    const startTime = Date.now();
+    
+    function animate() {
+        const elapsed = Date.now() - startTime;
+        const progress = elapsed / (duration * 1000);
+        
+        if (progress < 1) {
+            const fadeProgress = progress < 0.2 ? progress / 0.2 : (1 - progress) / 0.3;
+            const opacity = Math.max(0, Math.min(1, fadeProgress));
+            trail.style.opacity = opacity * 0.4;
             
-            const startY = Math.random() * window.innerHeight;
-            const startFromLeft = Math.random() > 0.5;
-            const length = 100 + Math.random() * 300;
-            const duration = 4 + Math.random() * 5;
-            const color = colors[Math.floor(Math.random() * colors.length)];
-            
-            trail.style.cssText = `
-                width: ${length}px;
-                height: 1px;
-                background: linear-gradient(${startFromLeft ? 'to right' : 'to left'}, ${color}, transparent);
-                top: ${startY}px;
-                left: ${startFromLeft ? '-300px' : 'auto'};
-                right: ${!startFromLeft ? '-300px' : 'auto'};
-                box-shadow: 0 0 10px ${color};
-            `;
-            
-            trailsContainer.appendChild(trail);
-            
-            const startTime = Date.now();
-            
-            function animate() {
-                const elapsed = Date.now() - startTime;
-                const progress = elapsed / (duration * 1000);
-                
-                if (progress < 1) {
-                    const fadeProgress = progress < 0.2 ? progress / 0.2 : (1 - progress) / 0.3;
-                    const opacity = Math.max(0, Math.min(1, fadeProgress));
-                    trail.style.opacity = opacity * 0.4;
-                    
-                    const moveDistance = progress * (window.innerWidth + length);
-                    if (startFromLeft) {
-                        trail.style.left = `${-length + moveDistance}px`;
-                    } else {
-                        trail.style.right = `${-length + moveDistance}px`;
-                    }
-                    
-                    requestAnimationFrame(animate);
-                } else {
-                    trail.remove();
-                }
+            const moveDistance = progress * (window.innerWidth + length);
+            if (startFromLeft) {
+                trail.style.left = `${-length + moveDistance}px`;
+            } else {
+                trail.style.right = `${-length + moveDistance}px`;
             }
             
             requestAnimationFrame(animate);
+        } else {
+            trail.remove();
         }
+    }
+    
+    requestAnimationFrame(animate);
+}
 
-        function startDroneTrails() {
-            createDroneTrail();
-            const nextTrail = 3000 + Math.random() * 5000;
-            setTimeout(startDroneTrails, nextTrail);
+function startDroneTrails() {
+    createDroneTrail();
+    const nextTrail = 3000 + Math.random() * 5000;
+    setTimeout(startDroneTrails, nextTrail);
+}
+
+// Typewriter Effect
+const texts = {
+    'typewriter-1': "Somos una 'Crew' de élite dedicada a la profesionalización del vuelo con UAS en Aragón. Nuestra misión es elevar el estándar técnico y garantizar la legalidad operativa bajo el Artículo 16.",
+    'typewriter-legal': "El Ayuntamiento está informado de nuestro interés. AESA ha dado el visto bueno inicial. Parte del capital se destinará al Estudio SORA, manuales operativos y seguro RC. Operamos bajo el Art. 16."
+};
+
+function typeWriter(elementId, text, speed = 20) {
+    const element = document.getElementById(elementId);
+    if (!element) return;
+    let i = 0;
+    element.innerHTML = ""; 
+
+    function type() {
+        if (i < text.length) {
+            element.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(type, speed);
         }
+    }
+    type();
+}
 
-        setTimeout(startDroneTrails, 1000);
+// Modal click outside to close
+document.getElementById('registerModal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+});
 
-        // Typewriter Effect
-        const texts = {
-            'typewriter-1': "Somos una 'Crew' de élite dedicada a la profesionalización del vuelo con UAS en Aragón. Nuestra misión es elevar el estándar técnico y garantizar la legalidad operativa bajo el Artículo 16. No somos solo pilotos; somos operadores de sistemas aéreos no tripulados.",
-            'typewriter-legal': "El Ayuntamiento está informado de nuestro interés y nos tiene en punto de mira para la adjudicación. AESA ha dado el visto bueno inicial al emplazamiento. Parte del capital del Proyecto Origen se destinará directamente a la ejecución del Estudio SORA, manuales operativos y el seguro de Responsabilidad Civil de alta cobertura. Operamos bajo el amparo del Art. 16."
-        };
+document.getElementById('loginModal').addEventListener('click', function(e) {
+    if (e.target === this) closeLoginModal();
+});
 
-        function typeWriter(elementId, text, speed = 20) {
-            const element = document.getElementById(elementId);
-            if (!element) return;
-            let i = 0;
-            element.innerHTML = ""; 
+document.getElementById('xpPopupOverlay').addEventListener('click', closeXpPopup);
 
-            function type() {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
-                }
-            }
-            type();
-        }
+// Initialize
+window.addEventListener('load', () => {
+    updateXPDisplay(0);
+    updateRecruitmentCounter();
+    typeWriter('typewriter-1', texts['typewriter-1']);
+    typeWriter('typewriter-legal', texts['typewriter-legal']);
+    setTimeout(startDroneTrails, 1000);
+});
 
-        // Modal click outside to close
-        document.getElementById('registerModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
-            }
-        });
 
-        document.getElementById('loginModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeLoginModal();
-            }
-        });
-
-        // Initialize
-        window.addEventListener('load', () => {
-            updateXPDisplay(0);
-            updateRecruitmentCounter();
-            typeWriter('typewriter-1', texts['typewriter-1']);
-            typeWriter('typewriter-legal', texts['typewriter-legal']);
-        });
-    </script>
-</body>
-</html>
-
+              </script>
+                        </body>
+                        </html>
+                    
