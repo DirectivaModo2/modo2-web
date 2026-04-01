@@ -10,6 +10,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Titillium+Web:wght@300;400;600;700&display=swap" rel="stylesheet">
 
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
     <style>
         :root {
             --cyan: #00f2ff;
@@ -362,6 +367,25 @@
             background: var(--magenta);
             color: var(--white);
             box-shadow: 0 0 15px var(--magenta-glow);
+        }
+
+        .logout-btn {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            padding: 0.5rem 1.5rem;
+            background: transparent;
+            border: 1px solid var(--cyan);
+            color: var(--cyan);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background: var(--cyan);
+            color: var(--black);
+            box-shadow: 0 0 15px var(--cyan-glow);
         }
 
         .xp-bar-container {
@@ -1242,6 +1266,12 @@
             box-shadow: 0 0 30px var(--cyan-glow);
         }
 
+        .submit-btn:disabled {
+            background: var(--gray);
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
         /* XP Max Popup */
         .xp-popup {
             position: fixed;
@@ -1417,6 +1447,29 @@
             margin-top: 0.3rem;
         }
 
+        /* Firebase Status Indicator */
+        .firebase-status {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            padding: 0.3rem 0.8rem;
+            border: 1px solid var(--gray);
+            color: var(--gray);
+            z-index: 100;
+        }
+
+        .firebase-status.connected {
+            border-color: var(--green);
+            color: var(--green);
+        }
+
+        .firebase-status.error {
+            border-color: var(--magenta);
+            color: var(--magenta);
+        }
+
         /* Responsive */
         @media(max-width: 768px) {
             .header-nav { gap: 1rem; }
@@ -1434,6 +1487,9 @@
 
     <div class="scanlines"></div>
     <div id="drone-trails-container"></div>
+
+    <!-- Firebase Status Indicator -->
+    <div class="firebase-status" id="firebaseStatus">MAINFRAME: INICIALIZANDO...</div>
 
     <!-- XP Max Popup -->
     <div class="xp-popup-overlay" id="xpPopupOverlay"></div>
@@ -1516,12 +1572,13 @@
 
         <!-- User Database Panel (For verification) -->
         <div class="user-db-panel" id="userDbPanel">
-            <h3 class="section-title">> BASE_DE_DATOS_USUARIOS</h3>
-            <p class="mono" style="margin-bottom: 1rem; color: var(--gray);">* Para implementación real segura, usar Firebase Auth o Supabase</p>
+            <h3 class="section-title">> BASE_DE_DATOS_USUARIOS - FIRESTORE</h3>
+            <p class="mono" style="margin-bottom: 1rem; color: var(--gray);">* Datos sincronizados con Firebase Mainframe</p>
             <table class="user-db-table">
                 <thead>
                     <tr>
                         <th>USUARIO</th>
+                        <th>EMAIL</th>
                         <th>ESTADO</th>
                         <th>NIVEL</th>
                         <th>RANGO</th>
@@ -1537,7 +1594,7 @@
         <!-- Home Page -->
         <div id="home-page" class="content-page active">
             <section class="hero">
-                <p class="system-command">EJECUTANDO: <span class="text-cyan">PROYECTO_ORIGEN.EXE</span> // PROFESIONALIZACIÓN_UAS_ARAGÓN</p>
+                <p class="system-command">EJECUTANDO: <span class="text-white">PROYECTO_</span><span class="text-cyan">ORIGEN.EXE</span> // PROFESIONALIZACIÓN_UAS_ARAGÓN</p>
                 
                 <!-- Recruitment Counter - INVERTED: Shows available spots decreasing -->
                 <div class="recruitment-counter">
@@ -1547,7 +1604,7 @@
                         <div class="counter-label">/ 40 PLAZAS DISPONIBLES</div>
                     </div>
                     <div class="counter-subtext">* Los 3 fundadores actuales no ocupan estas plazas de captación</div>
-                    <div class="status-available">ESTADO: CERRADO - DISPONIBLE PRÓXIMAMENTE</div>
+                    <div class="status-available">ESTADO: ABIERTO - CUPO DISPONIBLE</div>
                 </div>
 
                 <!-- Icon Navigation -->
@@ -1864,7 +1921,7 @@
         <!-- Flight Logs Section (Always Visible) -->
         <div class="flight-logs-section">
             <h3 class="logs-title">> TERMINAL_DE_ACTIVIDAD</h3>
-            <p class="logs-description">Próximamente: Sincroniza tus logs de vuelo, vídeos, azañas, tutoriales, etc... para que tu rama acumule XP y subir de nivel en el sistema.</p>
+            <p class="logs-description">Próximamente: Sincroniza tus logs de vuelo con los hashtags de tu rama para acumular XP y subir de nivel en el sistema.</p>
             <div class="hashtags">
                 <span class="hashtag">#MODO2_INCURSOR</span>
                 <span class="hashtag">#MODO2_ARQUITECTO</span>
@@ -1879,7 +1936,7 @@
                 <a href="#" class="social-btn">Discord</a>
                 <a href="#" class="social-btn">YouTube</a>
             </div>
-            <p class="copyright">© 2026 MODO 2, ASOCIACIÓN CULTURAL Y TECNOLÓGICA // ART. 16 DEL REGLAMENTO DE EJECUCIÓN (UE) 2019/947, REGULACIÓN DE OPERACIONES DE UAS DENTRO DEL MARCO DE CLUBS Y ASOCIACIONES DE AEROMODELISMO // SISTEMA EN LÍNEA</p>
+            <p class="copyright">© 2026 MODO 2 Asociación // ART. 16 COMPLIANT // SISTEMA EN LÍNEA</p>
         </footer>
     </div>
 
@@ -1891,25 +1948,29 @@
             <form id="registerForm" onsubmit="handleRegister(event)">
                 <div class="form-group">
                     <label>> IDENTIFICADOR (NOMBRE COMPLETO)</label>
-                    <input type="text" required placeholder="CMDR_">
+                    <input type="text" id="regName" required placeholder="CMDR_">
                 </div>
                 <div class="form-group">
                     <label>> ENLACE DE COMUNICACIÓN (EMAIL)</label>
-                    <input type="email" required placeholder="email@dominio.com">
+                    <input type="email" id="regEmail" required placeholder="email@dominio.com">
                 </div>
                 <div class="form-group">
                     <label>> FRECUENCIA (TELÉFONO)</label>
-                    <input type="tel" required placeholder="+34 XXX XXX XXX">
+                    <input type="tel" id="regPhone" required placeholder="+34 XXX XXX XXX">
+                </div>
+                <div class="form-group">
+                    <label>> CONTRASEÑA</label>
+                    <input type="password" id="regPassword" required placeholder="••••••••">
                 </div>
                 <div class="form-group">
                     <label>> TIPO DE MEMBRESÍA</label>
-                    <select required>
+                    <select id="regMembership" required>
                         <option value="">SELECCIONAR RAMA...</option>
                         <option value="founder">SOCIO FUNDADOR - 60€ PRIMER AÑO [NODO 0]</option>
                         <option value="standard">SOCIO ESTÁNDAR - 40€/AÑO</option>
                     </select>
                 </div>
-                <button type="submit" class="submit-btn">
+                <button type="submit" class="submit-btn" id="registerBtn">
                     >> PROCEDER AL PAGO
                 </button>
             </form>
@@ -1923,8 +1984,8 @@
             <h2 class="modal-title">> ACCESO_DE_USUARIO</h2>
             <form id="loginForm" onsubmit="handleLogin(event)">
                 <div class="form-group">
-                    <label>> NOMBRE DE USUARIO</label>
-                    <input type="text" id="loginUsername" required placeholder="CMDR_">
+                    <label>> NOMBRE DE USUARIO / EMAIL</label>
+                    <input type="text" id="loginUsername" required placeholder="CMDR_ o email">
                 </div>
                 <div class="form-group">
                     <label>> CONTRASEÑA</label>
@@ -1934,46 +1995,71 @@
                     <input type="checkbox" id="rememberMe">
                     <label for="rememberMe">RECORDAR USUARIO</label>
                 </div>
-                <button type="submit" class="submit-btn">
+                <button type="submit" class="submit-btn" id="loginBtnSubmit">
                     >> CONECTAR
                 </button>
             </form>
+            <p class="mono" style="margin-top: 1rem; text-align: center; color: var(--gray);">
+                ¿Sin cuenta? <a href="#" onclick="closeLoginModal(); openModal();" style="color: var(--cyan);">REGISTRARSE</a>
+            </p>
         </div>
     </div>
 
     <script>
         /* 
          * ================================================================
-         * SISTEMA DE PROGRESIÓN MODO 2 - NIVELES 1-200
+         * MODO 2 - FIREBASE MAINFRAME INTEGRATION
          * ================================================================
-         * Lógica de XP exponencial: cada nivel requiere más XP que el anterior
-         * Fórmula: XP necesario para nivel N = 100 * (N ^ 1.5)
-         * 
-         * RANGOS:
-         * Lv 1-10:   CADETE (Recluta, Iniciado, Aspirante)
-         * Lv 11-30:  PILOTO NOVEL (Observador, Obs. Cotilla, Obs. Concienzudo)
-         * Lv 31-60:  ESPECIALISTA (Técnico, Analista, Operador)
-         * Lv 61-100+: VETERANO / LEYENDA
+         * Firebase Config from Console
+         * Project: modo2-mainframe-b9f2e
          * ================================================================
          */
 
-        // XP System with localStorage
-        let xp = parseInt(localStorage.getItem('modo2_xp')) || 0;
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCkB54CuTQZ9sVj42eSIYjYA9s83WgTJHo",
+            authDomain: "modo2-mainframe-b9f2e.firebaseapp.com",
+            projectId: "modo2-mainframe-b9f2e",
+            storageBucket: "modo2-mainframe-b9f2e.firebasestorage.app",
+            messagingSenderId: "253905847546",
+            appId: "1:253905847546:web:718d87ae9f723ae39c3543"
+        };
+
+        // Initialize Firebase
+        let app, auth, db;
+        let firebaseInitialized = false;
+
+        try {
+            app = firebase.initializeApp(firebaseConfig);
+            auth = firebase.auth();
+            db = firebase.firestore();
+            firebaseInitialized = true;
+            updateFirebaseStatus('connected', 'MAINFRAME: CONECTADO');
+            console.log('>> FIREBASE MAINFRAME: ONLINE <<');
+        } catch (error) {
+            console.error('>> FIREBASE ERROR:', error);
+            updateFirebaseStatus('error', 'MAINFRAME: ERROR DE CONEXIÓN');
+        }
+
+        function updateFirebaseStatus(status, text) {
+            const statusEl = document.getElementById('firebaseStatus');
+            statusEl.textContent = text;
+            statusEl.className = 'firebase-status ' + status;
+        }
+
+        /* 
+         * ================================================================
+         * SISTEMA DE PROGRESIÓN MODO 2 - NIVELES 1-200
+         * ================================================================
+         */
+
+        let xp = 0;
         let level = 0;
+        let currentUserData = null;
         let xpPopupShown = localStorage.getItem('modo2_xp_popup_shown') || 'false';
 
         // Recruitment Counter - INVERTED: Start at 40, decrease as people join
-        let availableSpots = 40 - parseInt(localStorage.getItem('modo2_recruited')) || 40;
-
-        // User Database (stored in localStorage)
-        // NOTE: For production, use Firebase Auth or Supabase for secure user management
-        let users = JSON.parse(localStorage.getItem('modo2_users')) || [
-            { username: 'admin', password: 'modo2admin', status: 'connected', level: 50, rank: 'ESPECIALISTA', xp: 12500 },
-            { username: 'cmdr_test', password: 'test123', status: 'pending', level: 5, rank: 'CADETE', xp: 250 }
-        ];
-
-        // Current logged in user
-        let currentUser = null;
+        let availableSpots = 40;
 
         // Calculate level from XP (exponential curve)
         function calculateLevel(totalXP) {
@@ -2018,16 +2104,14 @@
             return Math.floor(100 * Math.pow(lvl + 1, 1.5));
         }
 
-        function updateXP() {
-            xp = Math.min(xp + 1, 999999); // Cap at 999999 for display
-            localStorage.setItem('modo2_xp', xp);
-            
+        function updateXPDisplay(userXP = 0) {
+            xp = userXP;
             level = calculateLevel(xp);
             const nextLevelXP = getXPForNextLevel(level);
             const prevLevelXP = level > 0 ? getXPForNextLevel(level - 1) : 0;
             const xpInCurrentLevel = xp - prevLevelXP;
             const xpNeeded = nextLevelXP - prevLevelXP;
-            const percentage = Math.min((xpInCurrentLevel / xpNeeded) * 100, 100);
+            const percentage = xpNeeded > 0 ? Math.min((xpInCurrentLevel / xpNeeded) * 100, 100) : 100;
             
             const xpFill = document.getElementById('xpFill');
             const xpText = document.getElementById('xpText');
@@ -2079,7 +2163,7 @@
 
         document.getElementById('xpPopupOverlay').addEventListener('click', closeXpPopup);
 
-        // Login System
+        // Firebase Auth Functions
         function openLoginModal() {
             document.getElementById('loginModal').classList.add('active');
         }
@@ -2088,77 +2172,181 @@
             document.getElementById('loginModal').classList.remove('active');
         }
 
-        function handleLogin(e) {
+        function openModal() {
+            document.getElementById('registerModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('registerModal').classList.remove('active');
+        }
+
+        // Handle Registration with Firebase
+        async function handleRegister(e) {
             e.preventDefault();
+            
+            if (!firebaseInitialized) {
+                alert('>> ERROR: MAINFRAME DESCONECTADO <<\n\nInténtalo más tarde.');
+                return;
+            }
+
+            const btn = document.getElementById('registerBtn');
+            btn.disabled = true;
+            btn.textContent = '>> PROCESANDO...';
+
+            const name = document.getElementById('regName').value;
+            const email = document.getElementById('regEmail').value;
+            const phone = document.getElementById('regPhone').value;
+            const password = document.getElementById('regPassword').value;
+            const membership = document.getElementById('regMembership').value;
+
+            try {
+                // Create Firebase Auth user
+                const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+                const user = userCredential.user;
+
+                // Create user document in Firestore
+                await db.collection('users').doc(user.uid).set({
+                    displayName: name,
+                    email: email,
+                    phone: phone,
+                    membership: membership,
+                    level: 0,
+                    xp: 0,
+                    rank: 'INVITADO',
+                    status: 'pending',
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                    lastLogin: firebase.firestore.FieldValue.serverTimestamp()
+                });
+
+                alert('>> REGISTRO COMPLETADO <<\n\nTu cuenta ha sido creada. Estado: PENDIENTE DE VALIDACIÓN\n\nRecibirás un email cuando tu cuenta sea aprobada por los administradores.');
+                closeModal();
+                
+                // Reset form
+                document.getElementById('registerForm').reset();
+
+            } catch (error) {
+                console.error('Registration error:', error);
+                alert('>> ERROR DE REGISTRO <<\n\n' + error.message);
+            } finally {
+                btn.disabled = false;
+                btn.textContent = '>> PROCEDER AL PAGO';
+            }
+        }
+
+        // Handle Login with Firebase
+        async function handleLogin(e) {
+            e.preventDefault();
+            
+            if (!firebaseInitialized) {
+                alert('>> ERROR: MAINFRAME DESCONECTADO <<');
+                return;
+            }
+
+            const btn = document.getElementById('loginBtnSubmit');
+            btn.disabled = true;
+            btn.textContent = '>> AUTENTICANDO...';
+
             const username = document.getElementById('loginUsername').value;
             const password = document.getElementById('loginPassword').value;
             const remember = document.getElementById('rememberMe').checked;
 
-            const user = users.find(u => u.username === username && u.password === password);
-            
-            if (user) {
-                currentUser = user;
-                user.remember = remember;
-                localStorage.setItem('modo2_users', JSON.stringify(users));
-                localStorage.setItem('modo2_current_user', username);
+            try {
+                // Set persistence based on remember me
+                if (remember) {
+                    await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+                } else {
+                    await auth.setPersistence(firebase.auth.Auth.Persistence.SESSION);
+                }
+
+                // Sign in with email
+                const userCredential = await auth.signInWithEmailAndPassword(username, password);
+                const user = userCredential.user;
+
+                // Get user data from Firestore
+                const userDoc = await db.collection('users').doc(user.uid).get();
                 
-                // Update UI
-                document.getElementById('userName').textContent = username.toUpperCase();
-                document.getElementById('userLevel').textContent = 'NIVEL ' + user.level;
-                document.getElementById('userRank').textContent = user.rank;
-                document.getElementById('loginBtn').textContent = user.status === 'connected' ? 'CONECTADO' : 'PENDIENTE DE VALIDACIÓN';
-                document.getElementById('loginBtn').className = 'status-badge ' + (user.status === 'connected' ? 'connected' : 'pending');
-                
-                // Update XP display
-                xp = user.xp;
-                level = user.level;
-                const nextLevelXP = getXPForNextLevel(level);
-                const prevLevelXP = level > 0 ? getXPForNextLevel(level - 1) : 0;
-                const xpInCurrentLevel = xp - prevLevelXP;
-                const xpNeeded = nextLevelXP - prevLevelXP;
-                const percentage = Math.min((xpInCurrentLevel / xpNeeded) * 100, 100);
-                
-                const xpFill = document.getElementById('xpFill');
-                const xpText = document.getElementById('xpText');
-                const levelDisplay = document.getElementById('levelDisplay');
-                
-                xpFill.style.width = percentage + '%';
-                xpText.textContent = xp.toLocaleString() + ' XP';
-                levelDisplay.textContent = 'NIVEL ' + level;
-                
-                closeLoginModal();
-                updateUserDbDisplay();
-            } else {
-                alert('>> CREDENCIALES INVÁLIDAS <<');
+                if (userDoc.exists) {
+                    currentUserData = userDoc.data();
+                    
+                    // Update UI
+                    document.getElementById('userName').textContent = (currentUserData.displayName || user.email).toUpperCase();
+                    document.getElementById('userLevel').textContent = 'NIVEL ' + (currentUserData.level || 0);
+                    
+                    const loginBtn = document.getElementById('loginBtn');
+                    loginBtn.textContent = currentUserData.status === 'connected' ? 'CONECTADO' : 'PENDIENTE DE VALIDACIÓN';
+                    loginBtn.className = 'status-badge ' + (currentUserData.status === 'connected' ? 'connected' : 'pending');
+                    
+                    // Update XP display
+                    updateXPDisplay(currentUserData.xp || 0);
+                    
+                    // Update last login
+                    await db.collection('users').doc(user.uid).update({
+                        lastLogin: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+
+                    closeLoginModal();
+                    updateUserDbDisplay();
+                }
+
+            } catch (error) {
+                console.error('Login error:', error);
+                alert('>> ERROR DE AUTENTICACIÓN <<\n\n' + error.message);
+            } finally {
+                btn.disabled = false;
+                btn.textContent = '>> CONECTAR';
             }
         }
 
-        function checkRememberedUser() {
-            const remembered = users.find(u => u.remember);
-            if (remembered) {
-                currentUser = remembered;
-                document.getElementById('userName').textContent = remembered.username.toUpperCase();
-                document.getElementById('userLevel').textContent = 'NIVEL ' + remembered.level;
-                document.getElementById('userRank').textContent = remembered.rank;
-                document.getElementById('loginBtn').textContent = remembered.status === 'connected' ? 'CONECTADO' : 'PENDIENTE DE VALIDACIÓN';
-                document.getElementById('loginBtn').className = 'status-badge ' + (remembered.status === 'connected' ? 'connected' : 'pending');
+        // Handle Logout
+        async function handleLogout() {
+            if (!firebaseInitialized) return;
+            
+            try {
+                await auth.signOut();
+                currentUserData = null;
                 
-                xp = remembered.xp;
-                level = remembered.level;
-                const nextLevelXP = getXPForNextLevel(level);
-                const prevLevelXP = level > 0 ? getXPForNextLevel(level - 1) : 0;
-                const xpInCurrentLevel = xp - prevLevelXP;
-                const xpNeeded = nextLevelXP - prevLevelXP;
-                const percentage = Math.min((xpInCurrentLevel / xpNeeded) * 100, 100);
+                // Reset UI to guest state
+                document.getElementById('userName').textContent = 'INVITADO';
+                document.getElementById('userLevel').textContent = 'ACCESO RESTRINGIDO';
+                document.getElementById('userRank').textContent = '--';
                 
-                const xpFill = document.getElementById('xpFill');
-                const xpText = document.getElementById('xpText');
-                const levelDisplay = document.getElementById('levelDisplay');
+                const loginBtn = document.getElementById('loginBtn');
+                loginBtn.textContent = 'INVITADO / ACCESO RESTRINGIDO';
+                loginBtn.className = 'status-badge';
+                loginBtn.onclick = openLoginModal;
                 
-                xpFill.style.width = percentage + '%';
-                xpText.textContent = xp.toLocaleString() + ' XP';
-                levelDisplay.textContent = 'NIVEL ' + level;
+                updateXPDisplay(0);
+                
+                alert('>> SESIÓN CERRADA <<');
+            } catch (error) {
+                console.error('Logout error:', error);
             }
+        }
+
+        // Listen for auth state changes
+        if (firebaseInitialized) {
+            auth.onAuthStateChanged(async (user) => {
+                if (user) {
+                    // User is signed in
+                    const userDoc = await db.collection('users').doc(user.uid).get();
+                    if (userDoc.exists) {
+                        currentUserData = userDoc.data();
+                        
+                        document.getElementById('userName').textContent = (currentUserData.displayName || user.email).toUpperCase();
+                        document.getElementById('userLevel').textContent = 'NIVEL ' + (currentUserData.level || 0);
+                        
+                        const loginBtn = document.getElementById('loginBtn');
+                        loginBtn.textContent = currentUserData.status === 'connected' ? 'CONECTADO' : 'PENDIENTE DE VALIDACIÓN';
+                        loginBtn.className = 'status-badge ' + (currentUserData.status === 'connected' ? 'connected' : 'pending');
+                        loginBtn.onclick = handleLogout;
+                        
+                        updateXPDisplay(currentUserData.xp || 0);
+                    }
+                } else {
+                    // User is signed out
+                    currentUserData = null;
+                }
+            });
         }
 
         // Toggle User Database Display
@@ -2166,21 +2354,30 @@
             if (this.classList.contains('connected') || this.classList.contains('pending')) {
                 const dbPanel = document.getElementById('userDbPanel');
                 dbPanel.classList.toggle('active');
-                updateUserDbDisplay();
+                if (firebaseInitialized && currentUserData) {
+                    displayUserDataInTable();
+                }
             }
         });
 
-        function updateUserDbDisplay() {
+        function displayUserDataInTable() {
+            if (!firebaseInitialized || !currentUserData) return;
+            
             const tbody = document.getElementById('userDbBody');
-            tbody.innerHTML = users.map(u => `
+            tbody.innerHTML = `
                 <tr>
-                    <td>${u.username}</td>
-                    <td class="${u.status === 'connected' ? 'text-green' : 'text-amber'}">${u.status.toUpperCase()}</td>
-                    <td>${u.level}</td>
-                    <td>${u.rank}</td>
-                    <td>${u.xp.toLocaleString()}</td>
+                    <td>${currentUserData.displayName || 'N/A'}</td>
+                    <td>${auth.currentUser?.email || 'N/A'}</td>
+                    <td class="${currentUserData.status === 'connected' ? 'text-green' : 'text-amber'}">${currentUserData.status?.toUpperCase() || 'PENDING'}</td>
+                    <td>${currentUserData.level || 0}</td>
+                    <td>${currentUserData.rank || 'INVITADO'}</td>
+                    <td>${(currentUserData.xp || 0).toLocaleString()}</td>
                 </tr>
-            `).join('');
+            `;
+        }
+
+        function updateUserDbDisplay() {
+            displayUserDataInTable();
         }
 
         // Page Navigation
@@ -2288,33 +2485,22 @@
             type();
         }
 
-        // Modal Functions
-        function openModal() {
-            document.getElementById('registerModal').classList.add('active');
-        }
-
-        function closeModal() {
-            document.getElementById('registerModal').classList.remove('active');
-        }
-
+        // Modal click outside to close
         document.getElementById('registerModal').addEventListener('click', function(e) {
             if (e.target === this) {
                 closeModal();
             }
         });
 
-        function handleRegister(e) {
-            e.preventDefault();
-            // NOTE: For production, integrate with Firebase Auth or Supabase
-            // This is a visual simulation only
-            alert('>> SOLICITUD ENVIADA - PENDIENTE DE VALIDACIÓN <<\n\nRecibirás un email con las instrucciones para completar el registro y acceso a la pasarela de pago.');
-            closeModal();
-        }
+        document.getElementById('loginModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLoginModal();
+            }
+        });
 
         // Initialize
         window.addEventListener('load', () => {
-            checkRememberedUser();
-            updateXP();
+            updateXPDisplay(0);
             updateRecruitmentCounter();
             typeWriter('typewriter-1', texts['typewriter-1']);
             typeWriter('typewriter-legal', texts['typewriter-legal']);
