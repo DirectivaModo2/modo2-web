@@ -19,6 +19,8 @@
             --magenta-glow: rgba(255, 0, 85, 0.4);
             --amber: #ffb800;
             --amber-glow: rgba(255, 184, 0, 0.4);
+            --green: #00ff88;
+            --green-glow: rgba(0, 255, 136, 0.4);
             --black: #020405;
             --black-panel: #050a0c;
             --white: #e0e6ed;
@@ -96,8 +98,18 @@
             color: var(--amber);
         }
 
+        .mono-green {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            letter-spacing: 0.08em;
+            color: var(--green);
+        }
+
         .text-white { color: var(--white); }
         .text-cyan { color: var(--cyan); }
+        .text-magenta { color: var(--magenta); }
+        .text-amber { color: var(--amber); }
+        .text-green { color: var(--green); }
 
         /* Glitch Effect */
         .glitch-wrapper {
@@ -326,13 +338,20 @@
             color: var(--amber);
         }
 
+        .user-rank {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--gray);
+            margin-top: 0.2rem;
+        }
+
         .login-btn {
             font-family: var(--font-mono);
             font-size: 0.75rem;
             padding: 0.5rem 1.5rem;
             background: transparent;
-            border: 1px solid var(--cyan);
-            color: var(--cyan);
+            border: 1px solid var(--magenta);
+            color: var(--magenta);
             text-transform: uppercase;
             letter-spacing: 0.1em;
             cursor: pointer;
@@ -340,13 +359,13 @@
         }
 
         .login-btn:hover {
-            background: var(--cyan);
-            color: var(--black);
-            box-shadow: 0 0 15px var(--cyan-glow);
+            background: var(--magenta);
+            color: var(--white);
+            box-shadow: 0 0 15px var(--magenta-glow);
         }
 
         .xp-bar-container {
-            width: 250px;
+            width: 300px;
         }
 
         .xp-label {
@@ -359,9 +378,9 @@
         }
 
         .xp-bar {
-            height: 6px;
+            height: 8px;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 3px;
+            border-radius: 4px;
             overflow: hidden;
             position: relative;
         }
@@ -370,7 +389,7 @@
             height: 100%;
             background: linear-gradient(90deg, var(--cyan), #00a8ff);
             width: 0%;
-            border-radius: 3px;
+            border-radius: 4px;
             position: relative;
             transition: width 0.5s ease;
         }
@@ -388,22 +407,36 @@
             font-family: var(--font-mono);
             font-size: 0.7rem;
             padding: 0.4rem 1rem;
-            border: 1px solid var(--amber);
-            color: var(--amber);
+            border: 1px solid var(--magenta);
+            color: var(--magenta);
             text-transform: uppercase;
             letter-spacing: 0.1em;
             cursor: pointer;
             transition: all 0.3s ease;
+            background: rgba(255, 0, 85, 0.05);
         }
 
         .status-badge:hover {
-            background: rgba(255, 184, 0, 0.1);
-            box-shadow: 0 0 15px var(--amber-glow);
+            background: rgba(255, 0, 85, 0.15);
+            box-shadow: 0 0 15px var(--magenta-glow);
         }
 
         .status-badge.connected {
-            border-color: var(--cyan);
-            color: var(--cyan);
+            border-color: var(--green);
+            color: var(--green);
+            background: rgba(0, 255, 136, 0.05);
+        }
+
+        .status-badge.pending {
+            border-color: var(--amber);
+            color: var(--amber);
+            background: rgba(255, 184, 0, 0.05);
+            animation: pulse-amber 2s infinite;
+        }
+
+        @keyframes pulse-amber {
+            0%, 100% { box-shadow: 0 0 5px var(--amber-glow); }
+            50% { box-shadow: 0 0 15px var(--amber-glow); }
         }
 
         /* Hero Section */
@@ -426,14 +459,20 @@
             color: var(--magenta);
         }
 
-        /* Recruitment Counter */
+        /* Recruitment Counter - INVERTED LOGIC */
         .recruitment-counter {
-            background: rgba(0, 242, 255, 0.05);
-            border: 1px solid var(--cyan);
+            background: rgba(255, 0, 85, 0.05);
+            border: 1px solid var(--magenta);
             padding: 1.5rem 2rem;
             margin: 1.5rem auto;
             max-width: 650px;
             clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+            animation: counter-pulse 3s infinite;
+        }
+
+        @keyframes counter-pulse {
+            0%, 100% { box-shadow: 0 0 10px rgba(255, 0, 85, 0.2); }
+            50% { box-shadow: 0 0 25px rgba(255, 0, 85, 0.4); }
         }
 
         .counter-header {
@@ -442,6 +481,7 @@
             margin-bottom: 1rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
+            color: var(--magenta);
         }
 
         .counter-main {
@@ -456,8 +496,8 @@
             font-family: var(--font-display);
             font-size: 3.5rem;
             font-weight: 900;
-            color: var(--cyan);
-            text-shadow: 0 0 25px var(--cyan-glow);
+            color: var(--magenta);
+            text-shadow: 0 0 25px var(--magenta-glow);
             line-height: 1;
         }
 
@@ -483,15 +523,15 @@
         .status-available {
             font-family: var(--font-mono);
             font-size: 0.7rem;
-            color: var(--cyan);
+            color: var(--magenta);
             margin-top: 1rem;
             text-transform: uppercase;
             letter-spacing: 0.15em;
         }
 
         .status-available::before {
-            content: '● ';
-            color: var(--cyan);
+            content: '⚠ ';
+            color: var(--magenta);
             animation: blink 1s infinite;
         }
 
@@ -814,6 +854,54 @@
             font-size: 0.75rem;
             color: var(--white);
             opacity: 0.8;
+        }
+
+        /* Financial Transparency Box */
+        .transparency-box {
+            background: rgba(0, 255, 136, 0.05);
+            border: 1px solid var(--green);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .transparency-title {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--green);
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .transparency-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        @media(min-width: 768px) {
+            .transparency-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .transparency-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+        }
+
+        .transparency-icon {
+            color: var(--green);
+            font-size: 1.2rem;
+        }
+
+        .transparency-text {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--white);
+            line-height: 1.6;
         }
 
         /* 12 Rings Specialization */
@@ -1284,7 +1372,7 @@
             opacity: 0;
         }
 
-        /* User Database Display (Hidden by default) */
+        /* User Database Display */
         .user-db-panel {
             display: none;
             background: var(--black-panel);
@@ -1319,6 +1407,14 @@
 
         .user-db-table td {
             color: var(--white);
+        }
+
+        /* Level Progress Display */
+        .level-display {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            color: var(--cyan);
+            margin-top: 0.3rem;
         }
 
         /* Responsive */
@@ -1400,31 +1496,35 @@
                     <svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="35" r="15" stroke="currentColor" stroke-width="2" fill="none"/><path d="M30 80C30 65 40 55 50 55C60 55 70 65 70 80" stroke="currentColor" stroke-width="2" fill="none"/></svg>
                 </div>
                 <div class="user-details">
-                    <h4 id="userName">CMDR_VISITOR</h4>
-                    <div class="user-level" id="userLevel">LV: 0 OBSERVADOR</div>
+                    <h4 id="userName">INVITADO</h4>
+                    <div class="user-level" id="userLevel">ACCESO RESTRINGIDO</div>
+                    <div class="user-rank" id="userRank">--</div>
                 </div>
             </div>
             <div class="xp-bar-container">
                 <div class="xp-label">
                     <span>EXPERIENCIA</span>
-                    <span id="xpText">0 / 1000 XP</span>
+                    <span id="xpText">0 XP</span>
                 </div>
                 <div class="xp-bar">
                     <div class="xp-fill" id="xpFill"></div>
                 </div>
+                <div class="level-display" id="levelDisplay">NIVEL 0</div>
             </div>
-            <button class="status-badge" id="loginBtn" onclick="openLoginModal()">NO CONECTADO</button>
+            <button class="status-badge" id="loginBtn" onclick="openLoginModal()">INVITADO / ACCESO RESTRINGIDO</button>
         </div>
 
         <!-- User Database Panel (For verification) -->
         <div class="user-db-panel" id="userDbPanel">
             <h3 class="section-title">> BASE_DE_DATOS_USUARIOS</h3>
+            <p class="mono" style="margin-bottom: 1rem; color: var(--gray);">* Para implementación real segura, usar Firebase Auth o Supabase</p>
             <table class="user-db-table">
                 <thead>
                     <tr>
                         <th>USUARIO</th>
-                        <th>CONTRASEÑA</th>
-                        <th>RECORDAR</th>
+                        <th>ESTADO</th>
+                        <th>NIVEL</th>
+                        <th>RANGO</th>
                         <th>XP</th>
                     </tr>
                 </thead>
@@ -1439,15 +1539,15 @@
             <section class="hero">
                 <p class="system-command">EJECUTANDO: <span class="text-white">PROYECTO_</span><span class="text-cyan">ORIGEN.EXE</span> // PROFESIONALIZACIÓN_UAS_ARAGÓN</p>
                 
-                <!-- Recruitment Counter -->
+                <!-- Recruitment Counter - INVERTED: Shows available spots decreasing -->
                 <div class="recruitment-counter">
-                    <div class="counter-header"><span class="text-cyan">RECLUTAMIENTO</span> <span class="text-white">PROYECTO ORIGEN</span></div>
+                    <div class="counter-header"><span class="text-magenta">RECLUTAMIENTO</span> <span class="text-white">PROYECTO ORIGEN</span></div>
                     <div class="counter-main">
-                        <div class="counter-number" id="recruitmentCount">0</div>
+                        <div class="counter-number" id="availableSpots">40</div>
                         <div class="counter-label">/ 40 PLAZAS DISPONIBLES</div>
                     </div>
                     <div class="counter-subtext">* Los 3 fundadores actuales no ocupan estas plazas de captación</div>
-                    <div class="status-available">ESTADO: ABIERTO</div>
+                    <div class="status-available">ESTADO: ABIERTO - CUPO DISPONIBLE</div>
                 </div>
 
                 <!-- Icon Navigation -->
@@ -1527,6 +1627,34 @@
                                 <div class="benefit-text">Prioridad Operativa - Preferencia absoluta en la reserva de slots de vuelo</div>
                             </div>
                         </div>
+                    </div>
+
+                    <!-- Financial Transparency -->
+                    <div class="transparency-box">
+                        <h3 class="transparency-title">📊 TRANSPARENCIA FINANCIERA - PROYECTO ORIGEN</h3>
+                        <div class="transparency-grid">
+                            <div class="transparency-item">
+                                <div class="transparency-icon">▸</div>
+                                <div class="transparency-text">Estudio SORA (Specific Operations Risk Assessment) - 35%</div>
+                            </div>
+                            <div class="transparency-item">
+                                <div class="transparency-icon">▸</div>
+                                <div class="transparency-text">Seguro RC Alta Cobertura - 25%</div>
+                            </div>
+                            <div class="transparency-item">
+                                <div class="transparency-icon">▸</div>
+                                <div class="transparency-text">Manuales Operativos Certificados - 20%</div>
+                            </div>
+                            <div class="transparency-item">
+                                <div class="transparency-icon">▸</div>
+                                <div class="transparency-text">Infraestructura SEDE - 15%</div>
+                            </div>
+                            <div class="transparency-item">
+                                <div class="transparency-icon">▸</div>
+                                <div class="transparency-text">Fondo de Reserva Legal - 5%</div>
+                            </div>
+                        </div>
+                        <p class="mono" style="margin-top: 1.5rem; color: var(--gray); text-align: center;">> Todos los socios fundadores recibirán informe trimestral de ejecución presupuestaria</p>
                     </div>
                 </div>
             </div>
@@ -1814,53 +1942,124 @@
     </div>
 
     <script>
+        /* 
+         * ================================================================
+         * SISTEMA DE PROGRESIÓN MODO 2 - NIVELES 1-200
+         * ================================================================
+         * Lógica de XP exponencial: cada nivel requiere más XP que el anterior
+         * Fórmula: XP necesario para nivel N = 100 * (N ^ 1.5)
+         * 
+         * RANGOS:
+         * Lv 1-10:   CADETE (Recluta, Iniciado, Aspirante)
+         * Lv 11-30:  PILOTO NOVEL (Observador, Obs. Cotilla, Obs. Concienzudo)
+         * Lv 31-60:  ESPECIALISTA (Técnico, Analista, Operador)
+         * Lv 61-100+: VETERANO / LEYENDA
+         * ================================================================
+         */
+
         // XP System with localStorage
         let xp = parseInt(localStorage.getItem('modo2_xp')) || 0;
-        const maxXP = 1000;
+        let level = 0;
         let xpPopupShown = localStorage.getItem('modo2_xp_popup_shown') || 'false';
 
-        // Recruitment Counter (Simulated)
-        let recruited = parseInt(localStorage.getItem('modo2_recruited')) || 0;
+        // Recruitment Counter - INVERTED: Start at 40, decrease as people join
+        let availableSpots = 40 - parseInt(localStorage.getItem('modo2_recruited')) || 40;
 
         // User Database (stored in localStorage)
+        // NOTE: For production, use Firebase Auth or Supabase for secure user management
         let users = JSON.parse(localStorage.getItem('modo2_users')) || [
-            { username: 'admin', password: 'modo2admin', remember: true, xp: 500 },
-            { username: 'cmdr_test', password: 'test123', remember: false, xp: 150 }
+            { username: 'admin', password: 'modo2admin', status: 'connected', level: 50, rank: 'ESPECIALISTA', xp: 12500 },
+            { username: 'cmdr_test', password: 'test123', status: 'pending', level: 5, rank: 'CADETE', xp: 250 }
         ];
 
         // Current logged in user
         let currentUser = null;
 
+        // Calculate level from XP (exponential curve)
+        function calculateLevel(totalXP) {
+            let lvl = 0;
+            let xpRequired = 0;
+            
+            for (let i = 1; i <= 200; i++) {
+                xpRequired = Math.floor(100 * Math.pow(i, 1.5));
+                if (totalXP < xpRequired) {
+                    lvl = i - 1;
+                    break;
+                }
+                if (i === 200) {
+                    lvl = 200;
+                }
+            }
+            
+            return Math.max(0, lvl);
+        }
+
+        // Get rank based on level
+        function getRank(lvl) {
+            if (lvl === 0) return 'INVITADO';
+            if (lvl >= 1 && lvl <= 3) return 'CADETE - RECLUTA';
+            if (lvl >= 4 && lvl <= 6) return 'CADETE - INICIADO';
+            if (lvl >= 7 && lvl <= 10) return 'CADETE - ASPIRANTE';
+            if (lvl >= 11 && lvl <= 15) return 'PILOTO NOVEL - OBSERVADOR';
+            if (lvl >= 16 && lvl <= 22) return 'PILOTO NOVEL - OBS. COTILLA';
+            if (lvl >= 23 && lvl <= 30) return 'PILOTO NOVEL - OBS. CONCIENZUDO';
+            if (lvl >= 31 && lvl <= 40) return 'ESPECIALISTA - TÉCNICO';
+            if (lvl >= 41 && lvl <= 50) return 'ESPECIALISTA - ANALISTA';
+            if (lvl >= 51 && lvl <= 60) return 'ESPECIALISTA - OPERADOR';
+            if (lvl >= 61 && lvl <= 80) return 'VETERANO';
+            if (lvl >= 81 && lvl <= 100) return 'VETERANO ÉLITE';
+            if (lvl >= 101 && lvl <= 150) return 'LEYENDA';
+            if (lvl >= 151) return 'LEYENDA VIVA';
+            return 'DESCONOCIDO';
+        }
+
+        // Get XP required for next level
+        function getXPForNextLevel(lvl) {
+            return Math.floor(100 * Math.pow(lvl + 1, 1.5));
+        }
+
         function updateXP() {
-            xp = Math.min(xp + 1, maxXP);
+            xp = Math.min(xp + 1, 999999); // Cap at 999999 for display
             localStorage.setItem('modo2_xp', xp);
+            
+            level = calculateLevel(xp);
+            const nextLevelXP = getXPForNextLevel(level);
+            const prevLevelXP = level > 0 ? getXPForNextLevel(level - 1) : 0;
+            const xpInCurrentLevel = xp - prevLevelXP;
+            const xpNeeded = nextLevelXP - prevLevelXP;
+            const percentage = Math.min((xpInCurrentLevel / xpNeeded) * 100, 100);
             
             const xpFill = document.getElementById('xpFill');
             const xpText = document.getElementById('xpText');
-            const percentage = (xp / maxXP) * 100;
+            const levelDisplay = document.getElementById('levelDisplay');
             
             xpFill.style.width = percentage + '%';
-            xpText.textContent = xp + ' / ' + maxXP + ' XP';
+            xpText.textContent = xp.toLocaleString() + ' XP';
+            levelDisplay.textContent = 'NIVEL ' + level;
             
-            if (xp >= maxXP && xpPopupShown !== 'true') {
+            // Update rank display
+            const rank = getRank(level);
+            document.getElementById('userRank').textContent = rank;
+            
+            if (xp >= 1000 && xpPopupShown !== 'true') {
                 showXpPopup();
             }
             
-            if (xp >= maxXP) {
+            if (level >= 100) {
                 xpFill.classList.add('maxed');
             }
         }
 
         function updateRecruitmentCounter() {
-            const counterEl = document.getElementById('recruitmentCount');
+            const counterEl = document.getElementById('availableSpots');
             if (counterEl) {
-                let current = 0;
-                const target = recruited;
+                let current = 40;
+                const target = availableSpots;
                 const interval = setInterval(() => {
-                    if (current >= target) {
+                    if (current <= target) {
                         clearInterval(interval);
                     } else {
-                        current++;
+                        current--;
                         counterEl.textContent = current;
                     }
                 }, 50);
@@ -1905,17 +2104,27 @@
                 
                 // Update UI
                 document.getElementById('userName').textContent = username.toUpperCase();
-                document.getElementById('userLevel').textContent = 'LV: ' + Math.floor(user.xp / 100) + ' PILOTO';
-                document.getElementById('loginBtn').textContent = 'CONECTADO';
-                document.getElementById('loginBtn').classList.add('connected');
+                document.getElementById('userLevel').textContent = 'NIVEL ' + user.level;
+                document.getElementById('userRank').textContent = user.rank;
+                document.getElementById('loginBtn').textContent = user.status === 'connected' ? 'CONECTADO' : 'PENDIENTE DE VALIDACIÓN';
+                document.getElementById('loginBtn').className = 'status-badge ' + (user.status === 'connected' ? 'connected' : 'pending');
                 
                 // Update XP display
                 xp = user.xp;
+                level = user.level;
+                const nextLevelXP = getXPForNextLevel(level);
+                const prevLevelXP = level > 0 ? getXPForNextLevel(level - 1) : 0;
+                const xpInCurrentLevel = xp - prevLevelXP;
+                const xpNeeded = nextLevelXP - prevLevelXP;
+                const percentage = Math.min((xpInCurrentLevel / xpNeeded) * 100, 100);
+                
                 const xpFill = document.getElementById('xpFill');
                 const xpText = document.getElementById('xpText');
-                const percentage = (xp / maxXP) * 100;
+                const levelDisplay = document.getElementById('levelDisplay');
+                
                 xpFill.style.width = percentage + '%';
-                xpText.textContent = xp + ' / ' + maxXP + ' XP';
+                xpText.textContent = xp.toLocaleString() + ' XP';
+                levelDisplay.textContent = 'NIVEL ' + level;
                 
                 closeLoginModal();
                 updateUserDbDisplay();
@@ -1929,21 +2138,32 @@
             if (remembered) {
                 currentUser = remembered;
                 document.getElementById('userName').textContent = remembered.username.toUpperCase();
-                document.getElementById('userLevel').textContent = 'LV: ' + Math.floor(remembered.xp / 100) + ' PILOTO';
-                document.getElementById('loginBtn').textContent = 'CONECTADO';
-                document.getElementById('loginBtn').classList.add('connected');
+                document.getElementById('userLevel').textContent = 'NIVEL ' + remembered.level;
+                document.getElementById('userRank').textContent = remembered.rank;
+                document.getElementById('loginBtn').textContent = remembered.status === 'connected' ? 'CONECTADO' : 'PENDIENTE DE VALIDACIÓN';
+                document.getElementById('loginBtn').className = 'status-badge ' + (remembered.status === 'connected' ? 'connected' : 'pending');
+                
                 xp = remembered.xp;
+                level = remembered.level;
+                const nextLevelXP = getXPForNextLevel(level);
+                const prevLevelXP = level > 0 ? getXPForNextLevel(level - 1) : 0;
+                const xpInCurrentLevel = xp - prevLevelXP;
+                const xpNeeded = nextLevelXP - prevLevelXP;
+                const percentage = Math.min((xpInCurrentLevel / xpNeeded) * 100, 100);
+                
                 const xpFill = document.getElementById('xpFill');
                 const xpText = document.getElementById('xpText');
-                const percentage = (xp / maxXP) * 100;
+                const levelDisplay = document.getElementById('levelDisplay');
+                
                 xpFill.style.width = percentage + '%';
-                xpText.textContent = xp + ' / ' + maxXP + ' XP';
+                xpText.textContent = xp.toLocaleString() + ' XP';
+                levelDisplay.textContent = 'NIVEL ' + level;
             }
         }
 
-        // Toggle User Database Display (click on status badge when connected)
+        // Toggle User Database Display
         document.getElementById('loginBtn').addEventListener('click', function() {
-            if (this.classList.contains('connected')) {
+            if (this.classList.contains('connected') || this.classList.contains('pending')) {
                 const dbPanel = document.getElementById('userDbPanel');
                 dbPanel.classList.toggle('active');
                 updateUserDbDisplay();
@@ -1955,9 +2175,10 @@
             tbody.innerHTML = users.map(u => `
                 <tr>
                     <td>${u.username}</td>
-                    <td>${u.password}</td>
-                    <td>${u.remember ? '✓' : '✗'}</td>
-                    <td>${u.xp}</td>
+                    <td class="${u.status === 'connected' ? 'text-green' : 'text-amber'}">${u.status.toUpperCase()}</td>
+                    <td>${u.level}</td>
+                    <td>${u.rank}</td>
+                    <td>${u.xp.toLocaleString()}</td>
                 </tr>
             `).join('');
         }
@@ -2084,7 +2305,10 @@
 
         function handleRegister(e) {
             e.preventDefault();
-            alert('>> REDIRIGIENDO A PASARELA DE PAGO... <<');
+            // NOTE: For production, integrate with Firebase Auth or Supabase
+            // This is a visual simulation only
+            alert('>> SOLICITUD ENVIADA - PENDIENTE DE VALIDACIÓN <<\n\nRecibirás un email con las instrucciones para completar el registro y acceso a la pasarela de pago.');
+            closeModal();
         }
 
         // Initialize
