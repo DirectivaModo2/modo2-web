@@ -1,12 +1,20 @@
-// assets/js/main.js - MODO 2 MAINFRAME
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyCkB54CuTQZ9sVj42eSIYjYA9s83WgTJHo",
-    authDomain: "modo2-mainframe-b9f2e.firebaseapp.com",
-    projectId: "modo2-mainframe-b9f2e",
-    storageBucket: "modo2-mainframe-b9f2e.firebasestorage.app",
-    messagingSenderId: "253905847546",
-    appId: "1:253905847546:web:718d87ae9f723ae39c3543"
+  apiKey: "AIzaSyCkB54CuTQZ9sVj42eSIYjYA9s83WgTJHo",
+  authDomain: "modo2-mainframe-b9f2e.firebaseapp.com",
+  projectId: "modo2-mainframe-b9f2e",
+  storageBucket: "modo2-mainframe-b9f2e.firebasestorage.app",
+  messagingSenderId: "253905847546",
+  appId: "1:253905847546:web:718d87ae9f723ae39c3543"
 };
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
 
 let app, auth, db;
 let firebaseInitialized = false;
