@@ -18,6 +18,7 @@
             --magenta: #ff0055;
             --magenta-glow: rgba(255, 0, 85, 0.4);
             --amber: #ffb800;
+            --amber-glow: rgba(255, 184, 0, 0.4);
             --black: #020405;
             --black-panel: #050a0c;
             --white: #e0e6ed;
@@ -392,45 +393,57 @@
             color: var(--magenta);
         }
 
-        /* Founder Warning Box */
-        .founder-warning {
-            background: rgba(255, 0, 85, 0.05);
-            border: 1px solid var(--magenta);
+        /* Recruitment Counter */
+        .recruitment-counter {
+            background: rgba(0, 242, 255, 0.05);
+            border: 1px solid var(--cyan);
             padding: 1.5rem 2rem;
             margin: 1.5rem auto;
-            max-width: 600px;
+            max-width: 650px;
             clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
         }
 
-        .warning-header {
+        .counter-header {
             font-family: var(--font-mono);
             font-size: 0.75rem;
-            color: var(--magenta);
+            color: var(--cyan);
             margin-bottom: 1rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
         }
 
-        .founder-counter {
+        .counter-main {
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 2rem;
+            margin-bottom: 0.5rem;
         }
 
         .counter-number {
             font-family: var(--font-display);
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 900;
-            color: var(--magenta);
-            text-shadow: 0 0 20px var(--magenta-glow);
+            color: var(--cyan);
+            text-shadow: 0 0 25px var(--cyan-glow);
             line-height: 1;
         }
 
         .counter-label {
             font-family: var(--font-mono);
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            max-width: 200px;
+            line-height: 1.6;
+        }
+
+        .counter-subtext {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--gray);
+            margin-top: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 0.1em;
         }
@@ -588,7 +601,7 @@
             text-transform: uppercase;
         }
 
-        /* Content Pages (Hidden by default) */
+        /* Content Pages */
         .content-page {
             display: none;
             padding: 3rem 0;
@@ -669,6 +682,21 @@
             line-height: 1.8;
         }
 
+        .terminal-text ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .terminal-text li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(0, 242, 255, 0.1);
+        }
+
+        .terminal-text li::before {
+            content: '> ';
+            color: var(--cyan);
+        }
+
         .cursor {
             display: inline-block;
             width: 8px;
@@ -676,6 +704,85 @@
             background: var(--cyan);
             animation: blink 1s infinite;
             margin-left: 5px;
+        }
+
+        /* Founder Benefits Box */
+        .founder-benefits {
+            background: rgba(255, 184, 0, 0.05);
+            border: 1px solid var(--amber);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .benefits-title {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--amber);
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        @media(min-width: 768px) {
+            .benefits-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+        }
+
+        .benefit-icon {
+            color: var(--amber);
+            font-size: 1.2rem;
+        }
+
+        .benefit-text {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--white);
+            line-height: 1.6;
+        }
+
+        /* Pricing Box */
+        .pricing-box {
+            background: rgba(0, 242, 255, 0.05);
+            border: 1px solid var(--cyan);
+            padding: 2rem;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .pricing-amount {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            color: var(--cyan);
+            text-shadow: 0 0 20px var(--cyan-glow);
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-period {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+
+        .pricing-sub {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--white);
+            opacity: 0.8;
         }
 
         /* Flight Logs Section */
@@ -855,7 +962,7 @@
             background: var(--black-panel);
             border: 1px solid var(--cyan);
             padding: 3rem;
-            max-width: 500px;
+            max-width: 550px;
             width: 90%;
             position: relative;
             box-shadow: 0 0 60px rgba(0, 242, 255, 0.15);
@@ -1074,7 +1181,8 @@
             .container { padding: 0 1.5rem; }
             .user-dashboard { flex-direction: column; align-items: flex-start; }
             .xp-bar-container { width: 100%; }
-            .founder-counter { flex-direction: column; gap: 1rem; }
+            .counter-main { flex-direction: column; gap: 1rem; }
+            .counter-number { font-size: 2.5rem; }
         }
     </style>
 </head>
@@ -1122,11 +1230,11 @@
                 <a href="#" class="nav-icon-wrapper" title="Protocolo" onclick="showPage('protocolo'); return false;">
                     <svg viewBox="0 0 100 100"><rect x="20" y="20" width="60" height="60" stroke="currentColor" stroke-width="2" fill="none"/><line x1="30" y1="35" x2="70" y2="35" stroke="currentColor" stroke-width="1.5"/><line x1="30" y1="50" x2="70" y2="50" stroke="currentColor" stroke-width="1.5"/><line x1="30" y1="65" x2="60" y2="65" stroke="currentColor" stroke-width="1.5"/></svg>
                 </a>
-                <a href="#" class="nav-icon-wrapper" title="Normativa" onclick="showPage('normativa'); return false;">
-                    <svg viewBox="0 0 100 100"><rect x="30" y="20" width="40" height="60" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="50" cy="55" r="12" stroke="currentColor" stroke-width="2" fill="none"/><path d="M46 55L49 58L54 52" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <a href="#" class="nav-icon-wrapper" title="Infraestructura" onclick="showPage('infraestructura'); return false;">
+                    <svg viewBox="0 0 100 100"><path d="M20 80L20 40L50 20L80 40L80 80" stroke="currentColor" stroke-width="2" fill="none"/><line x1="35" y1="80" x2="35" y2="50" stroke="currentColor" stroke-width="1.5"/><line x1="65" y1="80" x2="65" y2="50" stroke="currentColor" stroke-width="1.5"/><line x1="20" y1="80" x2="80" y2="80" stroke="currentColor" stroke-width="1.5"/></svg>
                 </a>
-                <a href="#" class="nav-icon-wrapper" title="Operaciones" onclick="showPage('operaciones'); return false;">
-                    <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="50" cy="50" r="6" fill="currentColor"/><line x1="50" y1="20" x2="50" y2="30" stroke="currentColor" stroke-width="2"/><line x1="50" y1="70" x2="50" y2="80" stroke="currentColor" stroke-width="2"/><line x1="20" y1="50" x2="30" y2="50" stroke="currentColor" stroke-width="2"/><line x1="70" y1="50" x2="80" y2="50" stroke="currentColor" stroke-width="2"/></svg>
+                <a href="#" class="nav-icon-wrapper" title="Legal" onclick="showPage('legal'); return false;">
+                    <svg viewBox="0 0 100 100"><rect x="30" y="20" width="40" height="60" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="50" cy="55" r="12" stroke="currentColor" stroke-width="2" fill="none"/><path d="M46 55L49 58L54 52" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </a>
                 <a href="#" class="nav-icon-wrapper" title="Crew" onclick="showPage('crew'); return false;">
                     <svg viewBox="0 0 100 100"><circle cx="50" cy="35" r="12" stroke="currentColor" stroke-width="2" fill="none"/><path d="M30 80C30 65 40 55 50 55C60 55 70 65 70 80" stroke="currentColor" stroke-width="2" fill="none"/></svg>
@@ -1163,16 +1271,17 @@
         <!-- Home Page -->
         <div id="home-page" class="content-page active">
             <section class="hero">
-                <p class="system-command">EJECUTANDO: CORE_MISSION.EXE // PROFESIONALIZACIÓN_UAS_ARAGÓN</p>
+                <p class="system-command">EJECUTANDO: PROYECTO_ORIGEN.EXE // PROFESIONALIZACIÓN_UAS_ARAGÓN</p>
                 
-                <!-- Founder Warning Box -->
-                <div class="founder-warning">
-                    <div class="warning-header">⚠ ADVERTENCIA: ACCESO NIVEL 0</div>
-                    <div class="founder-counter">
-                        <div class="counter-number">40</div>
-                        <div class="counter-label">PLAZAS FUNDADOR</div>
+                <!-- Recruitment Counter -->
+                <div class="recruitment-counter">
+                    <div class="counter-header">⚡ RECLUTAMIENTO PROYECTO ORIGEN</div>
+                    <div class="counter-main">
+                        <div class="counter-number" id="recruitmentCount">0</div>
+                        <div class="counter-label">/ 40 PLAZAS DISPONIBLES</div>
                     </div>
-                    <div class="status-available">ESTADO: DISPONIBLE</div>
+                    <div class="counter-subtext">* Los 3 fundadores actuales no ocupan estas plazas de captación</div>
+                    <div class="status-available">ESTADO: ABIERTO</div>
                 </div>
 
                 <!-- Icon Navigation -->
@@ -1181,13 +1290,13 @@
                         <svg viewBox="0 0 100 100"><rect x="20" y="25" width="60" height="50" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="30" y1="40" x2="70" y2="40" stroke="currentColor" stroke-width="1"/><line x1="30" y1="55" x2="65" y2="55" stroke="currentColor" stroke-width="1"/></svg>
                         <span class="icon-nav-label">PROTOCOLO</span>
                     </a>
-                    <a href="#" class="icon-nav-item" onclick="showPage('normativa'); return false;">
-                        <svg viewBox="0 0 100 100"><path d="M35 25H65V75H35Z" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="50" cy="50" r="10" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M47 50L50 53L53 47" stroke="currentColor" stroke-width="1.5"/></svg>
-                        <span class="icon-nav-label">NORMATIVA</span>
+                    <a href="#" class="icon-nav-item" onclick="showPage('infraestructura'); return false;">
+                        <svg viewBox="0 0 100 100"><path d="M20 80L20 40L50 20L80 40L80 80" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="35" y1="80" x2="35" y2="50" stroke="currentColor" stroke-width="1"/><line x1="65" y1="80" x2="65" y2="50" stroke="currentColor" stroke-width="1"/><line x1="20" y1="80" x2="80" y2="80" stroke="currentColor" stroke-width="1"/></svg>
+                        <span class="icon-nav-label">INFRAESTRUCTURA</span>
                     </a>
-                    <a href="#" class="icon-nav-item" onclick="showPage('operaciones'); return false;">
-                        <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="25" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="50" cy="50" r="5" fill="currentColor"/><line x1="50" y1="25" x2="50" y2="35" stroke="currentColor" stroke-width="1.5"/><line x1="50" y1="65" x2="50" y2="75" stroke="currentColor" stroke-width="1.5"/><line x1="25" y1="50" x2="35" y2="50" stroke="currentColor" stroke-width="1.5"/><line x1="65" y1="50" x2="75" y2="50" stroke="currentColor" stroke-width="1.5"/></svg>
-                        <span class="icon-nav-label">OPS</span>
+                    <a href="#" class="icon-nav-item" onclick="showPage('legal'); return false;">
+                        <svg viewBox="0 0 100 100"><rect x="30" y="20" width="40" height="60" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="50" cy="50" r="10" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M47 50L50 53L53 47" stroke="currentColor" stroke-width="1.5"/></svg>
+                        <span class="icon-nav-label">LEGAL</span>
                     </a>
                     <a href="#" class="icon-nav-item" onclick="showPage('crew'); return false;">
                         <svg viewBox="0 0 100 100"><circle cx="50" cy="40" r="10" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M35 75C35 65 42 55 50 55C58 55 65 65 65 75" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
@@ -1199,7 +1308,7 @@
                         <div class="join-btn-icon">
                             <svg viewBox="0 0 100 100"><path d="M50 30L50 70M30 50L70 50" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
                         </div>
-                        <span class="join-btn-label">UNIRSE AL SQUAD</span>
+                        <span class="join-btn-label">INICIAR INSCRIPCIÓN</span>
                     </div>
                 </div>
             </section>
@@ -1223,12 +1332,75 @@
                         > PROTOCOLO_DE_INICIO
                     </h2>
                     <div class="terminal-text" id="typewriter-1"></div><span class="cursor"></span>
+                    
+                    <!-- Pricing Box -->
+                    <div class="pricing-box">
+                        <div class="pricing-amount">60€</div>
+                        <div class="pricing-period">PRIMER AÑO // PROYECTO ORIGEN</div>
+                        <div class="pricing-sub">A partir del segundo año: 40€ anuales</div>
+                    </div>
+
+                    <!-- Founder Benefits -->
+                    <div class="founder-benefits">
+                        <h3 class="benefits-title">⚡ BENEFICIOS EXCLUSIVOS "NODO 0"</h3>
+                        <div class="benefits-grid">
+                            <div class="benefit-item">
+                                <div class="benefit-icon">▸</div>
+                                <div class="benefit-text">Inscripción 0€ de por vida - Exención total de cualquier cuota de entrada o matrícula futura</div>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="benefit-icon">▸</div>
+                                <div class="benefit-text">Legado Físico - Inscripción del nombre en la "Placa de Honor" del parque y zona de Boxes</div>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="benefit-icon">▸</div>
+                                <div class="benefit-text">Estatus Digital - Nombramiento permanente en el Muro de Honor de la web de por vida</div>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="benefit-icon">▸</div>
+                                <div class="benefit-text">Prioridad Operativa - Preferencia absoluta en la reserva de slots de vuelo</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Normativa Page -->
-        <div id="normativa-page" class="content-page">
+        <!-- Infraestructura Page -->
+        <div id="infraestructura-page" class="content-page">
+            <a href="#" class="back-button" onclick="showHome(); return false;">
+                <svg viewBox="0 0 100 100" fill="none"><path d="M70 50L30 50M30 50L45 35M30 50L45 65" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                VOLVER AL INICIO
+            </a>
+            <div class="content-grid">
+                <div class="hud-panel full-width">
+                    <h2 class="section-title">
+                        <svg viewBox="0 0 100 100" fill="none"><path d="M20 80L20 40L50 20L80 40L80 80" stroke="currentColor" stroke-width="2" fill="none"/><line x1="35" y1="80" x2="35" y2="50" stroke="currentColor" stroke-width="1.5"/><line x1="65" y1="80" x2="65" y2="50" stroke="currentColor" stroke-width="1.5"/><line x1="20" y1="80" x2="80" y2="80" stroke="currentColor" stroke-width="1.5"/></svg>
+                        > SECTOR_CARIÑENA_ZGU
+                    </h2>
+                    <div class="terminal-text">
+                        <p>> ESTADO: ADJUDICACIÓN MUNICIPAL APROBADA</p>
+                        <p>> VISTO BUENO INICIAL AESA: CONFIRMADO</p>
+                        <br>
+                        <p>> INFRAESTRUCTURA BASE:</p>
+                        <ul>
+                            <li>Zona cubierta con mesas de picnic y bancos</li>
+                            <li>Capacidad máxima: 16 personas</li>
+                            <li>Servicios de hostelería y restauración a menos de 150 metros</li>
+                            <li>Acceso cómodo para vehículos y equipamiento</li>
+                        </ul>
+                        <br>
+                        <p>> ARCHIVOS TÉCNICOS:</p>
+                        <p style="color: var(--amber);">⚠ VISUALIZACIÓN DE ESTRUCTURAS BLOQUEADA</p>
+                        <p style="color: var(--gray);">Renders y planos técnicos confidenciales por seguridad. Acceso exclusivo para unidades validadas (socios).</p>
+                    </div>
+                    <div class="sector-status">SECTOR CARIÑENA: EN TRÁMITE DE AUTORIZACIÓN FINAL</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Legal Page -->
+        <div id="legal-page" class="content-page">
             <a href="#" class="back-button" onclick="showHome(); return false;">
                 <svg viewBox="0 0 100 100" fill="none"><path d="M70 50L30 50M30 50L45 35M30 50L45 65" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 VOLVER AL INICIO
@@ -1237,27 +1409,31 @@
                 <div class="hud-panel full-width">
                     <h2 class="section-title">
                         <svg viewBox="0 0 100 100" fill="none"><rect x="30" y="20" width="40" height="60" stroke="currentColor" stroke-width="2" fill="none"/><line x1="40" y1="35" x2="60" y2="35" stroke="currentColor" stroke-width="1.5"/><line x1="40" y1="50" x2="60" y2="50" stroke="currentColor" stroke-width="1.5"/><circle cx="50" cy="65" r="10" stroke="currentColor" stroke-width="2" fill="none"/><path d="M46 65L49 68L54 62" stroke="currentColor" stroke-width="2"/></svg>
-                        > NORMATIVA_AESA
+                        > MARCO_LEGAL_Y_SEGURIDAD
                     </h2>
-                    <div class="terminal-text" id="typewriter-2"></div><span class="cursor"></span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Operaciones Page -->
-        <div id="operaciones-page" class="content-page">
-            <a href="#" class="back-button" onclick="showHome(); return false;">
-                <svg viewBox="0 0 100 100" fill="none"><path d="M70 50L30 50M30 50L45 35M30 50L45 65" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                VOLVER AL INICIO
-            </a>
-            <div class="content-grid">
-                <div class="hud-panel full-width">
-                    <h2 class="section-title">
-                        <svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="50" cy="50" r="6" fill="currentColor"/><line x1="50" y1="20" x2="50" y2="30" stroke="currentColor" stroke-width="2"/><line x1="50" y1="70" x2="50" y2="80" stroke="currentColor" stroke-width="2"/><line x1="20" y1="50" x2="30" y2="50" stroke="currentColor" stroke-width="2"/><line x1="70" y1="50" x2="80" y2="50" stroke="currentColor" stroke-width="2"/></svg>
-                        > ESTADO_OPERACIONES
-                    </h2>
-                    <div class="terminal-text" id="typewriter-3"></div><span class="cursor"></span>
-                    <div class="sector-status">SECTOR CARIÑENA: ENCRIPTADO / EN TRÁMITE</div>
+                    <div class="terminal-text" id="typewriter-legal"></div><span class="cursor"></span>
+                    
+                    <div class="founder-benefits" style="margin-top: 2rem; border-color: var(--cyan); background: rgba(0, 242, 255, 0.05);">
+                        <h3 class="benefits-title" style="color: var(--cyan);">📋 DESTINO DEL CAPITAL - PROYECTO ORIGEN</h3>
+                        <div class="benefits-grid">
+                            <div class="benefit-item">
+                                <div class="benefit-icon" style="color: var(--cyan);">▸</div>
+                                <div class="benefit-text">Ejecución del Estudio SORA (Specific Operations Risk Assessment)</div>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="benefit-icon" style="color: var(--cyan);">▸</div>
+                                <div class="benefit-text">Desarrollo de manuales operativos certificados</div>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="benefit-icon" style="color: var(--cyan);">▸</div>
+                                <div class="benefit-text">Seguro de Responsabilidad Civil de alta cobertura</div>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="benefit-icon" style="color: var(--cyan);">▸</div>
+                                <div class="benefit-text">Operación bajo amparo del Artículo 16</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1268,6 +1444,29 @@
                 <svg viewBox="0 0 100 100" fill="none"><path d="M70 50L30 50M30 50L45 35M30 50L45 65" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 VOLVER AL INICIO
             </a>
+            <div class="content-grid">
+                <div class="hud-panel full-width">
+                    <h2 class="section-title">
+                        <svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="35" r="12" stroke="currentColor" stroke-width="2" fill="none"/><path d="M30 80C30 65 40 55 50 55C60 55 70 65 70 80" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+                        > SISTEMA_DE_PROGRESIÓN
+                    </h2>
+                    <div class="terminal-text">
+                        <p>> CONCEPTO: EL ROL NO SE ELIGE, SE CULTIVA</p>
+                        <br>
+                        <p>A través de los reportes de vuelo con hashtags específicos, el sistema determina dinámicamente tu posición en el gráfico radial de anillos de especialización:</p>
+                        <br>
+                        <div class="hashtags" style="justify-content: flex-start;">
+                            <span class="hashtag">#BUILD</span>
+                            <span class="hashtag">#FREESTYLE</span>
+                            <span class="hashtag">#RACING</span>
+                            <span class="hashtag">#CINEMATIC</span>
+                            <span class="hashtag">#LONGRANGE</span>
+                        </div>
+                        <br>
+                        <p>Cada vuelo reportado suma puntos en tu anillo de especialidad correspondiente, definiendo tu rol técnico dentro de la Crew de forma orgánica y basada en tu actividad real.</p>
+                    </div>
+                </div>
+            </div>
             <div class="info-grid">
                 <div class="info-card">
                     <div class="info-icon">
@@ -1322,10 +1521,10 @@
     <div class="modal-overlay" id="registerModal">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal()">&times;</button>
-            <h2 class="modal-title">> INICIAR_REGISTRO</h2>
+            <h2 class="modal-title">> INICIAR_PROTOCOLO_DE_INSCRIPCIÓN</h2>
             <form id="registerForm" onsubmit="handleRegister(event)">
                 <div class="form-group">
-                    <label>> IDENTIFICADOR (NOMBRE)</label>
+                    <label>> IDENTIFICADOR (NOMBRE COMPLETO)</label>
                     <input type="text" required placeholder="CMDR_">
                 </div>
                 <div class="form-group">
@@ -1340,8 +1539,8 @@
                     <label>> TIPO DE MEMBRESÍA</label>
                     <select required>
                         <option value="">SELECCIONAR RAMA...</option>
-                        <option value="founder">SOCIO FUNDADOR - 150€ [NIVEL 0]</option>
-                        <option value="standard">SOCIO ESTÁNDAR - 50€/AÑO</option>
+                        <option value="founder">SOCIO FUNDADOR - 60€ PRIMER AÑO [NODO 0]</option>
+                        <option value="standard">SOCIO ESTÁNDAR - 40€/AÑO</option>
                         <option value="student">SOCIO CADETE - 30€/AÑO</option>
                     </select>
                 </div>
@@ -1358,12 +1557,13 @@
         const maxXP = 1000;
         let xpPopupShown = localStorage.getItem('modo2_xp_popup_shown') || 'false';
 
+        // Recruitment Counter (Simulated - would connect to backend)
+        let recruited = parseInt(localStorage.getItem('modo2_recruited')) || 0;
+
         function updateXP() {
-            // Add 1 XP per visit
             xp = Math.min(xp + 1, maxXP);
             localStorage.setItem('modo2_xp', xp);
             
-            // Update display
             const xpFill = document.getElementById('xpFill');
             const xpText = document.getElementById('xpText');
             const percentage = (xp / maxXP) * 100;
@@ -1371,14 +1571,29 @@
             xpFill.style.width = percentage + '%';
             xpText.textContent = xp + ' / ' + maxXP + ' XP';
             
-            // Check if maxed and popup not shown
             if (xp >= maxXP && xpPopupShown !== 'true') {
                 showXpPopup();
             }
             
-            // Add maxed class for animation
             if (xp >= maxXP) {
                 xpFill.classList.add('maxed');
+            }
+        }
+
+        function updateRecruitmentCounter() {
+            const counterEl = document.getElementById('recruitmentCount');
+            if (counterEl) {
+                // Animate counter
+                let current = 0;
+                const target = recruited;
+                const interval = setInterval(() => {
+                    if (current >= target) {
+                        clearInterval(interval);
+                    } else {
+                        current++;
+                        counterEl.textContent = current;
+                    }
+                }, 50);
             }
         }
 
@@ -1393,7 +1608,6 @@
             document.getElementById('xpPopupOverlay').classList.remove('active');
         }
 
-        // Close popup on overlay click
         document.getElementById('xpPopupOverlay').addEventListener('click', closeXpPopup);
 
         // Page Navigation
@@ -1412,11 +1626,9 @@
             document.getElementById(pageId + '-page').classList.add('active');
             window.scrollTo({ top: 0, behavior: 'smooth' });
             
-            // Retype text when showing page
             setTimeout(() => {
                 if (pageId === 'protocolo') typeWriter('typewriter-1', texts['typewriter-1']);
-                if (pageId === 'normativa') typeWriter('typewriter-2', texts['typewriter-2']);
-                if (pageId === 'operaciones') typeWriter('typewriter-3', texts['typewriter-3']);
+                if (pageId === 'legal') typeWriter('typewriter-legal', texts['typewriter-legal']);
             }, 100);
         }
 
@@ -1484,8 +1696,7 @@
         // Typewriter Effect
         const texts = {
             'typewriter-1': "Somos una 'Crew' de élite dedicada a la profesionalización del vuelo con UAS en Aragón. Nuestra misión es elevar el estándar técnico y garantizar la legalidad operativa bajo el Artículo 16. No somos solo pilotos; somos operadores de sistemas aéreos no tripulados.",
-            'typewriter-2': "El cumplimiento es nuestra prioridad. Todas las operaciones se realizan bajo estricta normativa AESA. Protocolos de seguridad activos. Zona de exclusión aérea respetada. Seguro de responsabilidad civil verificado.",
-            'typewriter-3': "Base de operaciones Sector Cariñena (ZGU) en proceso de habilitación - gestiones municipales en curso. Actividades, formación y talleres semanales. Implementación de tecnologías emergentes del sector UAS."
+            'typewriter-legal': "El cumplimiento es nuestra prioridad. El Ayuntamiento ha decidido la adjudicación y AESA ha dado el visto bueno inicial al emplazamiento. El capital del 'Proyecto Origen' se destinará directamente a la ejecución del Estudio SORA, manuales operativos y el seguro de Responsabilidad Civil de alta cobertura. Operamos bajo el amparo del Art. 16."
         };
 
         function typeWriter(elementId, text, speed = 20) {
@@ -1527,9 +1738,9 @@
         // Initialize
         window.addEventListener('load', () => {
             updateXP();
+            updateRecruitmentCounter();
             typeWriter('typewriter-1', texts['typewriter-1']);
-            typeWriter('typewriter-2', texts['typewriter-2']);
-            typeWriter('typewriter-3', texts['typewriter-3']);
+            typeWriter('typewriter-legal', texts['typewriter-legal']);
         });
     </script>
 </body>
