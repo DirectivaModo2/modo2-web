@@ -25,11 +25,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Titillium+Web:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-
+    <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -94,7 +90,7 @@
             </div>
         </header>
 
-        <!-- User Dashboard with Login -->
+        <!-- User Dashboard -->
         <div class="user-dashboard">
             <div class="user-info" id="userInfo">
                 <div class="user-avatar">
@@ -210,46 +206,31 @@
                         <div class="benefits-grid">
                             <div class="benefit-item">
                                 <div class="benefit-icon">▸</div>
-                                <div class="benefit-text">Inscripción 0€ de por vida - Exención total de cualquier cuota de entrada o matrícula futura</div>
+                                <div class="benefit-text">Inscripción 0€ de por vida</div>
                             </div>
                             <div class="benefit-item">
                                 <div class="benefit-icon">▸</div>
-                                <div class="benefit-text">Legado Físico - Inscripción del nombre en la "Placa de Honor" de la SEDE en la zona de Boxes</div>
+                                <div class="benefit-text">Legado Físico en la SEDE</div>
                             </div>
                             <div class="benefit-item">
                                 <div class="benefit-icon">▸</div>
-                                <div class="benefit-text">Estatus Digital - Nombramiento permanente en el Muro de Honor de la web de por vida</div>
+                                <div class="benefit-text">Estatus Digital Permanente</div>
                             </div>
                             <div class="benefit-item">
                                 <div class="benefit-icon">▸</div>
-                                <div class="benefit-text">Prioridad Operativa - Preferencia absoluta en la reserva de slots de vuelo</div>
+                                <div class="benefit-text">Prioridad Operativa</div>
                             </div>
                         </div>
                     </div>
 
                     <div class="transparency-box">
-                        <h3 class="transparency-title">📊 TRANSPARENCIA FINANCIERA - PROYECTO ORIGEN</h3>
+                        <h3 class="transparency-title">📊 TRANSPARENCIA FINANCIERA</h3>
                         <div class="transparency-grid">
-                            <div class="transparency-item">
-                                <div class="transparency-icon">▸</div>
-                                <div class="transparency-text">Estudio SORA - 35%</div>
-                            </div>
-                            <div class="transparency-item">
-                                <div class="transparency-icon">▸</div>
-                                <div class="transparency-text">Seguro RC Alta Cobertura - 25%</div>
-                            </div>
-                            <div class="transparency-item">
-                                <div class="transparency-icon">▸</div>
-                                <div class="transparency-text">Manuales Operativos - 20%</div>
-                            </div>
-                            <div class="transparency-item">
-                                <div class="transparency-icon">▸</div>
-                                <div class="transparency-text">Infraestructura SEDE - 15%</div>
-                            </div>
-                            <div class="transparency-item">
-                                <div class="transparency-icon">▸</div>
-                                <div class="transparency-text">Fondo de Reserva Legal - 5%</div>
-                            </div>
+                            <div class="transparency-item"><div class="transparency-icon">▸</div><div class="transparency-text">Estudio SORA - 35%</div></div>
+                            <div class="transparency-item"><div class="transparency-icon">▸</div><div class="transparency-text">Seguro RC - 25%</div></div>
+                            <div class="transparency-item"><div class="transparency-icon">▸</div><div class="transparency-text">Manuales - 20%</div></div>
+                            <div class="transparency-item"><div class="transparency-icon">▸</div><div class="transparency-text">Infraestructura - 15%</div></div>
+                            <div class="transparency-item"><div class="transparency-icon">▸</div><div class="transparency-text">Reserva Legal - 5%</div></div>
                         </div>
                     </div>
                 </div>
@@ -270,24 +251,17 @@
                     </h2>
                     <div class="terminal-text">
                         <p>> ESTADO: INTERÉS MUNICIPAL CONFIRMADO</p>
-                        <p>> UBICACIÓN: Provincia de Zaragoza, cerca de la ciudad de Zaragoza</p>
-                        <p>> VISTO BUENO INICIAL AESA: EN PROCESO</p>
+                        <p>> UBICACIÓN: Provincia de Zaragoza</p>
+                        <p>> AESA: EN PROCESO</p>
                         <br>
-                        <p>> INFRAESTRUCTURA BASE:</p>
-                        <ul>
-                            <li>Zona cubierta con mesas de picnic y bancos</li>
-                            <li>Capacidad in situ: 16 personas en la SEDE</li>
-                            <li>Rotación de turnos: 8 pilotos máximo en caso de saturación</li>
-                            <li>Objetivo: 4 personas volando simultáneamente, rotando por turnos</li>
-                            <li>Servicios de hostelería y restauración a poco más de 150 metros</li>
-                            <li>Acceso cómodo y bien asfaltado y comunicado para vehículos y equipamiento</li>
-                        </ul>
+                        <p>> CAPACIDAD: 16 personas in situ</p>
+                        <p>> TURNOS: 8 pilotos máximo / 4 volando simultáneo</p>
+                        <p>> SERVICIOS: Hostelería a 150m</p>
+                        <p>> ACCESO: Asfaltado y comunicado</p>
                         <br>
-                        <p>> ARCHIVOS TÉCNICOS:</p>
-                        <p style="color: var(--amber);">⚠ VISUALIZACIÓN DE ESTRUCTURAS BLOQUEADA</p>
-                        <p style="color: var(--gray);">Renders y planos técnicos confidenciales por seguridad. Acceso exclusivo para unidades validadas (socios).</p>
+                        <p style="color: var(--amber);">⚠ PLANOS TÉCNICOS BLOQUEADOS</p>
                     </div>
-                    <div class="sector-status">SEDE: EN TRÁMITE DE AUTORIZACIÓN FINAL</div>
+                    <div class="sector-status">SEDE: EN TRÁMITE</div>
                 </div>
             </div>
         </div>
@@ -302,31 +276,9 @@
                 <div class="hud-panel full-width">
                     <h2 class="section-title">
                         <svg viewBox="0 0 100 100" fill="none"><rect x="30" y="20" width="40" height="60" stroke="currentColor" stroke-width="2" fill="none"/><line x1="40" y1="35" x2="60" y2="35" stroke="currentColor" stroke-width="1.5"/><line x1="40" y1="50" x2="60" y2="50" stroke="currentColor" stroke-width="1.5"/><circle cx="50" cy="65" r="10" stroke="currentColor" stroke-width="2" fill="none"/><path d="M46 65L49 68L54 62" stroke="currentColor" stroke-width="2"/></svg>
-                        > MARCO_LEGAL_Y_SEGURIDAD
+                        > MARCO_LEGAL
                     </h2>
                     <div class="terminal-text" id="typewriter-legal"></div><span class="cursor"></span>
-                    
-                    <div class="founder-benefits" style="margin-top: 2rem; border-color: var(--cyan); background: rgba(0, 242, 255, 0.05);">
-                        <h3 class="benefits-title" style="color: var(--cyan);">📋 DESTINO DEL CAPITAL - PROYECTO ORIGEN</h3>
-                        <div class="benefits-grid">
-                            <div class="benefit-item">
-                                <div class="benefit-icon" style="color: var(--cyan);">▸</div>
-                                <div class="benefit-text">Ejecución del Estudio SORA</div>
-                            </div>
-                            <div class="benefit-item">
-                                <div class="benefit-icon" style="color: var(--cyan);">▸</div>
-                                <div class="benefit-text">Manuales operativos certificados</div>
-                            </div>
-                            <div class="benefit-item">
-                                <div class="benefit-icon" style="color: var(--cyan);">▸</div>
-                                <div class="benefit-text">Seguro RC de alta cobertura</div>
-                            </div>
-                            <div class="benefit-item">
-                                <div class="benefit-icon" style="color: var(--cyan);">▸</div>
-                                <div class="benefit-text">Operación bajo amparo del Art. 16</div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -339,66 +291,44 @@
             </a>
             <div class="content-grid">
                 <div class="hud-panel full-width">
-                    <h2 class="section-title">
-                        <svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="35" r="12" stroke="currentColor" stroke-width="2" fill="none"/><path d="M30 80C30 65 40 55 50 55C60 55 70 65 70 80" stroke="currentColor" stroke-width="2" fill="none"/></svg>
-                        > SISTEMA_DE_PROGRESIÓN_12_ANILLOS
-                    </h2>
-                    <div class="terminal-text">
-                        <p>> CONCEPTO: EL ROL NO SE ELIGE, SE CULTIVA</p>
-                    </div>
-
+                    <h2 class="section-title">> SISTEMA_DE_PROGRESIÓN_12_ANILLOS</h2>
+                    <div class="terminal-text"><p>> EL ROL NO SE ELIGE, SE CULTIVA</p></div>
                     <div class="rings-container">
                         <div class="rings-grid">
                             <div class="ring-group">
-                                <h3 class="ring-group-title">[ GRUPO ALFA: PLATAFORMAS BASE ]</h3>
-                                <div class="ring-item"><div class="ring-name"><span>#FPV</span></div><div class="ring-desc">Vuelo inmersivo sin asistencias.</div></div>
-                                <div class="ring-item"><div class="ring-name"><span>#ESTABILIZADO</span></div><div class="ring-desc">Operadores de sistemas inteligentes.</div></div>
+                                <h3 class="ring-group-title">[ ALFA: PLATAFORMAS ]</h3>
+                                <div class="ring-item"><div class="ring-name"><span>#FPV</span></div></div>
+                                <div class="ring-item"><div class="ring-name"><span>#ESTABILIZADO</span></div></div>
                             </div>
                             <div class="ring-group">
-                                <h3 class="ring-group-title">[ GRUPO BRAVO: DISCIPLINAS DE VUELO ]</h3>
-                                <div class="ring-item"><div class="ring-name"><span>#FREESTYLE</span></div><div class="ring-desc">Dominio espacial y acrobacia.</div></div>
-                                <div class="ring-item"><div class="ring-name"><span>#RACING</span></div><div class="ring-desc">Velocidad pura en track.</div></div>
-                                <div class="ring-item"><div class="ring-name"><span>#CINEMATIC</span></div><div class="ring-desc">Operación de cámara profesional.</div></div>
-                                <div class="ring-item"><div class="ring-name"><span>#LONGRANGE</span></div><div class="ring-desc">Exploración de larga distancia.</div></div>
-                                <div class="ring-item"><div class="ring-name"><span>#MICRO</span></div><div class="ring-desc">Infiltración en interiores.</div></div>
+                                <h3 class="ring-group-title">[ BRAVO: VUELO ]</h3>
+                                <div class="ring-item"><div class="ring-name"><span>#FREESTYLE</span></div></div>
+                                <div class="ring-item"><div class="ring-name"><span>#RACING</span></div></div>
+                                <div class="ring-item"><div class="ring-name"><span>#CINEMATIC</span></div></div>
+                                <div class="ring-item"><div class="ring-name"><span>#LONGRANGE</span></div></div>
+                                <div class="ring-item"><div class="ring-name"><span>#MICRO</span></div></div>
                             </div>
                             <div class="ring-group">
-                                <h3 class="ring-group-title">[ GRUPO CHARLIE: TALLER ]</h3>
-                                <div class="ring-item"><div class="ring-name"><span>#BUILD</span></div><div class="ring-desc">Ensamblaje desde cero.</div></div>
-                                <div class="ring-item"><div class="ring-name"><span>#TUNING</span></div><div class="ring-desc">Calibración de software.</div></div>
-                                <div class="ring-item"><div class="ring-name"><span>#REPAIR</span></div><div class="ring-desc">Mantenimiento y reparación.</div></div>
+                                <h3 class="ring-group-title">[ CHARLIE: TALLER ]</h3>
+                                <div class="ring-item"><div class="ring-name"><span>#BUILD</span></div></div>
+                                <div class="ring-item"><div class="ring-name"><span>#TUNING</span></div></div>
+                                <div class="ring-item"><div class="ring-name"><span>#REPAIR</span></div></div>
                             </div>
                             <div class="ring-group">
-                                <h3 class="ring-group-title">[ GRUPO DELTA: CREW ]</h3>
-                                <div class="ring-item"><div class="ring-name"><span>#POSTPRO</span></div><div class="ring-desc">Edición y postproducción.</div></div>
-                                <div class="ring-item"><div class="ring-name"><span>#MENTOR</span></div><div class="ring-desc">Comunidad y enseñanza.</div></div>
+                                <h3 class="ring-group-title">[ DELTA: CREW ]</h3>
+                                <div class="ring-item"><div class="ring-name"><span>#POSTPRO</span></div></div>
+                                <div class="ring-item"><div class="ring-name"><span>#MENTOR</span></div></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="info-grid">
-                <div class="info-card">
-                    <div class="info-icon">
-                        <svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="35" r="12" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M35 75C35 65 42 55 50 55C58 55 65 65 65 75" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-                    </div>
-                    <h3 class="info-title">CREW ACTIVA</h3>
-                    <ul class="info-list"><li>PILOTOS</li><li>TÉCNICOS</li><li>DEVS</li></ul>
-                </div>
-                <div class="info-card">
-                    <div class="info-icon">
-                        <svg viewBox="0 0 100 100" fill="none"><rect x="20" y="30" width="60" height="40" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="20" y1="45" x2="80" y2="45" stroke="currentColor" stroke-width="1"/></svg>
-                    </div>
-                    <h3 class="info-title">PARTNERS</h3>
-                    <ul class="info-list"><li>TECH CORP</li><li>FPV GEAR</li><li>DRONE LAB</li></ul>
-                </div>
-            </div>
         </div>
 
-        <!-- Flight Logs Section -->
+        <!-- Flight Logs -->
         <div class="flight-logs-section">
             <h3 class="logs-title">> TERMINAL_DE_ACTIVIDAD</h3>
-            <p class="logs-description">Próximamente: Sincroniza tus logs de vuelo con los hashtags de tu rama para acumular XP.</p>
+            <p class="logs-description">Sincroniza tus logs con hashtags para acumular XP</p>
             <div class="hashtags">
                 <span class="hashtag">#MODO2_INCURSOR</span>
                 <span class="hashtag">#MODO2_ARQUITECTO</span>
@@ -413,7 +343,7 @@
                 <a href="#" class="social-btn">Discord</a>
                 <a href="#" class="social-btn">YouTube</a>
             </div>
-            <p class="copyright">© 2026 MODO 2 Asociación // ART. 16 COMPLIANT // SISTEMA EN LÍNEA</p>
+            <p class="copyright">© 2026 MODO 2 Asociación // ART. 16 COMPLIANT</p>
         </footer>
     </div>
 
@@ -421,33 +351,21 @@
     <div class="modal-overlay" id="registerModal">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal()">&times;</button>
-            <h2 class="modal-title">> INICIAR_PROTOCOLO_DE_INSCRIPCIÓN</h2>
+            <h2 class="modal-title">> INSCRIPCIÓN</h2>
             <form id="registerForm" onsubmit="handleRegister(event)">
-                <div class="form-group">
-                    <label>> IDENTIFICADOR</label>
-                    <input type="text" id="regName" required placeholder="CMDR_">
-                </div>
-                <div class="form-group">
-                    <label>> EMAIL</label>
-                    <input type="email" id="regEmail" required placeholder="email@dominio.com">
-                </div>
-                <div class="form-group">
-                    <label>> TELÉFONO</label>
-                    <input type="tel" id="regPhone" required placeholder="+34 XXX XXX XXX">
-                </div>
-                <div class="form-group">
-                    <label>> CONTRASEÑA</label>
-                    <input type="password" id="regPassword" required placeholder="••••••••">
-                </div>
+                <div class="form-group"><label>> IDENTIFICADOR</label><input type="text" id="regName" required></div>
+                <div class="form-group"><label>> EMAIL</label><input type="email" id="regEmail" required></div>
+                <div class="form-group"><label>> TELÉFONO</label><input type="tel" id="regPhone" required></div>
+                <div class="form-group"><label>> CONTRASEÑA</label><input type="password" id="regPassword" required></div>
                 <div class="form-group">
                     <label>> MEMBRESÍA</label>
                     <select id="regMembership" required>
                         <option value="">SELECCIONAR...</option>
-                        <option value="founder">SOCIO FUNDADOR - 60€ [NODO 0]</option>
-                        <option value="standard">SOCIO ESTÁNDAR - 40€/AÑO</option>
+                        <option value="founder">SOCIO FUNDADOR - 60€</option>
+                        <option value="standard">SOCIO ESTÁNDAR - 40€</option>
                     </select>
                 </div>
-                <button type="submit" class="submit-btn" id="registerBtn">>> PROCEDER AL PAGO</button>
+                <button type="submit" class="submit-btn" id="registerBtn">>> PROCEDER</button>
             </form>
         </div>
     </div>
@@ -456,19 +374,13 @@
     <div class="modal-overlay" id="loginModal">
         <div class="modal-content login-modal-content">
             <button class="modal-close" onclick="closeLoginModal()">&times;</button>
-            <h2 class="modal-title">> ACCESO_DE_USUARIO</h2>
+            <h2 class="modal-title">> ACCESO</h2>
             <form id="loginForm" onsubmit="handleLogin(event)">
-                <div class="form-group">
-                    <label>> USUARIO / EMAIL</label>
-                    <input type="text" id="loginUsername" required placeholder="CMDR_ o email">
-                </div>
-                <div class="form-group">
-                    <label>> CONTRASEÑA</label>
-                    <input type="password" id="loginPassword" required placeholder="••••••••">
-                </div>
+                <div class="form-group"><label>> USUARIO / EMAIL</label><input type="text" id="loginUsername" required></div>
+                <div class="form-group"><label>> CONTRASEÑA</label><input type="password" id="loginPassword" required></div>
                 <div class="form-group checkbox-group">
                     <input type="checkbox" id="rememberMe">
-                    <label for="rememberMe">RECORDAR USUARIO</label>
+                    <label for="rememberMe">RECORDAR</label>
                 </div>
                 <button type="submit" class="submit-btn" id="loginBtnSubmit">>> CONECTAR</button>
             </form>
@@ -478,489 +390,12 @@
         </div>
     </div>
 
-    <!-- Main JavaScript File -->
+    <!-- FIREBASE SDKs - ORDER IS CRITICAL -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    
+    <!-- Main Application Script -->
     <script src="assets/js/main.js"></script>
 </body>
 </html>
-
-
-
-              <script>
-                              // assets/js/main.js
-/* 
- * ================================================================
- * MODO 2 - FIREBASE MAINFRAME INTEGRATION
- * ================================================================
- * Project: modo2-mainframe-b9f2e
- * ================================================================
- */
-
-// Firebase Configuration
-const firebaseConfig = {
-    apiKey: "AIzaSyCkB54CuTQZ9sVj42eSIYjYA9s83WgTJHo",
-    authDomain: "modo2-mainframe-b9f2e.firebaseapp.com",
-    projectId: "modo2-mainframe-b9f2e",
-    storageBucket: "modo2-mainframe-b9f2e.firebasestorage.app",
-    messagingSenderId: "253905847546",
-    appId: "1:253905847546:web:718d87ae9f723ae39c3543"
-};
-
-// Initialize Firebase
-let app, auth, db;
-let firebaseInitialized = false;
-
-try {
-    app = firebase.initializeApp(firebaseConfig);
-    auth = firebase.auth();
-    db = firebase.firestore();
-    firebaseInitialized = true;
-    updateFirebaseStatus('connected', 'MAINFRAME: CONECTADO');
-    console.log('>> FIREBASE MAINFRAME: ONLINE <<');
-} catch (error) {
-    console.error('>> FIREBASE ERROR:', error);
-    updateFirebaseStatus('error', 'MAINFRAME: ERROR DE CONEXIÓN');
-}
-
-function updateFirebaseStatus(status, text) {
-    const statusEl = document.getElementById('firebaseStatus');
-    if (statusEl) {
-        statusEl.textContent = text;
-        statusEl.className = 'firebase-status ' + status;
-    }
-}
-
-/* 
- * ================================================================
- * SISTEMA DE PROGRESIÓN MODO 2 - NIVELES 1-200
- * ================================================================
- */
-
-let xp = 0;
-let level = 0;
-let currentUserData = null;
-let xpPopupShown = localStorage.getItem('modo2_xp_popup_shown') || 'false';
-let availableSpots = 40;
-
-// Calculate level from XP (exponential curve)
-function calculateLevel(totalXP) {
-    let lvl = 0;
-    for (let i = 1; i <= 200; i++) {
-        const xpRequired = Math.floor(100 * Math.pow(i, 1.5));
-        if (totalXP < xpRequired) {
-            lvl = i - 1;
-            break;
-        }
-        if (i === 200) lvl = 200;
-    }
-    return Math.max(0, lvl);
-}
-
-// Get rank based on level
-function getRank(lvl) {
-    if (lvl === 0) return 'INVITADO';
-    if (lvl >= 1 && lvl <= 3) return 'CADETE - RECLUTA';
-    if (lvl >= 4 && lvl <= 6) return 'CADETE - INICIADO';
-    if (lvl >= 7 && lvl <= 10) return 'CADETE - ASPIRANTE';
-    if (lvl >= 11 && lvl <= 15) return 'PILOTO NOVEL - OBSERVADOR';
-    if (lvl >= 16 && lvl <= 22) return 'PILOTO NOVEL - OBS. COTILLA';
-    if (lvl >= 23 && lvl <= 30) return 'PILOTO NOVEL - OBS. CONCIENZUDO';
-    if (lvl >= 31 && lvl <= 40) return 'ESPECIALISTA - TÉCNICO';
-    if (lvl >= 41 && lvl <= 50) return 'ESPECIALISTA - ANALISTA';
-    if (lvl >= 51 && lvl <= 60) return 'ESPECIALISTA - OPERADOR';
-    if (lvl >= 61 && lvl <= 80) return 'VETERANO';
-    if (lvl >= 81 && lvl <= 100) return 'VETERANO ÉLITE';
-    if (lvl >= 101 && lvl <= 150) return 'LEYENDA';
-    if (lvl >= 151) return 'LEYENDA VIVA';
-    return 'DESCONOCIDO';
-}
-
-function getXPForNextLevel(lvl) {
-    return Math.floor(100 * Math.pow(lvl + 1, 1.5));
-}
-
-function updateXPDisplay(userXP = 0) {
-    xp = userXP;
-    level = calculateLevel(xp);
-    const nextLevelXP = getXPForNextLevel(level);
-    const prevLevelXP = level > 0 ? getXPForNextLevel(level - 1) : 0;
-    const xpInCurrentLevel = xp - prevLevelXP;
-    const xpNeeded = nextLevelXP - prevLevelXP;
-    const percentage = xpNeeded > 0 ? Math.min((xpInCurrentLevel / xpNeeded) * 100, 100) : 100;
-    
-    const xpFill = document.getElementById('xpFill');
-    const xpText = document.getElementById('xpText');
-    const levelDisplay = document.getElementById('levelDisplay');
-    const userRank = document.getElementById('userRank');
-    
-    if (xpFill) xpFill.style.width = percentage + '%';
-    if (xpText) xpText.textContent = xp.toLocaleString() + ' XP';
-    if (levelDisplay) levelDisplay.textContent = 'NIVEL ' + level;
-    if (userRank) userRank.textContent = getRank(level);
-    
-    if (xp >= 1000 && xpPopupShown !== 'true') showXpPopup();
-    if (level >= 100 && xpFill) xpFill.classList.add('maxed');
-}
-
-function updateRecruitmentCounter() {
-    const counterEl = document.getElementById('availableSpots');
-    if (counterEl) {
-        let current = 40;
-        const target = availableSpots;
-        const interval = setInterval(() => {
-            if (current <= target) {
-                clearInterval(interval);
-            } else {
-                current--;
-                counterEl.textContent = current;
-            }
-        }, 50);
-    }
-}
-
-function showXpPopup() {
-    document.getElementById('xpPopup').classList.add('active');
-    document.getElementById('xpPopupOverlay').classList.add('active');
-    localStorage.setItem('modo2_xp_popup_shown', 'true');
-}
-
-function closeXpPopup() {
-    document.getElementById('xpPopup').classList.remove('active');
-    document.getElementById('xpPopupOverlay').classList.remove('active');
-}
-
-// Modal Functions
-function openLoginModal() {
-    document.getElementById('loginModal').classList.add('active');
-}
-
-function closeLoginModal() {
-    document.getElementById('loginModal').classList.remove('active');
-}
-
-function openModal() {
-    document.getElementById('registerModal').classList.add('active');
-}
-
-function closeModal() {
-    document.getElementById('registerModal').classList.remove('active');
-}
-
-// Handle Registration with Firebase
-async function handleRegister(e) {
-    e.preventDefault();
-    
-    if (!firebaseInitialized) {
-        alert('>> ERROR: MAINFRAME DESCONECTADO <<');
-        return;
-    }
-
-    const btn = document.getElementById('registerBtn');
-    btn.disabled = true;
-    btn.textContent = '>> PROCESANDO...';
-
-    const name = document.getElementById('regName').value;
-    const email = document.getElementById('regEmail').value;
-    const phone = document.getElementById('regPhone').value;
-    const password = document.getElementById('regPassword').value;
-    const membership = document.getElementById('regMembership').value;
-
-    try {
-        const userCredential = await auth.createUserWithEmailAndPassword(email, password);
-        const user = userCredential.user;
-
-        await db.collection('users').doc(user.uid).set({
-            displayName: name,
-            email: email,
-            phone: phone,
-            membership: membership,
-            level: 0,
-            xp: 0,
-            rank: 'INVITADO',
-            status: 'pending',
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            lastLogin: firebase.firestore.FieldValue.serverTimestamp()
-        });
-
-        alert('>> REGISTRO COMPLETADO <<\n\nEstado: PENDIENTE DE VALIDACIÓN');
-        closeModal();
-        document.getElementById('registerForm').reset();
-
-    } catch (error) {
-        console.error('Registration error:', error);
-        alert('>> ERROR DE REGISTRO <<\n\n' + error.message);
-    } finally {
-        btn.disabled = false;
-        btn.textContent = '>> PROCEDER AL PAGO';
-    }
-}
-
-// Handle Login with Firebase
-async function handleLogin(e) {
-    e.preventDefault();
-    
-    if (!firebaseInitialized) {
-        alert('>> ERROR: MAINFRAME DESCONECTADO <<');
-        return;
-    }
-
-    const btn = document.getElementById('loginBtnSubmit');
-    btn.disabled = true;
-    btn.textContent = '>> AUTENTICANDO...';
-
-    const username = document.getElementById('loginUsername').value;
-    const password = document.getElementById('loginPassword').value;
-    const remember = document.getElementById('rememberMe').checked;
-
-    try {
-        if (remember) {
-            await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
-        } else {
-            await auth.setPersistence(firebase.auth.Auth.Persistence.SESSION);
-        }
-
-        const userCredential = await auth.signInWithEmailAndPassword(username, password);
-        const user = userCredential.user;
-
-        const userDoc = await db.collection('users').doc(user.uid).get();
-        
-        if (userDoc.exists) {
-            currentUserData = userDoc.data();
-            
-            document.getElementById('userName').textContent = (currentUserData.displayName || user.email).toUpperCase();
-            document.getElementById('userLevel').textContent = 'NIVEL ' + (currentUserData.level || 0);
-            
-            const loginBtn = document.getElementById('loginBtn');
-            loginBtn.textContent = currentUserData.status === 'connected' ? 'CONECTADO' : 'PENDIENTE DE VALIDACIÓN';
-            loginBtn.className = 'status-badge ' + (currentUserData.status === 'connected' ? 'connected' : 'pending');
-            loginBtn.onclick = handleLogout;
-            
-            updateXPDisplay(currentUserData.xp || 0);
-            
-            await db.collection('users').doc(user.uid).update({
-                lastLogin: firebase.firestore.FieldValue.serverTimestamp()
-            });
-
-            closeLoginModal();
-            displayUserDataInTable();
-        }
-
-    } catch (error) {
-        console.error('Login error:', error);
-        alert('>> ERROR DE AUTENTICACIÓN <<\n\n' + error.message);
-    } finally {
-        btn.disabled = false;
-        btn.textContent = '>> CONECTAR';
-    }
-}
-
-// Handle Logout
-async function handleLogout() {
-    if (!firebaseInitialized) return;
-    
-    try {
-        await auth.signOut();
-        currentUserData = null;
-        
-        document.getElementById('userName').textContent = 'INVITADO';
-        document.getElementById('userLevel').textContent = 'ACCESO RESTRINGIDO';
-        document.getElementById('userRank').textContent = '--';
-        
-        const loginBtn = document.getElementById('loginBtn');
-        loginBtn.textContent = 'INVITADO / ACCESO RESTRINGIDO';
-        loginBtn.className = 'status-badge';
-        loginBtn.onclick = openLoginModal;
-        
-        updateXPDisplay(0);
-        
-        alert('>> SESIÓN CERRADA <<');
-    } catch (error) {
-        console.error('Logout error:', error);
-    }
-}
-
-// Listen for auth state changes
-if (firebaseInitialized) {
-    auth.onAuthStateChanged(async (user) => {
-        if (user) {
-            const userDoc = await db.collection('users').doc(user.uid).get();
-            if (userDoc.exists) {
-                currentUserData = userDoc.data();
-                
-                document.getElementById('userName').textContent = (currentUserData.displayName || user.email).toUpperCase();
-                document.getElementById('userLevel').textContent = 'NIVEL ' + (currentUserData.level || 0);
-                
-                const loginBtn = document.getElementById('loginBtn');
-                loginBtn.textContent = currentUserData.status === 'connected' ? 'CONECTADO' : 'PENDIENTE DE VALIDACIÓN';
-                loginBtn.className = 'status-badge ' + (currentUserData.status === 'connected' ? 'connected' : 'pending');
-                loginBtn.onclick = handleLogout;
-                
-                updateXPDisplay(currentUserData.xp || 0);
-            }
-        } else {
-            currentUserData = null;
-        }
-    });
-}
-
-// Toggle User Database Display
-document.addEventListener('DOMContentLoaded', () => {
-    const loginBtn = document.getElementById('loginBtn');
-    if (loginBtn) {
-        loginBtn.addEventListener('click', function() {
-            if (this.classList.contains('connected') || this.classList.contains('pending')) {
-                const dbPanel = document.getElementById('userDbPanel');
-                dbPanel.classList.toggle('active');
-                if (firebaseInitialized && currentUserData) {
-                    displayUserDataInTable();
-                }
-            }
-        });
-    }
-});
-
-function displayUserDataInTable() {
-    if (!firebaseInitialized || !currentUserData) return;
-    
-    const tbody = document.getElementById('userDbBody');
-    if (tbody) {
-        tbody.innerHTML = `
-            <tr>
-                <td>${currentUserData.displayName || 'N/A'}</td>
-                <td>${auth.currentUser?.email || 'N/A'}</td>
-                <td class="${currentUserData.status === 'connected' ? 'text-green' : 'text-amber'}">${currentUserData.status?.toUpperCase() || 'PENDING'}</td>
-                <td>${currentUserData.level || 0}</td>
-                <td>${currentUserData.rank || 'INVITADO'}</td>
-                <td>${(currentUserData.xp || 0).toLocaleString()}</td>
-            </tr>
-        `;
-    }
-}
-
-// Page Navigation
-function showHome() {
-    document.querySelectorAll('.content-page').forEach(page => {
-        page.classList.remove('active');
-    });
-    document.getElementById('home-page').classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function showPage(pageId) {
-    document.querySelectorAll('.content-page').forEach(page => {
-        page.classList.remove('active');
-    });
-    document.getElementById(pageId + '-page').classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    
-    setTimeout(() => {
-        if (pageId === 'protocolo') typeWriter('typewriter-1', texts['typewriter-1']);
-        if (pageId === 'legal') typeWriter('typewriter-legal', texts['typewriter-legal']);
-    }, 100);
-}
-
-// Drone Trail Animation
-const colors = ['#00f2ff', '#ff0055', '#00f2ff', '#008080'];
-const trailsContainer = document.getElementById('drone-trails-container');
-
-function createDroneTrail() {
-    const trail = document.createElement('div');
-    trail.className = 'drone-trail';
-    
-    const startY = Math.random() * window.innerHeight;
-    const startFromLeft = Math.random() > 0.5;
-    const length = 100 + Math.random() * 300;
-    const duration = 4 + Math.random() * 5;
-    const color = colors[Math.floor(Math.random() * colors.length)];
-    
-    trail.style.cssText = `
-        width: ${length}px;
-        height: 1px;
-        background: linear-gradient(${startFromLeft ? 'to right' : 'to left'}, ${color}, transparent);
-        top: ${startY}px;
-        left: ${startFromLeft ? '-300px' : 'auto'};
-        right: ${!startFromLeft ? '-300px' : 'auto'};
-        box-shadow: 0 0 10px ${color};
-    `;
-    
-    trailsContainer.appendChild(trail);
-    
-    const startTime = Date.now();
-    
-    function animate() {
-        const elapsed = Date.now() - startTime;
-        const progress = elapsed / (duration * 1000);
-        
-        if (progress < 1) {
-            const fadeProgress = progress < 0.2 ? progress / 0.2 : (1 - progress) / 0.3;
-            const opacity = Math.max(0, Math.min(1, fadeProgress));
-            trail.style.opacity = opacity * 0.4;
-            
-            const moveDistance = progress * (window.innerWidth + length);
-            if (startFromLeft) {
-                trail.style.left = `${-length + moveDistance}px`;
-            } else {
-                trail.style.right = `${-length + moveDistance}px`;
-            }
-            
-            requestAnimationFrame(animate);
-        } else {
-            trail.remove();
-        }
-    }
-    
-    requestAnimationFrame(animate);
-}
-
-function startDroneTrails() {
-    createDroneTrail();
-    const nextTrail = 3000 + Math.random() * 5000;
-    setTimeout(startDroneTrails, nextTrail);
-}
-
-// Typewriter Effect
-const texts = {
-    'typewriter-1': "Somos una 'Crew' de élite dedicada a la profesionalización del vuelo con UAS en Aragón. Nuestra misión es elevar el estándar técnico y garantizar la legalidad operativa bajo el Artículo 16.",
-    'typewriter-legal': "El Ayuntamiento está informado de nuestro interés. AESA ha dado el visto bueno inicial. Parte del capital se destinará al Estudio SORA, manuales operativos y seguro RC. Operamos bajo el Art. 16."
-};
-
-function typeWriter(elementId, text, speed = 20) {
-    const element = document.getElementById(elementId);
-    if (!element) return;
-    let i = 0;
-    element.innerHTML = ""; 
-
-    function type() {
-        if (i < text.length) {
-            element.innerHTML += text.charAt(i);
-            i++;
-            setTimeout(type, speed);
-        }
-    }
-    type();
-}
-
-// Modal click outside to close
-document.getElementById('registerModal').addEventListener('click', function(e) {
-    if (e.target === this) closeModal();
-});
-
-document.getElementById('loginModal').addEventListener('click', function(e) {
-    if (e.target === this) closeLoginModal();
-});
-
-document.getElementById('xpPopupOverlay').addEventListener('click', closeXpPopup);
-
-// Initialize
-window.addEventListener('load', () => {
-    updateXPDisplay(0);
-    updateRecruitmentCounter();
-    typeWriter('typewriter-1', texts['typewriter-1']);
-    typeWriter('typewriter-legal', texts['typewriter-legal']);
-    setTimeout(startDroneTrails, 1000);
-});
-
-
-              </script>
-                        </body>
-                        </html>
-                    
