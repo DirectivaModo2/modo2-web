@@ -98,6 +98,13 @@
         .text-green { color: var(--green); }
         .text-red { color: var(--red); }
 
+        /* NODO 0 Highlight */
+        .nodo-zero {
+            color: var(--magenta);
+            text-shadow: 0 0 10px var(--magenta-glow);
+            font-weight: 700;
+        }
+
         /* Glitch Effect */
         .glitch-wrapper { position: relative; display: inline-block; }
         .glitch { position: relative; color: var(--white); }
@@ -296,7 +303,7 @@
         .benefits-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
         @media(min-width: 768px) { .benefits-grid { grid-template-columns: 1fr 1fr; } }
         .benefit-item { display: flex; align-items: flex-start; gap: 0.8rem; }
-        .benefit-icon { color: var(--amber); font-size: 1.2rem; }
+        .benefit-icon { color: var(--amber); font-size: 1.2rem; min-width: 20px; }
         .benefit-text { font-family: var(--font-mono); font-size: 0.8rem; color: var(--white); line-height: 1.6; }
 
         /* Transparency Box */
@@ -305,7 +312,7 @@
         .transparency-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
         @media(min-width: 768px) { .transparency-grid { grid-template-columns: 1fr 1fr; } }
         .transparency-item { display: flex; align-items: flex-start; gap: 0.8rem; }
-        .transparency-icon { color: var(--green); font-size: 1.2rem; }
+        .transparency-icon { color: var(--green); font-size: 1.2rem; min-width: 20px; }
         .transparency-text { font-family: var(--font-mono); font-size: 0.8rem; color: var(--white); line-height: 1.6; }
 
         /* Rings Specialization */
@@ -674,10 +681,80 @@
             <div class="cta-section"><p class="cta-subtitle">>> ESTE ES EL PRIMER PASO PARA DOMINAR EL AIRE <<</p></div>
         </div>
 
-        <!-- Protocolo Page -->
+        <!-- Protocolo Page - ACTUALIZADO -->
         <div id="protocolo-page" class="content-page">
             <a href="#" class="back-button" onclick="showHome(); return false;"><svg viewBox="0 0 100 100" fill="none"><path d="M70 50L30 50M30 50L45 35M30 50L45 65" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>VOLVER AL INICIO</a>
-            <div class="content-grid"><div class="hud-panel full-width"><h2 class="section-title">> PROTOCOLO_DE_INICIO</h2><div class="terminal-text" id="typewriter-1"></div><span class="cursor"></span><div class="pricing-box"><div class="pricing-amount">60€</div><div class="pricing-period">PRIMER AÑO // PROYECTO ORIGEN</div><div class="pricing-sub">A partir del segundo año: 40€ anuales</div></div><div class="founder-benefits"><h3 class="benefits-title">⚡ BENEFICIOS EXCLUSIVOS "NODO 0"</h3><div class="benefits-grid"><div class="benefit-item"><div class="benefit-icon">▸</div><div class="benefit-text">Inscripción 0€ de por vida</div></div><div class="benefit-item"><div class="benefit-icon">▸</div><div class="benefit-text">Legado Físico en la SEDE</div></div><div class="benefit-item"><div class="benefit-icon">▸</div><div class="benefit-text">Estatus Digital Permanente</div></div><div class="benefit-item"><div class="benefit-icon">▸</div><div class="benefit-text">Prioridad Operativa</div></div></div></div><div class="transparency-box"><h3 class="transparency-title">📊 TRANSPARENCIA FINANCIERA</h3><div class="transparency-grid"><div class="transparency-item"><div class="transparency-icon">▸</div><div class="transparency-text">Estudio SORA - 35%</div></div><div class="transparency-item"><div class="transparency-icon">▸</div><div class="transparency-text">Seguro RC - 25%</div></div><div class="transparency-item"><div class="transparency-icon">▸</div><div class="transparency-text">Manuales - 20%</div></div><div class="transparency-item"><div class="transparency-icon">▸</div><div class="transparency-text">Infraestructura - 15%</div></div><div class="transparency-item"><div class="transparency-icon">▸</div><div class="transparency-text">Reserva Legal - 5%</div></div></div></div></div></div>
+            <div class="content-grid">
+                <div class="hud-panel full-width">
+                    <h2 class="section-title">> PROTOCOLO_DE_INICIO</h2>
+                    
+                    <!-- INTRODUCCIÓN -->
+                    <div class="terminal-text" style="margin-bottom: 2rem;">
+                        <p style="margin-bottom: 1rem;"><strong class="text-cyan">MODO 2</strong> no es un club social; es un nodo de operaciones técnicas.</p>
+                        <p style="margin-bottom: 1rem;">Nuestra misión es profesionalizar el sector UAS en Aragón bajo el marco legal del <strong class="text-cyan">Art. 16</strong>. Aquí, la estética radical es solo la superficie; debajo reside una estructura legal sólida y un compromiso innegociable con la seguridad aérea y la excelencia técnica.</p>
+                    </div>
+
+                    <!-- PRECIO -->
+                    <div class="pricing-box">
+                        <div class="pricing-amount">60€</div>
+                        <div class="pricing-period">PRIMER AÑO // PROYECTO ORIGEN</div>
+                        <div class="pricing-sub">A partir del segundo año: 40€ anuales</div>
+                    </div>
+
+                    <!-- BENEFICIOS NODO 0 -->
+                    <div class="founder-benefits">
+                        <h3 class="benefits-title">⚡ BENEFICIOS EXCLUSIVOS <span class="nodo-zero">NODO 0</span></h3>
+                        <div class="benefits-grid">
+                            <div class="benefit-item">
+                                <div class="benefit-icon">▸</div>
+                                <div class="benefit-text">Acceso Directo al Mainframe: Gestión de perfiles, registro de vuelos y progresión de XP</div>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="benefit-icon">▸</div>
+                                <div class="benefit-text">Asesoría Técnica y Legal: Soporte especializado en normativa AESA y operativa avanzada</div>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="benefit-icon">▸</div>
+                                <div class="benefit-text">Ecosistema de Formación: Talleres exclusivos, simulaciones y entrenamiento en campo</div>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="benefit-icon">▸</div>
+                                <div class="benefit-text">Descuentos en Merchandising y Partners: Equipamiento táctico y componentes con ventajas de Crew</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TRANSPARENCIA FINANCIERA -->
+                    <div class="transparency-box">
+                        <h3 class="transparency-title">📊 TRANSPARENCIA FINANCIERA</h3>
+                        <p class="terminal-text" style="text-align: center; margin-bottom: 1.5rem;">
+                            Cada crédito (euro) invertido en MODO 2 tiene un rastro digital. Los fondos se destinan íntegramente a la infraestructura de la asociación, seguros de responsabilidad civil y eventos de la Crew. Transparencia total: Cuentas auditables para cada socio verificado.
+                        </p>
+                        <div class="transparency-grid">
+                            <div class="transparency-item">
+                                <div class="transparency-icon">▸</div>
+                                <div class="transparency-text">Infraestructura SEDE - 35%</div>
+                            </div>
+                            <div class="transparency-item">
+                                <div class="transparency-icon">▸</div>
+                                <div class="transparency-text">Seguro RC Alta Cobertura - 25%</div>
+                            </div>
+                            <div class="transparency-item">
+                                <div class="transparency-icon">▸</div>
+                                <div class="transparency-text">Eventos y Formación - 20%</div>
+                            </div>
+                            <div class="transparency-item">
+                                <div class="transparency-icon">▸</div>
+                                <div class="transparency-text">Legal y Administrativo - 15%</div>
+                            </div>
+                            <div class="transparency-item">
+                                <div class="transparency-icon">▸</div>
+                                <div class="transparency-text">Reserva de Emergencia - 5%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Infraestructura Page -->
@@ -1040,7 +1117,6 @@
 
         // Typewriter
         const texts = {
-            'typewriter-1': "Somos una 'Crew' de élite dedicada a la profesionalización del vuelo con UAS en Aragón.",
             'typewriter-legal': "El Ayuntamiento está informado. AESA ha dado visto bueno inicial."
         };
 
@@ -1091,7 +1167,6 @@
         // Initialize
         window.addEventListener('load', () => {
             updateXPDisplay(xp);
-            typeWriter('typewriter-1', texts['typewriter-1']);
             typeWriter('typewriter-legal', texts['typewriter-legal']);
             setTimeout(startDroneTrails, 1000);
             
