@@ -565,6 +565,164 @@
         .firebase-status.connected { border-color: var(--green); color: var(--green); }
         .firebase-status.error { border-color: var(--magenta); color: var(--magenta); }
 
+        /* SEDE SECTOR STYLES */
+        .sector-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        @media(min-width: 768px) {
+            .sector-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .sector-card {
+            background: rgba(0, 242, 255, 0.03);
+            border: 1px solid rgba(0, 242, 255, 0.2);
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sector-card.alpha {
+            border-color: var(--cyan);
+            background: rgba(0, 242, 255, 0.05);
+        }
+
+        .sector-card.expansion {
+            border-color: var(--magenta);
+            background: rgba(255, 0, 85, 0.05);
+        }
+
+        .sector-title {
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            color: var(--cyan);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .sector-card.expansion .sector-title {
+            color: var(--magenta);
+        }
+
+        .sector-icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        .sector-specs {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--gray);
+            margin: 1rem 0;
+        }
+
+        .sector-specs li {
+            margin-bottom: 0.5rem;
+        }
+
+        .sector-specs li::before {
+            content: '>> ';
+            color: var(--cyan);
+        }
+
+        .sector-card.expansion .sector-specs li::before {
+            color: var(--magenta);
+        }
+
+        /* Blueprint Map */
+        .blueprint-map {
+            background: rgba(0, 242, 255, 0.02);
+            border: 1px solid rgba(0, 242, 255, 0.1);
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .blueprint-svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Philosophy Box */
+        .philosophy-box {
+            background: rgba(255, 0, 85, 0.05);
+            border: 1px solid var(--magenta);
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .philosophy-title {
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            color: var(--magenta);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        /* Ranks System */
+        .ranks-system {
+            background: rgba(0, 255, 136, 0.05);
+            border: 1px solid var(--green);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .ranks-title {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--green);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            text-align: center;
+        }
+
+        .ranks-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        @media(min-width: 768px) {
+            .ranks-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+
+        .rank-item {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(0, 255, 136, 0.03);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+        }
+
+        .rank-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .rank-name {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--green);
+            margin-bottom: 0.5rem;
+        }
+
+        .rank-desc {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--gray);
+        }
+
         /* Responsive */
         @media(max-width: 768px) {
             .header-nav { gap: 1rem; }
@@ -707,28 +865,53 @@
                         <div class="benefits-grid">
                             <div class="benefit-item">
                                 <div class="benefit-icon">▸</div>
-                                <div class="benefit-text">Acceso Directo al Mainframe: Gestión de perfiles, registro de vuelos y progresión de XP</div>
+                                <div class="benefit-text"><strong>Seguro de RC Colectivo:</strong> Cobertura compartida para operaciones bajo Art. 16</div>
                             </div>
                             <div class="benefit-item">
                                 <div class="benefit-icon">▸</div>
-                                <div class="benefit-text">Asesoría Técnica y Legal: Soporte especializado en normativa AESA y operativa avanzada</div>
+                                <div class="benefit-text"><strong>Herramientas de Precisión:</strong> Acceso a taller con impresión 3D, soldadura avanzada y equipo de diagnóstico</div>
                             </div>
                             <div class="benefit-item">
                                 <div class="benefit-icon">▸</div>
-                                <div class="benefit-text">Ecosistema de Formación: Talleres exclusivos, simulaciones y entrenamiento en campo</div>
+                                <div class="benefit-text"><strong>Asesoría AESA:</strong> Soporte técnico para trámites, certificaciones y operativa avanzada</div>
                             </div>
                             <div class="benefit-item">
                                 <div class="benefit-icon">▸</div>
-                                <div class="benefit-text">Descuentos en Merchandising y Partners: Equipamiento táctico y componentes con ventajas de Crew</div>
+                                <div class="benefit-text"><strong>Acceso al Mainframe:</strong> Gestiona tu libro de vuelo digital y colabora con otros expertos mediante Callsigns</div>
                             </div>
                         </div>
+                    </div>
+
+                    <!-- SISTEMA DE RANGOS -->
+                    <div class="ranks-system">
+                        <h3 class="ranks-title">📊 LÍDERES DEL NODO - SISTEMA DE RANGOS</h3>
+                        <div class="ranks-grid">
+                            <div class="rank-item">
+                                <div class="rank-icon">🛡️</div>
+                                <div class="rank-name">SEGURIDAD DE VUELO</div>
+                                <div class="rank-desc">Protocolos, checklists y operaciones sin incidentes</div>
+                            </div>
+                            <div class="rank-item">
+                                <div class="rank-icon">🔧</div>
+                                <div class="rank-name">CONTRIBUCIÓN TÉCNICA</div>
+                                <div class="rank-desc">Mantenimiento, reparaciones y apoyo en taller</div>
+                            </div>
+                            <div class="rank-item">
+                                <div class="rank-icon">🤝</div>
+                                <div class="rank-name">APOYO A LA COMUNIDAD</div>
+                                <div class="rank-desc">Mentoría, formación y camaradería a pie de pista</div>
+                            </div>
+                        </div>
+                        <p class="terminal-text" style="text-align: center; margin-top: 1.5rem; font-size: 0.75rem; color: var(--gray);">
+                            > Premiamos la responsabilidad, no la temeridad. El ranking se actualiza mensualmente.
+                        </p>
                     </div>
 
                     <!-- TRANSPARENCIA FINANCIERA -->
                     <div class="transparency-box">
                         <h3 class="transparency-title">📊 TRANSPARENCIA FINANCIERA</h3>
                         <p class="terminal-text" style="text-align: center; margin-bottom: 1.5rem;">
-                            Cada crédito (euro) invertido en MODO 2 tiene un rastro digital. Los fondos se destinan íntegramente a la infraestructura de la asociación, seguros de responsabilidad civil y eventos de la Crew. Transparencia total: Cuentas auditables para cada socio verificado.
+                            Somos una organización sin ánimo de lucro: tu cuota mantiene tu derecho a volar seguro. Cada euro se reinvierte en infraestructura compartida y seguridad legal. Cuentas auditables para cada socio verificado.
                         </p>
                         <div class="transparency-grid">
                             <div class="transparency-item">
@@ -737,11 +920,11 @@
                             </div>
                             <div class="transparency-item">
                                 <div class="transparency-icon">▸</div>
-                                <div class="transparency-text">Seguro RC Alta Cobertura - 25%</div>
+                                <div class="transparency-text">Seguro RC Colectivo - 25%</div>
                             </div>
                             <div class="transparency-item">
                                 <div class="transparency-icon">▸</div>
-                                <div class="transparency-text">Eventos y Formación - 20%</div>
+                                <div class="transparency-text">Herramientas y Taller - 20%</div>
                             </div>
                             <div class="transparency-item">
                                 <div class="transparency-icon">▸</div>
@@ -757,10 +940,128 @@
             </div>
         </div>
 
-        <!-- Infraestructura Page -->
+        <!-- Infraestructura Page - REDISEÑADO COMPLETAMENTE -->
         <div id="infraestructura-page" class="content-page">
             <a href="#" class="back-button" onclick="showHome(); return false;"><svg viewBox="0 0 100 100" fill="none"><path d="M70 50L30 50M30 50L45 35M30 50L45 65" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>VOLVER AL INICIO</a>
-            <div class="content-grid"><div class="hud-panel full-width"><h2 class="section-title">> SEDE_ZARAGOZA</h2><div class="terminal-text"><p>> ESTADO: INTERÉS MUNICIPAL CONFIRMADO</p><p>> CAPACIDAD: 16 personas</p><p>> TURNOS: 4 volando simultáneo</p></div><div class="sector-status">SEDE: EN TRÁMITE</div></div></div>
+            <div class="content-grid">
+                <div class="hud-panel full-width">
+                    <h2 class="section-title">> SEDE OPERATIVA ZARAGOZA</h2>
+                    
+                    <!-- INTRODUCCIÓN -->
+                    <div class="terminal-text" style="margin-bottom: 2rem;">
+                        <p><strong class="text-cyan">Ubicación estratégica:</strong> Sector Zaragoza. El centro neurálgico de MODO 2 no es un club estático, es una zona de despliegue dinámico para operaciones UAS bajo <strong class="text-cyan">Art. 16</strong>.</p>
+                    </div>
+
+                    <!-- BLUEPRINT MAP -->
+                    <div class="blueprint-map">
+                        <svg class="blueprint-svg" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Background Grid -->
+                            <defs>
+                                <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                                    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(0, 242, 255, 0.1)" stroke-width="0.5"/>
+                                </pattern>
+                            </defs>
+                            <rect width="800" height="400" fill="url(#grid)"/>
+                            
+                            <!-- ZONA ALPHA (Covered Area) - Left side -->
+                            <rect x="50" y="80" width="250" height="200" fill="rgba(0, 242, 255, 0.1)" stroke="#00f2ff" stroke-width="2" stroke-dasharray="5,5"/>
+                            <text x="175" y="100" text-anchor="middle" fill="#00f2ff" font-family="Share Tech Mono" font-size="14">ZONA ALPHA</text>
+                            <text x="175" y="120" text-anchor="middle" fill="#00f2ff" font-family="Share Tech Mono" font-size="10">ÁREA CUBIERTA</text>
+                            
+                            <!-- Building icon -->
+                            <rect x="70" y="140" width="60" height="80" fill="rgba(0, 242, 255, 0.2)" stroke="#00f2ff" stroke-width="1.5"/>
+                            <line x1="80" y1="150" x2="120" y2="150" stroke="#00f2ff" stroke-width="1"/>
+                            <line x1="80" y1="160" x2="120" y2="160" stroke="#00f2ff" stroke-width="1"/>
+                            <line x1="80" y1="170" x2="120" y2="170" stroke="#00f2ff" stroke-width="1"/>
+                            
+                            <!-- Tool icon -->
+                            <circle cx="200" cy="200" r="15" fill="none" stroke="#00f2ff" stroke-width="1.5"/>
+                            <line x1="200" y1="190" x2="200" y2="210" stroke="#00f2ff" stroke-width="1.5"/>
+                            <line x1="190" y1="200" x2="210" y2="200" stroke="#00f2ff" stroke-width="1.5"/>
+                            
+                            <!-- SECTOR DE EXPANSIÓN (Open Area) - Right side -->
+                            <polygon points="350,80 700,100 720,280 350,280" fill="rgba(255, 0, 85, 0.1)" stroke="#ff0055" stroke-width="2" stroke-dasharray="5,5"/>
+                            <text x="535" y="100" text-anchor="middle" fill="#ff0055" font-family="Share Tech Mono" font-size="14">SECTOR EXPANSIÓN</text>
+                            <text x="535" y="120" text-anchor="middle" fill="#ff0055" font-family="Share Tech Mono" font-size="10">ZONA DESCUBIERTA</text>
+                            
+                            <!-- Drone icons in expansion zone -->
+                            <circle cx="450" cy="180" r="8" fill="none" stroke="#ff0055" stroke-width="1.5"/>
+                            <line x1="450" y1="172" x2="450" y2="188" stroke="#ff0055" stroke-width="1"/>
+                            <line x1="442" y1="180" x2="458" y2="180" stroke="#ff0055" stroke-width="1"/>
+                            
+                            <circle cx="550" cy="220" r="8" fill="none" stroke="#ff0055" stroke-width="1.5"/>
+                            <line x1="550" y1="212" x2="550" y2="228" stroke="#ff0055" stroke-width="1"/>
+                            <line x1="542" y1="220" x2="558" y2="220" stroke="#ff0055" stroke-width="1"/>
+                            
+                            <circle cx="620" cy="190" r="8" fill="none" stroke="#ff0055" stroke-width="1.5"/>
+                            <line x1="620" y1="182" x2="620" y2="198" stroke="#ff0055" stroke-width="1"/>
+                            <line x1="612" y1="190" x2="628" y2="190" stroke="#ff0055" stroke-width="1"/>
+                            
+                            <!-- Boundary lines -->
+                            <line x1="350" y1="80" x2="350" y2="280" stroke="rgba(255, 255, 255, 0.3)" stroke-width="1" stroke-dasharray="3,3"/>
+                            
+                            <!-- Scale indicator -->
+                            <line x1="50" y1="350" x2="150" y2="350" stroke="#00f2ff" stroke-width="2"/>
+                            <line x1="50" y1="345" x2="50" y2="355" stroke="#00f2ff" stroke-width="2"/>
+                            <line x1="150" y1="345" x2="150" y2="355" stroke="#00f2ff" stroke-width="2"/>
+                            <text x="100" y="370" text-anchor="middle" fill="#00f2ff" font-family="Share Tech Mono" font-size="10">10 METROS</text>
+                            
+                            <!-- North arrow -->
+                            <line x1="750" y1="50" x2="750" y2="30" stroke="#00f2ff" stroke-width="2"/>
+                            <polygon points="750,30 745,40 755,40" fill="#00f2ff"/>
+                            <text x="750" y="65" text-anchor="middle" fill="#00f2ff" font-family="Share Tech Mono" font-size="10">N</text>
+                        </svg>
+                        <p class="mono" style="margin-top: 1rem; color: var(--gray);">> PLANO TÉCNICO - SEDE ZARAGOZA [ESCALA 1:500]</p>
+                    </div>
+
+                    <!-- SECTORES -->
+                    <div class="sector-grid">
+                        <!-- ZONA ALPHA -->
+                        <div class="sector-card alpha">
+                            <h3 class="sector-title">
+                                <svg class="sector-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M3 3h18v18H3zM3 9h18M9 21V9"/>
+                                </svg>
+                                ZONA ALPHA [ÁREA CUBIERTA]
+                            </h3>
+                            <ul class="sector-specs">
+                                <li>Capacidad: 16 operativos in situ</li>
+                                <li>Función: Centro de pilotaje técnico, mantenimiento y taller de emergencia</li>
+                                <li>Zona optimizada para sombra y protección de equipos críticos</li>
+                                <li>Laboratorio Técnico y de Configuración</li>
+                            </ul>
+                        </div>
+
+                        <!-- SECTOR DE EXPANSIÓN -->
+                        <div class="sector-card expansion">
+                            <h3 class="sector-title">
+                                <svg class="sector-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M12 2a15 15 0 0 1 0 20M2 12h20"/>
+                                </svg>
+                                SECTOR DE EXPANSIÓN [ZONA DESCUBIERTA]
+                            </h3>
+                            <ul class="sector-specs">
+                                <li>Capacidad: Ilimitada (Área masiva de despliegue)</li>
+                                <li>Función: Zona de vuelo abierto y convivencia de la Crew</li>
+                                <li>Los <strong class="text-magenta">SOCIOS</strong> gestionan su propio confort</li>
+                                <li>Libertad para desplegar puestos de mando personales</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- FILOSOFÍA SOCIO vs USUARIO -->
+                    <div class="philosophy-box">
+                        <h3 class="philosophy-title">⚡ FILOSOFÍA <span class="nodo-zero">NODO 0</span></h3>
+                        <p class="terminal-text">
+                            En MODO 2 no eres un cliente, eres un <strong class="text-magenta">socio</strong>. Como parte del <span class="nodo-zero">NODO 0</span>, la sede es tuya para evolucionarla. Fomentamos la autogestión del confort: trae tu equipo, monta tu estación y expande el nodo.
+                        </p>
+                    </div>
+
+                    <!-- ESTADO -->
+                    <div class="sector-status">SEDE: EN TRÁMITE DE AUTORIZACIÓN</div>
+                </div>
+            </div>
         </div>
 
         <!-- Legal Page -->
@@ -1177,4 +1478,5 @@
     </script>
 </body>
 </html>
+
 
