@@ -26,7 +26,7 @@
             --amber-glow: rgba(255, 184, 0, 0.4);
             --green: #00ff88;
             --green-glow: rgba(0, 255, 136, 0.4);
-            --red: #ff3333;
+            --red: #ff3333; /* SOLO ERRORES/PROHIBICIONES */
             --red-glow: rgba(255, 51, 51, 0.4);
             --black: #020405;
             --black-panel: #050a0c;
@@ -563,7 +563,7 @@
         }
 
         .firebase-status.connected { border-color: var(--green); color: var(--green); }
-        .firebase-status.error { border-color: var(--magenta); color: var(--magenta); }
+        .firebase-status.error { border-color: var(--red); color: var(--red); }
 
         /* SEDE SECTOR STYLES */
         .sector-grid {
@@ -598,8 +598,8 @@
         }
 
         .sector-card.arena {
-            border-color: var(--cyan);
-            background: rgba(0, 242, 255, 0.08);
+            border-color: var(--magenta);
+            background: rgba(255, 0, 85, 0.08);
             grid-column: span 2;
         }
 
@@ -658,11 +658,77 @@
             padding: 2rem;
             margin: 2rem 0;
             text-align: center;
+            position: relative;
         }
 
         .blueprint-svg {
             max-width: 100%;
             height: auto;
+        }
+
+        /* Structure Tooltip */
+        .structure-group {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .structure-group:hover circle,
+        .structure-group:hover line {
+            stroke: var(--magenta);
+            stroke-width: 2.5;
+            filter: drop-shadow(0 0 5px var(--magenta-glow));
+        }
+
+        .structure-tooltip {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            position: absolute;
+            background: rgba(2, 4, 5, 0.95);
+            border: 1px solid var(--magenta);
+            padding: 1rem;
+            min-width: 200px;
+            text-align: center;
+            z-index: 10;
+            box-shadow: 0 0 20px rgba(255, 0, 85, 0.3);
+        }
+
+        .structure-group:hover .structure-tooltip {
+            opacity: 1;
+        }
+
+        .tooltip-question {
+            font-size: 2rem;
+            color: var(--magenta);
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            font-family: var(--font-display);
+        }
+
+        .tooltip-dims {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--cyan);
+            margin-bottom: 0.5rem;
+        }
+
+        .tooltip-cube {
+            width: 60px;
+            height: 60px;
+            border: 1px solid var(--cyan);
+            margin: 0 auto;
+            position: relative;
+            transform: rotateX(20deg) rotateY(-20deg);
+        }
+
+        .tooltip-cube::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--cyan);
         }
 
         /* Philosophy Box */
@@ -958,137 +1024,196 @@
             </div>
         </div>
 
-        <!-- Infraestructura Page - ACTUALIZADO CON MAPA TÁCTICO -->
+        <!-- Infraestructura Page - ACTUALIZADO CON MAPA TÁCTICO RECTANGULAR -->
         <div id="infraestructura-page" class="content-page">
             <a href="#" class="back-button" onclick="showHome(); return false;"><svg viewBox="0 0 100 100" fill="none"><path d="M70 50L30 50M30 50L45 35M30 50L45 65" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>VOLVER AL INICIO</a>
             <div class="content-grid">
                 <div class="hud-panel full-width">
                     <h2 class="section-title">> SEDE OPERATIVA ZARAGOZA</h2>
                     
-                    <!-- INTRODUCCIÓN -->
+                    <!-- INTRODUCCIÓN ACTUALIZADA -->
                     <div class="terminal-text" style="margin-bottom: 2rem;">
-                        <p><strong class="text-cyan">Ubicación estratégica:</strong> Sector Zaragoza. El centro neurálgico de MODO 2 no es un club estático, es una zona de despliegue dinámico para operaciones UAS bajo <strong class="text-cyan">Art. 16</strong>.</p>
+                        <p><strong class="text-cyan">Superficie Total:</strong> 4.676 m² dividida estratégicamente para garantizar la máxima <strong class="text-magenta">SEGURIDAD OPERACIONAL</strong> y eficiencia logística.</p>
                     </div>
 
-                    <!-- BLUEPRINT MAP - MAPA TÁCTICO PROFESIONAL -->
+                    <!-- BLUEPRINT MAP - RECTANGULAR LAYOUT -->
                     <div class="blueprint-map">
-                        <svg class="blueprint-svg" viewBox="0 0 900 550" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="blueprint-svg" viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg">
                             <!-- Background Grid -->
                             <defs>
                                 <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
                                     <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(0, 242, 255, 0.08)" stroke-width="0.5"/>
                                 </pattern>
                             </defs>
-                            <rect width="900" height="550" fill="url(#grid)"/>
+                            <rect width="1000" height="600" fill="url(#grid)"/>
                             
-                            <!-- PERÍMETRO DE CONTINGENCIA (Outer dashed line) -->
-                            <rect x="30" y="30" width="840" height="490" fill="none" stroke="rgba(255, 255, 255, 0.2)" stroke-width="1" stroke-dasharray="8,4"/>
-                            <text x="450" y="50" text-anchor="middle" fill="rgba(255, 255, 255, 0.4)" font-family="Share Tech Mono" font-size="9">PERÍMETRO DE CONTINGENCIA / SEGURIDAD</text>
+                            <!-- PERÍMETRO DE CONTINGENCIA (Outer dashed rectangle) -->
+                            <rect x="50" y="50" width="900" height="500" fill="none" stroke="rgba(255, 255, 255, 0.3)" stroke-width="1.5" stroke-dasharray="10,5"/>
+                            <text x="500" y="75" text-anchor="middle" fill="rgba(255, 255, 255, 0.5)" font-family="Share Tech Mono" font-size="10" letter-spacing="2">PERÍMETRO DE CONTINGENCIA / SEGURIDAD</text>
                             
-                            <!-- ARENA DE VUELO (>2000m²) - LARGE Cyan area surrounding everything -->
-                            <ellipse cx="450" cy="280" rx="380" ry="220" fill="rgba(0, 242, 255, 0.08)" stroke="#00f2ff" stroke-width="1.5" stroke-dasharray="5,3"/>
-                            <text x="450" y="80" text-anchor="middle" fill="#ff0055" font-family="Share Tech Mono" font-size="14" style="text-shadow: 0 0 10px rgba(255, 0, 85, 0.4);">ARENA DE VUELO &gt; 2000 m²</text>
+                            <!-- ARENA DE VUELO (>2000m²) - LARGE Rectangle -->
+                            <rect x="150" y="150" width="500" height="350" fill="rgba(0, 242, 255, 0.05)" stroke="#00f2ff" stroke-width="2" stroke-dasharray="5,3"/>
+                            <text x="400" y="130" text-anchor="middle" fill="#ff0055" font-family="Share Tech Mono" font-size="16" style="text-shadow: 0 0 10px rgba(255, 0, 85, 0.4);">ARENA DE VUELO &gt; 2000 m²</text>
                             
-                            <!-- 8 ESTRUCTURAS FIJAS (⊕ symbols) distributed tactically -->
+                            <!-- 8 ESTRUCTURAS FIJAS (⊕ symbols) distributed tactically IN ARENA -->
                             <!-- Structure 1 -->
-                            <g transform="translate(200, 180)">
-                                <circle cx="0" cy="0" r="12" fill="none" stroke="#00f2ff" stroke-width="1.5"/>
-                                <line x1="-12" y1="0" x2="12" y2="0" stroke="#00f2ff" stroke-width="1.5"/>
-                                <line x1="0" y1="-12" x2="0" y2="12" stroke="#00f2ff" stroke-width="1.5"/>
+                            <g class="structure-group" transform="translate(250, 250)">
+                                <circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/>
+                                <line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/>
+                                <line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/>
+                                <!-- Tooltip -->
+                                <foreignObject x="-100" y="-120" width="200" height="150" class="structure-tooltip">
+                                    <div xmlns="http://www.w3.org/1999/xhtml">
+                                        <div class="tooltip-question">?</div>
+                                        <div class="tooltip-dims">L: 5m | A: 2,5m | H: 2,5m</div>
+                                        <div class="tooltip-cube"></div>
+                                    </div>
+                                </foreignObject>
                             </g>
                             <!-- Structure 2 -->
-                            <g transform="translate(350, 150)">
-                                <circle cx="0" cy="0" r="12" fill="none" stroke="#00f2ff" stroke-width="1.5"/>
-                                <line x1="-12" y1="0" x2="12" y2="0" stroke="#00f2ff" stroke-width="1.5"/>
-                                <line x1="0" y1="-12" x2="0" y2="12" stroke="#00f2ff" stroke-width="1.5"/>
+                            <g class="structure-group" transform="translate(400, 200)">
+                                <circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/>
+                                <line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/>
+                                <line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/>
+                                <foreignObject x="-100" y="-120" width="200" height="150" class="structure-tooltip">
+                                    <div xmlns="http://www.w3.org/1999/xhtml">
+                                        <div class="tooltip-question">?</div>
+                                        <div class="tooltip-dims">L: 5m | A: 2,5m | H: 2,5m</div>
+                                        <div class="tooltip-cube"></div>
+                                    </div>
+                                </foreignObject>
                             </g>
                             <!-- Structure 3 -->
-                            <g transform="translate(550" y="160)">
-                                <circle cx="0" cy="0" r="12" fill="none" stroke="#00f2ff" stroke-width="1.5"/>
-                                <line x1="-12" y1="0" x2="12" y2="0" stroke="#00f2ff" stroke-width="1.5"/>
-                                <line x1="0" y1="-12" x2="0" y2="12" stroke="#00f2ff" stroke-width="1.5"/>
+                            <g class="structure-group" transform="translate(550, 250)">
+                                <circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/>
+                                <line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/>
+                                <line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/>
+                                <foreignObject x="-100" y="-120" width="200" height="150" class="structure-tooltip">
+                                    <div xmlns="http://www.w3.org/1999/xhtml">
+                                        <div class="tooltip-question">?</div>
+                                        <div class="tooltip-dims">L: 5m | A: 2,5m | H: 2,5m</div>
+                                        <div class="tooltip-cube"></div>
+                                    </div>
+                                </foreignObject>
                             </g>
                             <!-- Structure 4 -->
-                            <g transform="translate(700, 200)">
-                                <circle cx="0" cy="0" r="12" fill="none" stroke="#00f2ff" stroke-width="1.5"/>
-                                <line x1="-12" y1="0" x2="12" y2="0" stroke="#00f2ff" stroke-width="1.5"/>
-                                <line x1="0" y1="-12" x2="0" y2="12" stroke="#00f2ff" stroke-width="1.5"/>
+                            <g class="structure-group" transform="translate(300, 400)">
+                                <circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/>
+                                <line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/>
+                                <line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/>
+                                <foreignObject x="-100" y="-120" width="200" height="150" class="structure-tooltip">
+                                    <div xmlns="http://www.w3.org/1999/xhtml">
+                                        <div class="tooltip-question">?</div>
+                                        <div class="tooltip-dims">L: 5m | A: 2,5m | H: 2,5m</div>
+                                        <div class="tooltip-cube"></div>
+                                    </div>
+                                </foreignObject>
                             </g>
                             <!-- Structure 5 -->
-                            <g transform="translate(250, 350)">
-                                <circle cx="0" cy="0" r="12" fill="none" stroke="#00f2ff" stroke-width="1.5"/>
-                                <line x1="-12" y1="0" x2="12" y2="0" stroke="#00f2ff" stroke-width="1.5"/>
-                                <line x1="0" y1="-12" x2="0" y2="12" stroke="#00f2ff" stroke-width="1.5"/>
+                            <g class="structure-group" transform="translate(450, 350)">
+                                <circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/>
+                                <line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/>
+                                <line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/>
+                                <foreignObject x="-100" y="-120" width="200" height="150" class="structure-tooltip">
+                                    <div xmlns="http://www.w3.org/1999/xhtml">
+                                        <div class="tooltip-question">?</div>
+                                        <div class="tooltip-dims">L: 5m | A: 2,5m | H: 2,5m</div>
+                                        <div class="tooltip-cube"></div>
+                                    </div>
+                                </foreignObject>
                             </g>
                             <!-- Structure 6 -->
-                            <g transform="translate(400, 380)">
-                                <circle cx="0" cy="0" r="12" fill="none" stroke="#00f2ff" stroke-width="1.5"/>
-                                <line x1="-12" y1="0" x2="12" y2="0" stroke="#00f2ff" stroke-width="1.5"/>
-                                <line x1="0" y1="-12" x2="0" y2="12" stroke="#00f2ff" stroke-width="1.5"/>
+                            <g class="structure-group" transform="translate(600, 400)">
+                                <circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/>
+                                <line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/>
+                                <line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/>
+                                <foreignObject x="-100" y="-120" width="200" height="150" class="structure-tooltip">
+                                    <div xmlns="http://www.w3.org/1999/xhtml">
+                                        <div class="tooltip-question">?</div>
+                                        <div class="tooltip-dims">L: 5m | A: 2,5m | H: 2,5m</div>
+                                        <div class="tooltip-cube"></div>
+                                    </div>
+                                </foreignObject>
                             </g>
                             <!-- Structure 7 -->
-                            <g transform="translate(580, 360)">
-                                <circle cx="0" cy="0" r="12" fill="none" stroke="#00f2ff" stroke-width="1.5"/>
-                                <line x1="-12" y1="0" x2="12" y2="0" stroke="#00f2ff" stroke-width="1.5"/>
-                                <line x1="0" y1="-12" x2="0" y2="12" stroke="#00f2ff" stroke-width="1.5"/>
+                            <g class="structure-group" transform="translate(350, 500)">
+                                <circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/>
+                                <line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/>
+                                <line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/>
+                                <foreignObject x="-100" y="-120" width="200" height="150" class="structure-tooltip">
+                                    <div xmlns="http://www.w3.org/1999/xhtml">
+                                        <div class="tooltip-question">?</div>
+                                        <div class="tooltip-dims">L: 5m | A: 2,5m | H: 2,5m</div>
+                                        <div class="tooltip-cube"></div>
+                                    </div>
+                                </foreignObject>
                             </g>
                             <!-- Structure 8 -->
-                            <g transform="translate(680, 320)">
-                                <circle cx="0" cy="0" r="12" fill="none" stroke="#00f2ff" stroke-width="1.5"/>
-                                <line x1="-12" y1="0" x2="12" y2="0" stroke="#00f2ff" stroke-width="1.5"/>
-                                <line x1="0" y1="-12" x2="0" y2="12" stroke="#00f2ff" stroke-width="1.5"/>
+                            <g class="structure-group" transform="translate(550, 500)">
+                                <circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/>
+                                <line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/>
+                                <line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/>
+                                <foreignObject x="-100" y="-120" width="200" height="150" class="structure-tooltip">
+                                    <div xmlns="http://www.w3.org/1999/xhtml">
+                                        <div class="tooltip-question">?</div>
+                                        <div class="tooltip-dims">L: 5m | A: 2,5m | H: 2,5m</div>
+                                        <div class="tooltip-cube"></div>
+                                    </div>
+                                </foreignObject>
                             </g>
                             
-                            <!-- ZONA ALPHA (15m²) - SMALL Blue area with tool icon -->
-                            <rect x="380" y="240" width="80" height="60" fill="rgba(0, 242, 255, 0.15)" stroke="#00f2ff" stroke-width="2" stroke-dasharray="5,5"/>
-                            <text x="420" y="260" text-anchor="middle" fill="#00f2ff" font-family="Share Tech Mono" font-size="10">ZONA ALPHA</text>
-                            <text x="420" y="275" text-anchor="middle" fill="#00f2ff" font-family="Share Tech Mono" font-size="8">ÁREA 15 m²</text>
+                            <!-- ZONA ALPHA (15m²) - Adosada a la derecha de la Arena -->
+                            <rect x="660" y="250" width="100" height="80" fill="rgba(0, 242, 255, 0.15)" stroke="#00f2ff" stroke-width="2" stroke-dasharray="5,5"/>
+                            <text x="710" y="280" text-anchor="middle" fill="#00f2ff" font-family="Share Tech Mono" font-size="11">ZONA ALPHA</text>
+                            <text x="710" y="295" text-anchor="middle" fill="#00f2ff" font-family="Share Tech Mono" font-size="9">ÁREA 15 m²</text>
                             
-                            <!-- Tool/Wrench icon -->
-                            <g transform="translate(420, 295)">
-                                <path d="M-8,-6 L8,-6 L10,-4 L10,4 L8,6 L-8,6 L-10,4 L-10,-4 Z" fill="none" stroke="#00f2ff" stroke-width="1.5"/>
-                                <circle cx="0" cy="-8" r="4" fill="none" stroke="#00f2ff" stroke-width="1.5"/>
+                            <!-- Tool icon -->
+                            <g transform="translate(710, 315)">
+                                <path d="M-10,-8 L10,-8 L12,-6 L12,6 L10,8 L-10,8 L-12,6 L-12,-6 Z" fill="none" stroke="#00f2ff" stroke-width="1.5"/>
+                                <circle cx="0" cy="-10" r="5" fill="none" stroke="#00f2ff" stroke-width="1.5"/>
                             </g>
                             
-                            <!-- SECTOR DE EXPANSIÓN (300m²) - Red/Grey area -->
-                            <rect x="550" y="240" width="180" height="120" fill="rgba(255, 0, 85, 0.1)" stroke="#ff0055" stroke-width="2" stroke-dasharray="5,5"/>
-                            <text x="640" y="260" text-anchor="middle" fill="#ff0055" font-family="Share Tech Mono" font-size="10">SECTOR EXPANSIÓN</text>
+                            <!-- SECTOR DE EXPANSIÓN (300m²) - A la derecha de Alpha -->
+                            <rect x="770" y="230" width="150" height="120" fill="rgba(255, 0, 85, 0.1)" stroke="#ff0055" stroke-width="2" stroke-dasharray="5,5"/>
+                            <text x="845" y="255" text-anchor="middle" fill="#ff0055" font-family="Share Tech Mono" font-size="11">SECTOR EXPANSIÓN</text>
                             
                             <!-- Dimension line for Expansion -->
-                            <line x1="550" y1="370" x2="730" y2="370" stroke="#ff0055" stroke-width="1.5"/>
-                            <line x1="550" y1="365" x2="550" y2="375" stroke="#ff0055" stroke-width="1.5"/>
-                            <line x1="730" y1="365" x2="730" y2="375" stroke="#ff0055" stroke-width="1.5"/>
-                            <text x="640" y="388" text-anchor="middle" fill="#ff0055" font-family="Share Tech Mono" font-size="9">ZONA LOGÍSTICA 300 m²</text>
+                            <line x1="770" y1="360" x2="920" y2="360" stroke="#ff0055" stroke-width="1.5"/>
+                            <line x1="770" y1="355" x2="770" y2="365" stroke="#ff0055" stroke-width="1.5"/>
+                            <line x1="920" y1="355" x2="920" y2="365" stroke="#ff0055" stroke-width="1.5"/>
+                            <text x="845" y="378" text-anchor="middle" fill="#ff0055" font-family="Share Tech Mono" font-size="9">ZONA LOGÍSTICA 300 m²</text>
                             
                             <!-- Container icon -->
-                            <rect x="670" y="280" width="40" height="25" fill="rgba(255, 0, 85, 0.2)" stroke="#ff0055" stroke-width="1.5"/>
-                            <text x="690" y="295" text-anchor="middle" fill="#ff0055" font-family="Share Tech Mono" font-size="6">CONT.</text>
+                            <rect x="880" y="270" width="30" height="20" fill="rgba(255, 0, 85, 0.2)" stroke="#ff0055" stroke-width="1.5"/>
+                            <text x="895" y="282" text-anchor="middle" fill="#ff0055" font-family="Share Tech Mono" font-size="6">CONT.</text>
                             
                             <!-- NO FLY warning in expansion zone -->
-                            <circle cx="600" cy="320" r="18" fill="none" stroke="#ff0055" stroke-width="1.5" stroke-dasharray="3,3"/>
-                            <text x="600" y="324" text-anchor="middle" fill="#ff0055" font-family="Share Tech Mono" font-size="6">NO FLY</text>
+                            <circle cx="820" cy="300" r="15" fill="none" stroke="#ff0055" stroke-width="1.5" stroke-dasharray="3,3"/>
+                            <text x="820" y="304" text-anchor="middle" fill="#ff0055" font-family="Share Tech Mono" font-size="6">NO FLY</text>
                             
                             <!-- Scale indicator -->
-                            <line x1="50" y1="500" x2="100" y2="500" stroke="#00f2ff" stroke-width="2"/>
-                            <line x1="50" y1="495" x2="50" y2="505" stroke="#00f2ff" stroke-width="2"/>
-                            <line x1="100" y1="495" x2="100" y2="505" stroke="#00f2ff" stroke-width="2"/>
-                            <text x="75" y="518" text-anchor="middle" fill="#00f2ff" font-family="Share Tech Mono" font-size="8">10M</text>
+                            <line x1="70" y1="520" x2="120" y2="520" stroke="#00f2ff" stroke-width="2"/>
+                            <line x1="70" y1="515" x2="70" y2="525" stroke="#00f2ff" stroke-width="2"/>
+                            <line x1="120" y1="515" x2="120" y2="525" stroke="#00f2ff" stroke-width="2"/>
+                            <text x="95" y="540" text-anchor="middle" fill="#00f2ff" font-family="Share Tech Mono" font-size="9">10M</text>
                             
                             <!-- North arrow -->
-                            <line x1="850" y1="60" x2="850" y2="40" stroke="#00f2ff" stroke-width="2"/>
-                            <polygon points="850,40 845,50 855,50" fill="#00f2ff"/>
-                            <text x="850" y="75" text-anchor="middle" fill="#00f2ff" font-family="Share Tech Mono" font-size="9">N</text>
+                            <line x1="930" y1="80" x2="930" y2="60" stroke="#00f2ff" stroke-width="2"/>
+                            <polygon points="930,60 925,70 935,70" fill="#00f2ff"/>
+                            <text x="930" y="95" text-anchor="middle" fill="#00f2ff" font-family="Share Tech Mono" font-size="9">N</text>
                             
                             <!-- Legend -->
-                            <g transform="translate(50, 420)">
-                                <text x="0" y="0" fill="rgba(255, 255, 255, 0.5)" font-family="Share Tech Mono" font-size="8">LEYENDA:</text>
-                                <circle cx="0" cy="15" r="5" fill="none" stroke="#00f2ff" stroke-width="1.5"/>
-                                <line x1="-5" y1="15" x2="5" y2="15" stroke="#00f2ff" stroke-width="1.5"/>
-                                <line x1="0" y1="10" x2="0" y2="20" stroke="#00f2ff" stroke-width="1.5"/>
-                                <text x="15" y="18" fill="rgba(255, 255, 255, 0.5)" font-family="Share Tech Mono" font-size="7">ESTRUCTURA FIJA</text>
+                            <g transform="translate(70, 450)">
+                                <text x="0" y="0" fill="rgba(255, 255, 255, 0.5)" font-family="Share Tech Mono" font-size="9">LEYENDA:</text>
+                                <circle cx="0" cy="20" r="8" fill="none" stroke="#00f2ff" stroke-width="2"/>
+                                <line x1="-8" y1="20" x2="8" y2="20" stroke="#00f2ff" stroke-width="2"/>
+                                <line x1="0" y1="12" x2="0" y2="28" stroke="#00f2ff" stroke-width="2"/>
+                                <text x="20" y="24" fill="rgba(255, 255, 255, 0.5)" font-family="Share Tech Mono" font-size="8">ESTRUCTURA FIJA</text>
                             </g>
+                            
+                            <!-- Footer text -->
+                            <text x="500" y="580" text-anchor="middle" fill="rgba(255, 255, 255, 0.4)" font-family="Share Tech Mono" font-size="9" letter-spacing="1">&gt; PLANO TÁCTICO - SEDE ZARAGOZA [USO EXCLUSIVO CREW]</text>
                         </svg>
-                        <p class="mono" style="margin-top: 1rem; color: var(--gray);">> PLANO TÁCTICO - SEDE ZARAGOZA [USO EXCLUSIVO CREW]</p>
                     </div>
 
                     <!-- SECTORES - ACTUALIZADO -->
@@ -1102,9 +1227,9 @@
                                 ZONA ALPHA [15 m²]
                             </h3>
                             <ul class="sector-specs">
-                                <li><strong class="text-magenta">SEGURIDAD OPERACIONAL:</strong> Optimizada para el resguardo de integridad de socios y equipos críticos</li>
-                                <li><strong>Función:</strong> Centro técnico de mantenimiento y chequeo de sistemas</li>
+                                <li><strong class="text-magenta">SEGURIDAD OPERACIONAL:</strong> Punto de acceso técnico adosado a la arena. Optimizado para mantenimiento y chequeo rápido.</li>
                                 <li>Laboratorio Técnico y de Configuración</li>
+                                <li>Resguardo de integridad de socios y equipos críticos</li>
                             </ul>
                         </div>
 
@@ -1115,13 +1240,12 @@
                                     <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
                                     <polyline points="9 22 9 12 15 12 15 22"/>
                                 </svg>
-                                SECTOR EXPANSIÓN [300 m²]
+                                SECTOR DE EXPANSIÓN [300 m²]
                             </h3>
                             <ul class="sector-specs">
                                 <li><strong>Superficie:</strong> Suelo técnico de grava</li>
-                                <li><strong class="text-magenta">CAPACIDAD:</strong> 150 operativos en eventos</li>
-                                <li><strong>Infraestructura:</strong> Espacio para stands, contenedor multiusos (Almacén/Bar) y servicios</li>
-                                <li><strong class="text-red">NOTA:</strong> Prohibido el despegue/vuelo desde aquí</li>
+                                <li><strong class="text-magenta">CAPACIDAD:</strong> Zona para despliegue de la <strong class="text-magenta">CREW</strong>, stands y servicios</li>
+                                <li><strong class="text-red">PROHIBIDO:</strong> Pilotar o despegar desde este sector</li>
                             </ul>
                         </div>
 
@@ -1136,10 +1260,10 @@
                                 <span class="text-magenta" style="text-shadow: 0 0 10px var(--magenta-glow);">ARENA DE VUELO</span> [&gt; 2000 m²]
                             </h3>
                             <ul class="sector-specs">
-                                <li><strong class="text-magenta">ESPACIO SEGREGADO:</strong> Zona exclusiva para operaciones <strong class="text-magenta">FPV</strong></li>
-                                <li><strong>Infraestructura:</strong> 8 estructuras fijas de alta visibilidad para entrenamiento avanzado y competición</li>
+                                <li><strong class="text-magenta">ESPACIO SEGREGADO:</strong> Área de operaciones para <strong class="text-magenta">FPV</strong></li>
+                                <li><strong>Infraestructura:</strong> 8 macro-estructuras tácticas fijas de gran dimensión</li>
+                                <li><strong>Configuración:</strong> Diseñadas para complementarse con obstáculos provisionales (puertas, banderas, gates), permitiendo un trazado de circuitos infinito</li>
                                 <li><strong>Seguridad:</strong> Perímetro delimitado con líneas de visión claras</li>
-                                <li><strong>Capacidad:</strong> Múltiples pilotos operando simultáneamente con separación táctica</li>
                             </ul>
                         </div>
                     </div>
@@ -1544,10 +1668,15 @@
             function animate() {
                 const progress = (Date.now() - startTime) / (duration * 1000);
                 if (progress < 1) {
-                    const opacity = Math.max(0, Math.min(1, progress < 0.2 ? progress / 0.2 : (1 - progress) / 0.3)) * 0.4;
-                    trail.style.opacity = opacity;
+                    const fadeProgress = progress < 0.2 ? progress / 0.2 : (1 - progress) / 0.3;
+                    const opacity = Math.max(0, Math.min(1, fadeProgress));
+                    trail.style.opacity = opacity * 0.4;
                     const moveDistance = progress * (window.innerWidth + length);
-                    trail.style[startFromLeft ? 'left' : 'right'] = `${-length + moveDistance}px`;
+                    if (startFromLeft) {
+                        trail.style.left = `${-length + moveDistance}px`;
+                    } else {
+                        trail.style.right = `${-length + moveDistance}px`;
+                    }
                     requestAnimationFrame(animate);
                 } else { trail.remove(); }
             }
