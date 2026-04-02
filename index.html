@@ -26,7 +26,7 @@
             --amber-glow: rgba(255, 184, 0, 0.4);
             --green: #00ff88;
             --green-glow: rgba(0, 255, 136, 0.4);
-            --red: #ff3333; /* SOLO ERRORES/PROHIBICIONES */
+            --red: #ff3333;
             --red-glow: rgba(255, 51, 51, 0.4);
             --black: #020405;
             --black-panel: #050a0c;
@@ -98,7 +98,6 @@
         .text-green { color: var(--green); }
         .text-red { color: var(--red); }
 
-        /* NODO 0 Highlight */
         .nodo-zero {
             color: var(--magenta);
             text-shadow: 0 0 10px var(--magenta-glow);
@@ -923,7 +922,7 @@
             <div class="cta-section"><p class="cta-subtitle">>> ESTE ES EL PRIMER PASO PARA DOMINAR EL AIRE <<</p></div>
         </div>
 
-        <!-- Protocolo Page - ACTUALIZADO CON PROYECTO ORIGEN -->
+        <!-- Protocolo Page - ACTUALIZADO CON NUEVOS BENEFICIOS -->
         <div id="protocolo-page" class="content-page">
             <a href="#" class="back-button" onclick="showHome(); return false;"><svg viewBox="0 0 100 100" fill="none"><path d="M70 50L30 50M30 50L45 35M30 50L45 65" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>VOLVER AL INICIO</a>
             <div class="content-grid">
@@ -936,7 +935,7 @@
                         <p style="margin-bottom: 1rem;">Nuestra misión es profesionalizar el sector UAS en Aragón bajo el marco legal del <strong class="text-cyan">Art. 16</strong>. Aquí, la estética radical es solo la superficie; debajo reside una estructura legal sólida y un compromiso innegociable con la <strong class="text-magenta">SEGURIDAD OPERACIONAL</strong> y la excelencia técnica.</p>
                     </div>
 
-                    <!-- PROYECTO ORIGEN BOX - ACTUALIZADO -->
+                    <!-- PROYECTO ORIGEN BOX - BENEFICIOS ACTUALIZADOS -->
                     <div class="pricing-box">
                         <h3 class="text-magenta" style="font-family: var(--font-mono); font-size: 1.2rem; margin-bottom: 0.5rem; letter-spacing: 0.2em;">PROYECTO ORIGEN</h3>
                         <p class="text-cyan" style="font-family: var(--font-mono); font-size: 0.9rem; margin-bottom: 1rem; letter-spacing: 0.15em;">SOCIOS FUNDADORES</p>
@@ -944,13 +943,14 @@
                         <div class="pricing-period">PRIMER AÑO</div>
                         <div class="pricing-sub">A partir del segundo año: 40€ anuales</div>
                         
-                        <!-- BENEFICIOS PROYECTO ORIGEN -->
+                        <!-- BENEFICIOS PROYECTO ORIGEN - ACTUALIZADOS -->
                         <ul class="terminal-text" style="text-align: left; margin-top: 2rem; list-style: none;">
-                            <li style="margin-bottom: 0.8rem;">▸ <strong>Acceso Vitalicio NODO 0:</strong> Gestión de perfil, registro de operaciones y progresión de XP</li>
+                            <li style="margin-bottom: 0.8rem;">▸ <strong>Acceso Vitalicio NODO 0 (0€):</strong> Gestión de perfil, registro de operaciones y progresión de XP. Sin cuota de inscripción.</li>
                             <li style="margin-bottom: 0.8rem;">▸ <strong>Voto en Decisiones:</strong> Participación activa en la dirección y evolución de la Crew</li>
                             <li style="margin-bottom: 0.8rem;">▸ <strong>Seguro de RC Colectivo:</strong> Cobertura legal bajo el marco del Art. 16</li>
                             <li style="margin-bottom: 0.8rem;">▸ <strong>Kit de Bienvenida Proyecto Origen:</strong> Merchandising exclusivo y distintivos de fundador</li>
-                            <li style="margin-bottom: 0.8rem;">▸ <strong>Uso de Infraestructura:</strong> Acceso al Taller de la ZONA ALPHA y Arena de Vuelo</li>
+                            <li style="margin-bottom: 0.8rem;">▸ <strong>Reconocimiento Perpetuo:</strong> Placa de honor grabada en la ZONA ALPHA de la Sede y mención destacada en la web, para siempre</li>
+                            <li style="margin-bottom: 0.8rem;">▸ <strong>Uso de Infraestructura Física:</strong> Acceso TOTAL a la SEDE (ZONA ALPHA, SECTOR EXPANSIÓN y ARENA DE VUELO)</li>
                         </ul>
                     </div>
 
@@ -987,19 +987,19 @@
             </div>
         </div>
 
-        <!-- Infraestructura Page - ACTUALIZADO CON MAPA CORREGIDO -->
+        <!-- Infraestructura Page - TÍTULO ACTUALIZADO -->
         <div id="infraestructura-page" class="content-page">
             <a href="#" class="back-button" onclick="showHome(); return false;"><svg viewBox="0 0 100 100" fill="none"><path d="M70 50L30 50M30 50L45 35M30 50L45 65" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>VOLVER AL INICIO</a>
             <div class="content-grid">
                 <div class="hud-panel full-width">
-                    <h2 class="section-title">> SEDE OPERATIVA ZARAGOZA</h2>
+                    <h2 class="section-title">> SEDE OPERATIVA PROV. ZARAGOZA</h2>
                     
                     <!-- INTRODUCCIÓN -->
                     <div class="terminal-text" style="margin-bottom: 2rem;">
                         <p><strong class="text-cyan">Superficie Total:</strong> 4.676 m² dividida estratégicamente para garantizar la máxima <strong class="text-magenta">SEGURIDAD OPERACIONAL</strong> y eficiencia logística.</p>
                     </div>
 
-                    <!-- BLUEPRINT MAP - ESTRUCTURAS REUBICADAS DENTRO DEL PERÍMETRO -->
+                    <!-- BLUEPRINT MAP -->
                     <div class="blueprint-map">
                         <svg class="blueprint-svg" viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg">
                             <!-- Background Grid -->
@@ -1010,182 +1010,65 @@
                             </defs>
                             <rect width="1000" height="600" fill="url(#grid)"/>
                             
-                            <!-- PERÍMETRO DE CONTINGENCIA (Outer dashed rectangle) -->
+                            <!-- PERÍMETRO DE CONTINGENCIA -->
                             <rect x="50" y="50" width="900" height="500" fill="none" stroke="rgba(255, 255, 255, 0.3)" stroke-width="1.5" stroke-dasharray="10,5"/>
                             <text x="500" y="75" text-anchor="middle" fill="rgba(255, 255, 255, 0.5)" font-family="Share Tech Mono" font-size="10" letter-spacing="2">PERÍMETRO DE CONTINGENCIA / SEGURIDAD</text>
                             
-                            <!-- ARENA DE VUELO (>2000m²) - LARGE Rectangle -->
+                            <!-- ARENA DE VUELO -->
                             <rect x="150" y="150" width="500" height="350" fill="rgba(0, 242, 255, 0.05)" stroke="#00f2ff" stroke-width="2" stroke-dasharray="5,3"/>
                             <text x="400" y="130" text-anchor="middle" fill="#ff0055" font-family="Share Tech Mono" font-size="16" style="text-shadow: 0 0 10px rgba(255, 0, 85, 0.4);">ARENA DE VUELO &gt; 2000 m²</text>
                             
-                            <!-- 8 ESTRUCTURAS FIJAS (⊕ symbols) - TODAS DENTRO DEL RECTÁNGULO AZUL -->
-                            <!-- Structure 1 - Top Left -->
-                            <g class="structure-group" transform="translate(250, 220)">
-                                <circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/>
-                                <line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/>
-                                <line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/>
-                                <foreignObject x="-100" y="-120" width="200" height="150" class="structure-tooltip">
-                                    <div xmlns="http://www.w3.org/1999/xhtml">
-                                        <div class="tooltip-question">?</div>
-                                        <div class="tooltip-dims">L: 5m | A: 2,5m | H: 2,5m</div>
-                                        <div class="tooltip-cube"></div>
-                                    </div>
-                                </foreignObject>
-                            </g>
-                            <!-- Structure 2 - Top Center -->
-                            <g class="structure-group" transform="translate(400, 200)">
-                                <circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/>
-                                <line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/>
-                                <line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/>
-                                <foreignObject x="-100" y="-120" width="200" height="150" class="structure-tooltip">
-                                    <div xmlns="http://www.w3.org/1999/xhtml">
-                                        <div class="tooltip-question">?</div>
-                                        <div class="tooltip-dims">L: 5m | A: 2,5m | H: 2,5m</div>
-                                        <div class="tooltip-cube"></div>
-                                    </div>
-                                </foreignObject>
-                            </g>
-                            <!-- Structure 3 - Top Right -->
-                            <g class="structure-group" transform="translate(550, 230)">
-                                <circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/>
-                                <line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/>
-                                <line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/>
-                                <foreignObject x="-100" y="-120" width="200" height="150" class="structure-tooltip">
-                                    <div xmlns="http://www.w3.org/1999/xhtml">
-                                        <div class="tooltip-question">?</div>
-                                        <div class="tooltip-dims">L: 5m | A: 2,5m | H: 2,5m</div>
-                                        <div class="tooltip-cube"></div>
-                                    </div>
-                                </foreignObject>
-                            </g>
-                            <!-- Structure 4 - Middle Left -->
-                            <g class="structure-group" transform="translate(280, 350)">
-                                <circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/>
-                                <line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/>
-                                <line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/>
-                                <foreignObject x="-100" y="-120" width="200" height="150" class="structure-tooltip">
-                                    <div xmlns="http://www.w3.org/1999/xhtml">
-                                        <div class="tooltip-question">?</div>
-                                        <div class="tooltip-dims">L: 5m | A: 2,5m | H: 2,5m</div>
-                                        <div class="tooltip-cube"></div>
-                                    </div>
-                                </foreignObject>
-                            </g>
-                            <!-- Structure 5 - Middle Center -->
-                            <g class="structure-group" transform="translate(420, 380)">
-                                <circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/>
-                                <line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/>
-                                <line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/>
-                                <foreignObject x="-100" y="-120" width="200" height="150" class="structure-tooltip">
-                                    <div xmlns="http://www.w3.org/1999/xhtml">
-                                        <div class="tooltip-question">?</div>
-                                        <div class="tooltip-dims">L: 5m | A: 2,5m | H: 2,5m</div>
-                                        <div class="tooltip-cube"></div>
-                                    </div>
-                                </foreignObject>
-                            </g>
-                            <!-- Structure 6 - Middle Right -->
-                            <g class="structure-group" transform="translate(580, 340)">
-                                <circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/>
-                                <line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/>
-                                <line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/>
-                                <foreignObject x="-100" y="-120" width="200" height="150" class="structure-tooltip">
-                                    <div xmlns="http://www.w3.org/1999/xhtml">
-                                        <div class="tooltip-question">?</div>
-                                        <div class="tooltip-dims">L: 5m | A: 2,5m | H: 2,5m</div>
-                                        <div class="tooltip-cube"></div>
-                                    </div>
-                                </foreignObject>
-                            </g>
-                            <!-- Structure 7 - Bottom Left (MOVED INSIDE) -->
-                            <g class="structure-group" transform="translate(300, 470)">
-                                <circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/>
-                                <line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/>
-                                <line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/>
-                                <foreignObject x="-100" y="-120" width="200" height="150" class="structure-tooltip">
-                                    <div xmlns="http://www.w3.org/1999/xhtml">
-                                        <div class="tooltip-question">?</div>
-                                        <div class="tooltip-dims">L: 5m | A: 2,5m | H: 2,5m</div>
-                                        <div class="tooltip-cube"></div>
-                                    </div>
-                                </foreignObject>
-                            </g>
-                            <!-- Structure 8 - Bottom Right (MOVED INSIDE) -->
-                            <g class="structure-group" transform="translate(520, 460)">
-                                <circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/>
-                                <line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/>
-                                <line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/>
-                                <foreignObject x="-100" y="-120" width="200" height="150" class="structure-tooltip">
-                                    <div xmlns="http://www.w3.org/1999/xhtml">
-                                        <div class="tooltip-question">?</div>
-                                        <div class="tooltip-dims">L: 5m | A: 2,5m | H: 2,5m</div>
-                                        <div class="tooltip-cube"></div>
-                                    </div>
-                                </foreignObject>
-                            </g>
+                            <!-- 8 ESTRUCTURAS FIJAS -->
+                            <g class="structure-group" transform="translate(250, 220)"><circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/><line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/><line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/><foreignObject x="-100" y="-120" width="200" height="150" class="structure-tooltip"><div xmlns="http://www.w3.org/1999/xhtml"><div class="tooltip-question">?</div><div class="tooltip-dims">L: 5m | A: 2,5m | H: 2,5m</div><div class="tooltip-cube"></div></div></foreignObject></g>
+                            <g class="structure-group" transform="translate(400, 200)"><circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/><line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/><line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/><foreignObject x="-100" y="-120" width="200" height="150" class="structure-tooltip"><div xmlns="http://www.w3.org/1999/xhtml"><div class="tooltip-question">?</div><div class="tooltip-dims">L: 5m | A: 2,5m | H: 2,5m</div><div class="tooltip-cube"></div></div></foreignObject></g>
+                            <g class="structure-group" transform="translate(550, 230)"><circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/><line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/><line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/><foreignObject x="-100" y="-120" width="200" height="150" class="structure-tooltip"><div xmlns="http://www.w3.org/1999/xhtml"><div class="tooltip-question">?</div><div class="tooltip-dims">L: 5m | A: 2,5m | H: 2,5m</div><div class="tooltip-cube"></div></div></foreignObject></g>
+                            <g class="structure-group" transform="translate(280, 350)"><circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/><line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/><line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/><foreignObject x="-100" y="-120" width="200" height="150" class="structure-tooltip"><div xmlns="http://www.w3.org/1999/xhtml"><div class="tooltip-question">?</div><div class="tooltip-dims">L: 5m | A: 2,5m | H: 2,5m</div><div class="tooltip-cube"></div></div></foreignObject></g>
+                            <g class="structure-group" transform="translate(420, 380)"><circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/><line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/><line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/><foreignObject x="-100" y="-120" width="200" height="150" class="structure-tooltip"><div xmlns="http://www.w3.org/1999/xhtml"><div class="tooltip-question">?</div><div class="tooltip-dims">L: 5m | A: 2,5m | H: 2,5m</div><div class="tooltip-cube"></div></div></foreignObject></g>
+                            <g class="structure-group" transform="translate(580, 340)"><circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/><line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/><line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/><foreignObject x="-100" y="-120" width="200" height="150" class="structure-tooltip"><div xmlns="http://www.w3.org/1999/xhtml"><div class="tooltip-question">?</div><div class="tooltip-dims">L: 5m | A: 2,5m | H: 2,5m</div><div class="tooltip-cube"></div></div></foreignObject></g>
+                            <g class="structure-group" transform="translate(300, 470)"><circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/><line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/><line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/><foreignObject x="-100" y="-120" width="200" height="150" class="structure-tooltip"><div xmlns="http://www.w3.org/1999/xhtml"><div class="tooltip-question">?</div><div class="tooltip-dims">L: 5m | A: 2,5m | H: 2,5m</div><div class="tooltip-cube"></div></div></foreignObject></g>
+                            <g class="structure-group" transform="translate(520, 460)"><circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/><line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/><line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/><foreignObject x="-100" y="-120" width="200" height="150" class="structure-tooltip"><div xmlns="http://www.w3.org/1999/xhtml"><div class="tooltip-question">?</div><div class="tooltip-dims">L: 5m | A: 2,5m | H: 2,5m</div><div class="tooltip-cube"></div></div></foreignObject></g>
                             
-                            <!-- ZONA ALPHA (15m²) - Adosada a la derecha de la Arena -->
+                            <!-- ZONA ALPHA -->
                             <rect x="660" y="250" width="100" height="80" fill="rgba(0, 242, 255, 0.15)" stroke="#00f2ff" stroke-width="2" stroke-dasharray="5,5"/>
                             <text x="710" y="275" text-anchor="middle" fill="#00f2ff" font-family="Share Tech Mono" font-size="10">ZONA ALPHA</text>
                             <text x="710" y="290" text-anchor="middle" fill="#00f2ff" font-family="Share Tech Mono" font-size="8">ÁREA 15 m²</text>
+                            <g transform="translate(710, 310)"><path d="M-10,-8 L10,-8 L12,-6 L12,6 L10,8 L-10,8 L-12,6 L-12,-6 Z" fill="none" stroke="#00f2ff" stroke-width="1.5"/><circle cx="0" cy="-10" r="5" fill="none" stroke="#00f2ff" stroke-width="1.5"/></g>
                             
-                            <!-- Tool icon -->
-                            <g transform="translate(710, 310)">
-                                <path d="M-10,-8 L10,-8 L12,-6 L12,6 L10,8 L-10,8 L-12,6 L-12,-6 Z" fill="none" stroke="#00f2ff" stroke-width="1.5"/>
-                                <circle cx="0" cy="-10" r="5" fill="none" stroke="#00f2ff" stroke-width="1.5"/>
-                            </g>
-                            
-                            <!-- SECTOR DE EXPANSIÓN (300m²) - A la derecha de Alpha -->
+                            <!-- SECTOR DE EXPANSIÓN -->
                             <rect x="770" y="230" width="150" height="120" fill="rgba(255, 0, 85, 0.1)" stroke="#ff0055" stroke-width="2" stroke-dasharray="5,5"/>
                             <text x="845" y="255" text-anchor="middle" fill="#ff0055" font-family="Share Tech Mono" font-size="10">SECTOR EXPANSIÓN</text>
-                            
-                            <!-- Dimension line for Expansion -->
                             <line x1="770" y1="360" x2="920" y2="360" stroke="#ff0055" stroke-width="1.5"/>
                             <line x1="770" y1="355" x2="770" y2="365" stroke="#ff0055" stroke-width="1.5"/>
                             <line x1="920" y1="355" x2="920" y2="365" stroke="#ff0055" stroke-width="1.5"/>
                             <text x="845" y="378" text-anchor="middle" fill="#ff0055" font-family="Share Tech Mono" font-size="8">ZONA LOGÍSTICA 300 m²</text>
-                            
-                            <!-- Container icon -->
                             <rect x="880" y="270" width="30" height="20" fill="rgba(255, 0, 85, 0.2)" stroke="#ff0055" stroke-width="1.5"/>
                             <text x="895" y="282" text-anchor="middle" fill="#ff0055" font-family="Share Tech Mono" font-size="6">CONT.</text>
-                            
-                            <!-- NO FLY warning in expansion zone -->
                             <circle cx="820" cy="300" r="15" fill="none" stroke="#ff0055" stroke-width="1.5" stroke-dasharray="3,3"/>
                             <text x="820" y="304" text-anchor="middle" fill="#ff0055" font-family="Share Tech Mono" font-size="6">NO FLY</text>
                             
-                            <!-- Scale indicator -->
+                            <!-- Scale & North -->
                             <line x1="70" y1="520" x2="120" y2="520" stroke="#00f2ff" stroke-width="2"/>
                             <line x1="70" y1="515" x2="70" y2="525" stroke="#00f2ff" stroke-width="2"/>
                             <line x1="120" y1="515" x2="120" y2="525" stroke="#00f2ff" stroke-width="2"/>
                             <text x="95" y="540" text-anchor="middle" fill="#00f2ff" font-family="Share Tech Mono" font-size="9">10M</text>
-                            
-                            <!-- North arrow -->
                             <line x1="930" y1="80" x2="930" y2="60" stroke="#00f2ff" stroke-width="2"/>
                             <polygon points="930,60 925,70 935,70" fill="#00f2ff"/>
                             <text x="930" y="95" text-anchor="middle" fill="#00f2ff" font-family="Share Tech Mono" font-size="9">N</text>
                             
                             <!-- Legend -->
-                            <g transform="translate(70, 450)">
-                                <text x="0" y="0" fill="rgba(255, 255, 255, 0.5)" font-family="Share Tech Mono" font-size="9">LEYENDA:</text>
-                                <circle cx="0" cy="20" r="8" fill="none" stroke="#00f2ff" stroke-width="2"/>
-                                <line x1="-8" y1="20" x2="8" y2="20" stroke="#00f2ff" stroke-width="2"/>
-                                <line x1="0" y1="12" x2="0" y2="28" stroke="#00f2ff" stroke-width="2"/>
-                                <text x="20" y="24" fill="rgba(255, 255, 255, 0.5)" font-family="Share Tech Mono" font-size="8">ESTRUCTURA FIJA</text>
-                            </g>
+                            <g transform="translate(70, 450)"><text x="0" y="0" fill="rgba(255, 255, 255, 0.5)" font-family="Share Tech Mono" font-size="9">LEYENDA:</text><circle cx="0" cy="20" r="8" fill="none" stroke="#00f2ff" stroke-width="2"/><line x1="-8" y1="20" x2="8" y2="20" stroke="#00f2ff" stroke-width="2"/><line x1="0" y1="12" x2="0" y2="28" stroke="#00f2ff" stroke-width="2"/><text x="20" y="24" fill="rgba(255, 255, 255, 0.5)" font-family="Share Tech Mono" font-size="8">ESTRUCTURA FIJA</text></g>
                             
-                            <!-- Footer text -->
-                            <text x="500" y="580" text-anchor="middle" fill="rgba(255, 255, 255, 0.4)" font-family="Share Tech Mono" font-size="9" letter-spacing="1">&gt; PLANO TÁCTICO - SEDE ZARAGOZA [USO EXCLUSIVO CREW]</text>
+                            <!-- Footer -->
+                            <text x="500" y="580" text-anchor="middle" fill="rgba(255, 255, 255, 0.4)" font-family="Share Tech Mono" font-size="9" letter-spacing="1">&gt; PLANO TÁCTICO - SEDE PROV. ZARAGOZA [USO EXCLUSIVO CREW]</text>
                         </svg>
                     </div>
 
-                    <!-- SECTORES - ACTUALIZADO -->
+                    <!-- SECTORES -->
                     <div class="sector-grid">
                         <!-- ZONA ALPHA -->
                         <div class="sector-card alpha">
                             <h3 class="sector-title">
-                                <svg class="sector-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-                                </svg>
+                                <svg class="sector-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
                                 ZONA ALPHA [15 m²]
                             </h3>
                             <ul class="sector-specs">
@@ -1198,10 +1081,7 @@
                         <!-- SECTOR DE EXPANSIÓN -->
                         <div class="sector-card expansion">
                             <h3 class="sector-title">
-                                <svg class="sector-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                                    <polyline points="9 22 9 12 15 12 15 22"/>
-                                </svg>
+                                <svg class="sector-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                                 SECTOR DE EXPANSIÓN [300 m²]
                             </h3>
                             <ul class="sector-specs">
@@ -1211,14 +1091,10 @@
                             </ul>
                         </div>
 
-                        <!-- ARENA DE VUELO - TERMINOLOGÍA LEGAL ACTUALIZADA -->
+                        <!-- ARENA DE VUELO -->
                         <div class="sector-card arena">
                             <h3 class="sector-title">
-                                <svg class="sector-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
-                                    <path d="M2 12h20"/>
-                                </svg>
+                                <svg class="sector-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
                                 <span class="text-magenta" style="text-shadow: 0 0 10px var(--magenta-glow);">ARENA DE VUELO</span> [&gt; 2000 m²]
                             </h3>
                             <ul class="sector-specs">
@@ -1230,11 +1106,11 @@
                         </div>
                     </div>
 
-                    <!-- FILOSOFÍA CREW -->
+                    <!-- FILOSOFÍA CREW - ACTUALIZADO NODO 0 vs SEDE -->
                     <div class="philosophy-box">
                         <h3 class="philosophy-title">⚡ MANIFIESTO <span class="nodo-zero">NODO 0</span></h3>
                         <p class="terminal-text">
-                            En MODO 2 no eres un simple socio: perteneces a la <strong class="text-magenta">CREW</strong>. Como parte del <span class="nodo-zero">NODO 0</span>, la sede es el tablero donde se ejecutan nuestras operaciones. Disfruta del vuelo, de tu estancia y de una experiencia de inmersión total en el sector UAS.
+                            En MODO 2 no eres un simple socio: perteneces a la <strong class="text-magenta">CREW</strong>. Como parte del <span class="nodo-zero">NODO 0</span> (nuestra plataforma digital) y con acceso a nuestra SEDE física, tienes el tablero completo donde se ejecutan nuestras operaciones. Disfruta del vuelo y de una experiencia de inmersión total en el sector UAS.
                         </p>
                     </div>
 
@@ -1362,18 +1238,16 @@
             if (el) { el.textContent = text; el.className = 'firebase-status ' + status; }
         }
 
-        // XP System - Track visits
+        // XP System
         let xp = parseInt(localStorage.getItem('modo2_xp')) || 0;
         let level = 0;
         let currentUserData = null;
         let visitCount = parseInt(localStorage.getItem('modo2_visits')) || 0;
         let xpPopupShown = localStorage.getItem('modo2_xp_popup_shown') || 'false';
 
-        // Increment visit count on page load
         visitCount++;
         localStorage.setItem('modo2_visits', visitCount);
 
-        // Add 1 XP per visit (max 1000)
         if (xp < 1000) {
             xp = Math.min(xp + 1, 1000);
             localStorage.setItem('modo2_xp', xp);
@@ -1414,19 +1288,16 @@
             if (levelDisplay) levelDisplay.textContent = 'NIVEL ' + level;
             if (userRank) userRank.textContent = getRank(level);
             
-            // Show popup at 1000 XP
             if (xp >= 1000 && xpPopupShown !== 'true') {
                 showXpPopup();
             }
         }
 
         function showXpPopup() {
-            // Update stats in popup
             const statsEl = document.getElementById('xpPopupStats');
             if (statsEl) {
                 statsEl.innerHTML = `> VISITAS COMO INVITADO: ${visitCount}<br>> XP ACUMULADA: ${xp}<br>> ESTADO: SIN REGISTRAR`;
             }
-            
             document.getElementById('xpPopup').classList.add('active');
             document.getElementById('xpPopupOverlay').classList.add('active');
             localStorage.setItem('modo2_xp_popup_shown', 'true');
@@ -1437,7 +1308,6 @@
             document.getElementById('xpPopupOverlay').classList.remove('active');
         }
 
-        // Close popup on overlay click
         document.getElementById('xpPopupOverlay').addEventListener('click', closeXpPopup);
 
         // Modal Functions
@@ -1446,13 +1316,11 @@
         function openModal() { document.getElementById('registerModal').classList.add('active'); }
         function closeModal() { document.getElementById('registerModal').classList.remove('active'); }
 
-        // BLOCKED Registration - Shows message only
         function handleRegister(e) {
             e.preventDefault();
             alert('>> SISTEMA DE PAGOS BLOQUEADO <<\n\nEl sistema de inscripciones estará disponible próximamente.\n\nDisculpa las molestias.');
         }
 
-        // ACTIVE Login - Firebase Auth
         async function handleLogin(e) {
             e.preventDefault();
             
@@ -1470,24 +1338,20 @@
             const remember = document.getElementById('rememberMe').checked;
 
             try {
-                // Set persistence based on remember me
                 if (remember) {
                     await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
                 } else {
                     await auth.setPersistence(firebase.auth.Auth.Persistence.SESSION);
                 }
 
-                // Sign in with email
                 const userCredential = await auth.signInWithEmailAndPassword(username, password);
                 const user = userCredential.user;
 
-                // Get user data from Firestore
                 const userDoc = await db.collection('users').doc(user.uid).get();
                 
                 if (userDoc.exists) {
                     currentUserData = userDoc.data();
                     
-                    // Update UI
                     document.getElementById('userName').textContent = (currentUserData.displayName || user.email).toUpperCase();
                     document.getElementById('userLevel').textContent = 'NIVEL ' + (currentUserData.level || 0);
                     
@@ -1496,10 +1360,8 @@
                     loginBtn.className = 'status-badge ' + (currentUserData.status === 'connected' ? 'connected' : 'pending');
                     loginBtn.onclick = handleLogout;
                     
-                    // Update XP display
                     updateXPDisplay(currentUserData.xp || 0);
                     
-                    // Update last login
                     await db.collection('users').doc(user.uid).update({
                         lastLogin: firebase.firestore.FieldValue.serverTimestamp()
                     });
@@ -1517,7 +1379,6 @@
             }
         }
 
-        // Firebase Logout
         async function handleLogout() {
             if (!firebaseInitialized) return;
             
@@ -1525,7 +1386,6 @@
                 await auth.signOut();
                 currentUserData = null;
                 
-                // Reset UI to guest state
                 document.getElementById('userName').textContent = 'INVITADO';
                 document.getElementById('userLevel').textContent = 'ACCESO RESTRINGIDO';
                 document.getElementById('userRank').textContent = '--';
@@ -1543,7 +1403,6 @@
             }
         }
 
-        // Auth State Listener
         if (firebaseInitialized) {
             auth.onAuthStateChanged(async (user) => {
                 if (user) {
@@ -1562,7 +1421,6 @@
             });
         }
 
-        // User DB Display
         document.addEventListener('DOMContentLoaded', () => {
             const loginBtn = document.getElementById('loginBtn');
             if (loginBtn) {
@@ -1583,7 +1441,6 @@
             tbody.innerHTML = `<tr><td>${currentUserData.displayName || 'N/A'}</td><td>${auth.currentUser?.email || 'N/A'}</td><td class="${currentUserData.status === 'connected' ? 'text-green' : 'text-amber'}">${currentUserData.status?.toUpperCase() || 'PENDING'}</td><td>${currentUserData.level || 0}</td><td>${currentUserData.rank || 'INVITADO'}</td><td>${(currentUserData.xp || 0).toLocaleString()}</td></tr>`;
         }
 
-        // Page Navigation
         function showHome() {
             document.querySelectorAll('.content-page').forEach(p => p.classList.remove('active'));
             document.getElementById('home-page').classList.add('active');
@@ -1596,7 +1453,6 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Typewriter
         const texts = {
             'typewriter-legal': "El Ayuntamiento está informado. AESA ha dado visto bueno inicial."
         };
@@ -1612,7 +1468,6 @@
             type();
         }
 
-        // Drone Trails
         const colors = ['#00f2ff', '#ff0055', '#00f2ff', '#008080'];
         const trailsContainer = document.getElementById('drone-trails-container');
 
@@ -1650,13 +1505,11 @@
             setTimeout(startDroneTrails, 3000 + Math.random() * 5000);
         }
 
-        // Initialize
         window.addEventListener('load', () => {
             updateXPDisplay(xp);
             typeWriter('typewriter-legal', texts['typewriter-legal']);
             setTimeout(startDroneTrails, 1000);
             
-            // Modal close on outside click
             document.getElementById('registerModal').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
             document.getElementById('loginModal').addEventListener('click', e => { if (e.target === e.currentTarget) closeLoginModal(); });
         });
