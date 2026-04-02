@@ -23,11 +23,7 @@
             --magenta: #ff00ff;
             --magenta-glow: rgba(255, 0, 255, 0.4);
             --amber: #ffb800;
-            --amber-glow: rgba(255, 184, 0, 0.4);
             --green: #00ff88;
-            --green-glow: rgba(0, 255, 136, 0.4);
-            --red: #ff3333;
-            --red-glow: rgba(255, 51, 51, 0.4);
             --black: #020405;
             --black-panel: #050a0c;
             --white: #e0e6ed;
@@ -37,12 +33,7 @@
             --font-body: 'Titillium Web', sans-serif;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            cursor: crosshair;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; cursor: crosshair; }
 
         body {
             background-color: var(--black);
@@ -58,119 +49,45 @@
         }
 
         .scanlines {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0px, rgba(0, 0, 0, 0.1) 1px, transparent 1px, transparent 2px);
-            z-index: 999;
-            pointer-events: none;
-            opacity: 0.5;
+            z-index: 999; pointer-events: none; opacity: 0.5;
         }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            position: relative;
-            z-index: 1;
-        }
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 1; }
 
-        h1, h2, h3, h4 {
-            font-family: var(--font-display);
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: var(--white);
-        }
-
-        .mono {
-            font-family: var(--font-mono);
-            font-size: 0.85rem;
-            letter-spacing: 0.08em;
-            color: var(--cyan);
-        }
-
+        h1, h2, h3, h4 { font-family: var(--font-display); text-transform: uppercase; letter-spacing: 0.15em; color: var(--white); }
+        .mono { font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 0.08em; color: var(--cyan); }
         .text-white { color: var(--white); }
         .text-cyan { color: var(--cyan); }
         .text-magenta { color: var(--magenta); }
         .text-amber { color: var(--amber); }
         .text-green { color: var(--green); }
-        .text-red { color: var(--red); }
-
-        .nodo-zero {
-            color: var(--magenta);
-            text-shadow: 0 0 10px var(--magenta-glow);
-            font-weight: 700;
-        }
+        .nodo-zero { color: var(--magenta); text-shadow: 0 0 10px var(--magenta-glow); font-weight: 700; }
 
         /* Glitch Effect */
         .glitch-wrapper { position: relative; display: inline-block; }
         .glitch { position: relative; color: var(--white); }
-        .glitch::before, .glitch::after {
-            content: attr(data-text);
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-        }
-        .glitch::before {
-            left: 2px; text-shadow: -2px 0 var(--magenta);
-            clip: rect(44px, 450px, 56px, 0);
-            animation: glitch-anim 5s infinite linear alternate-reverse;
-        }
-        .glitch::after {
-            left: -2px; text-shadow: -2px 0 var(--cyan);
-            clip: rect(44px, 450px, 56px, 0);
-            animation: glitch-anim2 5s infinite linear alternate-reverse;
-        }
-
-        @keyframes glitch-anim {
-            0% { clip: rect(31px, 9999px, 91px, 0); }
-            20% { clip: rect(24px, 9999px, 63px, 0); }
-            40% { clip: rect(93px, 9999px, 48px, 0); }
-            60% { clip: rect(65px, 9999px, 33px, 0); }
-            80% { clip: rect(96px, 9999px, 27px, 0); }
-            100% { clip: rect(33px, 9999px, 62px, 0); }
-        }
-
-        @keyframes glitch-anim2 {
-            0% { clip: rect(65px, 9999px, 19px, 0); }
-            20% { clip: rect(76px, 9999px, 8px, 0); }
-            40% { clip: rect(17px, 9999px, 82px, 0); }
-            60% { clip: rect(9px, 9999px, 67px, 0); }
-            80% { clip: rect(15px, 9999px, 54px, 0); }
-            100% { clip: rect(22px, 9999px, 71px, 0); }
-        }
+        .glitch::before, .glitch::after { content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        .glitch::before { left: 2px; text-shadow: -2px 0 var(--magenta); clip: rect(44px, 450px, 56px, 0); animation: glitch-anim 5s infinite linear alternate-reverse; }
+        .glitch::after { left: -2px; text-shadow: -2px 0 var(--cyan); clip: rect(44px, 450px, 56px, 0); animation: glitch-anim2 5s infinite linear alternate-reverse; }
+        @keyframes glitch-anim { 0% { clip: rect(31px, 9999px, 91px, 0); } 20% { clip: rect(24px, 9999px, 63px, 0); } 40% { clip: rect(93px, 9999px, 48px, 0); } 60% { clip: rect(65px, 9999px, 33px, 0); } 80% { clip: rect(96px, 9999px, 27px, 0); } 100% { clip: rect(33px, 9999px, 62px, 0); } }
+        @keyframes glitch-anim2 { 0% { clip: rect(65px, 9999px, 19px, 0); } 20% { clip: rect(76px, 9999px, 8px, 0); } 40% { clip: rect(17px, 9999px, 82px, 0); } 60% { clip: rect(9px, 9999px, 67px, 0); } 80% { clip: rect(15px, 9999px, 54px, 0); } 100% { clip: rect(22px, 9999px, 71px, 0); } }
 
         /* Header */
-        header {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 1.5rem 0; border-bottom: 1px solid rgba(0, 242, 255, 0.2);
-            margin-bottom: 2rem;
-        }
-
+        header { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 0; border-bottom: 1px solid rgba(0, 242, 255, 0.2); margin-bottom: 2rem; }
         .logo-container { display: flex; align-items: center; gap: 1rem; text-decoration: none; }
         .logo-svg { width: 45px; height: 52px; }
         .logo-hexagon { transform-origin: center; animation: rotateLogo 25s linear infinite; }
-
         @keyframes rotateLogo { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-
         .brand-name { font-family: var(--font-display); font-size: 1.8rem; font-weight: 900; letter-spacing: 0.25em; }
         .brand-white { color: var(--white); }
         .brand-cyan { color: var(--cyan); text-shadow: 0 0 15px var(--cyan-glow); }
-
         .header-nav { display: flex; gap: 1.5rem; }
-
-        .nav-icon-wrapper {
-            position: relative; display: flex; flex-direction: column;
-            align-items: center; cursor: pointer; text-decoration: none;
-            color: var(--gray); opacity: 0.7; transition: all 0.3s ease;
-        }
+        .nav-icon-wrapper { position: relative; display: flex; flex-direction: column; align-items: center; cursor: pointer; text-decoration: none; color: var(--gray); opacity: 0.7; transition: all 0.3s ease; }
         .nav-icon-wrapper:hover { opacity: 1; color: var(--cyan); }
         .nav-icon-wrapper svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 1.5; }
-        .nav-icon-wrapper::after {
-            content: ''; position: absolute; bottom: -6px; left: 50%;
-            width: 0; height: 1px; background: var(--cyan);
-            transition: width 0.3s ease, left 0.3s ease;
-        }
+        .nav-icon-wrapper::after { content: ''; position: absolute; bottom: -6px; left: 50%; width: 0; height: 1px; background: var(--cyan); transition: width 0.3s ease, left 0.3s ease; }
         .nav-icon-wrapper:hover::after { width: 100%; left: 0; }
 
         /* User Dashboard */
@@ -178,132 +95,40 @@
             background: var(--black-panel); border: 1px solid rgba(0, 242, 255, 0.2);
             padding: 1.5rem 2rem; margin-bottom: 2rem;
             clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 2rem;
-            align-items: center;
+            display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; align-items: center;
         }
-
         .user-info { display: flex; align-items: center; gap: 1.5rem; }
-        .user-avatar {
-            width: 60px; height: 60px; border: 2px solid var(--cyan);
-            border-radius: 50%; display: flex; align-items: center;
-            justify-content: center; background: rgba(0, 242, 255, 0.1);
-        }
+        .user-avatar { width: 60px; height: 60px; border: 2px solid var(--cyan); border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(0, 242, 255, 0.1); }
         .user-avatar svg { width: 32px; height: 32px; stroke: var(--cyan); }
         .user-details h4 { font-size: 1rem; margin-bottom: 0.3rem; color: var(--white); }
         .user-level { font-family: var(--font-mono); font-size: 0.75rem; color: var(--amber); }
         .user-rank { font-family: var(--font-mono); font-size: 0.65rem; color: var(--gray); margin-top: 0.2rem; }
-
-        .pilot-status-hud {
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(0, 242, 255, 0.3);
-            padding: 1rem;
-            border-radius: 4px;
-        }
-
-        .pilot-status-title {
-            font-family: var(--font-mono);
-            font-size: 0.7rem;
-            color: var(--cyan);
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            margin-bottom: 0.5rem;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .sync-level-badge {
-            background: rgba(0, 242, 255, 0.1);
-            border: 1px solid var(--cyan);
-            padding: 0.2rem 0.5rem;
-            font-size: 0.65rem;
-            font-weight: 700;
-        }
-
-        .sync-bar-container {
-            position: relative;
-            height: 12px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 6px;
-            overflow: hidden;
-            border: 1px solid rgba(0, 242, 255, 0.2);
-        }
-
-        .sync-bar-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--cyan), var(--magenta));
-            border-radius: 6px;
-            transition: width 0.5s ease;
-        }
-
-        .sync-bar-fill::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
-            animation: syncShimmer 2s infinite;
-        }
-
-        @keyframes syncShimmer {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-
-        .sync-stats {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 0.5rem;
-            font-family: var(--font-mono);
-            font-size: 0.65rem;
-            color: var(--gray);
-        }
-
-        .xp-bar-container { 
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(0, 242, 255, 0.2);
-            padding: 1rem;
-            border-radius: 4px;
-        }
+        .pilot-status-hud { background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(0, 242, 255, 0.3); padding: 1rem; border-radius: 4px; }
+        .pilot-status-title { font-family: var(--font-mono); font-size: 0.7rem; color: var(--cyan); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 0.5rem; display: flex; justify-content: space-between; }
+        .sync-level-badge { background: rgba(0, 242, 255, 0.1); border: 1px solid var(--cyan); padding: 0.2rem 0.5rem; font-size: 0.65rem; font-weight: 700; }
+        .sync-bar-container { position: relative; height: 12px; background: rgba(255, 255, 255, 0.05); border-radius: 6px; overflow: hidden; border: 1px solid rgba(0, 242, 255, 0.2); }
+        .sync-bar-fill { height: 100%; background: linear-gradient(90deg, var(--cyan), var(--magenta)); border-radius: 6px; transition: width 0.5s ease; }
+        .sync-bar-fill::after { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%); animation: syncShimmer 2s infinite; }
+        @keyframes syncShimmer { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+        .sync-stats { display: flex; justify-content: space-between; margin-top: 0.5rem; font-family: var(--font-mono); font-size: 0.65rem; color: var(--gray); }
+        .xp-bar-container { background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(0, 242, 255, 0.2); padding: 1rem; border-radius: 4px; }
         .xp-label { font-family: var(--font-mono); font-size: 0.7rem; color: var(--gray); margin-bottom: 0.3rem; display: flex; justify-content: space-between; }
         .xp-bar { height: 8px; background: rgba(255, 255, 255, 0.1); border-radius: 4px; overflow: hidden; }
         .xp-fill { height: 100%; background: linear-gradient(90deg, var(--cyan), #00a8ff); width: 0%; border-radius: 4px; transition: width 0.5s ease; }
         .xp-fill.maxed { animation: xpPulse 1s ease-in-out infinite; }
-
-        @keyframes xpPulse {
-            0%, 100% { box-shadow: 0 0 5px var(--cyan-glow); }
-            50% { box-shadow: 0 0 15px var(--cyan-glow); }
-        }
-
-        .status-badge {
-            font-family: var(--font-mono); font-size: 0.7rem; padding: 0.4rem 1rem;
-            border: 1px solid var(--magenta); color: var(--magenta);
-            text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer;
-            transition: all 0.3s ease; background: rgba(255, 0, 85, 0.05);
-            justify-self: end;
-        }
+        @keyframes xpPulse { 0%, 100% { box-shadow: 0 0 5px var(--cyan-glow); } 50% { box-shadow: 0 0 15px var(--cyan-glow); } }
+        .status-badge { font-family: var(--font-mono); font-size: 0.7rem; padding: 0.4rem 1rem; border: 1px solid var(--magenta); color: var(--magenta); text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; transition: all 0.3s ease; background: rgba(255, 0, 85, 0.05); justify-self: end; }
         .status-badge:hover { background: rgba(255, 0, 85, 0.15); box-shadow: 0 0 15px var(--magenta-glow); }
         .status-badge.connected { border-color: var(--green); color: var(--green); background: rgba(0, 255, 136, 0.05); }
         .status-badge.pending { border-color: var(--amber); color: var(--amber); background: rgba(255, 184, 0, 0.05); animation: pulse-amber 2s infinite; }
-
-        @keyframes pulse-amber {
-            0%, 100% { box-shadow: 0 0 5px var(--amber-glow); }
-            50% { box-shadow: 0 0 15px var(--amber-glow); }
-        }
-
+        @keyframes pulse-amber { 0%, 100% { box-shadow: 0 0 5px var(--amber-glow); } 50% { box-shadow: 0 0 15px var(--amber-glow); } }
         .level-display { font-family: var(--font-display); font-size: 1.2rem; color: var(--cyan); margin-top: 0.3rem; }
 
         /* Hero */
         .hero { text-align: center; padding: 2rem 0 3rem 0; }
         .system-command { font-family: var(--font-mono); font-size: 0.9rem; margin-bottom: 2rem; letter-spacing: 0.15em; text-transform: uppercase; }
         .system-command::before { content: '> '; color: var(--magenta); }
-
-        .recruitment-counter {
-            background: rgba(255, 0, 85, 0.05); border: 1px solid var(--magenta);
-            padding: 1.5rem 2rem; margin: 1.5rem auto; max-width: 650px;
-            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
-        }
-
+        .recruitment-counter { background: rgba(255, 0, 85, 0.05); border: 1px solid var(--magenta); padding: 1.5rem 2rem; margin: 1.5rem auto; max-width: 650px; clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px); }
         .counter-header { font-family: var(--font-mono); font-size: 0.75rem; margin-bottom: 1rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--magenta); }
         .counter-main { display: flex; justify-content: center; align-items: center; gap: 2rem; margin-bottom: 0.5rem; }
         .counter-number { font-family: var(--font-display); font-size: 3.5rem; font-weight: 900; color: var(--magenta); text-shadow: 0 0 25px var(--magenta-glow); }
@@ -311,14 +136,12 @@
         .counter-subtext { font-family: var(--font-mono); font-size: 0.65rem; color: var(--gray); margin-top: 0.8rem; text-transform: uppercase; }
         .status-available { font-family: var(--font-mono); font-size: 0.7rem; color: var(--amber); margin-top: 1rem; text-transform: uppercase; }
         .status-available::before { content: '🔒 '; }
-
         .icon-nav-row { display: flex; justify-content: center; align-items: center; gap: 2.5rem; margin: 1.5rem 0 1rem 0; flex-wrap: wrap; }
         .icon-nav-item { position: relative; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; text-decoration: none; color: var(--gray); transition: all 0.3s ease; opacity: 0.6; }
         .icon-nav-item:hover { opacity: 1; color: var(--cyan); transform: translateY(-3px); }
         .icon-nav-item svg { width: 38px; height: 38px; stroke: currentColor; fill: none; stroke-width: 1.2; }
         .icon-nav-label { position: absolute; bottom: -22px; font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--cyan); opacity: 0; transition: all 0.3s ease; }
         .icon-nav-item:hover .icon-nav-label { opacity: 1; transform: translateY(0); }
-
         .join-btn-wrapper { position: relative; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; cursor: pointer; opacity: 0.6; }
         .join-btn-wrapper:hover { opacity: 1; transform: translateY(-3px); }
         .join-btn-icon { width: 44px; height: 44px; background: var(--cyan); clip-path: polygon(15% 0, 100% 0, 100% 70%, 85% 100%, 0 100%, 0 30%); display: flex; align-items: center; justify-content: center; }
@@ -326,7 +149,6 @@
         .join-btn-icon svg { width: 24px; height: 24px; stroke: var(--black); fill: none; stroke-width: 2.5; }
         .join-btn-label { position: absolute; bottom: -22px; font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cyan); opacity: 0; }
         .join-btn-wrapper:hover .join-btn-label { opacity: 1; }
-
         .cta-section { text-align: center; padding: 1rem 0; margin-bottom: 3rem; }
         .cta-subtitle { font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan); letter-spacing: 0.15em; opacity: 0.8; }
 
@@ -335,25 +157,19 @@
         .content-page.active { display: block; }
         .content-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; margin-bottom: 3rem; }
         @media(min-width: 768px) { .content-grid { grid-template-columns: 1fr 1fr; } .full-width { grid-column: span 2; } }
-
         .hud-panel { background: var(--black-panel); border: 1px solid rgba(0, 242, 255, 0.15); position: relative; padding: 2rem; }
         .hud-panel::before { content: ''; position: absolute; top: 0; left: 0; width: 15px; height: 15px; border-top: 2px solid var(--cyan); border-left: 2px solid var(--cyan); }
         .hud-panel::after { content: ''; position: absolute; bottom: 0; right: 0; width: 15px; height: 15px; border-bottom: 2px solid var(--cyan); border-right: 2px solid var(--cyan); }
         .hud-panel:hover { border-color: var(--cyan); box-shadow: 0 0 30px rgba(0, 242, 255, 0.1); }
-
         .section-title { font-size: 1.1rem; color: var(--cyan); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.8rem; font-family: var(--font-mono); }
         .section-title svg { width: 18px; height: 18px; stroke: var(--cyan); }
-
         .terminal-text { font-family: var(--font-mono); color: rgba(224, 230, 237, 0.85); font-size: 0.9rem; line-height: 1.8; }
-
         .cursor { display: inline-block; width: 8px; height: 16px; background: var(--cyan); animation: blink 1s infinite; margin-left: 5px; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-
         .pricing-box { background: rgba(0, 242, 255, 0.05); border: 1px solid var(--cyan); padding: 2rem; text-align: center; margin: 2rem 0; }
         .pricing-amount { font-family: var(--font-display); font-size: 3rem; color: var(--cyan); margin-bottom: 0.5rem; }
         .pricing-period { font-family: var(--font-mono); font-size: 0.8rem; color: var(--gray); margin-bottom: 1rem; }
         .pricing-sub { font-family: var(--font-mono); font-size: 0.75rem; color: var(--white); opacity: 0.8; }
-
         .founder-benefits { background: rgba(255, 184, 0, 0.05); border: 1px solid var(--amber); padding: 2rem; margin: 2rem 0; }
         .benefits-title { font-family: var(--font-mono); font-size: 0.9rem; margin-bottom: 1.5rem; letter-spacing: 0.15em; text-transform: uppercase; text-align: center; }
         .benefits-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
@@ -361,7 +177,6 @@
         .benefit-item { display: flex; align-items: flex-start; gap: 0.8rem; }
         .benefit-icon { color: var(--amber); font-size: 1.2rem; min-width: 20px; }
         .benefit-text { font-family: var(--font-mono); font-size: 0.8rem; color: var(--white); line-height: 1.6; }
-
         .transparency-box { background: rgba(0, 255, 136, 0.05); border: 1px solid var(--green); padding: 2rem; margin: 2rem 0; }
         .transparency-title { font-family: var(--font-mono); font-size: 0.9rem; color: var(--green); margin-bottom: 1.5rem; letter-spacing: 0.15em; text-transform: uppercase; text-align: center; }
         .transparency-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
@@ -370,144 +185,141 @@
         .transparency-icon { color: var(--green); font-size: 1.2rem; min-width: 20px; }
         .transparency-text { font-family: var(--font-mono); font-size: 0.8rem; color: var(--white); line-height: 1.6; }
 
-        /* Drone HUD */
+        /* DRONE_HUD SYSTEM */
         .drone-hud-container {
             display: flex;
             justify-content: center;
             align-items: center;
             margin: 3rem 0;
+            position: relative;
+            min-height: 600px;
         }
 
-        .drone-x-frame {
+        .drone-schematic {
             position: relative;
-            width: 500px;
-            height: 500px;
+            width: 600px;
+            height: 600px;
+        }
+
+        /* Drone Frame SVG */
+        .drone-frame-svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.2));
         }
 
         .drone-arm {
-            position: absolute;
-            width: 200px;
-            height: 8px;
-            background: linear-gradient(90deg, var(--cyan), transparent);
-            transform-origin: left center;
+            stroke: var(--gray);
+            stroke-width: 12;
+            fill: none;
+            stroke-linecap: round;
         }
 
-        .drone-arm.arm-1 { transform: rotate(-45deg); top: 100px; left: 150px; }
-        .drone-arm.arm-2 { transform: rotate(45deg); top: 100px; left: 150px; }
-        .drone-arm.arm-3 { transform: rotate(-135deg); top: 100px; left: 150px; }
-        .drone-arm.arm-4 { transform: rotate(135deg); top: 100px; left: 150px; }
-
-        .motor {
-            position: absolute;
-            width: 80px;
-            height: 80px;
-            border: 2px solid var(--gray);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        .drone-center-plate {
+            fill: rgba(107, 124, 133, 0.2);
+            stroke: var(--gray);
+            stroke-width: 2;
         }
 
-        .motor.active {
-            border-color: var(--cyan);
-            box-shadow: 0 0 15px var(--cyan-glow);
+        .motor-housing {
+            fill: #1a1a1a;
+            stroke: var(--gray);
+            stroke-width: 2;
         }
 
-        .motor.elite {
-            border-color: var(--magenta);
-            box-shadow: 0 0 20px var(--magenta-glow);
+        .propeller-group {
+            transform-origin: center;
+            transition: transform 0.1s linear;
         }
 
-        .motor.motor-1 { top: 50px; left: 210px; }
-        .motor.motor-2 { top: 50px; right: 210px; }
-        .motor.motor-3 { bottom: 50px; left: 210px; }
-        .motor.motor-4 { bottom: 50px; right: 210px; }
-
-        .motor-label {
-            font-family: var(--font-mono);
-            font-size: 0.6rem;
-            color: var(--cyan);
-            position: absolute;
-            bottom: -20px;
+        .propeller-blade {
+            fill: #333;
+            stroke: var(--gray);
+            stroke-width: 1;
+            transition: all 0.5s ease;
         }
 
-        .propeller {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            animation: none;
+        .propeller-blade.unlocked {
+            fill: var(--cyan);
+            stroke: var(--cyan);
+            filter: drop-shadow(0 0 8px var(--cyan-glow));
         }
 
-        .motor.active .propeller {
-            animation: motorSpin 0.5s linear infinite;
+        .propeller-blade.elite {
+            fill: var(--magenta);
+            stroke: var(--magenta);
+            filter: drop-shadow(0 0 12px var(--magenta-glow));
         }
 
-        @keyframes motorSpin {
+        .motor-active .propeller-group {
+            animation: spinProp 0.2s linear infinite;
+        }
+
+        @keyframes spinProp {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
 
-        .blade {
+        /* Motor Labels */
+        .motor-label-group {
             position: absolute;
-            width: 70px;
-            height: 12px;
-            background: var(--gray);
-            border-radius: 50%;
-            transform-origin: center center;
-        }
-
-        .blade.unlocked {
-            background: var(--cyan);
-            box-shadow: 0 0 10px var(--cyan-glow);
-        }
-
-        .blade.elite {
-            background: var(--magenta);
-            box-shadow: 0 0 15px var(--magenta-glow);
-        }
-
-        .blade-1 { transform: rotate(0deg) translateX(5px); }
-        .blade-2 { transform: rotate(120deg) translateX(5px); }
-        .blade-3 { transform: rotate(240deg) translateX(5px); }
-
-        .blade-wrapper {
-            position: absolute;
-            cursor: pointer;
-        }
-
-        .blade-tooltip {
-            position: absolute;
-            background: var(--black-panel);
-            border: 1px solid var(--cyan);
-            padding: 0.8rem;
             font-family: var(--font-mono);
             font-size: 0.7rem;
-            color: var(--white);
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 100;
-            min-width: 200px;
-            top: -100px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .blade-wrapper:hover .blade-tooltip {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .tooltip-title {
             color: var(--cyan);
-            font-weight: 700;
-            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            pointer-events: none;
         }
 
-        .tooltip-req {
-            color: var(--gray);
-            line-height: 1.6;
+        .motor-label-title {
+            font-weight: 700;
+            font-size: 0.8rem;
+            margin-bottom: 0.3rem;
+            display: block;
         }
+
+        .skill-list {
+            list-style: none;
+            text-align: left;
+        }
+
+        .skill-item {
+            margin-bottom: 0.2rem;
+            opacity: 0.5;
+            transition: opacity 0.3s;
+        }
+
+        .skill-item.unlocked {
+            opacity: 1;
+            color: var(--cyan);
+        }
+
+        .skill-item.elite {
+            color: var(--magenta);
+            font-weight: 700;
+        }
+
+        /* Positioning Labels */
+        .label-tl { top: 80px; left: 80px; text-align: right; }
+        .label-tr { top: 80px; right: 80px; text-align: left; }
+        .label-bl { bottom: 80px; left: 80px; text-align: right; }
+        .label-br { bottom: 80px; right: 80px; text-align: left; }
+
+        /* HUD Decorations */
+        .hud-deco-line {
+            position: absolute;
+            background: var(--cyan-dim);
+        }
+        
+        .hud-corner {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--cyan);
+        }
+        .corner-tl { top: 20px; left: 20px; border-right: none; border-bottom: none; }
+        .corner-tr { top: 20px; right: 20px; border-left: none; border-bottom: none; }
+        .corner-bl { bottom: 20px; left: 20px; border-right: none; border-top: none; }
+        .corner-br { bottom: 20px; right: 20px; border-left: none; border-top: none; }
 
         /* Flight Logs */
         .flight-logs-section { background: var(--black-panel); border: 1px solid rgba(0, 242, 255, 0.15); padding: 2.5rem; margin-bottom: 3rem; text-align: center; }
@@ -525,51 +337,16 @@
         .info-title { font-size: 1rem; color: var(--cyan); margin: 1.5rem 0 1rem 0; font-family: var(--font-mono); }
         .info-list { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
         .info-list li { font-family: var(--font-mono); font-size: 0.7rem; color: rgba(224, 230, 237, 0.6); padding: 0.35rem 0.9rem; border: 1px solid rgba(0, 242, 255, 0.2); }
-
-        /* Sector Status */
         .sector-status { font-family: var(--font-mono); font-size: 0.7rem; color: var(--amber); margin-top: 1rem; display: inline-block; padding: 0.4rem 1rem; border: 1px solid var(--amber); }
         .sector-status::before { content: '🔒 '; }
 
         /* Footer */
-        footer {
-            border-top: 1px solid rgba(0, 242, 255, 0.1);
-            padding: 3rem 0;
-            margin-top: 3rem;
-            text-align: center;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .social-btn {
-            color: rgba(224, 230, 237, 0.4);
-            text-decoration: none;
-            font-size: 0.85rem;
-            transition: 0.3s;
-            font-family: var(--font-mono);
-        }
-
-        .social-btn:hover {
-            color: var(--cyan);
-            text-shadow: 0 0 10px var(--cyan-glow);
-        }
-
-        .copyright {
-            font-size: 0.65rem;
-            color: rgba(224, 230, 237, 0.3);
-            font-family: var(--font-mono);
-            margin-bottom: 0.5rem;
-        }
-
-        .legal-nif {
-            font-size: 0.6rem;
-            color: rgba(224, 230, 237, 0.2);
-            font-family: var(--font-mono);
-        }
+        footer { border-top: 1px solid rgba(0, 242, 255, 0.1); padding: 3rem 0; margin-top: 3rem; text-align: center; }
+        .social-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem; }
+        .social-btn { color: rgba(224, 230, 237, 0.4); text-decoration: none; font-size: 0.85rem; transition: 0.3s; font-family: var(--font-mono); }
+        .social-btn:hover { color: var(--cyan); text-shadow: 0 0 10px var(--cyan-glow); }
+        .copyright { font-size: 0.65rem; color: rgba(224, 230, 237, 0.3); font-family: var(--font-mono); margin-bottom: 0.5rem; }
+        .legal-nif { font-size: 0.6rem; color: rgba(224, 230, 237, 0.2); font-family: var(--font-mono); }
 
         /* Modal */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(2, 4, 5, 0.95); backdrop-filter: blur(8px); display: none; justify-content: center; align-items: center; z-index: 2000; }
@@ -585,125 +362,32 @@
         .checkbox-group { display: flex; align-items: center; gap: 0.5rem; }
         .checkbox-group input[type="checkbox"] { width: auto; accent-color: var(--cyan); }
         .checkbox-group label { margin-bottom: 0; }
-        
         .submit-btn.blocked { width: 100%; padding: 1rem; margin-top: 1rem; background: var(--red); color: var(--white); border: 1px solid var(--red); font-family: var(--font-display); font-size: 0.9rem; font-weight: 700; cursor: not-allowed; }
         .submit-btn.active { width: 100%; padding: 1rem; margin-top: 1rem; background: var(--cyan); color: var(--black); border: 1px solid var(--cyan); font-family: var(--font-display); font-size: 0.9rem; font-weight: 700; cursor: pointer; }
         .submit-btn.active:hover { background: var(--white); box-shadow: 0 0 30px var(--cyan-glow); }
-
-        .blocked-notice {
-            background: rgba(255, 51, 51, 0.1);
-            border: 1px solid var(--red);
-            padding: 1rem;
-            margin-top: 1rem;
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            color: var(--red);
-            text-align: center;
-        }
-
+        .blocked-notice { background: rgba(255, 51, 51, 0.1); border: 1px solid var(--red); padding: 1rem; margin-top: 1rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--red); text-align: center; }
         .blocked-notice::before { content: '⚠ '; }
-
         .login-modal-content { max-width: 400px; }
-
         .back-button { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan); text-decoration: none; margin-bottom: 2rem; }
         .back-button:hover { color: var(--white); }
         .back-button svg { width: 16px; height: 16px; stroke: currentColor; }
-
         .drone-trail { position: fixed; height: 1px; border-radius: 2px; z-index: 0; pointer-events: none; opacity: 0; }
-
         .user-db-panel { display: none; background: var(--black-panel); border: 1px solid var(--cyan); padding: 2rem; margin: 2rem 0; }
         .user-db-panel.active { display: block; }
         .user-db-table { width: 100%; border-collapse: collapse; font-family: var(--font-mono); font-size: 0.8rem; }
         .user-db-table th, .user-db-table td { padding: 0.8rem; text-align: left; border-bottom: 1px solid rgba(0, 242, 255, 0.1); }
         .user-db-table th { color: var(--cyan); }
         .user-db-table td { color: var(--white); }
-
-        .xp-popup {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: var(--black-panel);
-            border: 2px solid var(--magenta);
-            padding: 2.5rem;
-            max-width: 500px;
-            width: 90%;
-            z-index: 3000;
-            clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
-            display: none;
-        }
-
+        .xp-popup { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: var(--black-panel); border: 2px solid var(--magenta); padding: 2.5rem; max-width: 500px; width: 90%; z-index: 3000; clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px); display: none; }
         .xp-popup.active { display: block; }
-
-        .xp-popup-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 2999;
-            display: none;
-        }
-
+        .xp-popup-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.8); z-index: 2999; display: none; }
         .xp-popup-overlay.active { display: block; }
-
-        .xp-popup-title {
-            font-size: 1.3rem;
-            color: var(--magenta);
-            margin-bottom: 1rem;
-            text-align: center;
-            font-family: var(--font-mono);
-        }
-
-        .xp-popup-message {
-            font-family: var(--font-mono);
-            font-size: 0.85rem;
-            color: var(--white);
-            text-align: center;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-        }
-
-        .xp-popup-stats {
-            background: rgba(255, 0, 85, 0.1);
-            border: 1px solid var(--magenta);
-            padding: 1rem;
-            margin: 1.5rem 0;
-            font-family: var(--font-mono);
-            font-size: 0.9rem;
-            color: var(--magenta);
-        }
-
-        .xp-popup-btn {
-            width: 100%;
-            padding: 1rem;
-            background: var(--magenta);
-            color: var(--white);
-            border: none;
-            font-family: var(--font-display);
-            font-size: 0.9rem;
-            font-weight: 700;
-            cursor: pointer;
-        }
-
-        .xp-popup-btn:hover {
-            background: var(--white);
-            color: var(--magenta);
-        }
-
-        .firebase-status {
-            position: fixed;
-            bottom: 10px;
-            right: 10px;
-            font-family: var(--font-mono);
-            font-size: 0.65rem;
-            padding: 0.3rem 0.8rem;
-            border: 1px solid var(--gray);
-            color: var(--gray);
-            z-index: 100;
-        }
-
+        .xp-popup-title { font-size: 1.3rem; color: var(--magenta); margin-bottom: 1rem; text-align: center; font-family: var(--font-mono); }
+        .xp-popup-message { font-family: var(--font-mono); font-size: 0.85rem; color: var(--white); text-align: center; line-height: 1.8; margin-bottom: 1.5rem; }
+        .xp-popup-stats { background: rgba(255, 0, 85, 0.1); border: 1px solid var(--magenta); padding: 1rem; margin: 1.5rem 0; font-family: var(--font-mono); font-size: 0.9rem; color: var(--magenta); }
+        .xp-popup-btn { width: 100%; padding: 1rem; background: var(--magenta); color: var(--white); border: none; font-family: var(--font-display); font-size: 0.9rem; font-weight: 700; cursor: pointer; }
+        .xp-popup-btn:hover { background: var(--white); color: var(--magenta); }
+        .firebase-status { position: fixed; bottom: 10px; right: 10px; font-family: var(--font-mono); font-size: 0.65rem; padding: 0.3rem 0.8rem; border: 1px solid var(--gray); color: var(--gray); z-index: 100; }
         .firebase-status.connected { border-color: var(--green); color: var(--green); }
         .firebase-status.error { border-color: var(--red); color: var(--red); }
 
@@ -716,13 +400,7 @@
             .status-badge { justify-self: start; }
             .counter-main { flex-direction: column; gap: 1rem; }
             .counter-number { font-size: 2.5rem; }
-            .drone-x-frame { width: 350px; height: 350px; }
-            .drone-arm { width: 140px; }
-            .motor { width: 60px; height: 60px; }
-            .motor.motor-1 { top: 35px; left: 145px; }
-            .motor.motor-2 { top: 35px; right: 145px; }
-            .motor.motor-3 { bottom: 35px; left: 145px; }
-            .motor.motor-4 { bottom: 35px; right: 145px; }
+            .drone-schematic { width: 350px; height: 350px; }
         }
     </style>
 </head>
@@ -816,7 +494,7 @@
 
         <div id="home-page" class="content-page active">
             <section class="hero">
-                <p class="system-command">EJECUTANDO: <span class="text-cyan">PROYECTO_ORIGEN.EXE</span></p>
+                <p class="system-command">EJECUTANDO: <span class="text-white">PROYECTO_</span><span class="text-cyan">ORIGEN.EXE</span></p>
                 <div class="recruitment-counter">
                     <div class="counter-header"><span class="text-magenta">RECLUTAMIENTO</span> <span class="text-white">PROYECTO ORIGEN</span></div>
                     <div class="counter-main"><div class="counter-number" id="availableSpots">40</div><div class="counter-label">/ 40 PLAZAS</div></div>
@@ -840,131 +518,114 @@
                 <div class="hud-panel full-width">
                     <h2 class="section-title">> SISTEMA_12_PALAS // DRONE_HUD</h2>
                     <div class="terminal-text" style="margin-bottom: 2rem;">
-                        <p>Tu progreso se visualiza como un cuadricóptero en X. Cada motor = sector operativo con 3 palas.</p>
-                        <p style="margin-top: 0.5rem;">▸ <strong class="text-cyan">PALA DESBLOQUEADA:</strong> Cyan neón</p>
-                        <p style="margin-top: 0.5rem;">▸ <strong class="text-magenta">PALA ÉLITE (3ª):</strong> Magenta intenso</p>
-                        <p style="margin-top: 0.5rem;">▸ <strong class="text-green">MOTOR COMPLETO:</strong> Animación de rotación</p>
+                        <p>Tu progreso en MODO 2 se visualiza como un cuadricóptero en configuración X. Cada motor representa un sector operativo con 3 palas de hélice.</p>
+                        <p style="margin-top: 0.5rem;"><span class="text-cyan">▸ PALA DESBLOQUEADA:</span> Se ilumina en cyan neón.</p>
+                        <p style="margin-top: 0.5rem;"><span class="text-magenta">▸ PALA ÉLITE (3ª):</span> Brillo magenta intenso - logro de alto nivel.</p>
+                        <p style="margin-top: 0.5rem;"><span class="text-green">▸ MOTOR COMPLETO:</span> Animación de rotación cuando las 3 palas están activas.</p>
                     </div>
 
                     <div class="drone-hud-container">
-                        <div class="drone-x-frame">
-                            <div class="drone-arm arm-1"></div>
-                            <div class="drone-arm arm-2"></div>
-                            <div class="drone-arm arm-3"></div>
-                            <div class="drone-arm arm-4"></div>
+                        <!-- HUD Decorations -->
+                        <div class="hud-corner corner-tl"></div>
+                        <div class="hud-corner corner-tr"></div>
+                        <div class="hud-corner corner-bl"></div>
+                        <div class="hud-corner corner-br"></div>
+                        <div class="hud-deco-line" style="top: 40px; left: 50px; width: 100px; height: 1px;"></div>
+                        <div class="hud-deco-line" style="top: 40px; right: 50px; width: 100px; height: 1px;"></div>
+                        <div class="hud-deco-line" style="bottom: 40px; left: 50px; width: 100px; height: 1px;"></div>
+                        <div class="hud-deco-line" style="bottom: 40px; right: 50px; width: 100px; height: 1px;"></div>
 
-                            <div class="motor motor-1" id="motor-alfa">
-                                <div class="propeller">
-                                    <div class="blade-wrapper blade-1-wrapper">
-                                        <div class="blade blade-1" data-skill="fpv"></div>
-                                        <div class="blade-tooltip">
-                                            <div class="tooltip-title">#FPV</div>
-                                            <div class="tooltip-req">Vuelo inmersivo<br>Requisito: 10h vuelo</div>
-                                        </div>
-                                    </div>
-                                    <div class="blade-wrapper blade-2-wrapper">
-                                        <div class="blade blade-2" data-skill="estabilizado"></div>
-                                        <div class="blade-tooltip">
-                                            <div class="tooltip-title">#ESTABILIZADO</div>
-                                            <div class="tooltip-req">Sistemas GPS<br>Requisito: 5h GPS</div>
-                                        </div>
-                                    </div>
-                                    <div class="blade-wrapper blade-3-wrapper">
-                                        <div class="blade blade-3 elite" data-skill="sub250"></div>
-                                        <div class="blade-tooltip">
-                                            <div class="tooltip-title">#SUB250 [ÉLITE]</div>
-                                            <div class="tooltip-req">Micro &lt;250g<br>Requisito: Master + 20h</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <span class="motor-label">ALFA // PLATAFORMAS</span>
+                        <div class="drone-schematic">
+                            <svg class="drone-frame-svg" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Arms (X Config) -->
+                                <line x1="150" y1="150" x2="450" y2="450" class="drone-arm" />
+                                <line x1="450" y1="150" x2="150" y2="450" class="drone-arm" />
+                                
+                                <!-- Center Plate -->
+                                <rect x="275" y="275" width="50" height="50" rx="5" class="drone-center-plate" />
+
+                                <!-- MOTOR ALFA (Top Left) -->
+                                <g class="motor-group" id="motor-alfa-group">
+                                    <circle cx="150" cy="150" r="35" class="motor-housing" />
+                                    <g class="propeller-group" id="prop-alfa">
+                                        <path d="M150 150 L150 110 Q160 110 160 150 Z" class="propeller-blade" />
+                                        <path d="M150 150 L184 170 Q174 180 150 150 Z" class="propeller-blade" transform="rotate(120 150 150)" />
+                                        <path d="M150 150 L116 170 Q126 180 150 150 Z" class="propeller-blade" transform="rotate(240 150 150)" />
+                                    </g>
+                                </g>
+
+                                <!-- MOTOR BRAVO (Top Right) -->
+                                <g class="motor-group" id="motor-bravo-group">
+                                    <circle cx="450" cy="150" r="35" class="motor-housing" />
+                                    <g class="propeller-group" id="prop-bravo">
+                                        <path d="M450 150 L450 110 Q460 110 460 150 Z" class="propeller-blade" />
+                                        <path d="M450 150 L484 170 Q474 180 450 150 Z" class="propeller-blade" transform="rotate(120 450 150)" />
+                                        <path d="M450 150 L416 170 Q426 180 450 150 Z" class="propeller-blade" transform="rotate(240 450 150)" />
+                                    </g>
+                                </g>
+
+                                <!-- MOTOR CHARLIE (Bottom Right) -->
+                                <g class="motor-group" id="motor-charlie-group">
+                                    <circle cx="450" cy="450" r="35" class="motor-housing" />
+                                    <g class="propeller-group" id="prop-charlie">
+                                        <path d="M450 450 L450 410 Q460 410 460 450 Z" class="propeller-blade" />
+                                        <path d="M450 450 L484 470 Q474 480 450 450 Z" class="propeller-blade" transform="rotate(120 450 450)" />
+                                        <path d="M450 450 L416 470 Q426 480 450 450 Z" class="propeller-blade" transform="rotate(240 450 450)" />
+                                    </g>
+                                </g>
+
+                                <!-- MOTOR DELTA (Bottom Left) -->
+                                <g class="motor-group" id="motor-delta-group">
+                                    <circle cx="150" cy="450" r="35" class="motor-housing" />
+                                    <g class="propeller-group" id="prop-delta">
+                                        <path d="M150 450 L150 410 Q160 410 160 450 Z" class="propeller-blade" />
+                                        <path d="M150 450 L184 470 Q174 480 150 450 Z" class="propeller-blade" transform="rotate(120 150 450)" />
+                                        <path d="M150 450 L116 470 Q126 480 150 450 Z" class="propeller-blade" transform="rotate(240 150 450)" />
+                                    </g>
+                                </g>
+                            </svg>
+
+                            <!-- Labels -->
+                            <div class="motor-label-group label-tl">
+                                <span class="motor-label-title">MOTOR ALFA [PLATAFORMAS]</span>
+                                <ul class="skill-list">
+                                    <li class="skill-item" id="skill-alfa-1">#FPV</li>
+                                    <li class="skill-item" id="skill-alfa-2">#ESTABILIZADO</li>
+                                    <li class="skill-item elite" id="skill-alfa-3">#SUB250</li>
+                                </ul>
                             </div>
 
-                            <div class="motor motor-2" id="motor-bravo">
-                                <div class="propeller">
-                                    <div class="blade-wrapper blade-1-wrapper">
-                                        <div class="blade blade-1" data-skill="freestyle"></div>
-                                        <div class="blade-tooltip">
-                                            <div class="tooltip-title">#FREESTYLE</div>
-                                            <div class="tooltip-req">Acrobacia<br>Requisito: 15h freestyle</div>
-                                        </div>
-                                    </div>
-                                    <div class="blade-wrapper blade-2-wrapper">
-                                        <div class="blade blade-2" data-skill="racing"></div>
-                                        <div class="blade-tooltip">
-                                            <div class="tooltip-title">#RACING</div>
-                                            <div class="tooltip-req">Velocidad<br>Requisito: 10 carreras</div>
-                                        </div>
-                                    </div>
-                                    <div class="blade-wrapper blade-3-wrapper">
-                                        <div class="blade blade-3 elite" data-skill="hardcore"></div>
-                                        <div class="blade-tooltip">
-                                            <div class="tooltip-title">#HARDCORE [ÉLITE]</div>
-                                            <div class="tooltip-req">Alto riesgo<br>Requisito: 0 incidentes 50h</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <span class="motor-label">BRAVO // VUELO</span>
+                            <div class="motor-label-group label-tr">
+                                <span class="motor-label-title">MOTOR BRAVO [VUELO]</span>
+                                <ul class="skill-list">
+                                    <li class="skill-item" id="skill-bravo-1">#FREESTYLE</li>
+                                    <li class="skill-item" id="skill-bravo-2">#RACING</li>
+                                    <li class="skill-item elite" id="skill-bravo-3">#HARDCORE</li>
+                                </ul>
                             </div>
 
-                            <div class="motor motor-3" id="motor-charlie">
-                                <div class="propeller">
-                                    <div class="blade-wrapper blade-1-wrapper">
-                                        <div class="blade blade-1" data-skill="build"></div>
-                                        <div class="blade-tooltip">
-                                            <div class="tooltip-title">#BUILD</div>
-                                            <div class="tooltip-req">Montaje<br>Requisito: 3 builds</div>
-                                        </div>
-                                    </div>
-                                    <div class="blade-wrapper blade-2-wrapper">
-                                        <div class="blade blade-2" data-skill="tuning"></div>
-                                        <div class="blade-tooltip">
-                                            <div class="tooltip-title">#TUNING</div>
-                                            <div class="tooltip-req">PIDs, Betaflight<br>Requisito: 5 configs</div>
-                                        </div>
-                                    </div>
-                                    <div class="blade-wrapper blade-3-wrapper">
-                                        <div class="blade blade-3 elite" data-skill="master-tech"></div>
-                                        <div class="blade-tooltip">
-                                            <div class="tooltip-title">#MASTER_TECH [ÉLITE]</div>
-                                            <div class="tooltip-req">Electrónica<br>Requisito: I+D + mentoría</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <span class="motor-label">CHARLIE // TALLER</span>
+                            <div class="motor-label-group label-bl">
+                                <span class="motor-label-title">MOTOR DELTA [CREW]</span>
+                                <ul class="skill-list">
+                                    <li class="skill-item" id="skill-delta-1">#POSTPRO</li>
+                                    <li class="skill-item" id="skill-delta-2">#MENTOR</li>
+                                    <li class="skill-item elite" id="skill-delta-3">#PRO_OPERATOR</li>
+                                </ul>
                             </div>
 
-                            <div class="motor motor-4" id="motor-delta">
-                                <div class="propeller">
-                                    <div class="blade-wrapper blade-1-wrapper">
-                                        <div class="blade blade-1" data-skill="postpro"></div>
-                                        <div class="blade-tooltip">
-                                            <div class="tooltip-title">#POSTPRO</div>
-                                            <div class="tooltip-req">Edición<br>Requisito: 10 vídeos</div>
-                                        </div>
-                                    </div>
-                                    <div class="blade-wrapper blade-2-wrapper">
-                                        <div class="blade blade-2" data-skill="mentor"></div>
-                                        <div class="blade-tooltip">
-                                            <div class="tooltip-title">#MENTOR</div>
-                                            <div class="tooltip-req">Enseñanza<br>Requisito: 3 cadetes</div>
-                                        </div>
-                                    </div>
-                                    <div class="blade-wrapper blade-3-wrapper">
-                                        <div class="blade blade-3 elite" data-skill="pro-operator"></div>
-                                        <div class="blade-tooltip">
-                                            <div class="tooltip-title">#PRO_OPERATOR [ÉLITE]</div>
-                                            <div class="tooltip-req">Actividad UAS<br>Requisito: Facturas + 100h</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <span class="motor-label">DELTA // ESTATUS</span>
+                            <div class="motor-label-group label-br">
+                                <span class="motor-label-title">MOTOR CHARLIE [TALLER]</span>
+                                <ul class="skill-list">
+                                    <li class="skill-item" id="skill-charlie-1">#BUILD</li>
+                                    <li class="skill-item" id="skill-charlie-2">#TUNING</li>
+                                    <li class="skill-item elite" id="skill-charlie-3">#MASTER_TECH</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
 
                     <div class="terminal-text" style="text-align: center; margin-top: 2rem;">
-                        <p class="text-cyan">>> HOVER SOBRE PALAS PARA VER REQUISITOS <<</p>
+                        <p class="text-cyan">>> HAZ HOVER SOBRE CADA PALA PARA VER REQUISITOS DE DESBLOQUEO <<</p>
                     </div>
                 </div>
             </div>
@@ -1238,7 +899,7 @@
                                 <span style="color: var(--white);">Asociación legalmente constituida.</span><br>
                                 <span class="text-amber">NIF: G26829788</span>
                             </li>
-                            <li style="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(0, 242, 255, 0.1);">
+                            <li style="="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(0, 242, 255, 0.1);">
                                 <span class="text-cyan" style="font-weight: 700;">> RESPALDO INSTITUCIONAL:</span><br>
                                 <span style="color: var(--white);">Compromiso con Ayuntamiento. En tramitación.</span>
                             </li>
