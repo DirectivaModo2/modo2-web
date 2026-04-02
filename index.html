@@ -348,11 +348,49 @@
         .sector-status::before { content: '🔒 '; }
 
         /* Footer */
-        footer { border-top: 1px solid rgba(0, 242, 255, 0.1); padding: 3rem 0; margin-top: 3rem; text-align: center; }
-        .social-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem; }
-        .social-btn { color: rgba(224, 230, 237, 0.4); text-decoration: none; font-size: 0.85rem; transition: 0.3s; text-transform: uppercase; letter-spacing: 0.1em; font-family: var(--font-mono); }
-        .social-btn:hover { color: var(--cyan); text-shadow: 0 0 10px var(--cyan-glow); }
-        .copyright { font-size: 0.65rem; color: rgba(224, 230, 237, 0.2); font-family: var(--font-mono); letter-spacing: 0.1em; }
+        footer {
+            border-top: 1px solid rgba(0, 242, 255, 0.1);
+            padding: 3rem 0;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-btn {
+            color: rgba(224, 230, 237, 0.4);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-family: var(--font-mono);
+        }
+
+        .social-btn:hover {
+            color: var(--cyan);
+            text-shadow: 0 0 10px var(--cyan-glow);
+        }
+
+        .copyright {
+            font-size: 0.65rem;
+            color: rgba(224, 230, 237, 0.3);
+            font-family: var(--font-mono);
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        .legal-nif {
+            font-size: 0.6rem;
+            color: rgba(224, 230, 237, 0.2);
+            font-family: var(--font-mono);
+            letter-spacing: 0.05em;
+        }
 
         /* Modal */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(2, 4, 5, 0.95); backdrop-filter: blur(8px); display: none; justify-content: center; align-items: center; z-index: 2000; }
@@ -922,20 +960,18 @@
             <div class="cta-section"><p class="cta-subtitle">>> ESTE ES EL PRIMER PASO PARA DOMINAR EL AIRE <<</p></div>
         </div>
 
-        <!-- Protocolo Page - ACTUALIZADO CON NUEVOS BENEFICIOS -->
+        <!-- Protocolo Page -->
         <div id="protocolo-page" class="content-page">
             <a href="#" class="back-button" onclick="showHome(); return false;"><svg viewBox="0 0 100 100" fill="none"><path d="M70 50L30 50M30 50L45 35M30 50L45 65" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>VOLVER AL INICIO</a>
             <div class="content-grid">
                 <div class="hud-panel full-width">
                     <h2 class="section-title">> PROTOCOLO_DE_INICIO</h2>
                     
-                    <!-- INTRODUCCIÓN -->
                     <div class="terminal-text" style="margin-bottom: 2rem;">
                         <p style="margin-bottom: 1rem;"><strong class="text-cyan">MODO 2</strong> no es un club social; es un nodo de operaciones técnicas.</p>
                         <p style="margin-bottom: 1rem;">Nuestra misión es profesionalizar el sector UAS en Aragón bajo el marco legal del <strong class="text-cyan">Art. 16</strong>. Aquí, la estética radical es solo la superficie; debajo reside una estructura legal sólida y un compromiso innegociable con la <strong class="text-magenta">SEGURIDAD OPERACIONAL</strong> y la excelencia técnica.</p>
                     </div>
 
-                    <!-- PROYECTO ORIGEN BOX - BENEFICIOS ACTUALIZADOS -->
                     <div class="pricing-box">
                         <h3 class="text-magenta" style="font-family: var(--font-mono); font-size: 1.2rem; margin-bottom: 0.5rem; letter-spacing: 0.2em;">PROYECTO ORIGEN</h3>
                         <p class="text-cyan" style="font-family: var(--font-mono); font-size: 0.9rem; margin-bottom: 1rem; letter-spacing: 0.15em;">SOCIOS FUNDADORES</p>
@@ -943,7 +979,6 @@
                         <div class="pricing-period">PRIMER AÑO</div>
                         <div class="pricing-sub">A partir del segundo año: 40€ anuales</div>
                         
-                        <!-- BENEFICIOS PROYECTO ORIGEN - ACTUALIZADOS -->
                         <ul class="terminal-text" style="text-align: left; margin-top: 2rem; list-style: none;">
                             <li style="margin-bottom: 0.8rem;">▸ <strong>Acceso Vitalicio NODO 0 (0€):</strong> Gestión de perfil, registro de operaciones y progresión de XP. Sin cuota de inscripción.</li>
                             <li style="margin-bottom: 0.8rem;">▸ <strong>Voto en Decisiones:</strong> Participación activa en la dirección y evolución de la Crew</li>
@@ -954,7 +989,6 @@
                         </ul>
                     </div>
 
-                    <!-- TRANSPARENCIA FINANCIERA -->
                     <div class="transparency-box">
                         <h3 class="transparency-title">📊 TRANSPARENCIA FINANCIERA</h3>
                         <p class="terminal-text" style="text-align: center; margin-bottom: 1.5rem;">
@@ -987,22 +1021,19 @@
             </div>
         </div>
 
-        <!-- Infraestructura Page - TÍTULO ACTUALIZADO -->
+        <!-- Infraestructura Page -->
         <div id="infraestructura-page" class="content-page">
             <a href="#" class="back-button" onclick="showHome(); return false;"><svg viewBox="0 0 100 100" fill="none"><path d="M70 50L30 50M30 50L45 35M30 50L45 65" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>VOLVER AL INICIO</a>
             <div class="content-grid">
                 <div class="hud-panel full-width">
                     <h2 class="section-title">> SEDE OPERATIVA PROV. ZARAGOZA</h2>
                     
-                    <!-- INTRODUCCIÓN -->
                     <div class="terminal-text" style="margin-bottom: 2rem;">
                         <p><strong class="text-cyan">Superficie Total:</strong> 4.676 m² dividida estratégicamente para garantizar la máxima <strong class="text-magenta">SEGURIDAD OPERACIONAL</strong> y eficiencia logística.</p>
                     </div>
 
-                    <!-- BLUEPRINT MAP -->
                     <div class="blueprint-map">
                         <svg class="blueprint-svg" viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Background Grid -->
                             <defs>
                                 <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
                                     <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(0, 242, 255, 0.08)" stroke-width="0.5"/>
@@ -1010,15 +1041,12 @@
                             </defs>
                             <rect width="1000" height="600" fill="url(#grid)"/>
                             
-                            <!-- PERÍMETRO DE CONTINGENCIA -->
                             <rect x="50" y="50" width="900" height="500" fill="none" stroke="rgba(255, 255, 255, 0.3)" stroke-width="1.5" stroke-dasharray="10,5"/>
                             <text x="500" y="75" text-anchor="middle" fill="rgba(255, 255, 255, 0.5)" font-family="Share Tech Mono" font-size="10" letter-spacing="2">PERÍMETRO DE CONTINGENCIA / SEGURIDAD</text>
                             
-                            <!-- ARENA DE VUELO -->
                             <rect x="150" y="150" width="500" height="350" fill="rgba(0, 242, 255, 0.05)" stroke="#00f2ff" stroke-width="2" stroke-dasharray="5,3"/>
                             <text x="400" y="130" text-anchor="middle" fill="#ff0055" font-family="Share Tech Mono" font-size="16" style="text-shadow: 0 0 10px rgba(255, 0, 85, 0.4);">ARENA DE VUELO &gt; 2000 m²</text>
                             
-                            <!-- 8 ESTRUCTURAS FIJAS -->
                             <g class="structure-group" transform="translate(250, 220)"><circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/><line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/><line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/><foreignObject x="-100" y="-120" width="200" height="150" class="structure-tooltip"><div xmlns="http://www.w3.org/1999/xhtml"><div class="tooltip-question">?</div><div class="tooltip-dims">L: 5m | A: 2,5m | H: 2,5m</div><div class="tooltip-cube"></div></div></foreignObject></g>
                             <g class="structure-group" transform="translate(400, 200)"><circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/><line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/><line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/><foreignObject x="-100" y="-120" width="200" height="150" class="structure-tooltip"><div xmlns="http://www.w3.org/1999/xhtml"><div class="tooltip-question">?</div><div class="tooltip-dims">L: 5m | A: 2,5m | H: 2,5m</div><div class="tooltip-cube"></div></div></foreignObject></g>
                             <g class="structure-group" transform="translate(550, 230)"><circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/><line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/><line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/><foreignObject x="-100" y="-120" width="200" height="150" class="structure-tooltip"><div xmlns="http://www.w3.org/1999/xhtml"><div class="tooltip-question">?</div><div class="tooltip-dims">L: 5m | A: 2,5m | H: 2,5m</div><div class="tooltip-cube"></div></div></foreignObject></g>
@@ -1028,13 +1056,11 @@
                             <g class="structure-group" transform="translate(300, 470)"><circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/><line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/><line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/><foreignObject x="-100" y="-120" width="200" height="150" class="structure-tooltip"><div xmlns="http://www.w3.org/1999/xhtml"><div class="tooltip-question">?</div><div class="tooltip-dims">L: 5m | A: 2,5m | H: 2,5m</div><div class="tooltip-cube"></div></div></foreignObject></g>
                             <g class="structure-group" transform="translate(520, 460)"><circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/><line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/><line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/><foreignObject x="-100" y="-120" width="200" height="150" class="structure-tooltip"><div xmlns="http://www.w3.org/1999/xhtml"><div class="tooltip-question">?</div><div class="tooltip-dims">L: 5m | A: 2,5m | H: 2,5m</div><div class="tooltip-cube"></div></div></foreignObject></g>
                             
-                            <!-- ZONA ALPHA -->
                             <rect x="660" y="250" width="100" height="80" fill="rgba(0, 242, 255, 0.15)" stroke="#00f2ff" stroke-width="2" stroke-dasharray="5,5"/>
                             <text x="710" y="275" text-anchor="middle" fill="#00f2ff" font-family="Share Tech Mono" font-size="10">ZONA ALPHA</text>
                             <text x="710" y="290" text-anchor="middle" fill="#00f2ff" font-family="Share Tech Mono" font-size="8">ÁREA 15 m²</text>
                             <g transform="translate(710, 310)"><path d="M-10,-8 L10,-8 L12,-6 L12,6 L10,8 L-10,8 L-12,6 L-12,-6 Z" fill="none" stroke="#00f2ff" stroke-width="1.5"/><circle cx="0" cy="-10" r="5" fill="none" stroke="#00f2ff" stroke-width="1.5"/></g>
                             
-                            <!-- SECTOR DE EXPANSIÓN -->
                             <rect x="770" y="230" width="150" height="120" fill="rgba(255, 0, 85, 0.1)" stroke="#ff0055" stroke-width="2" stroke-dasharray="5,5"/>
                             <text x="845" y="255" text-anchor="middle" fill="#ff0055" font-family="Share Tech Mono" font-size="10">SECTOR EXPANSIÓN</text>
                             <line x1="770" y1="360" x2="920" y2="360" stroke="#ff0055" stroke-width="1.5"/>
@@ -1046,7 +1072,6 @@
                             <circle cx="820" cy="300" r="15" fill="none" stroke="#ff0055" stroke-width="1.5" stroke-dasharray="3,3"/>
                             <text x="820" y="304" text-anchor="middle" fill="#ff0055" font-family="Share Tech Mono" font-size="6">NO FLY</text>
                             
-                            <!-- Scale & North -->
                             <line x1="70" y1="520" x2="120" y2="520" stroke="#00f2ff" stroke-width="2"/>
                             <line x1="70" y1="515" x2="70" y2="525" stroke="#00f2ff" stroke-width="2"/>
                             <line x1="120" y1="515" x2="120" y2="525" stroke="#00f2ff" stroke-width="2"/>
@@ -1055,17 +1080,13 @@
                             <polygon points="930,60 925,70 935,70" fill="#00f2ff"/>
                             <text x="930" y="95" text-anchor="middle" fill="#00f2ff" font-family="Share Tech Mono" font-size="9">N</text>
                             
-                            <!-- Legend -->
                             <g transform="translate(70, 450)"><text x="0" y="0" fill="rgba(255, 255, 255, 0.5)" font-family="Share Tech Mono" font-size="9">LEYENDA:</text><circle cx="0" cy="20" r="8" fill="none" stroke="#00f2ff" stroke-width="2"/><line x1="-8" y1="20" x2="8" y2="20" stroke="#00f2ff" stroke-width="2"/><line x1="0" y1="12" x2="0" y2="28" stroke="#00f2ff" stroke-width="2"/><text x="20" y="24" fill="rgba(255, 255, 255, 0.5)" font-family="Share Tech Mono" font-size="8">ESTRUCTURA FIJA</text></g>
                             
-                            <!-- Footer -->
                             <text x="500" y="580" text-anchor="middle" fill="rgba(255, 255, 255, 0.4)" font-family="Share Tech Mono" font-size="9" letter-spacing="1">&gt; PLANO TÁCTICO - SEDE PROV. ZARAGOZA [USO EXCLUSIVO CREW]</text>
                         </svg>
                     </div>
 
-                    <!-- SECTORES -->
                     <div class="sector-grid">
-                        <!-- ZONA ALPHA -->
                         <div class="sector-card alpha">
                             <h3 class="sector-title">
                                 <svg class="sector-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
@@ -1078,7 +1099,6 @@
                             </ul>
                         </div>
 
-                        <!-- SECTOR DE EXPANSIÓN -->
                         <div class="sector-card expansion">
                             <h3 class="sector-title">
                                 <svg class="sector-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
@@ -1091,7 +1111,6 @@
                             </ul>
                         </div>
 
-                        <!-- ARENA DE VUELO -->
                         <div class="sector-card arena">
                             <h3 class="sector-title">
                                 <svg class="sector-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
@@ -1106,7 +1125,6 @@
                         </div>
                     </div>
 
-                    <!-- FILOSOFÍA CREW - ACTUALIZADO NODO 0 vs SEDE -->
                     <div class="philosophy-box">
                         <h3 class="philosophy-title">⚡ MANIFIESTO <span class="nodo-zero">NODO 0</span></h3>
                         <p class="terminal-text">
@@ -1114,16 +1132,67 @@
                         </p>
                     </div>
 
-                    <!-- ESTADO -->
                     <div class="sector-status">SEDE: EN TRÁMITE DE AUTORIZACIÓN</div>
                 </div>
             </div>
         </div>
 
-        <!-- Legal Page -->
+        <!-- Legal Page - ACTUALIZADO CON GOBERNANZA -->
         <div id="legal-page" class="content-page">
             <a href="#" class="back-button" onclick="showHome(); return false;"><svg viewBox="0 0 100 100" fill="none"><path d="M70 50L30 50M30 50L45 35M30 50L45 65" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>VOLVER AL INICIO</a>
-            <div class="content-grid"><div class="hud-panel full-width"><h2 class="section-title">> MARCO_LEGAL</h2><div class="terminal-text" id="typewriter-legal"></div><span class="cursor"></span></div></div>
+            <div class="content-grid">
+                <div class="hud-panel full-width">
+                    <h2 class="section-title">> MARCO_LEGAL</h2>
+                    
+                    <div class="terminal-text">
+                        <ul style="list-style: none;">
+                            <li style="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(0, 242, 255, 0.1);">
+                                <span class="text-cyan" style="font-weight: 700;">> ESTADO JURÍDICO:</span><br>
+                                <span style="color: var(--white);">Asociación legalmente constituida y registrada.</span><br>
+                                <span class="text-amber">NIF Provisional: G26829788</span>
+                            </li>
+                            
+                            <li style="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(0, 242, 255, 0.1);">
+                                <span class="text-cyan" style="font-weight: 700;">> RESPALDO INSTITUCIONAL:</span><br>
+                                <span style="color: var(--white);">Compromiso institucional en firme con la administración local (Ayuntamiento). Actualmente en fase de tramitación de la documentación vinculante.</span>
+                            </li>
+                            
+                            <li style="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(0, 242, 255, 0.1);">
+                                <span class="text-cyan" style="font-weight: 700;">> CERTIFICACIÓN AESA (Fase 1 Superada):</span><br>
+                                <span style="color: var(--white);">Proyecto validado preliminarmente sin objeciones por la Agencia Estatal de Seguridad Aérea.</span>
+                            </li>
+                            
+                            <li style="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(0, 242, 255, 0.1);">
+                                <span class="text-cyan" style="font-weight: 700;">> ROADMAP PROYECTO ORIGEN:</span><br>
+                                <span style="color: var(--white);">La recaudación de los 40 Socios Fundadores, junto con futuras subvenciones, está destinada estratégicamente a la Fase 2: la redacción y tramitación de la documentación aeronáutica oficial (SORA, Manuales de Operaciones, etc.) necesaria para la apertura total.</span>
+                            </li>
+
+                            <!-- NUEVA SECCIÓN: GOBERNANZA Y NORMATIVA INTERNA -->
+                            <li style="margin-bottom: 1rem;">
+                                <span class="text-magenta" style="font-weight: 700; font-size: 1.1rem; display: block; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px dashed rgba(255, 0, 85, 0.3);">> GOBERNANZA Y NORMATIVA INTERNA:</span>
+                                
+                                <div style="margin-left: 0.5rem;">
+                                    <p style="margin-bottom: 1rem; color: var(--white);">
+                                        <span class="text-cyan" style="font-weight: 700;">▸ ESTATUTOS SOCIALES:</span> La Asociación se rige por sus Estatutos fundacionales (Zaragoza, 12 de febrero de 2026), redactados conforme a la Ley Orgánica 1/2002.
+                                    </p>
+                                    
+                                    <p style="margin-bottom: 1rem; color: var(--white);">
+                                        <span class="text-cyan" style="font-weight: 700;">▸ REGLAMENTO DE RÉGIMEN INTERNO (RRI):</span> Disponemos de un RRI que regula el uso de instalaciones, la seguridad en la carga de baterías LiPo, el uso obligatorio de 'spotters' y la gestión de frecuencias de vídeo.
+                                    </p>
+                                    
+                                    <p style="margin-bottom: 1rem; color: var(--white);">
+                                        <span class="text-cyan" style="font-weight: 700;">▸ CÓDIGO DE HONOR:</span> Todos los miembros de la CREW aceptan un compromiso ético de vuelo responsable y respeto a la normativa aérea vigente.
+                                    </p>
+                                    
+                                    <p style="margin-bottom: 0.5rem; color: var(--white);">
+                                        <span class="text-cyan" style="font-weight: 700;">▸ ACCESO A DOCUMENTACIÓN:</span> Por seguridad y protección de datos, los documentos íntegros y firmados no están expuestos públicamente. Conforme al Art. 8 de nuestros Estatutos, cualquier socio tiene acceso total a la documentación oficial una vez formalizado su ingreso en la asociación.
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Crew Page -->
@@ -1136,7 +1205,15 @@
         <div class="flight-logs-section"><h3 class="logs-title">> TERMINAL_DE_ACTIVIDAD</h3><p class="logs-description">Próximamente: Sincroniza tus logros para acumular XP</p><div class="hashtags"><span class="hashtag">#MODO2_INCURSOR</span><span class="hashtag">#MODO2_ARQUITECTO</span><span class="hashtag">#MODO2_ARAGON</span></div></div>
 
         <!-- Footer -->
-        <footer><div class="social-links"><a href="#" class="social-btn">Instagram</a><a href="#" class="social-btn">Discord</a><a href="#" class="social-btn">YouTube</a></div><p class="copyright">© 2026 MODO 2 Asociación // ART. 16 COMPLIANT</p></footer>
+        <footer>
+            <div class="social-links">
+                <a href="#" class="social-btn">Instagram</a>
+                <a href="#" class="social-btn">Discord</a>
+                <a href="#" class="social-btn">YouTube</a>
+            </div>
+            <p class="copyright">© 2026 MODO 2. Asociación legalmente constituida - NIF: G26829788. Todos los derechos reservados.</p>
+            <p class="legal-nif">ART. 16 COMPLIANT // NIF: G26829788</p>
+        </footer>
     </div>
 
     <!-- Registration Modal - BLOCKED -->
@@ -1453,21 +1530,6 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        const texts = {
-            'typewriter-legal': "El Ayuntamiento está informado. AESA ha dado visto bueno inicial."
-        };
-
-        function typeWriter(elementId, text, speed = 20) {
-            const el = document.getElementById(elementId);
-            if (!el) return;
-            let i = 0;
-            el.innerHTML = "";
-            function type() {
-                if (i < text.length) { el.innerHTML += text.charAt(i); i++; setTimeout(type, speed); }
-            }
-            type();
-        }
-
         const colors = ['#00f2ff', '#ff0055', '#00f2ff', '#008080'];
         const trailsContainer = document.getElementById('drone-trails-container');
 
@@ -1507,7 +1569,6 @@
 
         window.addEventListener('load', () => {
             updateXPDisplay(xp);
-            typeWriter('typewriter-legal', texts['typewriter-legal']);
             setTimeout(startDroneTrails, 1000);
             
             document.getElementById('registerModal').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
