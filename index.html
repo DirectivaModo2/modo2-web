@@ -173,7 +173,7 @@
         }
         .nav-icon-wrapper:hover::after { width: 100%; left: 0; }
 
-        /* User Dashboard with PILOT_STATUS HUD */
+        /* User Dashboard */
         .user-dashboard {
             background: var(--black-panel); border: 1px solid rgba(0, 242, 255, 0.2);
             padding: 1.5rem 2rem; margin-bottom: 2rem;
@@ -189,20 +189,17 @@
             width: 60px; height: 60px; border: 2px solid var(--cyan);
             border-radius: 50%; display: flex; align-items: center;
             justify-content: center; background: rgba(0, 242, 255, 0.1);
-            position: relative;
         }
         .user-avatar svg { width: 32px; height: 32px; stroke: var(--cyan); }
         .user-details h4 { font-size: 1rem; margin-bottom: 0.3rem; color: var(--white); }
         .user-level { font-family: var(--font-mono); font-size: 0.75rem; color: var(--amber); }
         .user-rank { font-family: var(--font-mono); font-size: 0.65rem; color: var(--gray); margin-top: 0.2rem; }
 
-        /* PILOT_STATUS HUD - SYNC BAR */
         .pilot-status-hud {
             background: rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(0, 242, 255, 0.3);
             padding: 1rem;
             border-radius: 4px;
-            position: relative;
         }
 
         .pilot-status-title {
@@ -214,7 +211,6 @@
             margin-bottom: 0.5rem;
             display: flex;
             justify-content: space-between;
-            align-items: center;
         }
 
         .sync-level-badge {
@@ -239,20 +235,13 @@
             background: linear-gradient(90deg, var(--cyan), var(--magenta));
             border-radius: 6px;
             transition: width 0.5s ease;
-            position: relative;
         }
 
         .sync-bar-fill::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(90deg, 
-                transparent 0%, 
-                rgba(255, 255, 255, 0.3) 50%, 
-                transparent 100%);
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
             animation: syncShimmer 2s infinite;
         }
 
@@ -304,52 +293,42 @@
 
         .level-display { font-family: var(--font-display); font-size: 1.2rem; color: var(--cyan); margin-top: 0.3rem; }
 
-        /* Hero Section */
-        .hero { text-align: center; padding: 2rem 0 3rem 0; position: relative; }
+        /* Hero */
+        .hero { text-align: center; padding: 2rem 0 3rem 0; }
         .system-command { font-family: var(--font-mono); font-size: 0.9rem; margin-bottom: 2rem; letter-spacing: 0.15em; text-transform: uppercase; }
         .system-command::before { content: '> '; color: var(--magenta); }
 
-        /* Recruitment Counter */
         .recruitment-counter {
             background: rgba(255, 0, 85, 0.05); border: 1px solid var(--magenta);
             padding: 1.5rem 2rem; margin: 1.5rem auto; max-width: 650px;
             clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
-            animation: counter-pulse 3s infinite;
-        }
-
-        @keyframes counter-pulse {
-            0%, 100% { box-shadow: 0 0 10px rgba(255, 0, 85, 0.2); }
-            50% { box-shadow: 0 0 25px rgba(255, 0, 85, 0.4); }
         }
 
         .counter-header { font-family: var(--font-mono); font-size: 0.75rem; margin-bottom: 1rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--magenta); }
         .counter-main { display: flex; justify-content: center; align-items: center; gap: 2rem; margin-bottom: 0.5rem; }
-        .counter-number { font-family: var(--font-display); font-size: 3.5rem; font-weight: 900; color: var(--magenta); text-shadow: 0 0 25px var(--magenta-glow); line-height: 1; }
-        .counter-label { font-family: var(--font-mono); font-size: 0.85rem; color: var(--white); text-transform: uppercase; letter-spacing: 0.1em; max-width: 200px; line-height: 1.6; }
-        .counter-subtext { font-family: var(--font-mono); font-size: 0.65rem; color: var(--gray); margin-top: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; }
-        .status-available { font-family: var(--font-mono); font-size: 0.7rem; color: var(--amber); margin-top: 1rem; text-transform: uppercase; letter-spacing: 0.15em; }
-        .status-available::before { content: '🔒 '; color: var(--amber); }
+        .counter-number { font-family: var(--font-display); font-size: 3.5rem; font-weight: 900; color: var(--magenta); text-shadow: 0 0 25px var(--magenta-glow); }
+        .counter-label { font-family: var(--font-mono); font-size: 0.85rem; color: var(--white); text-transform: uppercase; letter-spacing: 0.1em; }
+        .counter-subtext { font-family: var(--font-mono); font-size: 0.65rem; color: var(--gray); margin-top: 0.8rem; text-transform: uppercase; }
+        .status-available { font-family: var(--font-mono); font-size: 0.7rem; color: var(--amber); margin-top: 1rem; text-transform: uppercase; }
+        .status-available::before { content: '🔒 '; }
 
-        /* Icon Navigation */
         .icon-nav-row { display: flex; justify-content: center; align-items: center; gap: 2.5rem; margin: 1.5rem 0 1rem 0; flex-wrap: wrap; }
-        .icon-nav-item { position: relative; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; text-decoration: none; color: var(--gray); transition: all 0.3s ease; opacity: 0.6; cursor: pointer; }
+        .icon-nav-item { position: relative; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; text-decoration: none; color: var(--gray); transition: all 0.3s ease; opacity: 0.6; }
         .icon-nav-item:hover { opacity: 1; color: var(--cyan); transform: translateY(-3px); }
         .icon-nav-item svg { width: 38px; height: 38px; stroke: currentColor; fill: none; stroke-width: 1.2; }
-        .icon-nav-label { position: absolute; bottom: -22px; font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--cyan); opacity: 0; transform: translateY(5px); transition: all 0.3s ease; white-space: nowrap; }
+        .icon-nav-label { position: absolute; bottom: -22px; font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--cyan); opacity: 0; transition: all 0.3s ease; }
         .icon-nav-item:hover .icon-nav-label { opacity: 1; transform: translateY(0); }
 
-        /* Join Button */
-        .join-btn-wrapper { position: relative; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; cursor: pointer; opacity: 0.6; transition: all 0.3s ease; }
+        .join-btn-wrapper { position: relative; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; cursor: pointer; opacity: 0.6; }
         .join-btn-wrapper:hover { opacity: 1; transform: translateY(-3px); }
-        .join-btn-icon { width: 44px; height: 44px; background: var(--cyan); clip-path: polygon(15% 0, 100% 0, 100% 70%, 85% 100%, 0 100%, 0 30%); display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; box-shadow: 0 0 15px var(--cyan-glow); }
-        .join-btn-wrapper:hover .join-btn-icon { background: var(--white); box-shadow: 0 0 25px var(--cyan-glow); }
+        .join-btn-icon { width: 44px; height: 44px; background: var(--cyan); clip-path: polygon(15% 0, 100% 0, 100% 70%, 85% 100%, 0 100%, 0 30%); display: flex; align-items: center; justify-content: center; }
+        .join-btn-wrapper:hover .join-btn-icon { background: var(--white); }
         .join-btn-icon svg { width: 24px; height: 24px; stroke: var(--black); fill: none; stroke-width: 2.5; }
-        .join-btn-label { position: absolute; bottom: -22px; font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cyan); opacity: 0; transform: translateY(5px); transition: all 0.3s ease; white-space: nowrap; }
-        .join-btn-wrapper:hover .join-btn-label { opacity: 1; transform: translateY(0); }
+        .join-btn-label { position: absolute; bottom: -22px; font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cyan); opacity: 0; }
+        .join-btn-wrapper:hover .join-btn-label { opacity: 1; }
 
-        /* CTA Section */
         .cta-section { text-align: center; padding: 1rem 0; margin-bottom: 3rem; }
-        .cta-subtitle { font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan); letter-spacing: 0.15em; opacity: 0.8; text-transform: uppercase; }
+        .cta-subtitle { font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan); letter-spacing: 0.15em; opacity: 0.8; }
 
         /* Content Pages */
         .content-page { display: none; padding: 3rem 0; }
@@ -357,29 +336,24 @@
         .content-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; margin-bottom: 3rem; }
         @media(min-width: 768px) { .content-grid { grid-template-columns: 1fr 1fr; } .full-width { grid-column: span 2; } }
 
-        /* HUD Panel */
-        .hud-panel { background: var(--black-panel); border: 1px solid rgba(0, 242, 255, 0.15); position: relative; padding: 2rem; transition: all 0.3s ease; }
+        .hud-panel { background: var(--black-panel); border: 1px solid rgba(0, 242, 255, 0.15); position: relative; padding: 2rem; }
         .hud-panel::before { content: ''; position: absolute; top: 0; left: 0; width: 15px; height: 15px; border-top: 2px solid var(--cyan); border-left: 2px solid var(--cyan); }
         .hud-panel::after { content: ''; position: absolute; bottom: 0; right: 0; width: 15px; height: 15px; border-bottom: 2px solid var(--cyan); border-right: 2px solid var(--cyan); }
         .hud-panel:hover { border-color: var(--cyan); box-shadow: 0 0 30px rgba(0, 242, 255, 0.1); }
 
-        .section-title { font-size: 1.1rem; color: var(--cyan); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.8rem; font-family: var(--font-mono); letter-spacing: 0.1em; }
+        .section-title { font-size: 1.1rem; color: var(--cyan); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.8rem; font-family: var(--font-mono); }
         .section-title svg { width: 18px; height: 18px; stroke: var(--cyan); }
 
         .terminal-text { font-family: var(--font-mono); color: rgba(224, 230, 237, 0.85); font-size: 0.9rem; line-height: 1.8; }
-        .terminal-text ul { list-style: none; margin: 1rem 0; }
-        .terminal-text li { padding: 0.5rem 0; border-bottom: 1px solid rgba(0, 242, 255, 0.1); }
-        .terminal-text li::before { content: '> '; color: var(--cyan); }
 
         .cursor { display: inline-block; width: 8px; height: 16px; background: var(--cyan); animation: blink 1s infinite; margin-left: 5px; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-        /* Pricing Box */
         .pricing-box { background: rgba(0, 242, 255, 0.05); border: 1px solid var(--cyan); padding: 2rem; text-align: center; margin: 2rem 0; }
-        .pricing-amount { font-family: var(--font-display); font-size: 3rem; color: var(--cyan); text-shadow: 0 0 20px var(--cyan-glow); margin-bottom: 0.5rem; }
+        .pricing-amount { font-family: var(--font-display); font-size: 3rem; color: var(--cyan); margin-bottom: 0.5rem; }
         .pricing-period { font-family: var(--font-mono); font-size: 0.8rem; color: var(--gray); margin-bottom: 1rem; }
         .pricing-sub { font-family: var(--font-mono); font-size: 0.75rem; color: var(--white); opacity: 0.8; }
 
-        /* Founder Benefits */
         .founder-benefits { background: rgba(255, 184, 0, 0.05); border: 1px solid var(--amber); padding: 2rem; margin: 2rem 0; }
         .benefits-title { font-family: var(--font-mono); font-size: 0.9rem; margin-bottom: 1.5rem; letter-spacing: 0.15em; text-transform: uppercase; text-align: center; }
         .benefits-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
@@ -388,7 +362,6 @@
         .benefit-icon { color: var(--amber); font-size: 1.2rem; min-width: 20px; }
         .benefit-text { font-family: var(--font-mono); font-size: 0.8rem; color: var(--white); line-height: 1.6; }
 
-        /* Transparency Box */
         .transparency-box { background: rgba(0, 255, 136, 0.05); border: 1px solid var(--green); padding: 2rem; margin: 2rem 0; }
         .transparency-title { font-family: var(--font-mono); font-size: 0.9rem; color: var(--green); margin-bottom: 1.5rem; letter-spacing: 0.15em; text-transform: uppercase; text-align: center; }
         .transparency-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
@@ -397,13 +370,12 @@
         .transparency-icon { color: var(--green); font-size: 1.2rem; min-width: 20px; }
         .transparency-text { font-family: var(--font-mono); font-size: 0.8rem; color: var(--white); line-height: 1.6; }
 
-        /* SISTEMA_12_PALAS - DRONE HUD */
+        /* Drone HUD */
         .drone-hud-container {
             display: flex;
             justify-content: center;
             align-items: center;
             margin: 3rem 0;
-            position: relative;
         }
 
         .drone-x-frame {
@@ -412,7 +384,6 @@
             height: 500px;
         }
 
-        /* X Frame Arms */
         .drone-arm {
             position: absolute;
             width: 200px;
@@ -426,7 +397,6 @@
         .drone-arm.arm-3 { transform: rotate(-135deg); top: 100px; left: 150px; }
         .drone-arm.arm-4 { transform: rotate(135deg); top: 100px; left: 150px; }
 
-        /* Motors */
         .motor {
             position: absolute;
             width: 80px;
@@ -436,7 +406,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: all 0.3s ease;
         }
 
         .motor.active {
@@ -458,12 +427,10 @@
             font-family: var(--font-mono);
             font-size: 0.6rem;
             color: var(--cyan);
-            text-transform: uppercase;
             position: absolute;
             bottom: -20px;
         }
 
-        /* Propeller Blades */
         .propeller {
             position: absolute;
             width: 100%;
@@ -487,7 +454,6 @@
             background: var(--gray);
             border-radius: 50%;
             transform-origin: center center;
-            transition: all 0.3s ease;
         }
 
         .blade.unlocked {
@@ -504,7 +470,11 @@
         .blade-2 { transform: rotate(120deg) translateX(5px); }
         .blade-3 { transform: rotate(240deg) translateX(5px); }
 
-        /* Blade Tooltip */
+        .blade-wrapper {
+            position: absolute;
+            cursor: pointer;
+        }
+
         .blade-tooltip {
             position: absolute;
             background: var(--black-panel);
@@ -518,7 +488,9 @@
             transition: all 0.3s ease;
             z-index: 100;
             min-width: 200px;
-            box-shadow: 0 0 20px var(--cyan-glow);
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .blade-wrapper:hover .blade-tooltip {
@@ -526,16 +498,10 @@
             visibility: visible;
         }
 
-        .blade-wrapper {
-            position: absolute;
-            cursor: pointer;
-        }
-
         .tooltip-title {
             color: var(--cyan);
             font-weight: 700;
             margin-bottom: 0.5rem;
-            text-transform: uppercase;
         }
 
         .tooltip-req {
@@ -545,10 +511,10 @@
 
         /* Flight Logs */
         .flight-logs-section { background: var(--black-panel); border: 1px solid rgba(0, 242, 255, 0.15); padding: 2.5rem; margin-bottom: 3rem; text-align: center; }
-        .logs-title { font-size: 1.3rem; color: var(--cyan); margin-bottom: 1rem; font-family: var(--font-mono); letter-spacing: 0.15em; }
-        .logs-description { font-family: var(--font-mono); font-size: 0.85rem; color: var(--gray); margin-bottom: 1.5rem; line-height: 1.8; }
+        .logs-title { font-size: 1.3rem; color: var(--cyan); margin-bottom: 1rem; font-family: var(--font-mono); }
+        .logs-description { font-family: var(--font-mono); font-size: 0.85rem; color: var(--gray); margin-bottom: 1.5rem; }
         .hashtags { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
-        .hashtag { font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan); padding: 0.5rem 1rem; border: 1px solid rgba(0, 242, 255, 0.3); background: rgba(0, 242, 255, 0.05); text-transform: uppercase; letter-spacing: 0.1em; }
+        .hashtag { font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan); padding: 0.5rem 1rem; border: 1px solid rgba(0, 242, 255, 0.3); background: rgba(0, 242, 255, 0.05); }
         .hashtag:hover { background: rgba(0, 242, 255, 0.15); border-color: var(--cyan); }
 
         /* Info Grid */
@@ -556,12 +522,12 @@
         @media(min-width: 768px) { .info-grid { grid-template-columns: 1fr 1fr; } }
         .info-card { text-align: center; }
         .info-icon svg { width: 45px; height: 45px; stroke: var(--cyan); }
-        .info-title { font-size: 1rem; color: var(--cyan); margin: 1.5rem 0 1rem 0; letter-spacing: 0.2em; font-family: var(--font-mono); }
+        .info-title { font-size: 1rem; color: var(--cyan); margin: 1.5rem 0 1rem 0; font-family: var(--font-mono); }
         .info-list { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
-        .info-list li { font-family: var(--font-mono); font-size: 0.7rem; color: rgba(224, 230, 237, 0.6); padding: 0.35rem 0.9rem; border: 1px solid rgba(0, 242, 255, 0.2); text-transform: uppercase; letter-spacing: 0.08em; }
+        .info-list li { font-family: var(--font-mono); font-size: 0.7rem; color: rgba(224, 230, 237, 0.6); padding: 0.35rem 0.9rem; border: 1px solid rgba(0, 242, 255, 0.2); }
 
         /* Sector Status */
-        .sector-status { font-family: var(--font-mono); font-size: 0.7rem; color: var(--amber); margin-top: 1rem; text-transform: uppercase; letter-spacing: 0.15em; display: inline-block; padding: 0.4rem 1rem; border: 1px solid var(--amber); }
+        .sector-status { font-family: var(--font-mono); font-size: 0.7rem; color: var(--amber); margin-top: 1rem; display: inline-block; padding: 0.4rem 1rem; border: 1px solid var(--amber); }
         .sector-status::before { content: '🔒 '; }
 
         /* Footer */
@@ -584,8 +550,6 @@
             text-decoration: none;
             font-size: 0.85rem;
             transition: 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
             font-family: var(--font-mono);
         }
 
@@ -598,7 +562,6 @@
             font-size: 0.65rem;
             color: rgba(224, 230, 237, 0.3);
             font-family: var(--font-mono);
-            letter-spacing: 0.1em;
             margin-bottom: 0.5rem;
         }
 
@@ -606,79 +569,26 @@
             font-size: 0.6rem;
             color: rgba(224, 230, 237, 0.2);
             font-family: var(--font-mono);
-            letter-spacing: 0.05em;
         }
 
         /* Modal */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(2, 4, 5, 0.95); backdrop-filter: blur(8px); display: none; justify-content: center; align-items: center; z-index: 2000; }
         .modal-overlay.active { display: flex; }
         .modal-content { background: var(--black-panel); border: 1px solid var(--cyan); padding: 3rem; max-width: 550px; width: 90%; position: relative; box-shadow: 0 0 60px rgba(0, 242, 255, 0.15); clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px); }
-        .modal-close { position: absolute; top: 1rem; right: 1.5rem; font-size: 2rem; color: var(--cyan); cursor: pointer; background: none; border: none; line-height: 1; }
-        .modal-title { font-size: 1.4rem; color: var(--cyan); margin-bottom: 2rem; text-align: center; letter-spacing: 0.2em; font-family: var(--font-mono); }
+        .modal-close { position: absolute; top: 1rem; right: 1.5rem; font-size: 2rem; color: var(--cyan); cursor: pointer; background: none; border: none; }
+        .modal-title { font-size: 1.4rem; color: var(--cyan); margin-bottom: 2rem; text-align: center; font-family: var(--font-mono); }
         .form-group { margin-bottom: 1.5rem; }
-        .form-group label { display: block; font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan); margin-bottom: 0.5rem; letter-spacing: 0.1em; text-transform: uppercase; }
-        .form-group input, .form-group select { width: 100%; padding: 12px; background: rgba(0, 242, 255, 0.05); border: 1px solid rgba(0, 242, 255, 0.2); color: var(--white); font-family: var(--font-mono); font-size: 0.95rem; transition: all 0.3s; }
-        .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--cyan); box-shadow: 0 0 15px rgba(0, 242, 255, 0.1); }
-        .form-group input:disabled, .form-group select:disabled { 
-            background: rgba(255, 51, 51, 0.05); 
-            border-color: var(--red); 
-            color: var(--gray);
-            cursor: not-allowed;
-        }
+        .form-group label { display: block; font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan); margin-bottom: 0.5rem; }
+        .form-group input, .form-group select { width: 100%; padding: 12px; background: rgba(0, 242, 255, 0.05); border: 1px solid rgba(0, 242, 255, 0.2); color: var(--white); font-family: var(--font-mono); font-size: 0.95rem; }
+        .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--cyan); }
+        .form-group input:disabled, .form-group select:disabled { background: rgba(255, 51, 51, 0.05); border-color: var(--red); color: var(--gray); cursor: not-allowed; }
         .checkbox-group { display: flex; align-items: center; gap: 0.5rem; }
         .checkbox-group input[type="checkbox"] { width: auto; accent-color: var(--cyan); }
-        .checkbox-group input[type="checkbox"]:disabled { accent-color: var(--red); }
         .checkbox-group label { margin-bottom: 0; }
         
-        /* BLOCKED BUTTON STYLE (Registro) */
-        .submit-btn.blocked { 
-            width: 100%; 
-            padding: 1rem; 
-            margin-top: 1rem; 
-            background: var(--red); 
-            color: var(--white); 
-            border: 1px solid var(--red);
-            font-family: var(--font-display); 
-            font-size: 0.9rem; 
-            font-weight: 700; 
-            text-transform: uppercase; 
-            cursor: not-allowed;
-            letter-spacing: 0.15em;
-            animation: blockedPulse 2s infinite;
-        }
-
-        /* ACTIVE BUTTON STYLE (Login) */
-        .submit-btn.active {
-            width: 100%;
-            padding: 1rem;
-            margin-top: 1rem;
-            background: var(--cyan);
-            color: var(--black);
-            border: 1px solid var(--cyan);
-            font-family: var(--font-display);
-            font-size: 0.9rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            cursor: pointer;
-            letter-spacing: 0.15em;
-            transition: all 0.3s ease;
-        }
-
-        .submit-btn.active:hover {
-            background: var(--white);
-            box-shadow: 0 0 30px var(--cyan-glow);
-        }
-
-        @keyframes blockedPulse {
-            0%, 100% { 
-                box-shadow: 0 0 10px var(--red-glow);
-                opacity: 1;
-            }
-            50% { 
-                box-shadow: 0 0 20px var(--red-glow);
-                opacity: 0.7;
-            }
-        }
+        .submit-btn.blocked { width: 100%; padding: 1rem; margin-top: 1rem; background: var(--red); color: var(--white); border: 1px solid var(--red); font-family: var(--font-display); font-size: 0.9rem; font-weight: 700; cursor: not-allowed; }
+        .submit-btn.active { width: 100%; padding: 1rem; margin-top: 1rem; background: var(--cyan); color: var(--black); border: 1px solid var(--cyan); font-family: var(--font-display); font-size: 0.9rem; font-weight: 700; cursor: pointer; }
+        .submit-btn.active:hover { background: var(--white); box-shadow: 0 0 30px var(--cyan-glow); }
 
         .blocked-notice {
             background: rgba(255, 51, 51, 0.1);
@@ -689,32 +599,25 @@
             font-size: 0.75rem;
             color: var(--red);
             text-align: center;
-            letter-spacing: 0.1em;
         }
 
-        .blocked-notice::before {
-            content: '⚠ ';
-        }
+        .blocked-notice::before { content: '⚠ '; }
 
         .login-modal-content { max-width: 400px; }
 
-        /* Back Button */
-        .back-button { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan); text-decoration: none; margin-bottom: 2rem; cursor: pointer; transition: all 0.3s ease; }
+        .back-button { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan); text-decoration: none; margin-bottom: 2rem; }
         .back-button:hover { color: var(--white); }
         .back-button svg { width: 16px; height: 16px; stroke: currentColor; }
 
-        /* Drone Trails */
         .drone-trail { position: fixed; height: 1px; border-radius: 2px; z-index: 0; pointer-events: none; opacity: 0; }
 
-        /* User Database Panel */
         .user-db-panel { display: none; background: var(--black-panel); border: 1px solid var(--cyan); padding: 2rem; margin: 2rem 0; }
         .user-db-panel.active { display: block; }
         .user-db-table { width: 100%; border-collapse: collapse; font-family: var(--font-mono); font-size: 0.8rem; }
         .user-db-table th, .user-db-table td { padding: 0.8rem; text-align: left; border-bottom: 1px solid rgba(0, 242, 255, 0.1); }
-        .user-db-table th { color: var(--cyan); text-transform: uppercase; letter-spacing: 0.1em; }
+        .user-db-table th { color: var(--cyan); }
         .user-db-table td { color: var(--white); }
 
-        /* XP Popup - OBSERVADOR COTILLA */
         .xp-popup {
             position: fixed;
             top: 50%;
@@ -727,19 +630,10 @@
             width: 90%;
             z-index: 3000;
             clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
-            box-shadow: 0 0 60px rgba(255, 0, 85, 0.3);
             display: none;
         }
 
-        .xp-popup.active {
-            display: block;
-            animation: popupSlide 0.4s ease-out;
-        }
-
-        @keyframes popupSlide {
-            from { opacity: 0; transform: translate(-50%, -60%); }
-            to { opacity: 1; transform: translate(-50%, -50%); }
-        }
+        .xp-popup.active { display: block; }
 
         .xp-popup-overlay {
             position: fixed;
@@ -760,7 +654,6 @@
             margin-bottom: 1rem;
             text-align: center;
             font-family: var(--font-mono);
-            letter-spacing: 0.15em;
         }
 
         .xp-popup-message {
@@ -791,19 +684,14 @@
             font-family: var(--font-display);
             font-size: 0.9rem;
             font-weight: 700;
-            text-transform: uppercase;
             cursor: pointer;
-            transition: all 0.3s ease;
-            letter-spacing: 0.15em;
         }
 
         .xp-popup-btn:hover {
             background: var(--white);
             color: var(--magenta);
-            box-shadow: 0 0 30px var(--magenta-glow);
         }
 
-        /* Firebase Status */
         .firebase-status {
             position: fixed;
             bottom: 10px;
@@ -819,30 +707,18 @@
         .firebase-status.connected { border-color: var(--green); color: var(--green); }
         .firebase-status.error { border-color: var(--red); color: var(--red); }
 
-        /* Responsive */
         @media(max-width: 768px) {
             .header-nav { gap: 1rem; }
             .nav-icon-wrapper svg { width: 20px; height: 20px; }
             .icon-nav-row { gap: 2rem; }
             .container { padding: 0 1.5rem; }
-            .user-dashboard { 
-                grid-template-columns: 1fr; 
-                gap: 1.5rem;
-            }
+            .user-dashboard { grid-template-columns: 1fr; gap: 1.5rem; }
             .status-badge { justify-self: start; }
             .counter-main { flex-direction: column; gap: 1rem; }
             .counter-number { font-size: 2.5rem; }
-            .drone-x-frame {
-                width: 350px;
-                height: 350px;
-            }
-            .drone-arm {
-                width: 140px;
-            }
-            .motor {
-                width: 60px;
-                height: 60px;
-            }
+            .drone-x-frame { width: 350px; height: 350px; }
+            .drone-arm { width: 140px; }
+            .motor { width: 60px; height: 60px; }
             .motor.motor-1 { top: 35px; left: 145px; }
             .motor.motor-2 { top: 35px; right: 145px; }
             .motor.motor-3 { bottom: 35px; left: 145px; }
@@ -856,29 +732,19 @@
     <div id="drone-trails-container"></div>
     <div class="firebase-status" id="firebaseStatus">MAINFRAME: INICIALIZANDO...</div>
 
-    <!-- XP Popup -->
     <div class="xp-popup-overlay" id="xpPopupOverlay"></div>
     <div class="xp-popup" id="xpPopup">
         <button class="modal-close" onclick="closeXpPopup()" style="position: absolute; top: 1rem; right: 1.5rem;">&times;</button>
         <h3 class="xp-popup-title">⚠ ¡NIVEL MÁXIMO ALCANZADO!</h3>
-        <p class="xp-popup-message">
-            ¿A qué esperas para unirte?<br><br>
-            Ya has llegado a la categoría de <strong style="color: var(--magenta);">OBSERVADOR COTILLA</strong>.
-        </p>
+        <p class="xp-popup-message">¿A qué esperas para unirte?<br><br>Ya has llegado a la categoría de <strong style="color: var(--magenta);">OBSERVADOR COTILLA</strong>.</p>
         <div class="xp-popup-stats" id="xpPopupStats">
-            > VISITAS COMO INVITADO: 1000<br>
-            > XP ACUMULADA: 1000<br>
-            > ESTADO: SIN REGISTRAR
+            > VISITAS: 1000<br>> XP: 1000<br>> ESTADO: SIN REGISTRAR
         </div>
-        <p class="xp-popup-message">
-            Has visitado la web 1000 veces y aún no formas parte del SQUAD.<br><br>
-            Deja de mirar y empieza a volar.
-        </p>
+        <p class="xp-popup-message">Deja de mirar y empieza a volar.</p>
         <button class="xp-popup-btn" onclick="closeXpPopup()">>> ENTENDIDO</button>
     </div>
 
     <div class="container">
-        <!-- Header -->
         <header>
             <a href="#" class="logo-container" onclick="showHome(); return false;">
                 <svg class="logo-svg" viewBox="0 0 100 115" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -890,8 +756,8 @@
                         <path d="M40 52L40 58M38 54L40 52L42 54" stroke="#00f2ff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                         <circle cx="60" cy="55" r="4" fill="none" stroke="#00f2ff" stroke-width="1"/>
                         <circle cx="60" cy="55" r="1.5" fill="#00f2ff"/>
-                        <line x1="42" y1="32" x2="42" y2="42" stroke="#00f2ff" stroke-width="1.5" stroke-linecap="round"/>
-                        <line x1="58" y1="32" x2="58" y2="42" stroke="#00f2ff" stroke-width="1.5" stroke-linecap="round"/>
+                        <line x1="42" y1="32" x2="42" y2="42" stroke="#00f2ff" stroke-width="1.5"/>
+                        <line x1="58" y1="32" x2="58" y2="42" stroke="#00f2ff" stroke-width="1.5"/>
                     </g>
                 </svg>
                 <div class="brand-name glitch-wrapper">
@@ -907,7 +773,6 @@
             </div>
         </header>
 
-        <!-- User Dashboard with PILOT_STATUS HUD -->
         <div class="user-dashboard">
             <div class="user-info" id="userInfo">
                 <div class="user-avatar">
@@ -920,10 +785,9 @@
                 </div>
             </div>
             
-            <!-- PILOT_STATUS HUD - SYNC BAR -->
             <div class="pilot-status-hud">
                 <div class="pilot-status-title">
-                    <span>PILOT_STATUS // SYNC LEVEL</span>
+                    <span>PILOT_STATUS // SYNC</span>
                     <span class="sync-level-badge" id="syncLevelBadge">SYNC 0%</span>
                 </div>
                 <div class="sync-bar-container">
@@ -931,7 +795,7 @@
                 </div>
                 <div class="sync-stats">
                     <span id="syncVisits">VISITAS: 0</span>
-                    <span id="syncDays">DÍAS ACTIVO: 0</span>
+                    <span id="syncDays">DÍAS: 0</span>
                 </div>
             </div>
 
@@ -944,22 +808,20 @@
             <button class="status-badge" id="loginBtn" onclick="openLoginModal()">INVITADO / ACCESO RESTRINGIDO</button>
         </div>
 
-        <!-- User Database Panel -->
         <div class="user-db-panel" id="userDbPanel">
-            <h3 class="section-title">> BASE_DE_DATOS_USUARIOS - FIRESTORE</h3>
-            <p class="mono" style="margin-bottom: 1rem; color: var(--gray);">* Datos sincronizados con Firebase Mainframe</p>
+            <h3 class="section-title">> BASE_DE_DATOS_USUARIOS</h3>
+            <p class="mono" style="margin-bottom: 1rem; color: var(--gray);">* Firebase Mainframe</p>
             <table class="user-db-table"><thead><tr><th>USUARIO</th><th>EMAIL</th><th>ESTADO</th><th>NIVEL</th><th>RANGO</th><th>XP</th></tr></thead><tbody id="userDbBody"></tbody></table>
         </div>
 
-        <!-- Home Page -->
         <div id="home-page" class="content-page active">
             <section class="hero">
-                <p class="system-command">EJECUTANDO: <span class="text-cyan">PROYECTO_ORIGEN.EXE</span> // PROFESIONALIZACIÓN_UAS_ARAGÓN</p>
+                <p class="system-command">EJECUTANDO: <span class="text-cyan">PROYECTO_ORIGEN.EXE</span></p>
                 <div class="recruitment-counter">
                     <div class="counter-header"><span class="text-magenta">RECLUTAMIENTO</span> <span class="text-white">PROYECTO ORIGEN</span></div>
-                    <div class="counter-main"><div class="counter-number" id="availableSpots">40</div><div class="counter-label">/ 40 PLAZAS DISPONIBLES</div></div>
-                    <div class="counter-subtext">* Los 3 fundadores actuales no ocupan estas plazas de captación</div>
-                    <div class="status-available">ESTADO: CERRADO - PRÓXIMAMENTE</div>
+                    <div class="counter-main"><div class="counter-number" id="availableSpots">40</div><div class="counter-label">/ 40 PLAZAS</div></div>
+                    <div class="counter-subtext">* 3 fundadores no ocupan plazas</div>
+                    <div class="status-available">ESTADO: CERRADO</div>
                 </div>
                 <div class="icon-nav-row">
                     <a href="#" class="icon-nav-item" onclick="showPage('protocolo'); return false;"><svg viewBox="0 0 100 100"><rect x="20" y="25" width="60" height="50" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="30" y1="40" x2="70" y2="40" stroke="currentColor" stroke-width="1"/><line x1="30" y1="55" x2="65" y2="55" stroke="currentColor" stroke-width="1"/></svg><span class="icon-nav-label">PROTOCOLO</span></a>
@@ -972,135 +834,127 @@
             <div class="cta-section"><p class="cta-subtitle">>> ESTE ES EL PRIMER PASO PARA DOMINAR EL AIRE <<</p></div>
         </div>
 
-        <!-- Crew Page - SISTEMA_12_PALAS -->
         <div id="crew-page" class="content-page">
             <a href="#" class="back-button" onclick="showHome(); return false;"><svg viewBox="0 0 100 100" fill="none"><path d="M70 50L30 50M30 50L45 35M30 50L45 65" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>VOLVER AL INICIO</a>
             <div class="content-grid">
                 <div class="hud-panel full-width">
                     <h2 class="section-title">> SISTEMA_12_PALAS // DRONE_HUD</h2>
-                    
                     <div class="terminal-text" style="margin-bottom: 2rem;">
-                        <p>Tu progreso en MODO 2 se visualiza como un cuadricóptero en configuración X. Cada motor representa un sector operativo con 3 palas de hélice.</p>
-                        <p style="margin-top: 0.5rem;">▸ <strong class="text-cyan">PALA DESBLOQUEADA:</strong> Se ilumina en cyan neón.</p>
-                        <p style="margin-top: 0.5rem;">▸ <strong class="text-magenta">PALA ÉLITE (3ª):</strong> Brillo magenta intenso - logro de alto nivel.</p>
-                        <p style="margin-top: 0.5rem;">▸ <strong class="text-green">MOTOR COMPLETO:</strong> Animación de rotación cuando las 3 palas están activas.</p>
+                        <p>Tu progreso se visualiza como un cuadricóptero en X. Cada motor = sector operativo con 3 palas.</p>
+                        <p style="margin-top: 0.5rem;">▸ <strong class="text-cyan">PALA DESBLOQUEADA:</strong> Cyan neón</p>
+                        <p style="margin-top: 0.5rem;">▸ <strong class="text-magenta">PALA ÉLITE (3ª):</strong> Magenta intenso</p>
+                        <p style="margin-top: 0.5rem;">▸ <strong class="text-green">MOTOR COMPLETO:</strong> Animación de rotación</p>
                     </div>
 
-                    <!-- DRONE HUD VISUALIZATION -->
                     <div class="drone-hud-container">
                         <div class="drone-x-frame">
-                            <!-- X Frame Arms -->
                             <div class="drone-arm arm-1"></div>
                             <div class="drone-arm arm-2"></div>
                             <div class="drone-arm arm-3"></div>
                             <div class="drone-arm arm-4"></div>
 
-                            <!-- MOTOR ALFA (Top-Left) - PLATAFORMAS -->
                             <div class="motor motor-1" id="motor-alfa">
                                 <div class="propeller">
                                     <div class="blade-wrapper blade-1-wrapper">
                                         <div class="blade blade-1" data-skill="fpv"></div>
                                         <div class="blade-tooltip">
                                             <div class="tooltip-title">#FPV</div>
-                                            <div class="tooltip-req">Vuelo inmersivo sin asistencias<br>Requisito: 10h de vuelo</div>
+                                            <div class="tooltip-req">Vuelo inmersivo<br>Requisito: 10h vuelo</div>
                                         </div>
                                     </div>
                                     <div class="blade-wrapper blade-2-wrapper">
                                         <div class="blade blade-2" data-skill="estabilizado"></div>
                                         <div class="blade-tooltip">
                                             <div class="tooltip-title">#ESTABILIZADO</div>
-                                            <div class="tooltip-req">Sistemas inteligentes (DJI, Autel)<br>Requisito: 5h de vuelo GPS</div>
+                                            <div class="tooltip-req">Sistemas GPS<br>Requisito: 5h GPS</div>
                                         </div>
                                     </div>
                                     <div class="blade-wrapper blade-3-wrapper">
                                         <div class="blade blade-3 elite" data-skill="sub250"></div>
                                         <div class="blade-tooltip">
-                                            <div class="tooltip-title">#SUB250 <span style="color: var(--magenta);">[ÉLITE]</span></div>
-                                            <div class="tooltip-req">Micro drones &lt;250g<br>Requisito: Master en ambos + 20h</div>
+                                            <div class="tooltip-title">#SUB250 [ÉLITE]</div>
+                                            <div class="tooltip-req">Micro &lt;250g<br>Requisito: Master + 20h</div>
                                         </div>
                                     </div>
                                 </div>
                                 <span class="motor-label">ALFA // PLATAFORMAS</span>
                             </div>
 
-                            <!-- MOTOR BRAVO (Top-Right) - VUELO -->
                             <div class="motor motor-2" id="motor-bravo">
                                 <div class="propeller">
                                     <div class="blade-wrapper blade-1-wrapper">
                                         <div class="blade blade-1" data-skill="freestyle"></div>
                                         <div class="blade-tooltip">
                                             <div class="tooltip-title">#FREESTYLE</div>
-                                            <div class="tooltip-req">Acrobacia y fluidez<br>Requisito: 15h de freestyle</div>
+                                            <div class="tooltip-req">Acrobacia<br>Requisito: 15h freestyle</div>
                                         </div>
                                     </div>
                                     <div class="blade-wrapper blade-2-wrapper">
                                         <div class="blade blade-2" data-skill="racing"></div>
                                         <div class="blade-tooltip">
                                             <div class="tooltip-title">#RACING</div>
-                                            <div class="tooltip-req">Velocidad en circuito<br>Requisito: 10 carreras completadas</div>
+                                            <div class="tooltip-req">Velocidad<br>Requisito: 10 carreras</div>
                                         </div>
                                     </div>
                                     <div class="blade-wrapper blade-3-wrapper">
                                         <div class="blade blade-3 elite" data-skill="hardcore"></div>
                                         <div class="blade-tooltip">
-                                            <div class="tooltip-title">#HARDCORE <span style="color: var(--magenta);">[ÉLITE]</span></div>
-                                            <div class="tooltip-req">Vuelo de alto riesgo<br>Requisito: 0 incidentes en 50h + validación</div>
+                                            <div class="tooltip-title">#HARDCORE [ÉLITE]</div>
+                                            <div class="tooltip-req">Alto riesgo<br>Requisito: 0 incidentes 50h</div>
                                         </div>
                                     </div>
                                 </div>
                                 <span class="motor-label">BRAVO // VUELO</span>
                             </div>
 
-                            <!-- MOTOR CHARLIE (Bottom-Left) - TALLER -->
                             <div class="motor motor-3" id="motor-charlie">
                                 <div class="propeller">
                                     <div class="blade-wrapper blade-1-wrapper">
                                         <div class="blade blade-1" data-skill="build"></div>
                                         <div class="blade-tooltip">
                                             <div class="tooltip-title">#BUILD</div>
-                                            <div class="tooltip-req">Montaje desde cero<br>Requisito: 3 builds completados</div>
+                                            <div class="tooltip-req">Montaje<br>Requisito: 3 builds</div>
                                         </div>
                                     </div>
                                     <div class="blade-wrapper blade-2-wrapper">
                                         <div class="blade blade-2" data-skill="tuning"></div>
                                         <div class="blade-tooltip">
                                             <div class="tooltip-title">#TUNING</div>
-                                            <div class="tooltip-req">Ajuste de PIDs, Betaflight<br>Requisito: 5 configuraciones</div>
+                                            <div class="tooltip-req">PIDs, Betaflight<br>Requisito: 5 configs</div>
                                         </div>
                                     </div>
                                     <div class="blade-wrapper blade-3-wrapper">
                                         <div class="blade blade-3 elite" data-skill="master-tech"></div>
                                         <div class="blade-tooltip">
-                                            <div class="tooltip-title">#MASTER_TECH <span style="color: var(--magenta);">[ÉLITE]</span></div>
-                                            <div class="tooltip-req">Maestría en electrónica<br>Requisito: I+D + mentoría 5+ cadetes</div>
+                                            <div class="tooltip-title">#MASTER_TECH [ÉLITE]</div>
+                                            <div class="tooltip-req">Electrónica<br>Requisito: I+D + mentoría</div>
                                         </div>
                                     </div>
                                 </div>
                                 <span class="motor-label">CHARLIE // TALLER</span>
                             </div>
 
-                            <!-- MOTOR DELTA (Bottom-Right) - ESTATUS -->
                             <div class="motor motor-4" id="motor-delta">
                                 <div class="propeller">
                                     <div class="blade-wrapper blade-1-wrapper">
                                         <div class="blade blade-1" data-skill="postpro"></div>
                                         <div class="blade-tooltip">
                                             <div class="tooltip-title">#POSTPRO</div>
-                                            <div class="tooltip-req">Edición y etalonaje<br>Requisito: 10 vídeos editados</div>
+                                            <div class="tooltip-req">Edición<br>Requisito: 10 vídeos</div>
                                         </div>
                                     </div>
                                     <div class="blade-wrapper blade-2-wrapper">
                                         <div class="blade blade-2" data-skill="mentor"></div>
                                         <div class="blade-tooltip">
                                             <div class="tooltip-title">#MENTOR</div>
-                                            <div class="tooltip-req">Enseñanza a cadetes<br>Requisito: 3 cadetes formados</div>
+                                            <div class="tooltip-req">Enseñanza<br>Requisito: 3 cadetes</div>
                                         </div>
                                     </div>
                                     <div class="blade-wrapper blade-3-wrapper">
                                         <div class="blade blade-3 elite" data-skill="pro-operator"></div>
                                         <div class="blade-tooltip">
-                                            <div class="tooltip-title">#PRO_OPERATOR <span style="color: var(--magenta);">[ÉLITE]</span></div>
-                                            <div class="tooltip-req">Actividad económica UAS<br>Requisito: Facturas + 100h + 0 incidentes</div>
+                                            <div class="tooltip-title">#PRO_OPERATOR [ÉLITE]</div>
+                                            <div class="tooltip-req">Actividad UAS<br>Requisito: Facturas + 100h</div>
                                         </div>
                                     </div>
                                 </div>
@@ -1110,74 +964,54 @@
                     </div>
 
                     <div class="terminal-text" style="text-align: center; margin-top: 2rem;">
-                        <p class="text-cyan">>> HAZ HOVER SOBRE CADA PALA PARA VER REQUISITOS DE DESBLOQUEO <<</p>
+                        <p class="text-cyan">>> HOVER SOBRE PALAS PARA VER REQUISITOS <<</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Protocolo Page -->
         <div id="protocolo-page" class="content-page">
             <a href="#" class="back-button" onclick="showHome(); return false;"><svg viewBox="0 0 100 100" fill="none"><path d="M70 50L30 50M30 50L45 35M30 50L45 65" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>VOLVER AL INICIO</a>
             <div class="content-grid">
                 <div class="hud-panel full-width">
                     <h2 class="section-title">> PROTOCOLO_DE_INICIO</h2>
-                    
                     <div class="terminal-text" style="margin-bottom: 2rem;">
                         <p style="margin-bottom: 1rem;"><strong class="text-cyan">MODO 2</strong> no es un club social; es un nodo de operaciones técnicas.</p>
-                        <p style="margin-bottom: 1rem;">Nuestra misión es profesionalizar el sector UAS en Aragón bajo el marco legal del <strong class="text-cyan">Art. 16</strong>. Aquí, la estética radical es solo la superficie; debajo reside una estructura legal sólida y un compromiso innegociable con la <strong class="text-magenta">SEGURIDAD OPERACIONAL</strong> y la excelencia técnica.</p>
+                        <p style="margin-bottom: 1rem;">Nuestra misión es profesionalizar el sector UAS en Aragón bajo el <strong class="text-cyan">Art. 16</strong>. Estética radical, estructura legal sólida.</p>
                     </div>
 
                     <div class="pricing-box">
-                        <h3 class="text-magenta" style="font-family: var(--font-mono); font-size: 1.2rem; margin-bottom: 0.5rem; letter-spacing: 0.2em;">PROYECTO ORIGEN</h3>
-                        <p class="text-cyan" style="font-family: var(--font-mono); font-size: 0.9rem; margin-bottom: 1rem; letter-spacing: 0.15em;">SOCIOS FUNDADORES</p>
+                        <h3 class="text-magenta" style="font-family: var(--font-mono); font-size: 1.2rem; margin-bottom: 0.5rem;">PROYECTO ORIGEN</h3>
+                        <p class="text-cyan" style="font-family: var(--font-mono); font-size: 0.9rem; margin-bottom: 1rem;">SOCIOS FUNDADORES</p>
                         <div class="pricing-amount">60€</div>
                         <div class="pricing-period">PRIMER AÑO</div>
                         <div class="pricing-sub">A partir del segundo año: 40€ anuales</div>
                         
                         <ul class="terminal-text" style="text-align: left; margin-top: 2rem; list-style: none;">
-                            <li style="margin-bottom: 0.8rem;">▸ <strong>Acceso Vitalicio NODO 0 (0€):</strong> Gestión de perfil, registro de operaciones y progresión de XP. Sin cuota de inscripción.</li>
-                            <li style="margin-bottom: 0.8rem;">▸ <strong>Voto en Decisiones:</strong> Participación activa en la dirección y evolución de la Crew</li>
-                            <li style="margin-bottom: 0.8rem;">▸ <strong>Seguro de RC Colectivo:</strong> Cobertura legal bajo el marco del Art. 16</li>
-                            <li style="margin-bottom: 0.8rem;">▸ <strong>Kit de Bienvenida Proyecto Origen:</strong> Merchandising exclusivo y distintivos de fundador</li>
-                            <li style="margin-bottom: 0.8rem;">▸ <strong>Reconocimiento Perpetuo:</strong> Placa de honor grabada en la ZONA ALPHA de la Sede y mención destacada en la web, para siempre</li>
-                            <li style="margin-bottom: 0.8rem;">▸ <strong>Uso de Infraestructura Física:</strong> Acceso TOTAL a la SEDE (ZONA ALPHA, SECTOR EXPANSIÓN y ARENA DE VUELO)</li>
+                            <li style="margin-bottom: 0.8rem;">▸ <strong>Acceso Vitalicio NODO 0 (0€):</strong> Gestión de perfil, registro y XP</li>
+                            <li style="margin-bottom: 0.8rem;">▸ <strong>Voto en Decisiones:</strong> Participación activa</li>
+                            <li style="margin-bottom: 0.8rem;">▸ <strong>Seguro RC Colectivo:</strong> Cobertura Art. 16</li>
+                            <li style="margin-bottom: 0.8rem;">▸ <strong>Kit Bienvenida:</strong> Merchandising exclusivo</li>
+                            <li style="margin-bottom: 0.8rem;">▸ <strong>Reconocimiento Perpetuo:</strong> Placa de honor en SEDE</li>
+                            <li style="margin-bottom: 0.8rem;">▸ <strong>Infraestructura Física:</strong> Acceso TOTAL a SEDE</li>
                         </ul>
                     </div>
 
                     <div class="transparency-box">
-                        <h3 class="transparency-title">📊 TRANSPARENCIA FINANCIERA</h3>
-                        <p class="terminal-text" style="text-align: center; margin-bottom: 1.5rem;">
-                            Somos una organización sin ánimo de lucro: tu cuota mantiene tu derecho a volar seguro. Cada euro se reinvierte en infraestructura compartida y <strong class="text-magenta">SEGURIDAD LEGAL</strong>. Cuentas auditables para cada socio verificado.
-                        </p>
+                        <h3 class="transparency-title">📊 TRANSPARENCIA</h3>
+                        <p class="terminal-text" style="text-align: center; margin-bottom: 1.5rem;">Organización sin ánimo de lucro. Cuentas auditables.</p>
                         <div class="transparency-grid">
-                            <div class="transparency-item">
-                                <div class="transparency-icon">▸</div>
-                                <div class="transparency-text">Infraestructura SEDE - 35%</div>
-                            </div>
-                            <div class="transparency-item">
-                                <div class="transparency-icon">▸</div>
-                                <div class="transparency-text">Seguro RC Colectivo - 25%</div>
-                            </div>
-                            <div class="transparency-item">
-                                <div class="transparency-icon">▸</div>
-                                <div class="transparency-text">Herramientas y Taller - 20%</div>
-                            </div>
-                            <div class="transparency-item">
-                                <div class="transparency-icon">▸</div>
-                                <div class="transparency-text">Legal y Administrativo - 15%</div>
-                            </div>
-                            <div class="transparency-item">
-                                <div class="transparency-icon">▸</div>
-                                <div class="transparency-text">Reserva de Emergencia - 5%</div>
-                            </div>
+                            <div class="transparency-item"><div class="transparency-icon">▸</div><div class="transparency-text">Infraestructura SEDE - 35%</div></div>
+                            <div class="transparency-item"><div class="transparency-icon">▸</div><div class="transparency-text">Seguro RC - 25%</div></div>
+                            <div class="transparency-item"><div class="transparency-icon">▸</div><div class="transparency-text">Herramientas - 20%</div></div>
+                            <div class="transparency-item"><div class="transparency-icon">▸</div><div class="transparency-text">Legal - 15%</div></div>
+                            <div class="transparency-item"><div class="transparency-icon">▸</div><div class="transparency-text">Reserva - 5%</div></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Infraestructura Page -->
         <div id="infraestructura-page" class="content-page">
             <a href="#" class="back-button" onclick="showHome(); return false;"><svg viewBox="0 0 100 100" fill="none"><path d="M70 50L30 50M30 50L45 35M30 50L45 65" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>VOLVER AL INICIO</a>
             <div class="content-grid">
@@ -1185,11 +1019,11 @@
                     <h2 class="section-title">> SEDE OPERATIVA PROV. ZARAGOZA</h2>
                     
                     <div class="terminal-text" style="margin-bottom: 2rem;">
-                        <p><strong class="text-cyan">Superficie Total:</strong> 4.676 m² dividida estratégicamente para garantizar la máxima <strong class="text-magenta">SEGURIDAD OPERACIONAL</strong> y eficiencia logística.</p>
+                        <p><strong class="text-cyan">Superficie Total:</strong> 4.676 m² para máxima <strong class="text-magenta">SEGURIDAD OPERACIONAL</strong>.</p>
                     </div>
 
-                    <div class="blueprint-map">
-                        <svg class="blueprint-svg" viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg">
+                    <div class="blueprint-map" style="background: rgba(0, 242, 255, 0.02); border: 1px solid rgba(0, 242, 255, 0.1); padding: 2rem; margin: 2rem 0; text-align: center; position: relative;">
+                        <svg class="blueprint-svg" viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg" style="max-width: 100%; height: auto;">
                             <defs>
                                 <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
                                     <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(0, 242, 255, 0.08)" stroke-width="0.5"/>
@@ -1201,22 +1035,119 @@
                             <text x="500" y="75" text-anchor="middle" fill="rgba(255, 255, 255, 0.5)" font-family="Share Tech Mono" font-size="10" letter-spacing="2">PERÍMETRO DE CONTINGENCIA / SEGURIDAD</text>
                             
                             <rect x="150" y="150" width="500" height="350" fill="rgba(0, 242, 255, 0.05)" stroke="#00f2ff" stroke-width="2" stroke-dasharray="5,3"/>
-                            <text x="400" y="130" text-anchor="middle" fill="#ff0055" font-family="Share Tech Mono" font-size="16" style="text-shadow: 0 0 10px rgba(255, 0, 85, 0.4);">ARENA DE VUELO &gt; 2000 m²</text>
+                            <text x="400" y="130" text-anchor="middle" fill="#ff0055" font-family="Share Tech Mono" font-size="16">ARENA DE VUELO &gt; 2000 m²</text>
                             
-                            <g class="structure-group" transform="translate(250, 220)"><circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/><line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/><line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/><foreignObject x="-100" y="-120" width="200" height="150" class="structure-tooltip"><div xmlns="http://www.w3.org/1999/xhtml"><div class="tooltip-question">?</div><div class="tooltip-dims">L: 5m | A: 2,5m | H: 2,5m</div><div class="tooltip-cube"></div></div></foreignObject></g>
-                            <g class="structure-group" transform="translate(400, 200)"><circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/><line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/><line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/><foreignObject x="-100" y="-120" width="200" height="150" class="structure-tooltip"><div xmlns="http://www.w3.org/1999/xhtml"><div class="tooltip-question">?</div><div class="tooltip-dims">L: 5m | A: 2,5m | H: 2,5m</div><div class="tooltip-cube"></div></div></foreignObject></g>
-                            <g class="structure-group" transform="translate(550, 230)"><circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/><line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/><line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/><foreignObject x="-100" y="-120" width="200" height="150" class="structure-tooltip"><div xmlns="http://www.w3.org/1999/xhtml"><div class="tooltip-question">?</div><div class="tooltip-dims">L: 5m | A: 2,5m | H: 2,5m</div><div class="tooltip-cube"></div></div></foreignObject></g>
-                            <g class="structure-group" transform="translate(280, 350)"><circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/><line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/><line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/><foreignObject x="-100" y="-120" width="200" height="150" class="structure-tooltip"><div xmlns="http://www.w3.org/1999/xhtml"><div class="tooltip-question">?</div><div class="tooltip-dims">L: 5m | A: 2,5m | H: 2,5m</div><div class="tooltip-cube"></div></div></foreignObject></g>
-                            <g class="structure-group" transform="translate(420, 380)"><circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/><line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/><line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/><foreignObject x="-100" y="-120" width="200" height="150" class="structure-tooltip"><div xmlns="http://www.w3.org/1999/xhtml"><div class="tooltip-question">?</div><div class="tooltip-dims">L: 5m | A: 2,5m | H: 2,5m</div><div class="tooltip-cube"></div></div></foreignObject></g>
-                            <g class="structure-group" transform="translate(580, 340)"><circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/><line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/><line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/><foreignObject x="-100" y="-120" width="200" height="150" class="structure-tooltip"><div xmlns="http://www.w3.org/1999/xhtml"><div class="tooltip-question">?</div><div class="tooltip-dims">L: 5m | A: 2,5m | H: 2,5m</div><div class="tooltip-cube"></div></div></foreignObject></g>
-                            <g class="structure-group" transform="translate(300, 470)"><circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/><line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/><line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/><foreignObject x="-100" y="-120" width="200" height="150" class="structure-tooltip"><div xmlns="http://www.w3.org/1999/xhtml"><div class="tooltip-question">?</div><div class="tooltip-dims">L: 5m | A: 2,5m | H: 2,5m</div><div class="tooltip-cube"></div></div></foreignObject></g>
-                            <g class="structure-group" transform="translate(520, 460)"><circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/><line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/><line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/><foreignObject x="-100" y="-120" width="200" height="150" class="structure-tooltip"><div xmlns="http://www.w3.org/1999/xhtml"><div class="tooltip-question">?</div><div class="tooltip-dims">L: 5m | A: 2,5m | H: 2,5m</div><div class="tooltip-cube"></div></div></foreignObject></g>
+                            <!-- Structure 1 -->
+                            <g class="structure-group" transform="translate(250, 250)">
+                                <circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/>
+                                <line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/>
+                                <line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/>
+                                <foreignObject x="-100" y="-80" width="200" height="60">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="background: rgba(5,10,12,0.95); border: 1px solid #00f2ff; padding: 8px; font-family: 'Share Tech Mono'; font-size: 10px; color: #fff; text-align: center; opacity: 0; transition: opacity 0.3s;" class="structure-tooltip">
+                                        <div style="color: #00f2ff; font-weight: bold;">ESTRUCTURA #1</div>
+                                        <div style="color: #6b7c85;">L: 5m | A: 2,5m | H: 2,5m</div>
+                                    </div>
+                                </foreignObject>
+                            </g>
                             
+                            <!-- Structure 2 -->
+                            <g class="structure-group" transform="translate(400, 200)">
+                                <circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/>
+                                <line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/>
+                                <line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/>
+                                <foreignObject x="-100" y="-80" width="200" height="60">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="background: rgba(5,10,12,0.95); border: 1px solid #00f2ff; padding: 8px; font-family: 'Share Tech Mono'; font-size: 10px; color: #fff; text-align: center; opacity: 0; transition: opacity 0.3s;" class="structure-tooltip">
+                                        <div style="color: #00f2ff; font-weight: bold;">ESTRUCTURA #2</div>
+                                        <div style="color: #6b7c85;">L: 5m | A: 2,5m | H: 2,5m</div>
+                                    </div>
+                                </foreignObject>
+                            </g>
+                            
+                            <!-- Structure 3 -->
+                            <g class="structure-group" transform="translate(550, 250)">
+                                <circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/>
+                                <line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/>
+                                <line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/>
+                                <foreignObject x="-100" y="-80" width="200" height="60">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="background: rgba(5,10,12,0.95); border: 1px solid #00f2ff; padding: 8px; font-family: 'Share Tech Mono'; font-size: 10px; color: #fff; text-align: center; opacity: 0; transition: opacity 0.3s;" class="structure-tooltip">
+                                        <div style="color: #00f2ff; font-weight: bold;">ESTRUCTURA #3</div>
+                                        <div style="color: #6b7c85;">L: 5m | A: 2,5m | H: 2,5m</div>
+                                    </div>
+                                </foreignObject>
+                            </g>
+                            
+                            <!-- Structure 4 -->
+                            <g class="structure-group" transform="translate(280, 350)">
+                                <circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/>
+                                <line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/>
+                                <line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/>
+                                <foreignObject x="-100" y="-80" width="200" height="60">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="background: rgba(5,10,12,0.95); border: 1px solid #00f2ff; padding: 8px; font-family: 'Share Tech Mono'; font-size: 10px; color: #fff; text-align: center; opacity: 0; transition: opacity 0.3s;" class="structure-tooltip">
+                                        <div style="color: #00f2ff; font-weight: bold;">ESTRUCTURA #4</div>
+                                        <div style="color: #6b7c85;">L: 5m | A: 2,5m | H: 2,5m</div>
+                                    </div>
+                                </foreignObject>
+                            </g>
+                            
+                            <!-- Structure 5 -->
+                            <g class="structure-group" transform="translate(420, 380)">
+                                <circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/>
+                                <line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/>
+                                <line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/>
+                                <foreignObject x="-100" y="-80" width="200" height="60">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="background: rgba(5,10,12,0.95); border: 1px solid #00f2ff; padding: 8px; font-family: 'Share Tech Mono'; font-size: 10px; color: #fff; text-align: center; opacity: 0; transition: opacity 0.3s;" class="structure-tooltip">
+                                        <div style="color: #00f2ff; font-weight: bold;">ESTRUCTURA #5</div>
+                                        <div style="color: #6b7c85;">L: 5m | A: 2,5m | H: 2,5m</div>
+                                    </div>
+                                </foreignObject>
+                            </g>
+                            
+                            <!-- Structure 6 -->
+                            <g class="structure-group" transform="translate(580, 340)">
+                                <circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/>
+                                <line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/>
+                                <line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/>
+                                <foreignObject x="-100" y="-80" width="200" height="60">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="background: rgba(5,10,12,0.95); border: 1px solid #00f2ff; padding: 8px; font-family: 'Share Tech Mono'; font-size: 10px; color: #fff; text-align: center; opacity: 0; transition: opacity 0.3s;" class="structure-tooltip">
+                                        <div style="color: #00f2ff; font-weight: bold;">ESTRUCTURA #6</div>
+                                        <div style="color: #6b7c85;">L: 5m | A: 2,5m | H: 2,5m</div>
+                                    </div>
+                                </foreignObject>
+                            </g>
+                            
+                            <!-- Structure 7 -->
+                            <g class="structure-group" transform="translate(300, 470)">
+                                <circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/>
+                                <line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/>
+                                <line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/>
+                                <foreignObject x="-100" y="-80" width="200" height="60">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="background: rgba(5,10,12,0.95); border: 1px solid #00f2ff; padding: 8px; font-family: 'Share Tech Mono'; font-size: 10px; color: #fff; text-align: center; opacity: 0; transition: opacity 0.3s;" class="structure-tooltip">
+                                        <div style="color: #00f2ff; font-weight: bold;">ESTRUCTURA #7</div>
+                                        <div style="color: #6b7c85;">L: 5m | A: 2,5m | H: 2,5m</div>
+                                    </div>
+                                </foreignObject>
+                            </g>
+                            
+                            <!-- Structure 8 -->
+                            <g class="structure-group" transform="translate(520, 460)">
+                                <circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/>
+                                <line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/>
+                                <line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/>
+                                <foreignObject x="-100" y="-80" width="200" height="60">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="background: rgba(5,10,12,0.95); border: 1px solid #00f2ff; padding: 8px; font-family: 'Share Tech Mono'; font-size: 10px; color: #fff; text-align: center; opacity: 0; transition: opacity 0.3s;" class="structure-tooltip">
+                                        <div style="color: #00f2ff; font-weight: bold;">ESTRUCTURA #8</div>
+                                        <div style="color: #6b7c85;">L: 5m | A: 2,5m | H: 2,5m</div>
+                                    </div>
+                                </foreignObject>
+                            </g>
+                            
+                            <!-- ZONA ALPHA -->
                             <rect x="660" y="250" width="100" height="80" fill="rgba(0, 242, 255, 0.15)" stroke="#00f2ff" stroke-width="2" stroke-dasharray="5,5"/>
                             <text x="710" y="275" text-anchor="middle" fill="#00f2ff" font-family="Share Tech Mono" font-size="10">ZONA ALPHA</text>
                             <text x="710" y="290" text-anchor="middle" fill="#00f2ff" font-family="Share Tech Mono" font-size="8">ÁREA 15 m²</text>
                             <g transform="translate(710, 310)"><path d="M-10,-8 L10,-8 L12,-6 L12,6 L10,8 L-10,8 L-12,6 L-12,-6 Z" fill="none" stroke="#00f2ff" stroke-width="1.5"/><circle cx="0" cy="-10" r="5" fill="none" stroke="#00f2ff" stroke-width="1.5"/></g>
                             
+                            <!-- SECTOR EXPANSIÓN -->
                             <rect x="770" y="230" width="150" height="120" fill="rgba(255, 0, 85, 0.1)" stroke="#ff0055" stroke-width="2" stroke-dasharray="5,5"/>
                             <text x="845" y="255" text-anchor="middle" fill="#ff0055" font-family="Share Tech Mono" font-size="10">SECTOR EXPANSIÓN</text>
                             <line x1="770" y1="360" x2="920" y2="360" stroke="#ff0055" stroke-width="1.5"/>
@@ -1228,64 +1159,66 @@
                             <circle cx="820" cy="300" r="15" fill="none" stroke="#ff0055" stroke-width="1.5" stroke-dasharray="3,3"/>
                             <text x="820" y="304" text-anchor="middle" fill="#ff0055" font-family="Share Tech Mono" font-size="6">NO FLY</text>
                             
+                            <!-- Scale -->
                             <line x1="70" y1="520" x2="120" y2="520" stroke="#00f2ff" stroke-width="2"/>
                             <line x1="70" y1="515" x2="70" y2="525" stroke="#00f2ff" stroke-width="2"/>
                             <line x1="120" y1="515" x2="120" y2="525" stroke="#00f2ff" stroke-width="2"/>
                             <text x="95" y="540" text-anchor="middle" fill="#00f2ff" font-family="Share Tech Mono" font-size="9">10M</text>
+                            
+                            <!-- North -->
                             <line x1="930" y1="80" x2="930" y2="60" stroke="#00f2ff" stroke-width="2"/>
                             <polygon points="930,60 925,70 935,70" fill="#00f2ff"/>
                             <text x="930" y="95" text-anchor="middle" fill="#00f2ff" font-family="Share Tech Mono" font-size="9">N</text>
                             
+                            <!-- Legend -->
                             <g transform="translate(70, 450)"><text x="0" y="0" fill="rgba(255, 255, 255, 0.5)" font-family="Share Tech Mono" font-size="9">LEYENDA:</text><circle cx="0" cy="20" r="8" fill="none" stroke="#00f2ff" stroke-width="2"/><line x1="-8" y1="20" x2="8" y2="20" stroke="#00f2ff" stroke-width="2"/><line x1="0" y1="12" x2="0" y2="28" stroke="#00f2ff" stroke-width="2"/><text x="20" y="24" fill="rgba(255, 255, 255, 0.5)" font-family="Share Tech Mono" font-size="8">ESTRUCTURA FIJA</text></g>
                             
                             <text x="500" y="580" text-anchor="middle" fill="rgba(255, 255, 255, 0.4)" font-family="Share Tech Mono" font-size="9" letter-spacing="1">&gt; PLANO TÁCTICO - SEDE PROV. ZARAGOZA [USO EXCLUSIVO CREW]</text>
                         </svg>
                     </div>
 
-                    <div class="sector-grid">
-                        <div class="sector-card alpha">
-                            <h3 class="sector-title">
-                                <svg class="sector-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    <div class="sector-grid" style="display: grid; grid-template-columns: 1fr; gap: 2rem; margin: 2rem 0;">
+                        <div style="background: rgba(0, 242, 255, 0.03); border: 1px solid rgba(0, 242, 255, 0.2); padding: 1.5rem;">
+                            <h3 style="font-family: var(--font-mono); font-size: 1rem; color: var(--cyan); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
                                 ZONA ALPHA [15 m²]
                             </h3>
-                            <ul class="sector-specs">
-                                <li><strong class="text-magenta">SEGURIDAD OPERACIONAL:</strong> Punto de acceso técnico adosado a la arena. Optimizado para mantenimiento y chequeo rápido.</li>
-                                <li>Laboratorio Técnico y de Configuración</li>
-                                <li>Resguardo de integridad de socios y equipos críticos</li>
+                            <ul style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--gray); list-style: none;">
+                                <li style="margin-bottom: 0.5rem;"><strong class="text-magenta">SEGURIDAD:</strong> Acceso técnico optimizado</li>
+                                <li style="margin-bottom: 0.5rem;">▸ Laboratorio Técnico</li>
+                                <li style="margin-bottom: 0.5rem;">▸ Resguardo de equipos</li>
                             </ul>
                         </div>
 
-                        <div class="sector-card expansion">
-                            <h3 class="sector-title">
-                                <svg class="sector-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-                                SECTOR DE EXPANSIÓN [300 m²]
+                        <div style="background: rgba(255, 0, 85, 0.03); border: 1px solid rgba(255, 0, 85, 0.2); padding: 1.5rem;">
+                            <h3 style="font-family: var(--font-mono); font-size: 1rem; color: var(--magenta); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                                SECTOR EXPANSIÓN [300 m²]
                             </h3>
-                            <ul class="sector-specs">
-                                <li><strong>Superficie:</strong> Suelo técnico de grava</li>
-                                <li><strong class="text-magenta">CAPACIDAD:</strong> Zona para despliegue de la <strong class="text-magenta">CREW</strong>, stands y servicios</li>
-                                <li><strong class="text-red">PROHIBIDO:</strong> Pilotar o despegar desde este sector</li>
+                            <ul style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--gray); list-style: none;">
+                                <li style="margin-bottom: 0.5rem;"><strong>Superficie:</strong> Suelo de grava</li>
+                                <li style="margin-bottom: 0.5rem;"><strong class="text-magenta">CAPACIDAD:</strong> Crew, stands, servicios</li>
+                                <li style="margin-bottom: 0.5rem;"><strong class="text-red">PROHIBIDO:</strong> Pilotar desde aquí</li>
                             </ul>
                         </div>
 
-                        <div class="sector-card arena">
-                            <h3 class="sector-title">
-                                <svg class="sector-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
-                                <span class="text-magenta" style="text-shadow: 0 0 10px var(--magenta-glow);">ARENA DE VUELO</span> [&gt; 2000 m²]
+                        <div style="background: rgba(255, 0, 85, 0.03); border: 1px solid rgba(255, 0, 85, 0.2); padding: 1.5rem; grid-column: span 1;">
+                            <h3 style="font-family: var(--font-mono); font-size: 1rem; color: var(--magenta); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                                ARENA DE VUELO [&gt; 2000 m²]
                             </h3>
-                            <ul class="sector-specs">
-                                <li><strong class="text-magenta">ESPACIO SEGREGADO:</strong> Zona exclusiva para operaciones UAS a baja altura. Nota: Aunque el diseño está optimizado para operativa FPV técnica, el área es compatible con otros perfiles de vuelo bajo los mismos estándares de seguridad.</li>
-                                <li><strong>Infraestructura:</strong> 8 macro-estructuras tácticas fijas de gran dimensión</li>
-                                <li><strong>Configuración:</strong> Diseñadas para complementarse con obstáculos provisionales (puertas, banderas, gates), permitiendo un trazado de circuitos infinito</li>
-                                <li><strong>Seguridad:</strong> Perímetro delimitado con líneas de visión claras</li>
+                            <ul style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--gray); list-style: none;">
+                                <li style="margin-bottom: 0.5rem;"><strong class="text-magenta">ESPACIO:</strong> Operaciones UAS baja altura</li>
+                                <li style="margin-bottom: 0.5rem;">▸ 8 macro-estructuras fijas</li>
+                                <li style="margin-bottom: 0.5rem;">▸ Configuración infinita de circuitos</li>
+                                <li style="margin-bottom: 0.5rem;">▸ Perímetro delimitado</li>
                             </ul>
                         </div>
                     </div>
 
-                    <div class="philosophy-box">
-                        <h3 class="philosophy-title">⚡ MANIFIESTO <span class="nodo-zero">NODO 0</span></h3>
-                        <p class="terminal-text">
-                            En MODO 2 no eres un simple socio: perteneces a la <strong class="text-magenta">CREW</strong>. Como parte del <span class="nodo-zero">NODO 0</span> (nuestra plataforma digital) y con acceso a nuestra SEDE física, tienes el tablero completo donde se ejecutan nuestras operaciones. Disfruta del vuelo y de una experiencia de inmersión total en el sector UAS.
-                        </p>
+                    <div style="background: rgba(255, 0, 85, 0.05); border: 1px solid var(--magenta); padding: 2rem; margin: 2rem 0; text-align: center;">
+                        <h3 style="font-family: var(--font-mono); font-size: 1rem; color: var(--magenta); margin-bottom: 1rem; letter-spacing: 0.15em;">⚡ MANIFIESTO <span class="nodo-zero">NODO 0</span></h3>
+                        <p class="terminal-text">En MODO 2 no eres un simple socio: perteneces a la <strong class="text-magenta">CREW</strong>. Como parte del <span class="nodo-zero">NODO 0</span> tienes el tablero completo donde se ejecutan nuestras operaciones.</p>
                     </div>
 
                     <div class="sector-status">SEDE: EN TRÁMITE DE AUTORIZACIÓN</div>
@@ -1293,55 +1226,37 @@
             </div>
         </div>
 
-        <!-- Legal Page -->
         <div id="legal-page" class="content-page">
             <a href="#" class="back-button" onclick="showHome(); return false;"><svg viewBox="0 0 100 100" fill="none"><path d="M70 50L30 50M30 50L45 35M30 50L45 65" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>VOLVER AL INICIO</a>
             <div class="content-grid">
                 <div class="hud-panel full-width">
                     <h2 class="section-title">> MARCO_LEGAL</h2>
-                    
                     <div class="terminal-text">
                         <ul style="list-style: none;">
                             <li style="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(0, 242, 255, 0.1);">
                                 <span class="text-cyan" style="font-weight: 700;">> ESTADO JURÍDICO:</span><br>
-                                <span style="color: var(--white);">Asociación legalmente constituida y registrada.</span><br>
-                                <span class="text-amber">NIF Provisional: G26829788</span>
+                                <span style="color: var(--white);">Asociación legalmente constituida.</span><br>
+                                <span class="text-amber">NIF: G26829788</span>
                             </li>
-                            
                             <li style="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(0, 242, 255, 0.1);">
                                 <span class="text-cyan" style="font-weight: 700;">> RESPALDO INSTITUCIONAL:</span><br>
-                                <span style="color: var(--white);">Compromiso institucional en firme con la administración local (Ayuntamiento). Actualmente en fase de tramitación de la documentación vinculante.</span>
+                                <span style="color: var(--white);">Compromiso con Ayuntamiento. En tramitación.</span>
                             </li>
-                            
                             <li style="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(0, 242, 255, 0.1);">
-                                <span class="text-cyan" style="font-weight: 700;">> CERTIFICACIÓN AESA (Fase 1 Superada):</span><br>
-                                <span style="color: var(--white);">Proyecto validado preliminarmente sin objeciones por la Agencia Estatal de Seguridad Aérea.</span>
+                                <span class="text-cyan" style="font-weight: 700;">> AESA (Fase 1):</span><br>
+                                <span style="color: var(--white);">Validado sin objeciones.</span>
                             </li>
-                            
                             <li style="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(0, 242, 255, 0.1);">
-                                <span class="text-cyan" style="font-weight: 700;">> ROADMAP PROYECTO ORIGEN:</span><br>
-                                <span style="color: var(--white);">La recaudación de los 40 Socios Fundadores, junto con futuras subvenciones, está destinada estratégicamente a la Fase 2: la redacción y tramitación de la documentación aeronáutica oficial (SORA, Manuales de Operaciones, etc.) necesaria para la apertura total.</span>
+                                <span class="text-cyan" style="font-weight: 700;">> ROADMAP:</span><br>
+                                <span style="color: var(--white);">Fase 2: Documentación aeronáutica (SORA, Manuales).</span>
                             </li>
-
                             <li style="margin-bottom: 1rem;">
-                                <span class="text-magenta" style="font-weight: 700; font-size: 1.1rem; display: block; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px dashed rgba(255, 0, 85, 0.3);">> GOBERNANZA Y NORMATIVA INTERNA:</span>
-                                
+                                <span class="text-magenta" style="font-weight: 700; font-size: 1.1rem; display: block; margin-bottom: 1rem; border-bottom: 1px dashed rgba(255, 0, 85, 0.3); padding-bottom: 0.5rem;">> GOBERNANZA:</span>
                                 <div style="margin-left: 0.5rem;">
-                                    <p style="margin-bottom: 1rem; color: var(--white);">
-                                        <span class="text-cyan" style="font-weight: 700;">▸ ESTATUTOS SOCIALES:</span> La Asociación se rige por sus Estatutos fundacionales (Zaragoza, 12 de febrero de 2026), redactados conforme a la Ley Orgánica 1/2002.
-                                    </p>
-                                    
-                                    <p style="margin-bottom: 1rem; color: var(--white);">
-                                        <span class="text-cyan" style="font-weight: 700;">▸ REGLAMENTO DE RÉGIMEN INTERNO (RRI):</span> Disponemos de un RRI que regula el uso de instalaciones, la seguridad en la carga de baterías LiPo, el uso obligatorio de 'spotters' y la gestión de frecuencias de vídeo.
-                                    </p>
-                                    
-                                    <p style="margin-bottom: 1rem; color: var(--white);">
-                                        <span class="text-cyan" style="font-weight: 700;">▸ CÓDIGO DE HONOR:</span> Todos los miembros de la CREW aceptan un compromiso ético de vuelo responsable y respeto a la normativa aérea vigente.
-                                    </p>
-                                    
-                                    <p style="margin-bottom: 0.5rem; color: var(--white);">
-                                        <span class="text-cyan" style="font-weight: 700;">▸ ACCESO A DOCUMENTACIÓN:</span> Por seguridad y protección de datos, los documentos íntegros y firmados no están expuestos públicamente. Conforme al Art. 8 de nuestros Estatutos, cualquier socio tiene acceso total a la documentación oficial una vez formalizado su ingreso en la asociación.
-                                    </p>
+                                    <p style="margin-bottom: 1rem; color: var(--white);"><span class="text-cyan" style="font-weight: 700;">▸ ESTATUTOS:</span> Ley Orgánica 1/2002 (12 feb 2026)</p>
+                                    <p style="margin-bottom: 1rem; color: var(--white);"><span class="text-cyan" style="font-weight: 700;">▸ RRI:</span> LiPo, spotters, frecuencias</p>
+                                    <p style="margin-bottom: 1rem; color: var(--white);"><span class="text-cyan" style="font-weight: 700;">▸ CÓDIGO DE HONOR:</span> Vuelo responsable</p>
+                                    <p style="color: var(--white);"><span class="text-cyan" style="font-weight: 700;">▸ ACCESO:</span> Art. 8 Estatutos - socios tienen acceso total</p>
                                 </div>
                             </li>
                         </ul>
@@ -1350,10 +1265,9 @@
             </div>
         </div>
 
-        <!-- Flight Logs -->
         <div class="flight-logs-section">
             <h3 class="logs-title">> TERMINAL_DE_ACTIVIDAD</h3>
-            <p class="logs-description">Próximamente: Sincroniza tus logs de vuelo con los hashtags de tu rama para acumular XP y subir de nivel en el sistema.</p>
+            <p class="logs-description">Próximamente: Sincroniza logs con hashtags para acumular XP.</p>
             <div class="hashtags">
                 <span class="hashtag">#MODO2_INCURSOR</span>
                 <span class="hashtag">#MODO2_ARQUITECTO</span>
@@ -1361,89 +1275,48 @@
             </div>
         </div>
 
-        <!-- Footer -->
         <footer>
             <div class="social-links">
                 <a href="#" class="social-btn">Instagram</a>
                 <a href="#" class="social-btn">Discord</a>
                 <a href="#" class="social-btn">YouTube</a>
             </div>
-            <p class="copyright">© 2026 MODO 2. Asociación legalmente constituida - NIF: G26829788. Todos los derechos reservados.</p>
+            <p class="copyright">© 2026 MODO 2. Asociación legalmente constituida - NIF: G26829788.</p>
             <p class="legal-nif">ART. 16 COMPLIANT // NIF: G26829788</p>
         </footer>
     </div>
 
-    <!-- Registration Modal - BLOCKED -->
     <div class="modal-overlay" id="registerModal">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal()">&times;</button>
             <h2 class="modal-title">> INSCRIPCIÓN</h2>
             <form id="registerForm" onsubmit="handleRegister(event)">
-                <div class="form-group">
-                    <label>> IDENTIFICADOR</label>
-                    <input type="text" id="regName" required disabled>
-                </div>
-                <div class="form-group">
-                    <label>> EMAIL</label>
-                    <input type="email" id="regEmail" required disabled>
-                </div>
-                <div class="form-group">
-                    <label>> TELÉFONO</label>
-                    <input type="tel" id="regPhone" required disabled>
-                </div>
-                <div class="form-group">
-                    <label>> CONTRASEÑA</label>
-                    <input type="password" id="regPassword" required disabled>
-                </div>
-                <div class="form-group">
-                    <label>> MEMBRESÍA</label>
-                    <select id="regMembership" required disabled>
-                        <option value="">SELECCIONAR...</option>
-                        <option value="founder">SOCIO FUNDADOR - 60€</option>
-                        <option value="standard">SOCIO ESTÁNDAR - 40€</option>
-                    </select>
-                </div>
-                <button type="submit" class="submit-btn blocked" id="registerBtn" disabled>
-                    ⚠ SISTEMA ACTUALMENTE BLOQUEADO
-                </button>
-                <div class="blocked-notice">
-                    SISTEMA DE PAGOS TEMPORALMENTE INACTIVO<br>
-                    VOLVERÁ A ESTAR DISPONIBLE PRÓXIMAMENTE
-                </div>
+                <div class="form-group"><label>> IDENTIFICADOR</label><input type="text" id="regName" required disabled></div>
+                <div class="form-group"><label>> EMAIL</label><input type="email" id="regEmail" required disabled></div>
+                <div class="form-group"><label>> TELÉFONO</label><input type="tel" id="regPhone" required disabled></div>
+                <div class="form-group"><label>> CONTRASEÑA</label><input type="password" id="regPassword" required disabled></div>
+                <div class="form-group"><label>> MEMBRESÍA</label><select id="regMembership" required disabled><option value="">SELECCIONAR...</option><option value="founder">SOCIO FUNDADOR - 60€</option><option value="standard">SOCIO ESTÁNDAR - 40€</option></select></div>
+                <button type="submit" class="submit-btn blocked" id="registerBtn" disabled>⚠ SISTEMA BLOQUEADO</button>
+                <div class="blocked-notice">SISTEMA DE PAGOS TEMPORALMENTE INACTIVO</div>
             </form>
         </div>
     </div>
 
-    <!-- Login Modal - ACTIVE -->
     <div class="modal-overlay" id="loginModal">
         <div class="modal-content login-modal-content">
             <button class="modal-close" onclick="closeLoginModal()">&times;</button>
             <h2 class="modal-title">> ACCESO</h2>
             <form id="loginForm" onsubmit="handleLogin(event)">
-                <div class="form-group">
-                    <label>> USUARIO / EMAIL</label>
-                    <input type="text" id="loginUsername" required>
-                </div>
-                <div class="form-group">
-                    <label>> CONTRASEÑA</label>
-                    <input type="password" id="loginPassword" required>
-                </div>
-                <div class="form-group checkbox-group">
-                    <input type="checkbox" id="rememberMe">
-                    <label for="rememberMe">RECORDAR</label>
-                </div>
-                <button type="submit" class="submit-btn active" id="loginBtnSubmit">
-                    >> CONECTAR
-                </button>
+                <div class="form-group"><label>> USUARIO / EMAIL</label><input type="text" id="loginUsername" required></div>
+                <div class="form-group"><label>> CONTRASEÑA</label><input type="password" id="loginPassword" required></div>
+                <div class="form-group checkbox-group"><input type="checkbox" id="rememberMe"><label for="rememberMe">RECORDAR</label></div>
+                <button type="submit" class="submit-btn active" id="loginBtnSubmit">>> CONECTAR</button>
             </form>
-            <p class="mono" style="margin-top: 1rem; text-align: center; color: var(--gray);">
-                ¿Sin cuenta? <span style="color: var(--red);">REGISTRO BLOQUEADO</span>
-            </p>
+            <p class="mono" style="margin-top: 1rem; text-align: center; color: var(--gray);">¿Sin cuenta? <span style="color: var(--red);">REGISTRO BLOQUEADO</span></p>
         </div>
     </div>
 
     <script>
-        // Firebase Configuration
         const firebaseConfig = {
             apiKey: "AIzaSyCkB54CuTQZ9sVj42eSIYjYA9s83WgTJHo",
             authDomain: "modo2-mainframe-b9f2e.firebaseapp.com",
@@ -1472,7 +1345,6 @@
             if (el) { el.textContent = text; el.className = 'firebase-status ' + status; }
         }
 
-        // XP & SYNC System
         let xp = parseInt(localStorage.getItem('modo2_xp')) || 0;
         let syncLevel = parseInt(localStorage.getItem('modo2_sync')) || 0;
         let visitCount = parseInt(localStorage.getItem('modo2_visits')) || 0;
@@ -1482,7 +1354,6 @@
 
         visitCount++;
         localStorage.setItem('modo2_visits', visitCount);
-
         syncLevel = Math.min(visitCount, 100);
         localStorage.setItem('modo2_sync', syncLevel);
 
@@ -1544,7 +1415,7 @@
         function showXpPopup() {
             const statsEl = document.getElementById('xpPopupStats');
             if (statsEl) {
-                statsEl.innerHTML = `> VISITAS COMO INVITADO: ${visitCount}<br>> XP ACUMULADA: ${xp}<br>> ESTADO: SIN REGISTRAR`;
+                statsEl.innerHTML = `> VISITAS: ${visitCount}<br>> XP: ${xp}<br>> ESTADO: SIN REGISTRAR`;
             }
             document.getElementById('xpPopup').classList.add('active');
             document.getElementById('xpPopupOverlay').classList.add('active');
@@ -1558,7 +1429,6 @@
 
         document.getElementById('xpPopupOverlay').addEventListener('click', closeXpPopup);
 
-        // Modal Functions
         function openLoginModal() { document.getElementById('loginModal').classList.add('active'); }
         function closeLoginModal() { document.getElementById('loginModal').classList.remove('active'); }
         function openModal() { document.getElementById('registerModal').classList.add('active'); }
@@ -1566,41 +1436,30 @@
 
         function handleRegister(e) {
             e.preventDefault();
-            alert('>> SISTEMA DE PAGOS BLOQUEADO <<\n\nEl sistema de inscripciones estará disponible próximamente.\n\nDisculpa las molestias.');
+            alert('>> SISTEMA BLOQUEADO <<\n\nPróximamente disponible.');
         }
 
         async function handleLogin(e) {
             e.preventDefault();
-            
-            if (!firebaseInitialized) {
-                alert('>> ERROR: MAINFRAME DESCONECTADO <<');
-                return;
-            }
+            if (!firebaseInitialized) { alert('>> MAINFRAME DESCONECTADO <<'); return; }
 
             const btn = document.getElementById('loginBtnSubmit');
             btn.disabled = true;
             btn.textContent = '>> AUTENTICANDO...';
 
-            const username = document.getElementById('loginUsername').value;
-            const password = document.getElementById('loginPassword').value;
-            const remember = document.getElementById('rememberMe').checked;
-
             try {
-                if (remember) {
-                    await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
-                } else {
-                    await auth.setPersistence(firebase.auth.Auth.Persistence.SESSION);
-                }
+                const remember = document.getElementById('rememberMe').checked;
+                await auth.setPersistence(remember ? firebase.auth.Auth.Persistence.LOCAL : firebase.auth.Auth.Persistence.SESSION);
 
-                const userCredential = await auth.signInWithEmailAndPassword(username, password);
-                const user = userCredential.user;
+                const userCredential = await auth.signInWithEmailAndPassword(
+                    document.getElementById('loginUsername').value,
+                    document.getElementById('loginPassword').value
+                );
 
-                const userDoc = await db.collection('users').doc(user.uid).get();
-                
+                const userDoc = await db.collection('users').doc(userCredential.user.uid).get();
                 if (userDoc.exists) {
                     currentUserData = userDoc.data();
-                    
-                    document.getElementById('userName').textContent = (currentUserData.displayName || user.email).toUpperCase();
+                    document.getElementById('userName').textContent = (currentUserData.displayName || userCredential.user.email).toUpperCase();
                     document.getElementById('userLevel').textContent = 'NIVEL ' + (currentUserData.level || 0);
                     
                     const loginBtn = document.getElementById('loginBtn');
@@ -1609,18 +1468,10 @@
                     loginBtn.onclick = handleLogout;
                     
                     updateXPDisplay(currentUserData.xp || 0);
-                    
-                    await db.collection('users').doc(user.uid).update({
-                        lastLogin: firebase.firestore.FieldValue.serverTimestamp()
-                    });
-
                     closeLoginModal();
-                    displayUserDataInTable();
                 }
-
             } catch (error) {
-                console.error('Login error:', error);
-                alert('>> ERROR DE AUTENTICACIÓN <<\n\n' + error.message);
+                alert('>> ERROR <<\n\n' + error.message);
             } finally {
                 btn.disabled = false;
                 btn.textContent = '>> CONECTAR';
@@ -1629,26 +1480,17 @@
 
         async function handleLogout() {
             if (!firebaseInitialized) return;
-            
-            try {
-                await auth.signOut();
-                currentUserData = null;
-                
-                document.getElementById('userName').textContent = 'INVITADO';
-                document.getElementById('userLevel').textContent = 'ACCESO RESTRINGIDO';
-                document.getElementById('userRank').textContent = '--';
-                
-                const loginBtn = document.getElementById('loginBtn');
-                loginBtn.textContent = 'INVITADO / ACCESO RESTRINGIDO';
-                loginBtn.className = 'status-badge';
-                loginBtn.onclick = openLoginModal;
-                
-                updateXPDisplay(0);
-                
-                alert('>> SESIÓN CERRADA <<');
-            } catch (error) {
-                console.error('Logout error:', error);
-            }
+            await auth.signOut();
+            currentUserData = null;
+            document.getElementById('userName').textContent = 'INVITADO';
+            document.getElementById('userLevel').textContent = 'ACCESO RESTRINGIDO';
+            document.getElementById('userRank').textContent = '--';
+            const loginBtn = document.getElementById('loginBtn');
+            loginBtn.textContent = 'INVITADO / ACCESO RESTRINGIDO';
+            loginBtn.className = 'status-badge';
+            loginBtn.onclick = openLoginModal;
+            updateXPDisplay(0);
+            alert('>> SESIÓN CERRADA <<');
         }
 
         if (firebaseInitialized) {
@@ -1676,18 +1518,23 @@
                     if (this.classList.contains('connected') || this.classList.contains('pending')) {
                         const dbPanel = document.getElementById('userDbPanel');
                         dbPanel.classList.toggle('active');
-                        if (firebaseInitialized && currentUserData) displayUserDataInTable();
                     }
                 });
             }
-        });
 
-        function displayUserDataInTable() {
-            if (!firebaseInitialized || !currentUserData) return;
-            
-            const tbody = document.getElementById('userDbBody');
-            tbody.innerHTML = `<tr><td>${currentUserData.displayName || 'N/A'}</td><td>${auth.currentUser?.email || 'N/A'}</td><td class="${currentUserData.status === 'connected' ? 'text-green' : 'text-amber'}">${currentUserData.status?.toUpperCase() || 'PENDING'}</td><td>${currentUserData.level || 0}</td><td>${currentUserData.rank || 'INVITADO'}</td><td>${(currentUserData.xp || 0).toLocaleString()}</td></tr>`;
-        }
+            // Structure tooltips
+            document.querySelectorAll('.structure-group').forEach(group => {
+                const tooltip = group.querySelector('.structure-tooltip');
+                if (tooltip) {
+                    group.addEventListener('mouseenter', () => {
+                        tooltip.style.opacity = '1';
+                    });
+                    group.addEventListener('mouseleave', () => {
+                        tooltip.style.opacity = '0';
+                    });
+                }
+            });
+        });
 
         function showHome() {
             document.querySelectorAll('.content-page').forEach(p => p.classList.remove('active'));
@@ -1719,14 +1566,9 @@
                 const progress = (Date.now() - startTime) / (duration * 1000);
                 if (progress < 1) {
                     const fadeProgress = progress < 0.2 ? progress / 0.2 : (1 - progress) / 0.3;
-                    const opacity = Math.max(0, Math.min(1, fadeProgress));
-                    trail.style.opacity = opacity * 0.4;
+                    trail.style.opacity = Math.max(0, Math.min(1, fadeProgress)) * 0.4;
                     const moveDistance = progress * (window.innerWidth + length);
-                    if (startFromLeft) {
-                        trail.style.left = `${-length + moveDistance}px`;
-                    } else {
-                        trail.style.right = `${-length + moveDistance}px`;
-                    }
+                    trail.style[startFromLeft ? 'left' : 'right'] = `${-length + moveDistance}px`;
                     requestAnimationFrame(animate);
                 } else { trail.remove(); }
             }
@@ -1742,7 +1584,6 @@
             updateXPDisplay(xp);
             updateSyncDisplay();
             setTimeout(startDroneTrails, 1000);
-            
             document.getElementById('registerModal').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
             document.getElementById('loginModal').addEventListener('click', e => { if (e.target === e.currentTarget) closeLoginModal(); });
         });
