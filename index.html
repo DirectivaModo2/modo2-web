@@ -20,8 +20,8 @@
             --cyan: #00f2ff;
             --cyan-dim: rgba(0, 242, 255, 0.15);
             --cyan-glow: rgba(0, 242, 255, 0.4);
-            --magenta: #ff0055;
-            --magenta-glow: rgba(255, 0, 85, 0.4);
+            --magenta: #ff00ff;
+            --magenta-glow: rgba(255, 0, 255, 0.4);
             --amber: #ffb800;
             --amber-glow: rgba(255, 184, 0, 0.4);
             --green: #00ff88;
@@ -70,7 +70,7 @@
         }
 
         .container {
-            max-width: 1300px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 2rem;
             position: relative;
@@ -173,27 +173,109 @@
         }
         .nav-icon-wrapper:hover::after { width: 100%; left: 0; }
 
-        /* User Dashboard */
+        /* User Dashboard with PILOT_STATUS HUD */
         .user-dashboard {
             background: var(--black-panel); border: 1px solid rgba(0, 242, 255, 0.2);
             padding: 1.5rem 2rem; margin-bottom: 2rem;
             clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
-            display: flex; justify-content: space-between; align-items: center;
-            flex-wrap: wrap; gap: 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
         }
 
         .user-info { display: flex; align-items: center; gap: 1.5rem; }
         .user-avatar {
-            width: 50px; height: 50px; border: 2px solid var(--cyan);
+            width: 60px; height: 60px; border: 2px solid var(--cyan);
             border-radius: 50%; display: flex; align-items: center;
             justify-content: center; background: rgba(0, 242, 255, 0.1);
+            position: relative;
         }
-        .user-avatar svg { width: 28px; height: 28px; stroke: var(--cyan); }
+        .user-avatar svg { width: 32px; height: 32px; stroke: var(--cyan); }
         .user-details h4 { font-size: 1rem; margin-bottom: 0.3rem; color: var(--white); }
         .user-level { font-family: var(--font-mono); font-size: 0.75rem; color: var(--amber); }
         .user-rank { font-family: var(--font-mono); font-size: 0.65rem; color: var(--gray); margin-top: 0.2rem; }
 
-        .xp-bar-container { width: 300px; }
+        /* PILOT_STATUS HUD - SYNC BAR */
+        .pilot-status-hud {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 242, 255, 0.3);
+            padding: 1rem;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .pilot-status-title {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--cyan);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sync-level-badge {
+            background: rgba(0, 242, 255, 0.1);
+            border: 1px solid var(--cyan);
+            padding: 0.2rem 0.5rem;
+            font-size: 0.65rem;
+            font-weight: 700;
+        }
+
+        .sync-bar-container {
+            position: relative;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 242, 255, 0.2);
+        }
+
+        .sync-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--cyan), var(--magenta));
+            border-radius: 6px;
+            transition: width 0.5s ease;
+            position: relative;
+        }
+
+        .sync-bar-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(255, 255, 255, 0.3) 50%, 
+                transparent 100%);
+            animation: syncShimmer 2s infinite;
+        }
+
+        @keyframes syncShimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .sync-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--gray);
+        }
+
+        .xp-bar-container { 
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 242, 255, 0.2);
+            padding: 1rem;
+            border-radius: 4px;
+        }
         .xp-label { font-family: var(--font-mono); font-size: 0.7rem; color: var(--gray); margin-bottom: 0.3rem; display: flex; justify-content: space-between; }
         .xp-bar { height: 8px; background: rgba(255, 255, 255, 0.1); border-radius: 4px; overflow: hidden; }
         .xp-fill { height: 100%; background: linear-gradient(90deg, var(--cyan), #00a8ff); width: 0%; border-radius: 4px; transition: width 0.5s ease; }
@@ -209,6 +291,7 @@
             border: 1px solid var(--magenta); color: var(--magenta);
             text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer;
             transition: all 0.3s ease; background: rgba(255, 0, 85, 0.05);
+            justify-self: end;
         }
         .status-badge:hover { background: rgba(255, 0, 85, 0.15); box-shadow: 0 0 15px var(--magenta-glow); }
         .status-badge.connected { border-color: var(--green); color: var(--green); background: rgba(0, 255, 136, 0.05); }
@@ -314,17 +397,151 @@
         .transparency-icon { color: var(--green); font-size: 1.2rem; min-width: 20px; }
         .transparency-text { font-family: var(--font-mono); font-size: 0.8rem; color: var(--white); line-height: 1.6; }
 
-        /* Rings Specialization */
-        .rings-container { margin: 2rem 0; }
-        .rings-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
-        @media(min-width: 768px) { .rings-grid { grid-template-columns: 1fr 1fr; } }
-        .ring-group { background: rgba(0, 242, 255, 0.03); border: 1px solid rgba(0, 242, 255, 0.1); padding: 1.5rem; }
-        .ring-group-title { font-family: var(--font-mono); font-size: 0.85rem; color: var(--cyan); margin-bottom: 1rem; letter-spacing: 0.15em; text-transform: uppercase; border-bottom: 1px solid rgba(0, 242, 255, 0.2); padding-bottom: 0.5rem; }
-        .ring-item { margin-bottom: 1rem; }
-        .ring-item:last-child { margin-bottom: 0; }
-        .ring-name { font-family: var(--font-mono); font-size: 0.8rem; color: var(--white); margin-bottom: 0.3rem; }
-        .ring-name span { color: var(--cyan); }
-        .ring-desc { font-family: var(--font-mono); font-size: 0.7rem; color: var(--gray); line-height: 1.5; }
+        /* SISTEMA_12_PALAS - DRONE HUD */
+        .drone-hud-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 3rem 0;
+            position: relative;
+        }
+
+        .drone-x-frame {
+            position: relative;
+            width: 500px;
+            height: 500px;
+        }
+
+        /* X Frame Arms */
+        .drone-arm {
+            position: absolute;
+            width: 200px;
+            height: 8px;
+            background: linear-gradient(90deg, var(--cyan), transparent);
+            transform-origin: left center;
+        }
+
+        .drone-arm.arm-1 { transform: rotate(-45deg); top: 100px; left: 150px; }
+        .drone-arm.arm-2 { transform: rotate(45deg); top: 100px; left: 150px; }
+        .drone-arm.arm-3 { transform: rotate(-135deg); top: 100px; left: 150px; }
+        .drone-arm.arm-4 { transform: rotate(135deg); top: 100px; left: 150px; }
+
+        /* Motors */
+        .motor {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border: 2px solid var(--gray);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .motor.active {
+            border-color: var(--cyan);
+            box-shadow: 0 0 15px var(--cyan-glow);
+        }
+
+        .motor.elite {
+            border-color: var(--magenta);
+            box-shadow: 0 0 20px var(--magenta-glow);
+        }
+
+        .motor.motor-1 { top: 50px; left: 210px; }
+        .motor.motor-2 { top: 50px; right: 210px; }
+        .motor.motor-3 { bottom: 50px; left: 210px; }
+        .motor.motor-4 { bottom: 50px; right: 210px; }
+
+        .motor-label {
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            color: var(--cyan);
+            text-transform: uppercase;
+            position: absolute;
+            bottom: -20px;
+        }
+
+        /* Propeller Blades */
+        .propeller {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            animation: none;
+        }
+
+        .motor.active .propeller {
+            animation: motorSpin 0.5s linear infinite;
+        }
+
+        @keyframes motorSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .blade {
+            position: absolute;
+            width: 70px;
+            height: 12px;
+            background: var(--gray);
+            border-radius: 50%;
+            transform-origin: center center;
+            transition: all 0.3s ease;
+        }
+
+        .blade.unlocked {
+            background: var(--cyan);
+            box-shadow: 0 0 10px var(--cyan-glow);
+        }
+
+        .blade.elite {
+            background: var(--magenta);
+            box-shadow: 0 0 15px var(--magenta-glow);
+        }
+
+        .blade-1 { transform: rotate(0deg) translateX(5px); }
+        .blade-2 { transform: rotate(120deg) translateX(5px); }
+        .blade-3 { transform: rotate(240deg) translateX(5px); }
+
+        /* Blade Tooltip */
+        .blade-tooltip {
+            position: absolute;
+            background: var(--black-panel);
+            border: 1px solid var(--cyan);
+            padding: 0.8rem;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--white);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 100;
+            min-width: 200px;
+            box-shadow: 0 0 20px var(--cyan-glow);
+        }
+
+        .blade-wrapper:hover .blade-tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .blade-wrapper {
+            position: absolute;
+            cursor: pointer;
+        }
+
+        .tooltip-title {
+            color: var(--cyan);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .tooltip-req {
+            color: var(--gray);
+            line-height: 1.6;
+        }
 
         /* Flight Logs */
         .flight-logs-section { background: var(--black-panel); border: 1px solid rgba(0, 242, 255, 0.15); padding: 2.5rem; margin-bottom: 3rem; text-align: center; }
@@ -602,258 +819,34 @@
         .firebase-status.connected { border-color: var(--green); color: var(--green); }
         .firebase-status.error { border-color: var(--red); color: var(--red); }
 
-        /* SEDE SECTOR STYLES */
-        .sector-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        @media(min-width: 768px) {
-            .sector-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .sector-card {
-            background: rgba(0, 242, 255, 0.03);
-            border: 1px solid rgba(0, 242, 255, 0.2);
-            padding: 1.5rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .sector-card.alpha {
-            border-color: var(--cyan);
-            background: rgba(0, 242, 255, 0.05);
-        }
-
-        .sector-card.expansion {
-            border-color: var(--magenta);
-            background: rgba(255, 0, 85, 0.05);
-        }
-
-        .sector-card.arena {
-            border-color: var(--magenta);
-            background: rgba(255, 0, 85, 0.08);
-            grid-column: span 2;
-        }
-
-        .sector-title {
-            font-family: var(--font-mono);
-            font-size: 1rem;
-            color: var(--cyan);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .sector-card.expansion .sector-title {
-            color: var(--magenta);
-        }
-
-        .sector-card.arena .sector-title {
-            color: var(--magenta);
-            text-shadow: 0 0 10px var(--magenta-glow);
-        }
-
-        .sector-icon {
-            width: 24px;
-            height: 24px;
-        }
-
-        .sector-specs {
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            color: var(--gray);
-            margin: 1rem 0;
-        }
-
-        .sector-specs li {
-            margin-bottom: 0.5rem;
-        }
-
-        .sector-specs li::before {
-            content: '>> ';
-            color: var(--cyan);
-        }
-
-        .sector-card.expansion .sector-specs li::before {
-            color: var(--magenta);
-        }
-
-        .sector-card.arena .sector-specs li::before {
-            color: var(--magenta);
-        }
-
-        /* Blueprint Map */
-        .blueprint-map {
-            background: rgba(0, 242, 255, 0.02);
-            border: 1px solid rgba(0, 242, 255, 0.1);
-            padding: 2rem;
-            margin: 2rem 0;
-            text-align: center;
-            position: relative;
-        }
-
-        .blueprint-svg {
-            max-width: 100%;
-            height: auto;
-        }
-
-        /* Structure Tooltip */
-        .structure-group {
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .structure-group:hover circle,
-        .structure-group:hover line {
-            stroke: var(--magenta);
-            stroke-width: 2.5;
-            filter: drop-shadow(0 0 5px var(--magenta-glow));
-        }
-
-        .structure-tooltip {
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-            position: absolute;
-            background: rgba(2, 4, 5, 0.95);
-            border: 1px solid var(--magenta);
-            padding: 1rem;
-            min-width: 200px;
-            text-align: center;
-            z-index: 10;
-            box-shadow: 0 0 20px rgba(255, 0, 85, 0.3);
-        }
-
-        .structure-group:hover .structure-tooltip {
-            opacity: 1;
-        }
-
-        .tooltip-question {
-            font-size: 2rem;
-            color: var(--magenta);
-            font-weight: 900;
-            margin-bottom: 0.5rem;
-            font-family: var(--font-display);
-        }
-
-        .tooltip-dims {
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            color: var(--cyan);
-            margin-bottom: 0.5rem;
-        }
-
-        .tooltip-cube {
-            width: 60px;
-            height: 60px;
-            border: 1px solid var(--cyan);
-            margin: 0 auto;
-            position: relative;
-            transform: rotateX(20deg) rotateY(-20deg);
-        }
-
-        .tooltip-cube::before {
-            content: '';
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            width: 40px;
-            height: 40px;
-            border: 1px solid var(--cyan);
-        }
-
-        /* Philosophy Box */
-        .philosophy-box {
-            background: rgba(255, 0, 85, 0.05);
-            border: 1px solid var(--magenta);
-            padding: 2rem;
-            margin: 2rem 0;
-            text-align: center;
-        }
-
-        .philosophy-title {
-            font-family: var(--font-mono);
-            font-size: 1rem;
-            color: var(--magenta);
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-        }
-
-        /* Ranks System */
-        .ranks-system {
-            background: rgba(0, 255, 136, 0.05);
-            border: 1px solid var(--green);
-            padding: 2rem;
-            margin: 2rem 0;
-        }
-
-        .ranks-title {
-            font-family: var(--font-mono);
-            font-size: 0.9rem;
-            color: var(--green);
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            text-align: center;
-        }
-
-        .ranks-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1rem;
-        }
-
-        @media(min-width: 768px) {
-            .ranks-grid {
-                grid-template-columns: 1fr 1fr 1fr;
-            }
-        }
-
-        .rank-item {
-            text-align: center;
-            padding: 1rem;
-            background: rgba(0, 255, 136, 0.03);
-            border: 1px solid rgba(0, 255, 136, 0.2);
-        }
-
-        .rank-icon {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .rank-name {
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            color: var(--green);
-            margin-bottom: 0.5rem;
-        }
-
-        .rank-desc {
-            font-family: var(--font-mono);
-            font-size: 0.7rem;
-            color: var(--gray);
-        }
-
         /* Responsive */
         @media(max-width: 768px) {
             .header-nav { gap: 1rem; }
             .nav-icon-wrapper svg { width: 20px; height: 20px; }
             .icon-nav-row { gap: 2rem; }
             .container { padding: 0 1.5rem; }
-            .user-dashboard { flex-direction: column; align-items: flex-start; }
-            .xp-bar-container { width: 100%; }
+            .user-dashboard { 
+                grid-template-columns: 1fr; 
+                gap: 1.5rem;
+            }
+            .status-badge { justify-self: start; }
             .counter-main { flex-direction: column; gap: 1rem; }
             .counter-number { font-size: 2.5rem; }
-            .sector-card.arena {
-                grid-column: span 1;
+            .drone-x-frame {
+                width: 350px;
+                height: 350px;
             }
+            .drone-arm {
+                width: 140px;
+            }
+            .motor {
+                width: 60px;
+                height: 60px;
+            }
+            .motor.motor-1 { top: 35px; left: 145px; }
+            .motor.motor-2 { top: 35px; right: 145px; }
+            .motor.motor-3 { bottom: 35px; left: 145px; }
+            .motor.motor-4 { bottom: 35px; right: 145px; }
         }
     </style>
 </head>
@@ -863,7 +856,7 @@
     <div id="drone-trails-container"></div>
     <div class="firebase-status" id="firebaseStatus">MAINFRAME: INICIALIZANDO...</div>
 
-    <!-- XP Popup - Observador Cotilla -->
+    <!-- XP Popup -->
     <div class="xp-popup-overlay" id="xpPopupOverlay"></div>
     <div class="xp-popup" id="xpPopup">
         <button class="modal-close" onclick="closeXpPopup()" style="position: absolute; top: 1rem; right: 1.5rem;">&times;</button>
@@ -914,21 +907,40 @@
             </div>
         </header>
 
-        <!-- User Dashboard -->
+        <!-- User Dashboard with PILOT_STATUS HUD -->
         <div class="user-dashboard">
             <div class="user-info" id="userInfo">
-                <div class="user-avatar"><svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="35" r="15" stroke="currentColor" stroke-width="2" fill="none"/><path d="M30 80C30 65 40 55 50 55C60 55 70 65 70 80" stroke="currentColor" stroke-width="2" fill="none"/></svg></div>
+                <div class="user-avatar">
+                    <svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="35" r="15" stroke="currentColor" stroke-width="2" fill="none"/><path d="M30 80C30 65 40 55 50 55C60 55 70 65 70 80" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+                </div>
                 <div class="user-details">
                     <h4 id="userName">INVITADO</h4>
                     <div class="user-level" id="userLevel">ACCESO RESTRINGIDO</div>
                     <div class="user-rank" id="userRank">--</div>
                 </div>
             </div>
+            
+            <!-- PILOT_STATUS HUD - SYNC BAR -->
+            <div class="pilot-status-hud">
+                <div class="pilot-status-title">
+                    <span>PILOT_STATUS // SYNC LEVEL</span>
+                    <span class="sync-level-badge" id="syncLevelBadge">SYNC 0%</span>
+                </div>
+                <div class="sync-bar-container">
+                    <div class="sync-bar-fill" id="syncBarFill" style="width: 0%;"></div>
+                </div>
+                <div class="sync-stats">
+                    <span id="syncVisits">VISITAS: 0</span>
+                    <span id="syncDays">DÍAS ACTIVO: 0</span>
+                </div>
+            </div>
+
             <div class="xp-bar-container">
                 <div class="xp-label"><span>EXPERIENCIA</span><span id="xpText">0 XP</span></div>
                 <div class="xp-bar"><div class="xp-fill" id="xpFill"></div></div>
                 <div class="level-display" id="levelDisplay">NIVEL 0</div>
             </div>
+
             <button class="status-badge" id="loginBtn" onclick="openLoginModal()">INVITADO / ACCESO RESTRINGIDO</button>
         </div>
 
@@ -958,6 +970,150 @@
                 </div>
             </section>
             <div class="cta-section"><p class="cta-subtitle">>> ESTE ES EL PRIMER PASO PARA DOMINAR EL AIRE <<</p></div>
+        </div>
+
+        <!-- Crew Page - SISTEMA_12_PALAS -->
+        <div id="crew-page" class="content-page">
+            <a href="#" class="back-button" onclick="showHome(); return false;"><svg viewBox="0 0 100 100" fill="none"><path d="M70 50L30 50M30 50L45 35M30 50L45 65" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>VOLVER AL INICIO</a>
+            <div class="content-grid">
+                <div class="hud-panel full-width">
+                    <h2 class="section-title">> SISTEMA_12_PALAS // DRONE_HUD</h2>
+                    
+                    <div class="terminal-text" style="margin-bottom: 2rem;">
+                        <p>Tu progreso en MODO 2 se visualiza como un cuadricóptero en configuración X. Cada motor representa un sector operativo con 3 palas de hélice.</p>
+                        <p style="margin-top: 0.5rem;">▸ <strong class="text-cyan">PALA DESBLOQUEADA:</strong> Se ilumina en cyan neón.</p>
+                        <p style="margin-top: 0.5rem;">▸ <strong class="text-magenta">PALA ÉLITE (3ª):</strong> Brillo magenta intenso - logro de alto nivel.</p>
+                        <p style="margin-top: 0.5rem;">▸ <strong class="text-green">MOTOR COMPLETO:</strong> Animación de rotación cuando las 3 palas están activas.</p>
+                    </div>
+
+                    <!-- DRONE HUD VISUALIZATION -->
+                    <div class="drone-hud-container">
+                        <div class="drone-x-frame">
+                            <!-- X Frame Arms -->
+                            <div class="drone-arm arm-1"></div>
+                            <div class="drone-arm arm-2"></div>
+                            <div class="drone-arm arm-3"></div>
+                            <div class="drone-arm arm-4"></div>
+
+                            <!-- MOTOR ALFA (Top-Left) - PLATAFORMAS -->
+                            <div class="motor motor-1" id="motor-alfa">
+                                <div class="propeller">
+                                    <div class="blade-wrapper blade-1-wrapper">
+                                        <div class="blade blade-1" data-skill="fpv"></div>
+                                        <div class="blade-tooltip">
+                                            <div class="tooltip-title">#FPV</div>
+                                            <div class="tooltip-req">Vuelo inmersivo sin asistencias<br>Requisito: 10h de vuelo</div>
+                                        </div>
+                                    </div>
+                                    <div class="blade-wrapper blade-2-wrapper">
+                                        <div class="blade blade-2" data-skill="estabilizado"></div>
+                                        <div class="blade-tooltip">
+                                            <div class="tooltip-title">#ESTABILIZADO</div>
+                                            <div class="tooltip-req">Sistemas inteligentes (DJI, Autel)<br>Requisito: 5h de vuelo GPS</div>
+                                        </div>
+                                    </div>
+                                    <div class="blade-wrapper blade-3-wrapper">
+                                        <div class="blade blade-3 elite" data-skill="sub250"></div>
+                                        <div class="blade-tooltip">
+                                            <div class="tooltip-title">#SUB250 <span style="color: var(--magenta);">[ÉLITE]</span></div>
+                                            <div class="tooltip-req">Micro drones &lt;250g<br>Requisito: Master en ambos + 20h</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="motor-label">ALFA // PLATAFORMAS</span>
+                            </div>
+
+                            <!-- MOTOR BRAVO (Top-Right) - VUELO -->
+                            <div class="motor motor-2" id="motor-bravo">
+                                <div class="propeller">
+                                    <div class="blade-wrapper blade-1-wrapper">
+                                        <div class="blade blade-1" data-skill="freestyle"></div>
+                                        <div class="blade-tooltip">
+                                            <div class="tooltip-title">#FREESTYLE</div>
+                                            <div class="tooltip-req">Acrobacia y fluidez<br>Requisito: 15h de freestyle</div>
+                                        </div>
+                                    </div>
+                                    <div class="blade-wrapper blade-2-wrapper">
+                                        <div class="blade blade-2" data-skill="racing"></div>
+                                        <div class="blade-tooltip">
+                                            <div class="tooltip-title">#RACING</div>
+                                            <div class="tooltip-req">Velocidad en circuito<br>Requisito: 10 carreras completadas</div>
+                                        </div>
+                                    </div>
+                                    <div class="blade-wrapper blade-3-wrapper">
+                                        <div class="blade blade-3 elite" data-skill="hardcore"></div>
+                                        <div class="blade-tooltip">
+                                            <div class="tooltip-title">#HARDCORE <span style="color: var(--magenta);">[ÉLITE]</span></div>
+                                            <div class="tooltip-req">Vuelo de alto riesgo<br>Requisito: 0 incidentes en 50h + validación</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="motor-label">BRAVO // VUELO</span>
+                            </div>
+
+                            <!-- MOTOR CHARLIE (Bottom-Left) - TALLER -->
+                            <div class="motor motor-3" id="motor-charlie">
+                                <div class="propeller">
+                                    <div class="blade-wrapper blade-1-wrapper">
+                                        <div class="blade blade-1" data-skill="build"></div>
+                                        <div class="blade-tooltip">
+                                            <div class="tooltip-title">#BUILD</div>
+                                            <div class="tooltip-req">Montaje desde cero<br>Requisito: 3 builds completados</div>
+                                        </div>
+                                    </div>
+                                    <div class="blade-wrapper blade-2-wrapper">
+                                        <div class="blade blade-2" data-skill="tuning"></div>
+                                        <div class="blade-tooltip">
+                                            <div class="tooltip-title">#TUNING</div>
+                                            <div class="tooltip-req">Ajuste de PIDs, Betaflight<br>Requisito: 5 configuraciones</div>
+                                        </div>
+                                    </div>
+                                    <div class="blade-wrapper blade-3-wrapper">
+                                        <div class="blade blade-3 elite" data-skill="master-tech"></div>
+                                        <div class="blade-tooltip">
+                                            <div class="tooltip-title">#MASTER_TECH <span style="color: var(--magenta);">[ÉLITE]</span></div>
+                                            <div class="tooltip-req">Maestría en electrónica<br>Requisito: I+D + mentoría 5+ cadetes</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="motor-label">CHARLIE // TALLER</span>
+                            </div>
+
+                            <!-- MOTOR DELTA (Bottom-Right) - ESTATUS -->
+                            <div class="motor motor-4" id="motor-delta">
+                                <div class="propeller">
+                                    <div class="blade-wrapper blade-1-wrapper">
+                                        <div class="blade blade-1" data-skill="postpro"></div>
+                                        <div class="blade-tooltip">
+                                            <div class="tooltip-title">#POSTPRO</div>
+                                            <div class="tooltip-req">Edición y etalonaje<br>Requisito: 10 vídeos editados</div>
+                                        </div>
+                                    </div>
+                                    <div class="blade-wrapper blade-2-wrapper">
+                                        <div class="blade blade-2" data-skill="mentor"></div>
+                                        <div class="blade-tooltip">
+                                            <div class="tooltip-title">#MENTOR</div>
+                                            <div class="tooltip-req">Enseñanza a cadetes<br>Requisito: 3 cadetes formados</div>
+                                        </div>
+                                    </div>
+                                    <div class="blade-wrapper blade-3-wrapper">
+                                        <div class="blade blade-3 elite" data-skill="pro-operator"></div>
+                                        <div class="blade-tooltip">
+                                            <div class="tooltip-title">#PRO_OPERATOR <span style="color: var(--magenta);">[ÉLITE]</span></div>
+                                            <div class="tooltip-req">Actividad económica UAS<br>Requisito: Facturas + 100h + 0 incidentes</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="motor-label">DELTA // ESTATUS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="terminal-text" style="text-align: center; margin-top: 2rem;">
+                        <p class="text-cyan">>> HAZ HOVER SOBRE CADA PALA PARA VER REQUISITOS DE DESBLOQUEO <<</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Protocolo Page -->
@@ -1137,7 +1293,7 @@
             </div>
         </div>
 
-        <!-- Legal Page - ACTUALIZADO CON GOBERNANZA -->
+        <!-- Legal Page -->
         <div id="legal-page" class="content-page">
             <a href="#" class="back-button" onclick="showHome(); return false;"><svg viewBox="0 0 100 100" fill="none"><path d="M70 50L30 50M30 50L45 35M30 50L45 65" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>VOLVER AL INICIO</a>
             <div class="content-grid">
@@ -1167,7 +1323,6 @@
                                 <span style="color: var(--white);">La recaudación de los 40 Socios Fundadores, junto con futuras subvenciones, está destinada estratégicamente a la Fase 2: la redacción y tramitación de la documentación aeronáutica oficial (SORA, Manuales de Operaciones, etc.) necesaria para la apertura total.</span>
                             </li>
 
-                            <!-- NUEVA SECCIÓN: GOBERNANZA Y NORMATIVA INTERNA -->
                             <li style="margin-bottom: 1rem;">
                                 <span class="text-magenta" style="font-weight: 700; font-size: 1.1rem; display: block; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px dashed rgba(255, 0, 85, 0.3);">> GOBERNANZA Y NORMATIVA INTERNA:</span>
                                 
@@ -1195,14 +1350,16 @@
             </div>
         </div>
 
-        <!-- Crew Page -->
-        <div id="crew-page" class="content-page">
-            <a href="#" class="back-button" onclick="showHome(); return false;"><svg viewBox="0 0 100 100" fill="none"><path d="M70 50L30 50M30 50L45 35M30 50L45 65" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>VOLVER AL INICIO</a>
-            <div class="content-grid"><div class="hud-panel full-width"><h2 class="section-title">> SISTEMA_12_ANILLOS</h2><div class="rings-container"><div class="rings-grid"><div class="ring-group"><h3 class="ring-group-title">[ ALFA: PLATAFORMAS ]</h3><div class="ring-item"><div class="ring-name"><span>#FPV</span></div></div><div class="ring-item"><div class="ring-name"><span>#ESTABILIZADO</span></div></div></div><div class="ring-group"><h3 class="ring-group-title">[ BRAVO: VUELO ]</h3><div class="ring-item"><div class="ring-name"><span>#FREESTYLE</span></div></div><div class="ring-item"><div class="ring-name"><span>#RACING</span></div></div><div class="ring-item"><div class="ring-name"><span>#CINEMATIC</span></div></div></div><div class="ring-group"><h3 class="ring-group-title">[ CHARLIE: TALLER ]</h3><div class="ring-item"><div class="ring-name"><span>#BUILD</span></div></div><div class="ring-item"><div class="ring-name"><span>#TUNING</span></div></div></div><div class="ring-group"><h3 class="ring-group-title">[ DELTA: CREW ]</h3><div class="ring-item"><div class="ring-name"><span>#POSTPRO</span></div></div><div class="ring-item"><div class="ring-name"><span>#MENTOR</span></div></div></div></div></div></div></div>
-        </div>
-
         <!-- Flight Logs -->
-        <div class="flight-logs-section"><h3 class="logs-title">> TERMINAL_DE_ACTIVIDAD</h3><p class="logs-description">Próximamente: Sincroniza tus logros para acumular XP</p><div class="hashtags"><span class="hashtag">#MODO2_INCURSOR</span><span class="hashtag">#MODO2_ARQUITECTO</span><span class="hashtag">#MODO2_ARAGON</span></div></div>
+        <div class="flight-logs-section">
+            <h3 class="logs-title">> TERMINAL_DE_ACTIVIDAD</h3>
+            <p class="logs-description">Próximamente: Sincroniza tus logs de vuelo con los hashtags de tu rama para acumular XP y subir de nivel en el sistema.</p>
+            <div class="hashtags">
+                <span class="hashtag">#MODO2_INCURSOR</span>
+                <span class="hashtag">#MODO2_ARQUITECTO</span>
+                <span class="hashtag">#MODO2_ARAGON</span>
+            </div>
+        </div>
 
         <!-- Footer -->
         <footer>
@@ -1315,15 +1472,19 @@
             if (el) { el.textContent = text; el.className = 'firebase-status ' + status; }
         }
 
-        // XP System
+        // XP & SYNC System
         let xp = parseInt(localStorage.getItem('modo2_xp')) || 0;
+        let syncLevel = parseInt(localStorage.getItem('modo2_sync')) || 0;
+        let visitCount = parseInt(localStorage.getItem('modo2_visits')) || 0;
         let level = 0;
         let currentUserData = null;
-        let visitCount = parseInt(localStorage.getItem('modo2_visits')) || 0;
         let xpPopupShown = localStorage.getItem('modo2_xp_popup_shown') || 'false';
 
         visitCount++;
         localStorage.setItem('modo2_visits', visitCount);
+
+        syncLevel = Math.min(visitCount, 100);
+        localStorage.setItem('modo2_sync', syncLevel);
 
         if (xp < 1000) {
             xp = Math.min(xp + 1, 1000);
@@ -1368,6 +1529,16 @@
             if (xp >= 1000 && xpPopupShown !== 'true') {
                 showXpPopup();
             }
+        }
+
+        function updateSyncDisplay() {
+            const syncBarFill = document.getElementById('syncBarFill');
+            const syncLevelBadge = document.getElementById('syncLevelBadge');
+            const syncVisits = document.getElementById('syncVisits');
+            
+            if (syncBarFill) syncBarFill.style.width = syncLevel + '%';
+            if (syncLevelBadge) syncLevelBadge.textContent = 'SYNC ' + syncLevel + '%';
+            if (syncVisits) syncVisits.textContent = 'VISITAS: ' + visitCount;
         }
 
         function showXpPopup() {
@@ -1569,6 +1740,7 @@
 
         window.addEventListener('load', () => {
             updateXPDisplay(xp);
+            updateSyncDisplay();
             setTimeout(startDroneTrails, 1000);
             
             document.getElementById('registerModal').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
