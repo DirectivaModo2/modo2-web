@@ -597,6 +597,12 @@
             background: rgba(255, 0, 85, 0.05);
         }
 
+        .sector-card.arena {
+            border-color: var(--cyan);
+            background: rgba(0, 242, 255, 0.08);
+            grid-column: span 2;
+        }
+
         .sector-title {
             font-family: var(--font-mono);
             font-size: 1rem;
@@ -609,6 +615,11 @@
 
         .sector-card.expansion .sector-title {
             color: var(--magenta);
+        }
+
+        .sector-card.arena .sector-title {
+            color: var(--magenta);
+            text-shadow: 0 0 10px var(--magenta-glow);
         }
 
         .sector-icon {
@@ -633,6 +644,10 @@
         }
 
         .sector-card.expansion .sector-specs li::before {
+            color: var(--magenta);
+        }
+
+        .sector-card.arena .sector-specs li::before {
             color: var(--magenta);
         }
 
@@ -733,6 +748,9 @@
             .xp-bar-container { width: 100%; }
             .counter-main { flex-direction: column; gap: 1rem; }
             .counter-number { font-size: 2.5rem; }
+            .sector-card.arena {
+                grid-column: span 1;
+            }
         }
     </style>
 </head>
@@ -940,7 +958,7 @@
             </div>
         </div>
 
-        <!-- Infraestructura Page - ACTUALIZADO -->
+        <!-- Infraestructura Page - ACTUALIZADO CON MAPA TÁCTICO -->
         <div id="infraestructura-page" class="content-page">
             <a href="#" class="back-button" onclick="showHome(); return false;"><svg viewBox="0 0 100 100" fill="none"><path d="M70 50L30 50M30 50L45 35M30 50L45 65" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>VOLVER AL INICIO</a>
             <div class="content-grid">
@@ -952,93 +970,125 @@
                         <p><strong class="text-cyan">Ubicación estratégica:</strong> Sector Zaragoza. El centro neurálgico de MODO 2 no es un club estático, es una zona de despliegue dinámico para operaciones UAS bajo <strong class="text-cyan">Art. 16</strong>.</p>
                     </div>
 
-                    <!-- BLUEPRINT MAP - ACTUALIZADO -->
+                    <!-- BLUEPRINT MAP - MAPA TÁCTICO PROFESIONAL -->
                     <div class="blueprint-map">
-                        <svg class="blueprint-svg" viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="blueprint-svg" viewBox="0 0 900 550" xmlns="http://www.w3.org/2000/svg">
                             <!-- Background Grid -->
                             <defs>
                                 <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
-                                    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(0, 242, 255, 0.1)" stroke-width="0.5"/>
+                                    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(0, 242, 255, 0.08)" stroke-width="0.5"/>
                                 </pattern>
                             </defs>
-                            <rect width="800" height="450" fill="url(#grid)"/>
+                            <rect width="900" height="550" fill="url(#grid)"/>
                             
-                            <!-- ZONA ALPHA (Covered Area - 15m²) - Left side SMALLER -->
-                            <rect x="50" y="100" width="120" height="100" fill="rgba(0, 242, 255, 0.15)" stroke="#00f2ff" stroke-width="2" stroke-dasharray="5,5"/>
-                            <text x="110" y="120" text-anchor="middle" fill="#00f2ff" font-family="Share Tech Mono" font-size="11">ZONA ALPHA</text>
-                            <text x="110" y="135" text-anchor="middle" fill="#00f2ff" font-family="Share Tech Mono" font-size="9">ÁREA 15 m²</text>
+                            <!-- PERÍMETRO DE CONTINGENCIA (Outer dashed line) -->
+                            <rect x="30" y="30" width="840" height="490" fill="none" stroke="rgba(255, 255, 255, 0.2)" stroke-width="1" stroke-dasharray="8,4"/>
+                            <text x="450" y="50" text-anchor="middle" fill="rgba(255, 255, 255, 0.4)" font-family="Share Tech Mono" font-size="9">PERÍMETRO DE CONTINGENCIA / SEGURIDAD</text>
                             
-                            <!-- Building icon -->
-                            <rect x="60" y="150" width="50" height="40" fill="rgba(0, 242, 255, 0.25)" stroke="#00f2ff" stroke-width="1.5"/>
-                            <line x1="65" y1="160" x2="105" y2="160" stroke="#00f2ff" stroke-width="1"/>
-                            <line x1="65" y1="170" x2="105" y2="170" stroke="#00f2ff" stroke-width="1"/>
-                            <line x1="65" y1="180" x2="105" y2="180" stroke="#00f2ff" stroke-width="1"/>
+                            <!-- ARENA DE VUELO (>2000m²) - LARGE Cyan area surrounding everything -->
+                            <ellipse cx="450" cy="280" rx="380" ry="220" fill="rgba(0, 242, 255, 0.08)" stroke="#00f2ff" stroke-width="1.5" stroke-dasharray="5,3"/>
+                            <text x="450" y="80" text-anchor="middle" fill="#ff0055" font-family="Share Tech Mono" font-size="14" style="text-shadow: 0 0 10px rgba(255, 0, 85, 0.4);">ARENA DE VUELO &gt; 2000 m²</text>
                             
-                            <!-- Tool icon -->
-                            <circle cx="140" cy="170" r="10" fill="none" stroke="#00f2ff" stroke-width="1.5"/>
-                            <line x1="140" y1="163" x2="140" y2="177" stroke="#00f2ff" stroke-width="1.5"/>
-                            <line x1="133" y1="170" x2="147" y2="170" stroke="#00f2ff" stroke-width="1.5"/>
+                            <!-- 8 ESTRUCTURAS FIJAS (⊕ symbols) distributed tactically -->
+                            <!-- Structure 1 -->
+                            <g transform="translate(200, 180)">
+                                <circle cx="0" cy="0" r="12" fill="none" stroke="#00f2ff" stroke-width="1.5"/>
+                                <line x1="-12" y1="0" x2="12" y2="0" stroke="#00f2ff" stroke-width="1.5"/>
+                                <line x1="0" y1="-12" x2="0" y2="12" stroke="#00f2ff" stroke-width="1.5"/>
+                            </g>
+                            <!-- Structure 2 -->
+                            <g transform="translate(350, 150)">
+                                <circle cx="0" cy="0" r="12" fill="none" stroke="#00f2ff" stroke-width="1.5"/>
+                                <line x1="-12" y1="0" x2="12" y2="0" stroke="#00f2ff" stroke-width="1.5"/>
+                                <line x1="0" y1="-12" x2="0" y2="12" stroke="#00f2ff" stroke-width="1.5"/>
+                            </g>
+                            <!-- Structure 3 -->
+                            <g transform="translate(550" y="160)">
+                                <circle cx="0" cy="0" r="12" fill="none" stroke="#00f2ff" stroke-width="1.5"/>
+                                <line x1="-12" y1="0" x2="12" y2="0" stroke="#00f2ff" stroke-width="1.5"/>
+                                <line x1="0" y1="-12" x2="0" y2="12" stroke="#00f2ff" stroke-width="1.5"/>
+                            </g>
+                            <!-- Structure 4 -->
+                            <g transform="translate(700, 200)">
+                                <circle cx="0" cy="0" r="12" fill="none" stroke="#00f2ff" stroke-width="1.5"/>
+                                <line x1="-12" y1="0" x2="12" y2="0" stroke="#00f2ff" stroke-width="1.5"/>
+                                <line x1="0" y1="-12" x2="0" y2="12" stroke="#00f2ff" stroke-width="1.5"/>
+                            </g>
+                            <!-- Structure 5 -->
+                            <g transform="translate(250, 350)">
+                                <circle cx="0" cy="0" r="12" fill="none" stroke="#00f2ff" stroke-width="1.5"/>
+                                <line x1="-12" y1="0" x2="12" y2="0" stroke="#00f2ff" stroke-width="1.5"/>
+                                <line x1="0" y1="-12" x2="0" y2="12" stroke="#00f2ff" stroke-width="1.5"/>
+                            </g>
+                            <!-- Structure 6 -->
+                            <g transform="translate(400, 380)">
+                                <circle cx="0" cy="0" r="12" fill="none" stroke="#00f2ff" stroke-width="1.5"/>
+                                <line x1="-12" y1="0" x2="12" y2="0" stroke="#00f2ff" stroke-width="1.5"/>
+                                <line x1="0" y1="-12" x2="0" y2="12" stroke="#00f2ff" stroke-width="1.5"/>
+                            </g>
+                            <!-- Structure 7 -->
+                            <g transform="translate(580, 360)">
+                                <circle cx="0" cy="0" r="12" fill="none" stroke="#00f2ff" stroke-width="1.5"/>
+                                <line x1="-12" y1="0" x2="12" y2="0" stroke="#00f2ff" stroke-width="1.5"/>
+                                <line x1="0" y1="-12" x2="0" y2="12" stroke="#00f2ff" stroke-width="1.5"/>
+                            </g>
+                            <!-- Structure 8 -->
+                            <g transform="translate(680, 320)">
+                                <circle cx="0" cy="0" r="12" fill="none" stroke="#00f2ff" stroke-width="1.5"/>
+                                <line x1="-12" y1="0" x2="12" y2="0" stroke="#00f2ff" stroke-width="1.5"/>
+                                <line x1="0" y1="-12" x2="0" y2="12" stroke="#00f2ff" stroke-width="1.5"/>
+                            </g>
                             
-                            <!-- Dimension line for Alpha -->
-                            <line x1="50" y1="210" x2="170" y2="210" stroke="#00f2ff" stroke-width="1"/>
-                            <line x1="50" y1="205" x2="50" y2="215" stroke="#00f2ff" stroke-width="1"/>
-                            <line x1="170" y1="205" x2="170" y2="215" stroke="#00f2ff" stroke-width="1"/>
-                            <text x="110" y="225" text-anchor="middle" fill="#00f2ff" font-family="Share Tech Mono" font-size="8">15 m²</text>
+                            <!-- ZONA ALPHA (15m²) - SMALL Blue area with tool icon -->
+                            <rect x="380" y="240" width="80" height="60" fill="rgba(0, 242, 255, 0.15)" stroke="#00f2ff" stroke-width="2" stroke-dasharray="5,5"/>
+                            <text x="420" y="260" text-anchor="middle" fill="#00f2ff" font-family="Share Tech Mono" font-size="10">ZONA ALPHA</text>
+                            <text x="420" y="275" text-anchor="middle" fill="#00f2ff" font-family="Share Tech Mono" font-size="8">ÁREA 15 m²</text>
                             
-                            <!-- SECTOR DE EXPANSIÓN (Open Area - 300m²) - Right side LARGER -->
-                            <polygon points="220,100 750,100 750,350 220,350" fill="rgba(255, 0, 85, 0.1)" stroke="#ff0055" stroke-width="2" stroke-dasharray="5,5"/>
-                            <text x="485" y="120" text-anchor="middle" fill="#ff0055" font-family="Share Tech Mono" font-size="12">SECTOR EXPANSIÓN</text>
-                            <text x="485" y="135" text-anchor="middle" fill="#ff0055" font-family="Share Tech Mono" font-size="9">ZONA DESCUBIERTA</text>
+                            <!-- Tool/Wrench icon -->
+                            <g transform="translate(420, 295)">
+                                <path d="M-8,-6 L8,-6 L10,-4 L10,4 L8,6 L-8,6 L-10,4 L-10,-4 Z" fill="none" stroke="#00f2ff" stroke-width="1.5"/>
+                                <circle cx="0" cy="-8" r="4" fill="none" stroke="#00f2ff" stroke-width="1.5"/>
+                            </g>
                             
-                            <!-- Dimension line for Expansion (full width) -->
-                            <line x1="220" y1="370" x2="750" y2="370" stroke="#ff0055" stroke-width="1.5"/>
-                            <line x1="220" y1="365" x2="220" y2="375" stroke="#ff0055" stroke-width="1.5"/>
-                            <line x1="750" y1="365" x2="750" y2="375" stroke="#ff0055" stroke-width="1.5"/>
-                            <text x="485" y="390" text-anchor="middle" fill="#ff0055" font-family="Share Tech Mono" font-size="10">ÁREA APROX. 300 m²</text>
+                            <!-- SECTOR DE EXPANSIÓN (300m²) - Red/Grey area -->
+                            <rect x="550" y="240" width="180" height="120" fill="rgba(255, 0, 85, 0.1)" stroke="#ff0055" stroke-width="2" stroke-dasharray="5,5"/>
+                            <text x="640" y="260" text-anchor="middle" fill="#ff0055" font-family="Share Tech Mono" font-size="10">SECTOR EXPANSIÓN</text>
                             
-                            <!-- Gravel texture dots -->
-                            <circle cx="300" cy="200" r="1.5" fill="#ff0055" opacity="0.4"/>
-                            <circle cx="350" cy="220" r="1.5" fill="#ff0055" opacity="0.4"/>
-                            <circle cx="400" cy="180" r="1.5" fill="#ff0055" opacity="0.4"/>
-                            <circle cx="450" cy="240" r="1.5" fill="#ff0055" opacity="0.4"/>
-                            <circle cx="500" cy="200" r="1.5" fill="#ff0055" opacity="0.4"/>
-                            <circle cx="550" cy="260" r="1.5" fill="#ff0055" opacity="0.4"/>
-                            <circle cx="600" cy="220" r="1.5" fill="#ff0055" opacity="0.4"/>
-                            <circle cx="650" cy="280" r="1.5" fill="#ff0055" opacity="0.4"/>
-                            <circle cx="700" cy="240" r="1.5" fill="#ff0055" opacity="0.4"/>
-                            <circle cx="320" cy="280" r="1.5" fill="#ff0055" opacity="0.4"/>
-                            <circle cx="380" cy="300" r="1.5" fill="#ff0055" opacity="0.4"/>
-                            <circle cx="440" cy="260" r="1.5" fill="#ff0055" opacity="0.4"/>
-                            <circle cx="520" cy="320" r="1.5" fill="#ff0055" opacity="0.4"/>
-                            <circle cx="580" cy="280" r="1.5" fill="#ff0055" opacity="0.4"/>
-                            <circle cx="640" cy="340" r="1.5" fill="#ff0055" opacity="0.4"/>
+                            <!-- Dimension line for Expansion -->
+                            <line x1="550" y1="370" x2="730" y2="370" stroke="#ff0055" stroke-width="1.5"/>
+                            <line x1="550" y1="365" x2="550" y2="375" stroke="#ff0055" stroke-width="1.5"/>
+                            <line x1="730" y1="365" x2="730" y2="375" stroke="#ff0055" stroke-width="1.5"/>
+                            <text x="640" y="388" text-anchor="middle" fill="#ff0055" font-family="Share Tech Mono" font-size="9">ZONA LOGÍSTICA 300 m²</text>
                             
-                            <!-- Container/Logistics icon -->
-                            <rect x="680" y="150" width="50" height="35" fill="rgba(255, 0, 85, 0.2)" stroke="#ff0055" stroke-width="1.5"/>
-                            <text x="705" y="170" text-anchor="middle" fill="#ff0055" font-family="Share Tech Mono" font-size="7">CONT.</text>
+                            <!-- Container icon -->
+                            <rect x="670" y="280" width="40" height="25" fill="rgba(255, 0, 85, 0.2)" stroke="#ff0055" stroke-width="1.5"/>
+                            <text x="690" y="295" text-anchor="middle" fill="#ff0055" font-family="Share Tech Mono" font-size="6">CONT.</text>
                             
-                            <!-- Warning icon - NO FLY ZONE -->
-                            <circle cx="300" cy="300" r="20" fill="none" stroke="#ff0055" stroke-width="1.5" stroke-dasharray="3,3"/>
-                            <text x="300" y="305" text-anchor="middle" fill="#ff0055" font-family="Share Tech Mono" font-size="7">NO FLY</text>
-                            
-                            <!-- Boundary line between zones -->
-                            <line x1="220" y1="100" x2="220" y2="350" stroke="rgba(255, 255, 255, 0.3)" stroke-width="1.5" stroke-dasharray="3,3"/>
+                            <!-- NO FLY warning in expansion zone -->
+                            <circle cx="600" cy="320" r="18" fill="none" stroke="#ff0055" stroke-width="1.5" stroke-dasharray="3,3"/>
+                            <text x="600" y="324" text-anchor="middle" fill="#ff0055" font-family="Share Tech Mono" font-size="6">NO FLY</text>
                             
                             <!-- Scale indicator -->
-                            <line x1="50" y1="410" x2="100" y2="410" stroke="#00f2ff" stroke-width="2"/>
-                            <line x1="50" y1="405" x2="50" y2="415" stroke="#00f2ff" stroke-width="2"/>
-                            <line x1="100" y1="405" x2="100" y2="415" stroke="#00f2ff" stroke-width="2"/>
-                            <text x="75" y="425" text-anchor="middle" fill="#00f2ff" font-family="Share Tech Mono" font-size="8">5M</text>
+                            <line x1="50" y1="500" x2="100" y2="500" stroke="#00f2ff" stroke-width="2"/>
+                            <line x1="50" y1="495" x2="50" y2="505" stroke="#00f2ff" stroke-width="2"/>
+                            <line x1="100" y1="495" x2="100" y2="505" stroke="#00f2ff" stroke-width="2"/>
+                            <text x="75" y="518" text-anchor="middle" fill="#00f2ff" font-family="Share Tech Mono" font-size="8">10M</text>
                             
                             <!-- North arrow -->
-                            <line x1="750" y1="50" x2="750" y2="30" stroke="#00f2ff" stroke-width="2"/>
-                            <polygon points="750,30 745,40 755,40" fill="#00f2ff"/>
-                            <text x="750" y="65" text-anchor="middle" fill="#00f2ff" font-family="Share Tech Mono" font-size="9">N</text>
+                            <line x1="850" y1="60" x2="850" y2="40" stroke="#00f2ff" stroke-width="2"/>
+                            <polygon points="850,40 845,50 855,50" fill="#00f2ff"/>
+                            <text x="850" y="75" text-anchor="middle" fill="#00f2ff" font-family="Share Tech Mono" font-size="9">N</text>
                             
-                            <!-- Heat warning -->
-                            <text x="485" y="440" text-anchor="middle" fill="#ff0055" font-family="Share Tech Mono" font-size="8">⚠ SUPERFICIE GRAVA - ZONA HOSTIL CONTROLADA</text>
+                            <!-- Legend -->
+                            <g transform="translate(50, 420)">
+                                <text x="0" y="0" fill="rgba(255, 255, 255, 0.5)" font-family="Share Tech Mono" font-size="8">LEYENDA:</text>
+                                <circle cx="0" cy="15" r="5" fill="none" stroke="#00f2ff" stroke-width="1.5"/>
+                                <line x1="-5" y1="15" x2="5" y2="15" stroke="#00f2ff" stroke-width="1.5"/>
+                                <line x1="0" y1="10" x2="0" y2="20" stroke="#00f2ff" stroke-width="1.5"/>
+                                <text x="15" y="18" fill="rgba(255, 255, 255, 0.5)" font-family="Share Tech Mono" font-size="7">ESTRUCTURA FIJA</text>
+                            </g>
                         </svg>
-                        <p class="mono" style="margin-top: 1rem; color: var(--gray);">> PLANO TÉCNICO - SEDE ZARAGOZA [ESCALA 1:500]</p>
+                        <p class="mono" style="margin-top: 1rem; color: var(--gray);">> PLANO TÁCTICO - SEDE ZARAGOZA [USO EXCLUSIVO CREW]</p>
                     </div>
 
                     <!-- SECTORES - ACTUALIZADO -->
@@ -1047,14 +1097,13 @@
                         <div class="sector-card alpha">
                             <h3 class="sector-title">
                                 <svg class="sector-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M3 3h18v18H3zM3 9h18M9 21V9"/>
+                                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
                                 </svg>
                                 ZONA ALPHA [15 m²]
                             </h3>
                             <ul class="sector-specs">
-                                <li><strong class="text-magenta">SEGURIDAD OPERACIONAL:</strong> Zona diseñada para el resguardo de integridad de socios y equipos críticos</li>
-                                <li><strong>Función:</strong> Centro técnico de mantenimiento, chequeo de sistemas y taller de precisión</li>
-                                <li>Optimización para sombra y protección de equipos críticos</li>
+                                <li><strong class="text-magenta">SEGURIDAD OPERACIONAL:</strong> Optimizada para el resguardo de integridad de socios y equipos críticos</li>
+                                <li><strong>Función:</strong> Centro técnico de mantenimiento y chequeo de sistemas</li>
                                 <li>Laboratorio Técnico y de Configuración</li>
                             </ul>
                         </div>
@@ -1063,21 +1112,39 @@
                         <div class="sector-card expansion">
                             <h3 class="sector-title">
                                 <svg class="sector-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <path d="M12 2a15 15 0 0 1 0 20M2 12h20"/>
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                    <polyline points="9 22 9 12 15 12 15 22"/>
                                 </svg>
                                 SECTOR EXPANSIÓN [300 m²]
                             </h3>
                             <ul class="sector-specs">
-                                <li><strong class="text-magenta">CAPACIDAD OPERATIVA:</strong> Aforo optimizado para 150 operativos en eventos dinámicos, garantizando corredores de <strong class="text-magenta">SEGURIDAD</strong> y logística</li>
-                                <li><strong>Superficie:</strong> Terreno técnico de grava (preparado para drenaje y estabilidad de estructuras)</li>
-                                <li><strong>Infraestructura Logística:</strong> Nodo para eventos, stands de partners, contenedor multiusos (Almacén/Bar/Tienda) y servicios sanitarios</li>
-                                <li><strong class="text-red">RESTRICCIÓN CRÍTICA:</strong> Zona exclusiva de convivencia y logística. Prohibido despegue, aterrizaje o pilotaje desde este sector para garantizar la <strong class="text-magenta">SEGURIDAD</strong> de la <strong class="text-magenta">CREW</strong> no pilotando</li>
+                                <li><strong>Superficie:</strong> Suelo técnico de grava</li>
+                                <li><strong class="text-magenta">CAPACIDAD:</strong> 150 operativos en eventos</li>
+                                <li><strong>Infraestructura:</strong> Espacio para stands, contenedor multiusos (Almacén/Bar) y servicios</li>
+                                <li><strong class="text-red">NOTA:</strong> Prohibido el despegue/vuelo desde aquí</li>
+                            </ul>
+                        </div>
+
+                        <!-- ARENA DE VUELO -->
+                        <div class="sector-card arena">
+                            <h3 class="sector-title">
+                                <svg class="sector-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+                                    <path d="M2 12h20"/>
+                                </svg>
+                                <span class="text-magenta" style="text-shadow: 0 0 10px var(--magenta-glow);">ARENA DE VUELO</span> [&gt; 2000 m²]
+                            </h3>
+                            <ul class="sector-specs">
+                                <li><strong class="text-magenta">ESPACIO SEGREGADO:</strong> Zona exclusiva para operaciones <strong class="text-magenta">FPV</strong></li>
+                                <li><strong>Infraestructura:</strong> 8 estructuras fijas de alta visibilidad para entrenamiento avanzado y competición</li>
+                                <li><strong>Seguridad:</strong> Perímetro delimitado con líneas de visión claras</li>
+                                <li><strong>Capacidad:</strong> Múltiples pilotos operando simultáneamente con separación táctica</li>
                             </ul>
                         </div>
                     </div>
 
-                    <!-- FILOSOFÍA CREW - ACTUALIZADO -->
+                    <!-- FILOSOFÍA CREW -->
                     <div class="philosophy-box">
                         <h3 class="philosophy-title">⚡ MANIFIESTO <span class="nodo-zero">NODO 0</span></h3>
                         <p class="terminal-text">
