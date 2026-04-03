@@ -20,7 +20,9 @@
 --magenta: #ff0055;
 --magenta-glow: rgba(255, 0, 85, 0.4);
 --amber: #ffb800;
+--amber-glow: rgba(255, 184, 0, 0.4);
 --green: #00ff88;
+--green-glow: rgba(0, 255, 136, 0.4);
 --black: #020405;
 --black-panel: #050a0c;
 --white: #e0e6ed;
@@ -124,6 +126,29 @@ display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; align-items: cente
 .counter-subtext { font-family: var(--font-mono); font-size: 0.65rem; color: var(--gray); margin-top: 0.8rem; text-transform: uppercase; }
 .status-available { font-family: var(--font-mono); font-size: 0.7rem; color: var(--amber); margin-top: 1rem; text-transform: uppercase; }
 .status-available::before { content: '🔒 '; }
+/* Main Action Button */
+.main-action-btn {
+width: 280px;
+padding: 18px;
+background: transparent;
+border: 2px solid var(--cyan);
+color: var(--cyan);
+font-family: var(--font-mono);
+font-size: 1rem;
+font-weight: 700;
+text-transform: uppercase;
+letter-spacing: 0.15em;
+cursor: pointer;
+transition: all 0.3s ease;
+box-shadow: 0 0 15px var(--cyan-glow);
+margin: 2rem auto;
+display: block;
+}
+.main-action-btn:hover {
+background: var(--cyan);
+color: var(--black);
+box-shadow: 0 0 30px var(--cyan-glow);
+}
 .icon-nav-row { display: flex; justify-content: center; align-items: center; gap: 2.5rem; margin: 1.5rem 0 1rem 0; flex-wrap: wrap; }
 .icon-nav-item { position: relative; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; text-decoration: none; color: var(--gray); transition: all 0.3s ease; opacity: 0.6; }
 .icon-nav-item:hover { opacity: 1; color: var(--cyan); transform: translateY(-3px); }
@@ -140,8 +165,9 @@ display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; align-items: cente
 .cta-section { text-align: center; padding: 1rem 0; margin-bottom: 3rem; }
 .cta-subtitle { font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan); letter-spacing: 0.15em; opacity: 0.8; }
 /* Content Pages */
-.content-page { display: none; padding: 3rem 0; }
+.content-page { padding: 3rem 0; }
 .content-page.active { display: block; }
+.content-page:not(.active) { display: none; }
 .content-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; margin-bottom: 3rem; }
 @media(min-width: 768px) { .content-grid { grid-template-columns: 1fr 1fr; } .full-width { grid-column: span 2; } }
 .hud-panel { background: var(--black-panel); border: 1px solid rgba(0, 242, 255, 0.15); position: relative; padding: 2rem; }
@@ -185,7 +211,15 @@ position: relative;
 width: 600px;
 height: 600px;
 }
-/* Drone Frame SVG */
+.drone-frame-bg {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+object-fit: contain;
+opacity: 0.3;
+}
 .drone-frame-svg {
 width: 100%;
 height: 100%;
@@ -234,7 +268,6 @@ animation: spinProp 0.2s linear infinite;
 from { transform: rotate(0deg); }
 to { transform: rotate(360deg); }
 }
-/* Motor Labels */
 .motor-label-group {
 position: absolute;
 font-family: var(--font-mono);
@@ -266,12 +299,10 @@ color: var(--cyan);
 color: var(--magenta);
 font-weight: 700;
 }
-/* Positioning Labels */
 .label-tl { top: 80px; left: 80px; text-align: right; }
 .label-tr { top: 80px; right: 80px; text-align: left; }
 .label-bl { bottom: 80px; left: 80px; text-align: right; }
 .label-br { bottom: 80px; right: 80px; text-align: left; }
-/* HUD Decorations */
 .hud-deco-line {
 position: absolute;
 background: var(--cyan-dim);
@@ -286,14 +317,12 @@ border: 2px solid var(--cyan);
 .corner-tr { top: 20px; right: 20px; border-left: none; border-bottom: none; }
 .corner-bl { bottom: 20px; left: 20px; border-right: none; border-top: none; }
 .corner-br { bottom: 20px; right: 20px; border-left: none; border-top: none; }
-/* Flight Logs */
 .flight-logs-section { background: var(--black-panel); border: 1px solid rgba(0, 242, 255, 0.15); padding: 2.5rem; margin-bottom: 3rem; text-align: center; }
 .logs-title { font-size: 1.3rem; color: var(--cyan); margin-bottom: 1rem; font-family: var(--font-mono); }
 .logs-description { font-family: var(--font-mono); font-size: 0.85rem; color: var(--gray); margin-bottom: 1.5rem; }
 .hashtags { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
 .hashtag { font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan); padding: 0.5rem 1rem; border: 1px solid rgba(0, 242, 255, 0.3); background: rgba(0, 242, 255, 0.05); }
 .hashtag:hover { background: rgba(0, 242, 255, 0.15); border-color: var(--cyan); }
-/* Info Grid */
 .info-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; margin-bottom: 3rem; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 3rem; }
 @media(min-width: 768px) { .info-grid { grid-template-columns: 1fr 1fr; } }
 .info-card { text-align: center; }
@@ -303,14 +332,12 @@ border: 2px solid var(--cyan);
 .info-list li { font-family: var(--font-mono); font-size: 0.7rem; color: rgba(224, 230, 237, 0.6); padding: 0.35rem 0.9rem; border: 1px solid rgba(0, 242, 255, 0.2); }
 .sector-status { font-family: var(--font-mono); font-size: 0.7rem; color: var(--amber); margin-top: 1rem; display: inline-block; padding: 0.4rem 1rem; border: 1px solid var(--amber); }
 .sector-status::before { content: '🔒 '; }
-/* Footer */
 footer { border-top: 1px solid rgba(0, 242, 255, 0.1); padding: 3rem 0; margin-top: 3rem; text-align: center; }
 .social-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem; }
-.social-btn { color: rgba(224, 230, 237, 0.4); text-decoration: none; font-size: 0.85rem; transition: 0.3s; font-family: var(--font-mono); }
+.social-btn { color: rgba(224, 230, 237, 0.4); text-decoration: none; font-size: 0.85rem; transition: 0.3s; text-transform: uppercase; letter-spacing: 0.1em; font-family: var(--font-mono); }
 .social-btn:hover { color: var(--cyan); text-shadow: 0 0 10px var(--cyan-glow); }
-.copyright { font-size: 0.65rem; color: rgba(224, 230, 237, 0.3); font-family: var(--font-mono); margin-bottom: 0.5rem; }
+.copyright { font-size: 0.65rem; color: rgba(224, 230, 237, 0.2); font-family: var(--font-mono); margin-bottom: 0.5rem; }
 .legal-nif { font-size: 0.6rem; color: rgba(224, 230, 237, 0.2); font-family: var(--font-mono); }
-/* Modal */
 .modal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(2, 4, 5, 0.95); backdrop-filter: blur(8px); display: none; justify-content: center; align-items: center; z-index: 2000; }
 .modal-overlay.active { display: flex; }
 .modal-content { background: var(--black-panel); border: 1px solid var(--cyan); padding: 3rem; max-width: 550px; width: 90%; position: relative; box-shadow: 0 0 60px rgba(0, 242, 255, 0.15); clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px); }
@@ -320,14 +347,14 @@ footer { border-top: 1px solid rgba(0, 242, 255, 0.1); padding: 3rem 0; margin-t
 .form-group label { display: block; font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan); margin-bottom: 0.5rem; }
 .form-group input, .form-group select { width: 100%; padding: 12px; background: rgba(0, 242, 255, 0.05); border: 1px solid rgba(0, 242, 255, 0.2); color: var(--white); font-family: var(--font-mono); font-size: 0.95rem; }
 .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--cyan); }
-.form-group input:disabled, .form-group select:disabled { background: rgba(255, 51, 51, 0.05); border-color: var(--red); color: var(--gray); cursor: not-allowed; }
+.form-group input:disabled, .form-group select:disabled { background: rgba(255, 0, 85, 0.05); border-color: var(--magenta); color: var(--gray); cursor: not-allowed; }
 .checkbox-group { display: flex; align-items: center; gap: 0.5rem; }
 .checkbox-group input[type="checkbox"] { width: auto; accent-color: var(--cyan); }
 .checkbox-group label { margin-bottom: 0; }
-.submit-btn.blocked { width: 100%; padding: 1rem; margin-top: 1rem; background: var(--red); color: var(--white); border: 1px solid var(--red); font-family: var(--font-display); font-size: 0.9rem; font-weight: 700; cursor: not-allowed; }
+.submit-btn.blocked { width: 100%; padding: 1rem; margin-top: 1rem; background: var(--magenta); color: var(--white); border: 1px solid var(--magenta); font-family: var(--font-display); font-size: 0.9rem; font-weight: 700; cursor: not-allowed; }
 .submit-btn.active { width: 100%; padding: 1rem; margin-top: 1rem; background: var(--cyan); color: var(--black); border: 1px solid var(--cyan); font-family: var(--font-display); font-size: 0.9rem; font-weight: 700; cursor: pointer; }
 .submit-btn.active:hover { background: var(--white); box-shadow: 0 0 30px var(--cyan-glow); }
-.blocked-notice { background: rgba(255, 51, 51, 0.1); border: 1px solid var(--red); padding: 1rem; margin-top: 1rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--red); text-align: center; }
+.blocked-notice { background: rgba(255, 0, 85, 0.1); border: 1px solid var(--magenta); padding: 1rem; margin-top: 1rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--magenta); text-align: center; }
 .blocked-notice::before { content: '⚠ '; }
 .login-modal-content { max-width: 400px; }
 .back-button { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan); text-decoration: none; margin-bottom: 2rem; }
@@ -351,8 +378,42 @@ footer { border-top: 1px solid rgba(0, 242, 255, 0.1); padding: 3rem 0; margin-t
 .xp-popup-btn:hover { background: var(--white); color: var(--magenta); }
 .firebase-status { position: fixed; bottom: 10px; right: 10px; font-family: var(--font-mono); font-size: 0.65rem; padding: 0.3rem 0.8rem; border: 1px solid var(--gray); color: var(--gray); z-index: 100; }
 .firebase-status.connected { border-color: var(--green); color: var(--green); }
-.firebase-status.error { border-color: var(--red); color: var(--red); }
-/* Game Canvas */
+.firebase-status.error { border-color: var(--magenta); color: var(--magenta); }
+/* Privacy Banner */
+.privacy-banner {
+position: fixed;
+bottom: 0;
+left: 0;
+width: 100%;
+background: var(--black-panel);
+border-top: 2px solid var(--cyan);
+padding: 1rem 2rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+z-index: 999;
+transform: translateY(100%);
+transition: transform 0.3s ease;
+}
+.privacy-banner.active {
+transform: translateY(0);
+}
+.privacy-text {
+font-family: var(--font-mono);
+font-size: 0.75rem;
+color: var(--cyan);
+}
+.privacy-btn {
+background: var(--cyan);
+color: var(--black);
+border: none;
+padding: 0.5rem 1.5rem;
+font-family: var(--font-mono);
+font-size: 0.75rem;
+font-weight: 700;
+cursor: pointer;
+text-transform: uppercase;
+}
 .game-container {
 position: relative;
 width: 100%;
@@ -391,30 +452,6 @@ clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100
 .game-start-btn:hover {
 background: var(--white);
 }
-.high-scores-panel {
-background: var(--black-panel);
-border: 1px solid var(--magenta);
-padding: 1.5rem;
-margin-top: 2rem;
-}
-.high-scores-title {
-font-family: var(--font-mono);
-font-size: 0.9rem;
-color: var(--magenta);
-margin-bottom: 1rem;
-text-transform: uppercase;
-}
-.high-scores-list {
-list-style: none;
-font-family: var(--font-mono);
-font-size: 0.8rem;
-}
-.high-scores-list li {
-padding: 0.5rem 0;
-border-bottom: 1px solid rgba(255, 0, 85, 0.2);
-display: flex;
-justify-content: space-between;
-}
 .game-over-overlay {
 position: absolute;
 top: 0;
@@ -448,6 +485,11 @@ animation: glitch-anim 0.5s infinite;
 .counter-main { flex-direction: column; gap: 1rem; }
 .counter-number { font-size: 2.5rem; }
 .drone-schematic { width: 350px; height: 350px; }
+.privacy-banner {
+flex-direction: column;
+gap: 1rem;
+text-align: center;
+}
 }
 </style>
 </head>
@@ -465,6 +507,11 @@ animation: glitch-anim 0.5s infinite;
 </div>
 <p class="xp-popup-message">Deja de mirar y empieza a volar.</p>
 <button class="xp-popup-btn" onclick="closeXpPopup()">>> ENTENDIDO</button>
+</div>
+<!-- Privacy Banner -->
+<div class="privacy-banner" id="privacyBanner">
+<p class="privacy-text">⚠ AVISO DE PRIVACIDAD Y COOKIES: Este sitio utiliza cookies para mejorar tu experiencia en el sistema.</p>
+<button class="privacy-btn" onclick="acceptPrivacy()">ACEPTAR PROTOCOLO</button>
 </div>
 <div class="container">
 <header>
@@ -491,7 +538,6 @@ animation: glitch-anim 0.5s infinite;
 <a href="#" class="nav-icon-wrapper" onclick="showPage('infraestructura'); return false;"><svg viewBox="0 0 100 100"><path d="M20 80L20 40L50 20L80 40L80 80" stroke="currentColor" stroke-width="2" fill="none"/><line x1="35" y1="80" x2="35" y2="50" stroke="currentColor" stroke-width="1.5"/><line x1="65" y1="80" x2="65" y2="50" stroke="currentColor" stroke-width="1.5"/><line x1="20" y1="80" x2="80" y2="80" stroke="currentColor" stroke-width="1.5"/></svg></a>
 <a href="#" class="nav-icon-wrapper" onclick="showPage('legal'); return false;"><svg viewBox="0 0 100 100"><rect x="30" y="20" width="40" height="60" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="50" cy="55" r="12" stroke="currentColor" stroke-width="2" fill="none"/><path d="M46 55L49 58L54 52" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
 <a href="#" class="nav-icon-wrapper" onclick="showPage('crew'); return false;"><svg viewBox="0 0 100 100"><circle cx="50" cy="35" r="12" stroke="currentColor" stroke-width="2" fill="none"/><path d="M30 80C30 65 40 55 50 55C60 55 70 65 70 80" stroke="currentColor" stroke-width="2" fill="none"/></svg></a>
-<a href="#" class="nav-icon-wrapper" onclick="showPage('gamificacion'); return false;"><svg viewBox="0 0 100 100"><rect x="20" y="35" width="60" height="30" rx="5" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="35" cy="50" r="5" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="65" cy="50" r="5" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="50" y1="45" x2="50" y2="55" stroke="currentColor" stroke-width="1.5"/></svg></a>
 <a href="#" class="nav-icon-wrapper" onclick="openModal(); return false;"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="35" stroke="currentColor" stroke-width="2" fill="none"/><path d="M50 30L50 50L65 58" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
 </div>
 </header>
@@ -540,45 +586,25 @@ animation: glitch-anim 0.5s infinite;
 <div class="counter-subtext">* Los 3 fundadores actuales no ocupan estas plazas de captación</div>
 <div class="status-available">ESTADO: CERRADO - PRÓXIMAMENTE</div>
 </div>
-<div class="icon-nav-row">
-<a href="#" class="icon-nav-item" onclick="showPage('protocolo'); return false;"><svg viewBox="0 0 100 100"><rect x="20" y="25" width="60" height="50" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="30" y1="40" x2="70" y2="40" stroke="currentColor" stroke-width="1"/><line x1="30" y1="55" x2="65" y2="55" stroke="currentColor" stroke-width="1"/></svg><span class="icon-nav-label">PROTOCOLO</span></a>
-<a href="#" class="icon-nav-item" onclick="showPage('infraestructura'); return false;"><svg viewBox="0 0 100 100"><path d="M20 80L20 40L50 20L80 40L80 80" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="35" y1="80" x2="35" y2="50" stroke="currentColor" stroke-width="1"/><line x1="65" y1="80" x2="65" y2="50" stroke="currentColor" stroke-width="1"/><line x1="20" y1="80" x2="80" y2="80" stroke="currentColor" stroke-width="1"/></svg><span class="icon-nav-label">INFRAESTRUCTURA</span></a>
-<a href="#" class="icon-nav-item" onclick="showPage('legal'); return false;"><svg viewBox="0 0 100 100"><rect x="30" y="20" width="40" height="60" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="50" cy="50" r="10" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M47 50L50 53L53 47" stroke="currentColor" stroke-width="1.5"/></svg><span class="icon-nav-label">LEGAL</span></a>
-<a href="#" class="icon-nav-item" onclick="showPage('crew'); return false;"><svg viewBox="0 0 100 100"><circle cx="50" cy="40" r="10" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M35 75C35 65 42 55 50 55C58 55 65 65 65 75" stroke="currentColor" stroke-width="1.5" fill="none"/></svg><span class="icon-nav-label">CREW</span></a>
-<div class="join-btn-wrapper" onclick="openModal()"><div class="join-btn-icon"><svg viewBox="0 0 100 100"><path d="M50 30L50 70M30 50L70 50" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></div><span class="join-btn-label">INICIAR INSCRIPCIÓN</span></div>
-</div>
+<button class="main-action-btn" onclick="openModal()">>> INICIAR INSCRIPCIÓN</button>
 </section>
-<div class="cta-section"><p class="cta-subtitle">>> ESTE ES EL PRIMER PASO PARA DOMINAR EL AIRE <<</p></div>
 </div>
 <div id="crew-page" class="content-page">
 <a href="#" class="back-button" onclick="showHome(); return false;"><svg viewBox="0 0 100 100" fill="none"><path d="M70 50L30 50M30 50L45 35M30 50L45 65" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>VOLVER AL INICIO</a>
 <div class="content-grid">
 <div class="hud-panel full-width">
-<h2 class="section-title">> SISTEMA_12_PALAS // DRONE_HUD</h2>
+<h2 class="section-title">> CENTRO DE ENTRENAMIENTO MODO 2</h2>
 <div class="terminal-text" style="margin-bottom: 2rem;">
-<p>Tu progreso en MODO 2 se visualiza como un cuadricóptero en configuración X. Cada motor representa un sector operativo con 3 palas de hélice.</p>
-<p style="margin-top: 0.5rem;"><span class="text-cyan">▸ PALA DESBLOQUEADA:</span> Se ilumina en cyan neón.</p>
-<p style="margin-top: 0.5rem;"><span class="text-magenta">▸ PALA ÉLITE (3ª):</span> Brillo magenta intenso - logro de alto nivel.</p>
-<p style="margin-top: 0.5rem;"><span class="text-green">▸ MOTOR COMPLETO:</span> Animación de rotación cuando las 3 palas están activas.</p>
+<p>La excelencia técnica es el requisito. Aquí gestionas tu progresión en el PROTOCOLO R.P.M. y accedes a simulaciones tácticas. Ser parte de la CREW implica dominar el montaje, el tuning y la operativa en entornos críticos.</p>
 </div>
+<!-- BLOQUE SUPERIOR: PROTOCOLO R.P.M. -->
+<h3 class="section-title">> PROTOCOLO R.P.M.</h3>
 <div class="drone-hud-container">
-<!-- HUD Decorations -->
-<div class="hud-corner corner-tl"></div>
-<div class="hud-corner corner-tr"></div>
-<div class="hud-corner corner-bl"></div>
-<div class="hud-corner corner-br"></div>
-<div class="hud-deco-line" style="top: 40px; left: 50px; width: 100px; height: 1px;"></div>
-<div class="hud-deco-line" style="top: 40px; right: 50px; width: 100px; height: 1px;"></div>
-<div class="hud-deco-line" style="bottom: 40px; left: 50px; width: 100px; height: 1px;"></div>
-<div class="hud-deco-line" style="bottom: 40px; right: 50px; width: 100px; height: 1px;"></div>
-<div class="drone-schematic">
+<img src="img/drone-frame.jpg" alt="Drone Frame" class="drone-frame-bg" />
 <svg class="drone-frame-svg" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
-<!-- Arms (X Config) -->
 <line x1="150" y1="150" x2="450" y2="450" class="drone-arm" />
 <line x1="450" y1="150" x2="150" y2="450" class="drone-arm" />
-<!-- Center Plate -->
 <rect x="275" y="275" width="50" height="50" rx="5" class="drone-center-plate" />
-<!-- MOTOR ALFA (Top Left) -->
 <g class="motor-group" id="motor-alfa-group">
 <circle cx="150" cy="150" r="35" class="motor-housing" />
 <g class="propeller-group" id="prop-alfa">
@@ -587,7 +613,6 @@ animation: glitch-anim 0.5s infinite;
 <path d="M150 150 L116 170 Q126 180 150 150 Z" class="propeller-blade" transform="rotate(240 150 150)" />
 </g>
 </g>
-<!-- MOTOR BRAVO (Top Right) -->
 <g class="motor-group" id="motor-bravo-group">
 <circle cx="450" cy="150" r="35" class="motor-housing" />
 <g class="propeller-group" id="prop-bravo">
@@ -596,7 +621,6 @@ animation: glitch-anim 0.5s infinite;
 <path d="M450 150 L416 170 Q426 180 450 150 Z" class="propeller-blade" transform="rotate(240 450 150)" />
 </g>
 </g>
-<!-- MOTOR CHARLIE (Bottom Right) -->
 <g class="motor-group" id="motor-charlie-group">
 <circle cx="450" cy="450" r="35" class="motor-housing" />
 <g class="propeller-group" id="prop-charlie">
@@ -605,7 +629,6 @@ animation: glitch-anim 0.5s infinite;
 <path d="M450 450 L416 470 Q426 480 450 450 Z" class="propeller-blade" transform="rotate(240 450 450)" />
 </g>
 </g>
-<!-- MOTOR DELTA (Bottom Left) -->
 <g class="motor-group" id="motor-delta-group">
 <circle cx="150" cy="450" r="35" class="motor-housing" />
 <g class="propeller-group" id="prop-delta">
@@ -615,7 +638,6 @@ animation: glitch-anim 0.5s infinite;
 </g>
 </g>
 </svg>
-<!-- Labels -->
 <div class="motor-label-group label-tl">
 <span class="motor-label-title">MOTOR ALFA [PLATAFORMAS]</span>
 <ul class="skill-list">
@@ -649,14 +671,23 @@ animation: glitch-anim 0.5s infinite;
 </ul>
 </div>
 </div>
+<!-- BLOQUE INFERIOR: ARENA VIRTUAL -->
+<h3 class="section-title" style="margin-top: 3rem;">> ARENA VIRTUAL</h3>
+<div class="game-container">
+<canvas id="gameCanvas" class="game-canvas" width="800" height="400"></canvas>
+<button id="gameStartBtn" class="game-start-btn">INICIAR SECUENCIA DE VUELO</button>
+<div id="gameOverOverlay" class="game-over-overlay">
+<div class="signal-lost">SIGNAL LOST</div>
+<p class="mono" style="color: var(--white); margin-top: 1rem;">Puntuación: <span id="finalScore">0</span> XP</p>
 </div>
-<div class="terminal-text" style="text-align: center; margin-top: 2rem;">
-<p class="text-cyan">>> HAZ HOVER SOBRE CADA PALA PARA VER REQUISITOS DE DESBLOQUEO <<</p>
+<div class="game-ui">
+<div>SCORE: <span id="gameScore">0</span> XP</div>
+<div>DISTANCIA: <span id="gameDistance">0</span>m</div>
 </div>
 </div>
 </div>
 </div>
-<!-- Protocolo Page -->
+</div>
 <div id="protocolo-page" class="content-page">
 <a href="#" class="back-button" onclick="showHome(); return false;"><svg viewBox="0 0 100 100" fill="none"><path d="M70 50L30 50M30 50L45 35M30 50L45 65" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>VOLVER AL INICIO</a>
 <div class="content-grid">
@@ -732,7 +763,6 @@ Somos una organización sin ánimo de lucro: tu cuota mantiene tu derecho a vola
 <text x="500" y="75" text-anchor="middle" fill="rgba(255, 255, 255, 0.5)" font-family="Share Tech Mono" font-size="10" letter-spacing="2">PERÍMETRO DE CONTINGENCIA / SEGURIDAD</text>
 <rect x="150" y="150" width="500" height="350" fill="rgba(0, 242, 255, 0.05)" stroke="#00f2ff" stroke-width="2" stroke-dasharray="5,3"/>
 <text x="400" y="130" text-anchor="middle" fill="#ff0055" font-family="Share Tech Mono" font-size="16">ARENA DE VUELO &gt; 2000 m²</text>
-<!-- Structure 1 -->
 <g class="structure-group" transform="translate(250, 250)">
 <circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/>
 <line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/>
@@ -744,7 +774,6 @@ Somos una organización sin ánimo de lucro: tu cuota mantiene tu derecho a vola
 </div>
 </foreignObject>
 </g>
-<!-- Structure 2 -->
 <g class="structure-group" transform="translate(400, 200)">
 <circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/>
 <line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/>
@@ -756,7 +785,6 @@ Somos una organización sin ánimo de lucro: tu cuota mantiene tu derecho a vola
 </div>
 </foreignObject>
 </g>
-<!-- Structure 3 -->
 <g class="structure-group" transform="translate(550, 250)">
 <circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/>
 <line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/>
@@ -768,7 +796,6 @@ Somos una organización sin ánimo de lucro: tu cuota mantiene tu derecho a vola
 </div>
 </foreignObject>
 </g>
-<!-- Structure 4 -->
 <g class="structure-group" transform="translate(280, 350)">
 <circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/>
 <line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/>
@@ -780,7 +807,6 @@ Somos una organización sin ánimo de lucro: tu cuota mantiene tu derecho a vola
 </div>
 </foreignObject>
 </g>
-<!-- Structure 5 -->
 <g class="structure-group" transform="translate(420, 380)">
 <circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/>
 <line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/>
@@ -792,7 +818,6 @@ Somos una organización sin ánimo de lucro: tu cuota mantiene tu derecho a vola
 </div>
 </foreignObject>
 </g>
-<!-- Structure 6 -->
 <g class="structure-group" transform="translate(580, 340)">
 <circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/>
 <line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/>
@@ -804,7 +829,6 @@ Somos una organización sin ánimo de lucro: tu cuota mantiene tu derecho a vola
 </div>
 </foreignObject>
 </g>
-<!-- Structure 7 - CORREGIDO -->
 <g class="structure-group" transform="translate(300, 350)">
 <circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/>
 <line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/>
@@ -816,7 +840,6 @@ Somos una organización sin ánimo de lucro: tu cuota mantiene tu derecho a vola
 </div>
 </foreignObject>
 </g>
-<!-- Structure 8 - CORREGIDO -->
 <g class="structure-group" transform="translate(520, 350)">
 <circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/>
 <line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/>
@@ -828,12 +851,10 @@ Somos una organización sin ánimo de lucro: tu cuota mantiene tu derecho a vola
 </div>
 </foreignObject>
 </g>
-<!-- ZONA ALPHA -->
 <rect x="660" y="250" width="100" height="80" fill="rgba(0, 242, 255, 0.15)" stroke="#00f2ff" stroke-width="2" stroke-dasharray="5,5"/>
 <text x="710" y="275" text-anchor="middle" fill="#00f2ff" font-family="Share Tech Mono" font-size="10">ZONA ALPHA</text>
 <text x="710" y="290" text-anchor="middle" fill="#00f2ff" font-family="Share Tech Mono" font-size="8">ÁREA 15 m²</text>
 <g transform="translate(710, 310)"><path d="M-10,-8 L10,-8 L12,-6 L12,6 L10,8 L-10,8 L-12,6 L-12,-6 Z" fill="none" stroke="#00f2ff" stroke-width="1.5"/><circle cx="0" cy="-10" r="5" fill="none" stroke="#00f2ff" stroke-width="1.5"/></g>
-<!-- SECTOR EXPANSIÓN -->
 <rect x="770" y="230" width="150" height="120" fill="rgba(255, 0, 85, 0.1)" stroke="#ff0055" stroke-width="2" stroke-dasharray="5,5"/>
 <text x="845" y="255" text-anchor="middle" fill="#ff0055" font-family="Share Tech Mono" font-size="10">SECTOR EXPANSIÓN</text>
 <line x1="770" y1="360" x2="920" y2="360" stroke="#ff0055" stroke-width="1.5"/>
@@ -844,16 +865,13 @@ Somos una organización sin ánimo de lucro: tu cuota mantiene tu derecho a vola
 <text x="895" y="282" text-anchor="middle" fill="#ff0055" font-family="Share Tech Mono" font-size="6">CONT.</text>
 <circle cx="820" cy="300" r="15" fill="none" stroke="#ff0055" stroke-width="1.5" stroke-dasharray="3,3"/>
 <text x="820" y="304" text-anchor="middle" fill="#ff0055" font-family="Share Tech Mono" font-size="6">NO FLY</text>
-<!-- Scale -->
 <line x1="70" y1="520" x2="120" y2="520" stroke="#00f2ff" stroke-width="2"/>
 <line x1="70" y1="515" x2="70" y2="525" stroke="#00f2ff" stroke-width="2"/>
 <line x1="120" y1="515" x2="120" y2="525" stroke="#00f2ff" stroke-width="2"/>
 <text x="95" y="540" text-anchor="middle" fill="#00f2ff" font-family="Share Tech Mono" font-size="9">10M</text>
-<!-- North -->
 <line x1="930" y1="80" x2="930" y2="60" stroke="#00f2ff" stroke-width="2"/>
 <polygon points="930,60 925,70 935,70" fill="#00f2ff"/>
 <text x="930" y="95" text-anchor="middle" fill="#00f2ff" font-family="Share Tech Mono" font-size="9">N</text>
-<!-- Legend -->
 <g transform="translate(70, 450)"><text x="0" y="0" fill="rgba(255, 255, 255, 0.5)" font-family="Share Tech Mono" font-size="9">LEYENDA:</text><circle cx="0" cy="20" r="8" fill="none" stroke="#00f2ff" stroke-width="2"/><line x1="-8" y1="20" x2="8" y2="20" stroke="#00f2ff" stroke-width="2"/><line x1="0" y1="12" x2="0" y2="28" stroke="#00f2ff" stroke-width="2"/><text x="20" y="24" fill="rgba(255, 255, 255, 0.5)" font-family="Share Tech Mono" font-size="8">ESTRUCTURA FIJA</text></g>
 <text x="500" y="580" text-anchor="middle" fill="rgba(255, 255, 255, 0.4)" font-family="Share Tech Mono" font-size="9" letter-spacing="1">&gt; PLANO TÁCTICO - SEDE PROV. ZARAGOZA [USO EXCLUSIVO CREW]</text>
 </svg>
@@ -878,7 +896,7 @@ SECTOR EXPANSIÓN [300 m²]
 <ul style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--gray); list-style: none;">
 <li style="margin-bottom: 0.5rem;"><strong>Superficie:</strong> Suelo técnico de grava</li>
 <li style="margin-bottom: 0.5rem;"><strong class="text-magenta">CAPACIDAD:</strong> Zona para despliegue de la <strong class="text-magenta">CREW</strong>, stands y servicios</li>
-<li style="margin-bottom: 0.5rem;"><strong class="text-red">PROHIBIDO:</strong> Pilotar o despegar desde este sector</li>
+<li style="margin-bottom: 0.5rem;"><strong class="text-magenta">PROHIBIDO:</strong> Pilotar o despegar desde este sector</li>
 </ul>
 </div>
 <div style="background: rgba(255, 0, 85, 0.03); border: 1px solid rgba(255, 0, 85, 0.2); padding: 1.5rem; grid-column: span 1;">
@@ -902,7 +920,6 @@ ARENA DE VUELO [&gt; 2000 m²]
 </div>
 </div>
 </div>
-<!-- Legal Page -->
 <div id="legal-page" class="content-page">
 <a href="#" class="back-button" onclick="showHome(); return false;"><svg viewBox="0 0 100 100" fill="none"><path d="M70 50L30 50M30 50L45 35M30 50L45 65" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>VOLVER AL INICIO</a>
 <div class="content-grid">
@@ -945,37 +962,6 @@ ARENA DE VUELO [&gt; 2000 m²]
 </div>
 </li>
 </ul>
-</div>
-</div>
-</div>
-</div>
-<!-- Gamificación Page - NUEVA -->
-<div id="gamificacion-page" class="content-page">
-<a href="#" class="back-button" onclick="showHome(); return false;"><svg viewBox="0 0 100 100" fill="none"><path d="M70 50L30 50M30 50L45 35M30 50L45 65" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>VOLVER AL INICIO</a>
-<div class="content-grid">
-<div class="hud-panel full-width">
-<h2 class="section-title">> M2 ARENA VIRTUAL // SIMULADOR TÁCTICO</h2>
-<div class="game-container">
-<canvas id="gameCanvas" class="game-canvas" width="800" height="400"></canvas>
-<button id="gameStartBtn" class="game-start-btn">>> INICIAR SECUENCIA DE VUELO</button>
-<div id="gameOverOverlay" class="game-over-overlay">
-<div class="signal-lost">SIGNAL LOST</div>
-<p class="mono" style="color: var(--white); margin-top: 1rem;">Puntuación: <span id="finalScore">0</span> XP</p>
-</div>
-<div class="game-ui">
-<div>SCORE: <span id="gameScore">0</span> XP</div>
-<div>DISTANCIA: <span id="gameDistance">0</span>m</div>
-</div>
-</div>
-<div class="high-scores-panel">
-<h3 class="high-scores-title">> TOP 3 OPERATIVOS</h3>
-<ul class="high-scores-list" id="highScoresList">
-<li>Cargando datos...</li>
-</ul>
-</div>
-<div class="terminal-text" style="margin-top: 2rem;">
-<p>> CONTROLES: <span class="text-cyan">W / ↑</span> (Propulsar) | <span class="text-cyan">A / ←</span> (Izquierda) | <span class="text-cyan">D / →</span> (Derecha)</p>
-<p>> OBJETIVO: Atraviesa los Gates Magenta (+10 XP). Evita los Flags Magenta (Crash).</p>
 </div>
 </div>
 </div>
@@ -1023,7 +1009,7 @@ ARENA DE VUELO [&gt; 2000 m²]
 <div class="form-group checkbox-group"><input type="checkbox" id="rememberMe"><label for="rememberMe">RECORDAR</label></div>
 <button type="submit" class="submit-btn active" id="loginBtnSubmit">>> CONECTAR</button>
 </form>
-<p class="mono" style="margin-top: 1rem; text-align: center; color: var(--gray);">¿Sin cuenta? <span style="color: var(--red);">REGISTRO TEMPORALMENTE BLOQUEADO</span></p>
+<p class="mono" style="margin-top: 1rem; text-align: center; color: var(--gray);">¿Sin cuenta? <span style="color: var(--magenta);">REGISTRO TEMPORALMENTE BLOQUEADO</span></p>
 </div>
 </div>
 <script>
@@ -1202,7 +1188,6 @@ dbPanel.classList.toggle('active');
 }
 });
 }
-// Structure tooltips
 document.querySelectorAll('.structure-group').forEach(group => {
 const tooltip = group.querySelector('.structure-tooltip');
 if (tooltip) {
@@ -1214,7 +1199,15 @@ tooltip.style.opacity = '0';
 });
 }
 });
+const privacyBanner = document.getElementById('privacyBanner');
+if (localStorage.getItem('privacyAccepted') !== 'true') {
+privacyBanner.classList.add('active');
+}
 });
+function acceptPrivacy() {
+localStorage.setItem('privacyAccepted', 'true');
+document.getElementById('privacyBanner').classList.remove('active');
+}
 function showHome() {
 document.querySelectorAll('.content-page').forEach(p => p.classList.remove('active'));
 document.getElementById('home-page').classList.add('active');
@@ -1254,7 +1247,6 @@ function startDroneTrails() {
 createDroneTrail();
 setTimeout(startDroneTrails, 3000 + Math.random() * 5000);
 }
-// Game Variables
 let gameRunning = false;
 let gameScore = 0;
 let gameDistance = 0;
@@ -1274,8 +1266,6 @@ const gameStartBtn = document.getElementById('gameStartBtn');
 const gameOverOverlay = document.getElementById('gameOverOverlay');
 const gameScoreEl = document.getElementById('gameScore');
 const gameDistanceEl = document.getElementById('gameDistance');
-const highScoresList = document.getElementById('highScoresList');
-// Game Functions
 function initGame() {
 gameRunning = true;
 gameScore = 0;
@@ -1289,14 +1279,12 @@ flags = [];
 terrain = [];
 gameStartBtn.style.display = 'none';
 gameOverOverlay.classList.remove('active');
-// Generate initial terrain
 for (let i = 0; i < canvas.width / 50 + 1; i++) {
 terrain.push({
 x: i * 50,
 y: canvas.height - 50 - Math.random() * 50
 });
 }
-// Generate initial obstacles
 for (let i = 0; i < 5; i++) {
 if (Math.random() > 0.5) {
 gates.push({
@@ -1319,13 +1307,10 @@ gameLoop();
 }
 function gameLoop() {
 if (!gameRunning) return;
-// Clear canvas
-ctx.fillStyle = var(--black-panel);
+ctx.fillStyle = '#050a0c';
 ctx.fillRect(0, 0, canvas.width, canvas.height);
-// Update drone physics
 droneVelocity += gravity;
 droneY += droneVelocity;
-// Keep drone in bounds
 if (droneY < 0) {
 droneY = 0;
 droneVelocity = 0;
@@ -1334,8 +1319,7 @@ if (droneY > canvas.height - 30) {
 gameOver();
 return;
 }
-// Draw drone (X shape side view)
-ctx.strokeStyle = var(--cyan);
+ctx.strokeStyle = '#00f2ff';
 ctx.lineWidth = 3;
 ctx.beginPath();
 ctx.moveTo(droneX - 20, droneY - 10);
@@ -1343,13 +1327,11 @@ ctx.lineTo(droneX + 20, droneY + 10);
 ctx.moveTo(droneX + 20, droneY - 10);
 ctx.lineTo(droneX - 20, droneY + 10);
 ctx.stroke();
-// Update and draw terrain
-ctx.fillStyle = var(--cyan);
+ctx.fillStyle = '#00f2ff';
 terrain.forEach(point => {
 point.x -= gameSpeed;
 ctx.fillRect(point.x, point.y, 52, canvas.height - point.y);
 });
-// Remove off-screen terrain and add new
 if (terrain[0].x < -50) {
 terrain.shift();
 terrain.push({
@@ -1357,19 +1339,16 @@ x: terrain[terrain.length - 1].x + 50,
 y: canvas.height - 50 - Math.random() * 50
 });
 }
-// Update and draw gates
-ctx.strokeStyle = var(--magenta);
+ctx.strokeStyle = '#ff0055';
 ctx.lineWidth = 3;
 gates.forEach(gate => {
 gate.x -= gameSpeed;
 ctx.strokeRect(gate.x, gate.y, gate.width, gate.height);
-// Check collision
 if (!gate.passed && droneX + 20 > gate.x && droneX - 20 < gate.x + gate.width &&
 droneY + 10 > gate.y && droneY - 10 < gate.y + gate.height) {
 gameScore += 10;
 gate.passed = true;
 }
-// Remove off-screen gates
 if (gate.x < -100) {
 gates.shift();
 gates.push({
@@ -1381,17 +1360,14 @@ passed: false
 });
 }
 });
-// Update and draw flags
 flags.forEach(flag => {
 flag.x -= gameSpeed;
-ctx.fillStyle = var(--magenta);
+ctx.fillStyle = '#ff0055';
 ctx.fillRect(flag.x, flag.y, flag.width, flag.height);
-// Check collision
 if (droneX + 20 > flag.x && droneX - 20 < flag.x + flag.width &&
 droneY + 10 > flag.y && droneY - 10 < flag.y + flag.height) {
 gameOver();
 }
-// Remove off-screen flags
 if (flag.x < -50) {
 flags.shift();
 flags.push({
@@ -1402,12 +1378,10 @@ height: 100
 });
 }
 });
-// Update game stats
 gameDistance += gameSpeed / 10;
 gameSpeed += 0.001;
 gameScoreEl.textContent = gameScore;
 gameDistanceEl.textContent = Math.floor(gameDistance);
-// Continue loop
 animationId = requestAnimationFrame(gameLoop);
 }
 function gameOver() {
@@ -1415,40 +1389,8 @@ gameRunning = false;
 cancelAnimationFrame(animationId);
 gameOverOverlay.classList.add('active');
 document.getElementById('finalScore').textContent = gameScore;
-// Save high score if in top 3
-saveHighScore(gameScore);
 }
-function saveHighScore(score) {
-if (firebaseInitialized && score > 0) {
-const callsign = prompt('>> INTRODUCE TU CALLSIGN PARA EL RANKING:');
-if (callsign) {
-db.collection('high_scores').add({
-callsign: callsign,
-score: score,
-timestamp: firebase.firestore.FieldValue.serverTimestamp()
-}).then(() => {
-loadHighScores();
-});
-}
-}
-}
-function loadHighScores() {
-if (firebaseInitialized) {
-db.collection('high_scores').orderBy('score', 'desc').limit(3).get().then(snapshot => {
-highScoresList.innerHTML = '';
-snapshot.forEach(doc => {
-const data = doc.data();
-const li = document.createElement('li');
-li.innerHTML = `<span>${data.callsign}</span><span>${data.score} XP</span>`;
-highScoresList.appendChild(li);
-});
-if (snapshot.empty) {
-highScoresList.innerHTML = '<li>Sin registros</li>';
-}
-});
-}
-}
-// Controls
+gameStartBtn.addEventListener('click', initGame);
 document.addEventListener('keydown', (e) => {
 if (gameRunning) {
 if (e.key === 'w' || e.key === 'W' || e.key === 'ArrowUp') {
@@ -1462,14 +1404,12 @@ droneX += 20;
 }
 }
 });
-gameStartBtn.addEventListener('click', initGame);
 window.addEventListener('load', () => {
 updateXPDisplay(xp);
 updateSyncDisplay();
 setTimeout(startDroneTrails, 1000);
 document.getElementById('registerModal').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
 document.getElementById('loginModal').addEventListener('click', e => { if (e.target === e.currentTarget) closeLoginModal(); });
-loadHighScores();
 });
 </script>
 </body>
