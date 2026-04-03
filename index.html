@@ -58,7 +58,6 @@ h1, h2, h3, h4 { font-family: var(--font-display); text-transform: uppercase; le
 .text-amber { color: var(--amber); }
 .text-green { color: var(--green); }
 .nodo-zero { color: var(--magenta); text-shadow: 0 0 10px var(--magenta-glow); font-weight: 700; }
-/* Glitch Effect */
 .glitch-wrapper { position: relative; display: inline-block; }
 .glitch { position: relative; color: var(--white); }
 .glitch::before, .glitch::after { content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
@@ -66,7 +65,6 @@ h1, h2, h3, h4 { font-family: var(--font-display); text-transform: uppercase; le
 .glitch::after { left: -2px; text-shadow: -2px 0 var(--cyan); clip: rect(44px, 450px, 56px, 0); animation: glitch-anim2 5s infinite linear alternate-reverse; }
 @keyframes glitch-anim { 0% { clip: rect(31px, 9999px, 91px, 0); } 20% { clip: rect(24px, 9999px, 63px, 0); } 40% { clip: rect(93px, 9999px, 48px, 0); } 60% { clip: rect(65px, 9999px, 33px, 0); } 80% { clip: rect(96px, 9999px, 27px, 0); } 100% { clip: rect(33px, 9999px, 62px, 0); } }
 @keyframes glitch-anim2 { 0% { clip: rect(65px, 9999px, 19px, 0); } 20% { clip: rect(76px, 9999px, 8px, 0); } 40% { clip: rect(17px, 9999px, 82px, 0); } 60% { clip: rect(9px, 9999px, 67px, 0); } 80% { clip: rect(15px, 9999px, 54px, 0); } 100% { clip: rect(22px, 9999px, 71px, 0); } }
-/* Header */
 header { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 0; border-bottom: 1px solid rgba(0, 242, 255, 0.2); margin-bottom: 2rem; }
 .logo-container { display: flex; align-items: center; gap: 1rem; text-decoration: none; }
 .logo-svg { width: 45px; height: 52px; }
@@ -81,7 +79,6 @@ header { display: flex; justify-content: space-between; align-items: center; pad
 .nav-icon-wrapper svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 1.5; }
 .nav-icon-wrapper::after { content: ''; position: absolute; bottom: -6px; left: 50%; width: 0; height: 1px; background: var(--cyan); transition: width 0.3s ease, left 0.3s ease; }
 .nav-icon-wrapper:hover::after { width: 100%; left: 0; }
-/* User Dashboard */
 .user-dashboard {
 background: var(--black-panel); border: 1px solid rgba(0, 242, 255, 0.2);
 padding: 1.5rem 2rem; margin-bottom: 2rem;
@@ -114,7 +111,6 @@ display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; align-items: cente
 .status-badge.pending { border-color: var(--amber); color: var(--amber); background: rgba(255, 184, 0, 0.05); animation: pulse-amber 2s infinite; }
 @keyframes pulse-amber { 0%, 100% { box-shadow: 0 0 5px var(--amber-glow); } 50% { box-shadow: 0 0 15px var(--amber-glow); } }
 .level-display { font-family: var(--font-display); font-size: 1.2rem; color: var(--cyan); margin-top: 0.3rem; }
-/* Hero */
 .hero { text-align: center; padding: 2rem 0 3rem 0; }
 .system-command { font-family: var(--font-mono); font-size: 0.9rem; margin-bottom: 2rem; letter-spacing: 0.15em; text-transform: uppercase; }
 .system-command::before { content: '> '; color: var(--magenta); }
@@ -126,29 +122,6 @@ display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; align-items: cente
 .counter-subtext { font-family: var(--font-mono); font-size: 0.65rem; color: var(--gray); margin-top: 0.8rem; text-transform: uppercase; }
 .status-available { font-family: var(--font-mono); font-size: 0.7rem; color: var(--amber); margin-top: 1rem; text-transform: uppercase; }
 .status-available::before { content: '🔒 '; }
-/* Main Action Button */
-.main-action-btn {
-width: 280px;
-padding: 18px;
-background: transparent;
-border: 2px solid var(--cyan);
-color: var(--cyan);
-font-family: var(--font-mono);
-font-size: 1rem;
-font-weight: 700;
-text-transform: uppercase;
-letter-spacing: 0.15em;
-cursor: pointer;
-transition: all 0.3s ease;
-box-shadow: 0 0 15px var(--cyan-glow);
-margin: 2rem auto;
-display: block;
-}
-.main-action-btn:hover {
-background: var(--cyan);
-color: var(--black);
-box-shadow: 0 0 30px var(--cyan-glow);
-}
 .icon-nav-row { display: flex; justify-content: center; align-items: center; gap: 2.5rem; margin: 1.5rem 0 1rem 0; flex-wrap: wrap; }
 .icon-nav-item { position: relative; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; text-decoration: none; color: var(--gray); transition: all 0.3s ease; opacity: 0.6; }
 .icon-nav-item:hover { opacity: 1; color: var(--cyan); transform: translateY(-3px); }
@@ -164,10 +137,8 @@ box-shadow: 0 0 30px var(--cyan-glow);
 .join-btn-wrapper:hover .join-btn-label { opacity: 1; }
 .cta-section { text-align: center; padding: 1rem 0; margin-bottom: 3rem; }
 .cta-subtitle { font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan); letter-spacing: 0.15em; opacity: 0.8; }
-/* Content Pages */
-.content-page { padding: 3rem 0; }
+.content-page { display: none; padding: 3rem 0; }
 .content-page.active { display: block; }
-.content-page:not(.active) { display: none; }
 .content-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; margin-bottom: 3rem; }
 @media(min-width: 768px) { .content-grid { grid-template-columns: 1fr 1fr; } .full-width { grid-column: span 2; } }
 .hud-panel { background: var(--black-panel); border: 1px solid rgba(0, 242, 255, 0.15); position: relative; padding: 2rem; }
@@ -197,7 +168,6 @@ box-shadow: 0 0 30px var(--cyan-glow);
 .transparency-item { display: flex; align-items: flex-start; gap: 0.8rem; }
 .transparency-icon { color: var(--green); font-size: 1.2rem; min-width: 20px; }
 .transparency-text { font-family: var(--font-mono); font-size: 0.8rem; color: var(--white); line-height: 1.6; }
-/* DRONE_HUD SYSTEM */
 .drone-hud-container {
 display: flex;
 justify-content: center;
@@ -240,6 +210,15 @@ stroke-width: 2;
 fill: #1a1a1a;
 stroke: var(--gray);
 stroke-width: 2;
+}
+.motor-node {
+fill: var(--cyan);
+filter: drop-shadow(0 0 10px var(--cyan-glow));
+animation: motorPulse 2s ease-in-out infinite;
+}
+@keyframes motorPulse {
+0%, 100% { opacity: 0.6; }
+50% { opacity: 1; }
 }
 .propeller-group {
 transform-origin: center;
@@ -336,8 +315,7 @@ footer { border-top: 1px solid rgba(0, 242, 255, 0.1); padding: 3rem 0; margin-t
 .social-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem; }
 .social-btn { color: rgba(224, 230, 237, 0.4); text-decoration: none; font-size: 0.85rem; transition: 0.3s; text-transform: uppercase; letter-spacing: 0.1em; font-family: var(--font-mono); }
 .social-btn:hover { color: var(--cyan); text-shadow: 0 0 10px var(--cyan-glow); }
-.copyright { font-size: 0.65rem; color: rgba(224, 230, 237, 0.2); font-family: var(--font-mono); margin-bottom: 0.5rem; }
-.legal-nif { font-size: 0.6rem; color: rgba(224, 230, 237, 0.2); font-family: var(--font-mono); }
+.copyright { font-size: 0.65rem; color: rgba(224, 230, 237, 0.2); font-family: var(--font-mono); letter-spacing: 0.1em; }
 .modal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(2, 4, 5, 0.95); backdrop-filter: blur(8px); display: none; justify-content: center; align-items: center; z-index: 2000; }
 .modal-overlay.active { display: flex; }
 .modal-content { background: var(--black-panel); border: 1px solid var(--cyan); padding: 3rem; max-width: 550px; width: 90%; position: relative; box-shadow: 0 0 60px rgba(0, 242, 255, 0.15); clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px); }
@@ -346,15 +324,15 @@ footer { border-top: 1px solid rgba(0, 242, 255, 0.1); padding: 3rem 0; margin-t
 .form-group { margin-bottom: 1.5rem; }
 .form-group label { display: block; font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan); margin-bottom: 0.5rem; }
 .form-group input, .form-group select { width: 100%; padding: 12px; background: rgba(0, 242, 255, 0.05); border: 1px solid rgba(0, 242, 255, 0.2); color: var(--white); font-family: var(--font-mono); font-size: 0.95rem; }
-.form-group input:focus, .form-group select:focus { outline: none; border-color: var(--cyan); }
-.form-group input:disabled, .form-group select:disabled { background: rgba(255, 0, 85, 0.05); border-color: var(--magenta); color: var(--gray); cursor: not-allowed; }
+.form-group input:focus, .form-group select:focus { outline: none; border-color: var(--cyan); box-shadow: 0 0 15px rgba(0, 242, 255, 0.1); }
+.form-group input:disabled, .form-group select:disabled { background: rgba(255, 51, 51, 0.05); border-color: var(--red); color: var(--gray); cursor: not-allowed; }
 .checkbox-group { display: flex; align-items: center; gap: 0.5rem; }
 .checkbox-group input[type="checkbox"] { width: auto; accent-color: var(--cyan); }
 .checkbox-group label { margin-bottom: 0; }
-.submit-btn.blocked { width: 100%; padding: 1rem; margin-top: 1rem; background: var(--magenta); color: var(--white); border: 1px solid var(--magenta); font-family: var(--font-display); font-size: 0.9rem; font-weight: 700; cursor: not-allowed; }
+.submit-btn.blocked { width: 100%; padding: 1rem; margin-top: 1rem; background: var(--red); color: var(--white); border: 1px solid var(--red); font-family: var(--font-display); font-size: 0.9rem; font-weight: 700; cursor: not-allowed; }
 .submit-btn.active { width: 100%; padding: 1rem; margin-top: 1rem; background: var(--cyan); color: var(--black); border: 1px solid var(--cyan); font-family: var(--font-display); font-size: 0.9rem; font-weight: 700; cursor: pointer; }
 .submit-btn.active:hover { background: var(--white); box-shadow: 0 0 30px var(--cyan-glow); }
-.blocked-notice { background: rgba(255, 0, 85, 0.1); border: 1px solid var(--magenta); padding: 1rem; margin-top: 1rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--magenta); text-align: center; }
+.blocked-notice { background: rgba(255, 51, 51, 0.1); border: 1px solid var(--red); padding: 1rem; margin-top: 1rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--red); text-align: center; }
 .blocked-notice::before { content: '⚠ '; }
 .login-modal-content { max-width: 400px; }
 .back-button { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan); text-decoration: none; margin-bottom: 2rem; }
@@ -378,42 +356,7 @@ footer { border-top: 1px solid rgba(0, 242, 255, 0.1); padding: 3rem 0; margin-t
 .xp-popup-btn:hover { background: var(--white); color: var(--magenta); }
 .firebase-status { position: fixed; bottom: 10px; right: 10px; font-family: var(--font-mono); font-size: 0.65rem; padding: 0.3rem 0.8rem; border: 1px solid var(--gray); color: var(--gray); z-index: 100; }
 .firebase-status.connected { border-color: var(--green); color: var(--green); }
-.firebase-status.error { border-color: var(--magenta); color: var(--magenta); }
-/* Privacy Banner */
-.privacy-banner {
-position: fixed;
-bottom: 0;
-left: 0;
-width: 100%;
-background: var(--black-panel);
-border-top: 2px solid var(--cyan);
-padding: 1rem 2rem;
-display: flex;
-justify-content: space-between;
-align-items: center;
-z-index: 999;
-transform: translateY(100%);
-transition: transform 0.3s ease;
-}
-.privacy-banner.active {
-transform: translateY(0);
-}
-.privacy-text {
-font-family: var(--font-mono);
-font-size: 0.75rem;
-color: var(--cyan);
-}
-.privacy-btn {
-background: var(--cyan);
-color: var(--black);
-border: none;
-padding: 0.5rem 1.5rem;
-font-family: var(--font-mono);
-font-size: 0.75rem;
-font-weight: 700;
-cursor: pointer;
-text-transform: uppercase;
-}
+.firebase-status.error { border-color: var(--red); color: var(--red); }
 .game-container {
 position: relative;
 width: 100%;
@@ -433,6 +376,14 @@ left: 10px;
 font-family: var(--font-mono);
 font-size: 0.9rem;
 color: var(--cyan);
+}
+.game-instructions {
+position: absolute;
+bottom: 10px;
+left: 10px;
+font-family: var(--font-mono);
+font-size: 0.75rem;
+color: var(--gray);
 }
 .game-start-btn {
 position: absolute;
@@ -475,6 +426,21 @@ text-transform: uppercase;
 letter-spacing: 0.3em;
 animation: glitch-anim 0.5s infinite;
 }
+.game-retry-btn {
+margin-top: 2rem;
+background: var(--cyan);
+color: var(--black);
+border: none;
+padding: 0.8rem 1.5rem;
+font-family: var(--font-mono);
+font-size: 0.9rem;
+font-weight: 700;
+cursor: pointer;
+clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+}
+.game-retry-btn:hover {
+background: var(--white);
+}
 @media(max-width: 768px) {
 .header-nav { gap: 1rem; }
 .nav-icon-wrapper svg { width: 20px; height: 20px; }
@@ -485,11 +451,6 @@ animation: glitch-anim 0.5s infinite;
 .counter-main { flex-direction: column; gap: 1rem; }
 .counter-number { font-size: 2.5rem; }
 .drone-schematic { width: 350px; height: 350px; }
-.privacy-banner {
-flex-direction: column;
-gap: 1rem;
-text-align: center;
-}
 }
 </style>
 </head>
@@ -507,11 +468,6 @@ text-align: center;
 </div>
 <p class="xp-popup-message">Deja de mirar y empieza a volar.</p>
 <button class="xp-popup-btn" onclick="closeXpPopup()">>> ENTENDIDO</button>
-</div>
-<!-- Privacy Banner -->
-<div class="privacy-banner" id="privacyBanner">
-<p class="privacy-text">⚠ AVISO DE PRIVACIDAD Y COOKIES: Este sitio utiliza cookies para mejorar tu experiencia en el sistema.</p>
-<button class="privacy-btn" onclick="acceptPrivacy()">ACEPTAR PROTOCOLO</button>
 </div>
 <div class="container">
 <header>
@@ -586,27 +542,38 @@ text-align: center;
 <div class="counter-subtext">* Los 3 fundadores actuales no ocupan estas plazas de captación</div>
 <div class="status-available">ESTADO: CERRADO - PRÓXIMAMENTE</div>
 </div>
-<button class="main-action-btn" onclick="openModal()">>> INICIAR INSCRIPCIÓN</button>
+<div class="icon-nav-row">
+<a href="#" class="icon-nav-item" onclick="showPage('protocolo'); return false;"><svg viewBox="0 0 100 100"><rect x="20" y="25" width="60" height="50" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="30" y1="40" x2="70" y2="40" stroke="currentColor" stroke-width="1"/><line x1="30" y1="55" x2="65" y2="55" stroke="currentColor" stroke-width="1"/></svg><span class="icon-nav-label">PROTOCOLO</span></a>
+<a href="#" class="icon-nav-item" onclick="showPage('infraestructura'); return false;"><svg viewBox="0 0 100 100"><path d="M20 80L20 40L50 20L80 40L80 80" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="35" y1="80" x2="35" y2="50" stroke="currentColor" stroke-width="1"/><line x1="65" y1="80" x2="65" y2="50" stroke="currentColor" stroke-width="1"/><line x1="20" y1="80" x2="80" y2="80" stroke="currentColor" stroke-width="1"/></svg><span class="icon-nav-label">INFRAESTRUCTURA</span></a>
+<a href="#" class="icon-nav-item" onclick="showPage('legal'); return false;"><svg viewBox="0 0 100 100"><rect x="30" y="20" width="40" height="60" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="50" cy="50" r="10" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M47 50L50 53L53 47" stroke="currentColor" stroke-width="1.5"/></svg><span class="icon-nav-label">LEGAL</span></a>
+<a href="#" class="icon-nav-item" onclick="showPage('crew'); return false;"><svg viewBox="0 0 100 100"><circle cx="50" cy="40" r="10" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M35 75C35 65 42 55 50 55C58 55 65 65 65 75" stroke="currentColor" stroke-width="1.5" fill="none"/></svg><span class="icon-nav-label">CREW</span></a>
+<div class="join-btn-wrapper" onclick="openModal()"><div class="join-btn-icon"><svg viewBox="0 0 100 100"><path d="M50 30L50 70M30 50L70 50" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></div><span class="join-btn-label">INICIAR INSCRIPCIÓN</span></div>
+</div>
 </section>
+<div class="cta-section"><p class="cta-subtitle">>> ESTE ES EL PRIMER PASO PARA DOMINAR EL AIRE <<</p></div>
 </div>
 <div id="crew-page" class="content-page">
 <a href="#" class="back-button" onclick="showHome(); return false;"><svg viewBox="0 0 100 100" fill="none"><path d="M70 50L30 50M30 50L45 35M30 50L45 65" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>VOLVER AL INICIO</a>
 <div class="content-grid">
 <div class="hud-panel full-width">
-<h2 class="section-title">> CENTRO DE ENTRENAMIENTO MODO 2</h2>
+<h2 class="section-title">> SISTEMA_12_PALAS // DRONE_HUD</h2>
 <div class="terminal-text" style="margin-bottom: 2rem;">
-<p>La excelencia técnica es el requisito. Aquí gestionas tu progresión en el PROTOCOLO R.P.M. y accedes a simulaciones tácticas. Ser parte de la CREW implica dominar el montaje, el tuning y la operativa en entornos críticos.</p>
+<p>Tu progreso en MODO 2 se visualiza como un cuadricóptero en configuración X. Cada motor representa un sector operativo con 3 palas de hélice.</p>
+<p style="margin-top: 0.5rem;"><span class="text-cyan">▸ PALA DESBLOQUEADA:</span> Se ilumina en cyan neón.</p>
+<p style="margin-top: 0.5rem;"><span class="text-magenta">▸ PALA ÉLITE (3ª):</span> Brillo magenta intenso - logro de alto nivel.</p>
+<p style="margin-top: 0.5rem;"><span class="text-green">▸ MOTOR COMPLETO:</span> Animación de rotación cuando las 3 palas están activas.</p>
 </div>
-<!-- BLOQUE SUPERIOR: PROTOCOLO R.P.M. -->
-<h3 class="section-title">> PROTOCOLO R.P.M.</h3>
 <div class="drone-hud-container">
-<img src="img/drone-frame.jpg" alt="Drone Frame" class="drone-frame-bg" />
+<img src="assets/js/frame-m2.png" alt="Drone Frame" class="drone-frame-bg" />
 <svg class="drone-frame-svg" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
 <line x1="150" y1="150" x2="450" y2="450" class="drone-arm" />
 <line x1="450" y1="150" x2="150" y2="450" class="drone-arm" />
 <rect x="275" y="275" width="50" height="50" rx="5" class="drone-center-plate" />
+<circle cx="150" cy="150" r="8" class="motor-node" />
+<circle cx="450" cy="150" r="8" class="motor-node" />
+<circle cx="450" cy="450" r="8" class="motor-node" />
+<circle cx="150" cy="450" r="8" class="motor-node" />
 <g class="motor-group" id="motor-alfa-group">
-<circle cx="150" cy="150" r="35" class="motor-housing" />
 <g class="propeller-group" id="prop-alfa">
 <path d="M150 150 L150 110 Q160 110 160 150 Z" class="propeller-blade" />
 <path d="M150 150 L184 170 Q174 180 150 150 Z" class="propeller-blade" transform="rotate(120 150 150)" />
@@ -614,7 +581,6 @@ text-align: center;
 </g>
 </g>
 <g class="motor-group" id="motor-bravo-group">
-<circle cx="450" cy="150" r="35" class="motor-housing" />
 <g class="propeller-group" id="prop-bravo">
 <path d="M450 150 L450 110 Q460 110 460 150 Z" class="propeller-blade" />
 <path d="M450 150 L484 170 Q474 180 450 150 Z" class="propeller-blade" transform="rotate(120 450 150)" />
@@ -622,7 +588,6 @@ text-align: center;
 </g>
 </g>
 <g class="motor-group" id="motor-charlie-group">
-<circle cx="450" cy="450" r="35" class="motor-housing" />
 <g class="propeller-group" id="prop-charlie">
 <path d="M450 450 L450 410 Q460 410 460 450 Z" class="propeller-blade" />
 <path d="M450 450 L484 470 Q474 480 450 450 Z" class="propeller-blade" transform="rotate(120 450 450)" />
@@ -630,7 +595,6 @@ text-align: center;
 </g>
 </g>
 <g class="motor-group" id="motor-delta-group">
-<circle cx="150" cy="450" r="35" class="motor-housing" />
 <g class="propeller-group" id="prop-delta">
 <path d="M150 450 L150 410 Q160 410 160 450 Z" class="propeller-blade" />
 <path d="M150 450 L184 470 Q174 480 150 450 Z" class="propeller-blade" transform="rotate(120 150 450)" />
@@ -671,18 +635,22 @@ text-align: center;
 </ul>
 </div>
 </div>
-<!-- BLOQUE INFERIOR: ARENA VIRTUAL -->
-<h3 class="section-title" style="margin-top: 3rem;">> ARENA VIRTUAL</h3>
+</div>
+<div class="terminal-text" style="text-align: center; margin-top: 2rem;">
+<p class="text-cyan">>> HAZ HOVER SOBRE CADA PALA PARA VER REQUISITOS DE DESBLOQUEO <<</p>
+</div>
 <div class="game-container">
 <canvas id="gameCanvas" class="game-canvas" width="800" height="400"></canvas>
-<button id="gameStartBtn" class="game-start-btn">INICIAR SECUENCIA DE VUELO</button>
-<div id="gameOverOverlay" class="game-over-overlay">
-<div class="signal-lost">SIGNAL LOST</div>
-<p class="mono" style="color: var(--white); margin-top: 1rem;">Puntuación: <span id="finalScore">0</span> XP</p>
-</div>
 <div class="game-ui">
 <div>SCORE: <span id="gameScore">0</span> XP</div>
 <div>DISTANCIA: <span id="gameDistance">0</span>m</div>
+</div>
+<div class="game-instructions">[W] SUBIR | [A][D] POSICIÓN</div>
+<button id="gameStartBtn" class="game-start-btn">PRESIONA [W] PARA DESPEGAR</button>
+<div id="gameOverOverlay" class="game-over-overlay">
+<div class="signal-lost">SIGNAL LOST</div>
+<p class="mono" style="color: var(--white); margin-top: 1rem;">Puntuación: <span id="finalScore">0</span> XP</p>
+<button id="gameRetryBtn" class="game-retry-btn">[ REINTENTAR SECUENCIA ]</button>
 </div>
 </div>
 </div>
@@ -840,7 +808,7 @@ Somos una organización sin ánimo de lucro: tu cuota mantiene tu derecho a vola
 </div>
 </foreignObject>
 </g>
-<g class="structure-group" transform="translate(520, 350)">
+<g class="structure-group" transform="translate(520, 420)">
 <circle cx="0" cy="0" r="15" fill="none" stroke="#00f2ff" stroke-width="2"/>
 <line x1="-15" y1="0" x2="15" y2="0" stroke="#00f2ff" stroke-width="2"/>
 <line x1="0" y1="-15" x2="0" y2="15" stroke="#00f2ff" stroke-width="2"/>
@@ -879,7 +847,7 @@ Somos una organización sin ánimo de lucro: tu cuota mantiene tu derecho a vola
 <div class="sector-grid" style="display: grid; grid-template-columns: 1fr; gap: 2rem; margin: 2rem 0;">
 <div style="background: rgba(0, 242, 255, 0.03); border: 1px solid rgba(0, 242, 255, 0.2); padding: 1.5rem;">
 <h3 style="font-family: var(--font-mono); font-size: 1rem; color: var(--cyan); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
-<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91-6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
 ZONA ALPHA [15 m²]
 </h3>
 <ul style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--gray); list-style: none;">
@@ -896,7 +864,7 @@ SECTOR EXPANSIÓN [300 m²]
 <ul style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--gray); list-style: none;">
 <li style="margin-bottom: 0.5rem;"><strong>Superficie:</strong> Suelo técnico de grava</li>
 <li style="margin-bottom: 0.5rem;"><strong class="text-magenta">CAPACIDAD:</strong> Zona para despliegue de la <strong class="text-magenta">CREW</strong>, stands y servicios</li>
-<li style="margin-bottom: 0.5rem;"><strong class="text-magenta">PROHIBIDO:</strong> Pilotar o despegar desde este sector</li>
+<li style="margin-bottom: 0.5rem;"><strong class="text-red">PROHIBIDO:</strong> Pilotar o despegar desde este sector</li>
 </ul>
 </div>
 <div style="background: rgba(255, 0, 85, 0.03); border: 1px solid rgba(255, 0, 85, 0.2); padding: 1.5rem; grid-column: span 1;">
@@ -1009,7 +977,7 @@ ARENA DE VUELO [&gt; 2000 m²]
 <div class="form-group checkbox-group"><input type="checkbox" id="rememberMe"><label for="rememberMe">RECORDAR</label></div>
 <button type="submit" class="submit-btn active" id="loginBtnSubmit">>> CONECTAR</button>
 </form>
-<p class="mono" style="margin-top: 1rem; text-align: center; color: var(--gray);">¿Sin cuenta? <span style="color: var(--magenta);">REGISTRO TEMPORALMENTE BLOQUEADO</span></p>
+<p class="mono" style="margin-top: 1rem; text-align: center; color: var(--gray);">¿Sin cuenta? <span style="color: var(--red);">REGISTRO TEMPORALMENTE BLOQUEADO</span></p>
 </div>
 </div>
 <script>
@@ -1199,15 +1167,7 @@ tooltip.style.opacity = '0';
 });
 }
 });
-const privacyBanner = document.getElementById('privacyBanner');
-if (localStorage.getItem('privacyAccepted') !== 'true') {
-privacyBanner.classList.add('active');
-}
 });
-function acceptPrivacy() {
-localStorage.setItem('privacyAccepted', 'true');
-document.getElementById('privacyBanner').classList.remove('active');
-}
 function showHome() {
 document.querySelectorAll('.content-page').forEach(p => p.classList.remove('active'));
 document.getElementById('home-page').classList.add('active');
@@ -1247,31 +1207,37 @@ function startDroneTrails() {
 createDroneTrail();
 setTimeout(startDroneTrails, 3000 + Math.random() * 5000);
 }
+
+// GAME ENGINE - RECALIBRATED
 let gameRunning = false;
+let gameStarted = false;
 let gameScore = 0;
 let gameDistance = 0;
-let gameSpeed = 3;
-let droneX = 100;
+let gameSpeed = 2;
+let droneX = 400;
 let droneY = 200;
 let droneVelocity = 0;
-let gravity = 0.5;
-let thrust = -8;
+let gravity = 0.3;
+let thrust = -5;
 let gates = [];
 let flags = [];
 let terrain = [];
 let animationId;
+
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 const gameStartBtn = document.getElementById('gameStartBtn');
 const gameOverOverlay = document.getElementById('gameOverOverlay');
 const gameScoreEl = document.getElementById('gameScore');
 const gameDistanceEl = document.getElementById('gameDistance');
+
 function initGame() {
 gameRunning = true;
+gameStarted = true;
 gameScore = 0;
 gameDistance = 0;
-gameSpeed = 3;
-droneX = 100;
+gameSpeed = 2;
+droneX = 400;
 droneY = 200;
 droneVelocity = 0;
 gates = [];
@@ -1279,46 +1245,57 @@ flags = [];
 terrain = [];
 gameStartBtn.style.display = 'none';
 gameOverOverlay.classList.remove('active');
+
 for (let i = 0; i < canvas.width / 50 + 1; i++) {
 terrain.push({
 x: i * 50,
 y: canvas.height - 50 - Math.random() * 50
 });
 }
+
 for (let i = 0; i < 5; i++) {
 if (Math.random() > 0.5) {
 gates.push({
-x: canvas.width + i * 300,
+x: canvas.width + i * 400,
 y: 100 + Math.random() * 200,
-width: 80,
-height: 100,
+width: 100,
+height: 120,
 passed: false
 });
 } else {
 flags.push({
-x: canvas.width + i * 300,
+x: canvas.width + i * 400,
 y: canvas.height - 100,
 width: 30,
 height: 100
 });
 }
 }
+
 gameLoop();
 }
+
 function gameLoop() {
 if (!gameRunning) return;
+
 ctx.fillStyle = '#050a0c';
 ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+if (gameStarted) {
 droneVelocity += gravity;
 droneY += droneVelocity;
+
 if (droneY < 0) {
 droneY = 0;
 droneVelocity = 0;
 }
+
 if (droneY > canvas.height - 30) {
 gameOver();
 return;
 }
+}
+
 ctx.strokeStyle = '#00f2ff';
 ctx.lineWidth = 3;
 ctx.beginPath();
@@ -1327,11 +1304,13 @@ ctx.lineTo(droneX + 20, droneY + 10);
 ctx.moveTo(droneX + 20, droneY - 10);
 ctx.lineTo(droneX - 20, droneY + 10);
 ctx.stroke();
+
 ctx.fillStyle = '#00f2ff';
 terrain.forEach(point => {
 point.x -= gameSpeed;
 ctx.fillRect(point.x, point.y, 52, canvas.height - point.y);
 });
+
 if (terrain[0].x < -50) {
 terrain.shift();
 terrain.push({
@@ -1339,35 +1318,41 @@ x: terrain[terrain.length - 1].x + 50,
 y: canvas.height - 50 - Math.random() * 50
 });
 }
+
 ctx.strokeStyle = '#ff0055';
 ctx.lineWidth = 3;
 gates.forEach(gate => {
 gate.x -= gameSpeed;
 ctx.strokeRect(gate.x, gate.y, gate.width, gate.height);
+
 if (!gate.passed && droneX + 20 > gate.x && droneX - 20 < gate.x + gate.width &&
 droneY + 10 > gate.y && droneY - 10 < gate.y + gate.height) {
 gameScore += 10;
 gate.passed = true;
 }
+
 if (gate.x < -100) {
 gates.shift();
 gates.push({
 x: canvas.width + Math.random() * 200,
 y: 100 + Math.random() * 200,
-width: 80,
-height: 100,
+width: 100,
+height: 120,
 passed: false
 });
 }
 });
+
 flags.forEach(flag => {
 flag.x -= gameSpeed;
 ctx.fillStyle = '#ff0055';
 ctx.fillRect(flag.x, flag.y, flag.width, flag.height);
+
 if (droneX + 20 > flag.x && droneX - 20 < flag.x + flag.width &&
 droneY + 10 > flag.y && droneY - 10 < flag.y + flag.height) {
 gameOver();
 }
+
 if (flag.x < -50) {
 flags.shift();
 flags.push({
@@ -1378,19 +1363,83 @@ height: 100
 });
 }
 });
+
+if (gameStarted) {
 gameDistance += gameSpeed / 10;
 gameSpeed += 0.001;
+}
+
 gameScoreEl.textContent = gameScore;
 gameDistanceEl.textContent = Math.floor(gameDistance);
+
 animationId = requestAnimationFrame(gameLoop);
 }
+
 function gameOver() {
 gameRunning = false;
 cancelAnimationFrame(animationId);
 gameOverOverlay.classList.add('active');
 document.getElementById('finalScore').textContent = gameScore;
+
+db.collection('high_scores').orderBy('score', 'desc').limit(3).get().then(snapshot => {
+let isNewRecord = false;
+if (snapshot.empty) {
+isNewRecord = true;
+} else {
+const lowestScore = snapshot.docs[snapshot.docs.length - 1].data().score;
+if (gameScore > lowestScore) {
+isNewRecord = true;
 }
-gameStartBtn.addEventListener('click', initGame);
+}
+
+if (isNewRecord && gameScore > 0) {
+const callsign = prompt('NUEVO RÉCORD: INGRESA TU CALLSIGN');
+if (callsign) {
+db.collection('high_scores').add({
+callsign: callsign,
+score: gameScore,
+timestamp: firebase.firestore.FieldValue.serverTimestamp()
+}).then(() => {
+loadHighScores();
+});
+}
+}
+});
+}
+
+function retryGame() {
+gameOverOverlay.classList.remove('active');
+initGame();
+}
+
+function loadHighScores() {
+if (firebaseInitialized) {
+db.collection('high_scores').orderBy('score', 'desc').limit(3).get().then(snapshot => {
+const highScoresList = document.getElementById('highScoresList');
+if (highScoresList) {
+highScoresList.innerHTML = '';
+snapshot.forEach(doc => {
+const data = doc.data();
+const li = document.createElement('li');
+li.innerHTML = `<span>${data.callsign}</span><span>${data.score} XP</span>`;
+highScoresList.appendChild(li);
+});
+if (snapshot.empty) {
+highScoresList.innerHTML = '<li>Sin registros</li>';
+}
+}
+});
+}
+}
+
+gameStartBtn.addEventListener('click', () => {
+if (!gameStarted) {
+initGame();
+}
+});
+
+gameRetryBtn.addEventListener('click', retryGame);
+
 document.addEventListener('keydown', (e) => {
 if (gameRunning) {
 if (e.key === 'w' || e.key === 'W' || e.key === 'ArrowUp') {
@@ -1403,7 +1452,12 @@ if (e.key === 'd' || e.key === 'D' || e.key === 'ArrowRight') {
 droneX += 20;
 }
 }
+
+if (!gameStarted && (e.key === 'w' || e.key === 'W' || e.key === 'ArrowUp')) {
+initGame();
+}
 });
+
 window.addEventListener('load', () => {
 updateXPDisplay(xp);
 updateSyncDisplay();
