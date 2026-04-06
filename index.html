@@ -297,5 +297,20 @@
             });
         }
     </script>
+    <!-- DEBUG: Verificar carga de CSS -->
+<script>
+window.addEventListener('load', () => {
+    const body = getComputedStyle(document.body);
+    const cyan = body.getPropertyValue('--cyan').trim();
+    console.log('[DEBUG] --cyan:', cyan);
+    
+    if (!cyan || cyan === '--cyan') {
+        console.error('❌ CSS NO CARGADO: Variables CSS no definidas');
+        document.body.innerHTML += '<div style="position:fixed;top:0;left:0;right:0;background:red;color:white;padding:1rem;z-index:9999;text-align:center">⚠ ERROR: CSS NO CARGADO - Revisa main.css</div>';
+    } else {
+        console.log('✅ CSS CARGADO CORRECTAMENTE');
+    }
+});
+</script>
 </body>
 </html>
