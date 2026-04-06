@@ -3,87 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MODO 2 | SISTEMA OPERATIVO</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Primary Meta Tags -->
+    <title>MODO 2 | Sistema Operativo UAS Aragón</title>
+    <meta name="description" content="Asociación profesional de pilotos UAS en Aragón. Formación, certificación y comunidad de pilotos de drones profesionales.">
     <meta name="theme-color" content="#020405">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Titillium+Web:wght@300;400;600;700&display=swap" rel="stylesheet">
     
-    <!-- Stylesheets -->
+    <!-- CSS - RUTAS RELATIVAS CORRECTAS PARA GITHUB PAGES -->
     <link rel="stylesheet" href="assets/css/main.css">
     
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-    
-    <!-- Scripts -->
-    <script src="assets/js/app.js" defer></script>
-    <script src="assets/js/auth.js" defer></script>
-    <script src="assets/js/firestore.js" defer></script>
+    <!-- Fallback inline CSS crítico (si main.css falla) -->
+    <style>
+        /* Estilos mínimos de emergencia */
+        body{background:#020405;color:#fff;font-family:'Titillium Web',sans-serif;margin:0}
+        .container{max-width:1200px;margin:0 auto;padding:1rem}
+        .scanlines{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,0.1)0,rgba(0,0,0,0.1)1px,transparent 1px,transparent 2px);opacity:0.4;z-index:9998}
+        [hidden]{display:none!important}
+    </style>
 </head>
 <body data-brand="modo2" role="document">
-    <!-- Drone Trails Container -->
+
+    <!-- Skip link para accesibilidad -->
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+    
+    <!-- Efectos visuales -->
+    <div class="scanlines" aria-hidden="true"></div>
     <div id="drone-trails-container" aria-hidden="true"></div>
     
-    <!-- Scanlines Effect -->
-    <div class="scanlines" aria-hidden="true"></div>
-    
-    <!-- Firebase Status -->
+    <!-- Estado de Firebase -->
     <div class="firebase-status" id="firebaseStatus" role="status" aria-live="polite">
         <span class="status-text">MAINFRAME: INICIALIZANDO...</span>
     </div>
-    
+
     <!-- XP Popup -->
     <div class="xp-popup-overlay" id="xpPopupOverlay" aria-hidden="true"></div>
-    <div class="xp-popup" id="xpPopup" role="dialog" aria-modal="true" hidden>
+    <div class="xp-popup" id="xpPopup" role="dialog" aria-labelledby="xpPopupTitle" aria-modal="true" hidden>
         <button class="modal-close" onclick="closeXpPopup()" aria-label="Cerrar">&times;</button>
-        <h3 class="xp-popup-title">⚠ ¡NIVEL MÁXIMO ALCANZADO!</h3>
-        <p class="xp-popup-message">¿A qué esperas para unirte?<br><br>Ya has llegado a la categoría de <strong style="color: var(--magenta);">OBSERVADOR COTILLA</strong>.</p>
-        <div class="xp-popup-stats">
+        <h3 class="xp-popup-title" id="xpPopupTitle">⚠ ¡NIVEL MÁXIMO ALCANZADO!</h3>
+        <p class="xp-popup-message">¿A qué esperas para unirte?<br><br>Ya has llegado a la categoría de <strong style="color:var(--magenta)">OBSERVADOR COTILLA</strong>.</p>
+        <div class="xp-popup-stats" id="xpPopupStats">
             > VISITAS: <span id="visitCount">0</span><br>
-            > XP: <span id="xpCount">0</span>
+            > XP: <span id="xpCount">0</span><br>
+            > ESTADO: SIN REGISTRAR
         </div>
+        <p class="xp-popup-message">Deja de mirar y empieza a volar.</p>
         <button class="xp-popup-btn" onclick="closeXpPopup()">>> ENTENDIDO</button>
     </div>
-    
+
+    <!-- Privacy Banner -->
+    <div class="privacy-banner" id="privacyBanner" role="banner" aria-label="Aviso de privacidad" hidden>
+        <p class="privacy-text">⚠ AVISO DE PRIVACIDAD Y COOKIES: Este sitio utiliza cookies para mejorar tu experiencia en el sistema.</p>
+        <button class="privacy-btn" onclick="acceptPrivacy()">ACEPTAR PROTOCOLO</button>
+    </div>
+
     <div class="container">
         <!-- Header -->
         <header role="banner">
-            <a href="#" class="logo-container" onclick="showHome(); return false;">
+            <a href="#" class="logo-container" onclick="showHome();return false" aria-label="Ir a inicio">
+                <svg class="logo-svg" viewBox="0 0 100 115" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <g class="logo-hexagon">
+                        <path d="M50 2L93.3 27.5V77.5L50 103L6.7 77.5V27.5L50 2Z" fill="#020405" stroke="#00f2ff" stroke-width="1.5"/>
+                        <path d="M50 15L80 32.5V67.5L50 85L20 67.5V32.5L50 15Z" fill="none" stroke="#00f2ff" stroke-width="1" opacity="0.5"/>
+                    </g>
+                </svg>
                 <div class="brand-name glitch-wrapper">
-                    <span class="glitch" data-text="MODO2">MODO<span style="color: var(--cyan);">2</span></span>
+                    <span class="glitch" data-text="MODO 2"><span class="brand-white">MODO</span> <span class="brand-cyan">2</span></span>
                 </div>
             </a>
             
-            <nav class="header-nav" role="navigation">
-                <a href="#" class="nav-icon-wrapper" onclick="showPage('protocolo'); return false;" aria-label="Protocolo">
-                    <svg viewBox="0 0 100 100"><rect x="20" y="20" width="60" height="60" stroke="currentColor" stroke-width="2" fill="none"/><line x1="30" y1="35" x2="70" y2="35" stroke="currentColor" stroke-width="1.5"/><line x1="30" y1="50" x2="70" y2="50" stroke="currentColor" stroke-width="1.5"/></svg>
+            <!-- Navegación principal -->
+            <nav class="header-nav" role="navigation" aria-label="Navegación principal">
+                <a href="#" class="nav-icon-wrapper" onclick="showPage('protocolo');return false" aria-label="Protocolo">
+                    <svg viewBox="0 0 100 100" aria-hidden="true"><rect x="20" y="20" width="60" height="60" stroke="currentColor" stroke-width="2" fill="none"/><line x1="30" y1="35" x2="70" y2="35" stroke="currentColor" stroke-width="1.5"/><line x1="30" y1="50" x2="70" y2="50" stroke="currentColor" stroke-width="1.5"/></svg>
                 </a>
-                <a href="#" class="nav-icon-wrapper" onclick="showPage('infraestructura'); return false;" aria-label="Infraestructura">
-                    <svg viewBox="0 0 100 100"><path d="M20 80L20 40L50 20L80 40L80 80" stroke="currentColor" stroke-width="2" fill="none"/><line x1="35" y1="80" x2="35" y2="50" stroke="currentColor" stroke-width="1.5"/></svg>
+                <a href="#" class="nav-icon-wrapper" onclick="showPage('infraestructura');return false" aria-label="Infraestructura">
+                    <svg viewBox="0 0 100 100" aria-hidden="true"><path d="M20 80L20 40L50 20L80 40L80 80" stroke="currentColor" stroke-width="2" fill="none"/><line x1="35" y1="80" x2="35" y2="50" stroke="currentColor" stroke-width="1.5"/></svg>
                 </a>
-                <a href="#" class="nav-icon-wrapper" onclick="showPage('legal'); return false;" aria-label="Legal">
-                    <svg viewBox="0 0 100 100"><rect x="30" y="20" width="40" height="60" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="50" cy="55" r="12" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+                <a href="#" class="nav-icon-wrapper" onclick="showPage('legal');return false" aria-label="Legal">
+                    <svg viewBox="0 0 100 100" aria-hidden="true"><rect x="30" y="20" width="40" height="60" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="50" cy="55" r="12" stroke="currentColor" stroke-width="2" fill="none"/></svg>
                 </a>
-                <a href="#" class="nav-icon-wrapper" onclick="showPage('crew'); return false;" aria-label="Crew">
-                    <svg viewBox="0 0 100 100"><circle cx="50" cy="35" r="12" stroke="currentColor" stroke-width="2" fill="none"/><path d="M30 80C30 65 40 55 50 55C60 55 70 65 70 80" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+                <a href="#" class="nav-icon-wrapper" onclick="showPage('crew');return false" aria-label="Crew">
+                    <svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="35" r="12" stroke="currentColor" stroke-width="2" fill="none"/><path d="M30 80C30 65 40 55 50 55C60 55 70 65 70 80" stroke="currentColor" stroke-width="2" fill="none"/></svg>
                 </a>
-                <a href="#" class="nav-icon-wrapper" onclick="openModal();" aria-label="Inscripción">
-                    <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="35" stroke="currentColor" stroke-width="2" fill="none"/><path d="M50 30L50 50L65 58" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+                <a href="#" class="nav-icon-wrapper" onclick="openModal();return false" aria-label="Inscripción">
+                    <svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="35" stroke="currentColor" stroke-width="2" fill="none"/><path d="M50 30L50 50L65 58" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
                 </a>
             </nav>
         </header>
 
-        <!-- Main Content -->
+        <!-- Contenido principal -->
         <main id="main-content" role="main">
+            
             <!-- User Dashboard -->
-            <section class="user-dashboard">
-                <div class="user-info">
-                    <div class="user-avatar">
-                        <svg viewBox="0 0 100 100"><circle cx="50" cy="35" r="15" stroke="currentColor" stroke-width="2" fill="none"/><path d="M30 80C30 65 40 55 50 55C60 55 70 65 70 80" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+            <section class="user-dashboard" aria-label="Panel de usuario">
+                <div class="user-info" id="userInfo">
+                    <div class="user-avatar" aria-hidden="true">
+                        <svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="35" r="15" stroke="currentColor" stroke-width="2" fill="none"/><path d="M30 80C30 65 40 55 50 55C60 55 70 65 70 80" stroke="currentColor" stroke-width="2" fill="none"/></svg>
                     </div>
                     <div class="user-details">
                         <h4 id="userName">INVITADO</h4>
@@ -96,37 +128,39 @@
                     <div class="xp-bar"><div class="xp-fill" id="xpFill"></div></div>
                     <div class="level-display" id="levelDisplay">NIVEL 0</div>
                 </div>
-                <button class="status-badge" id="loginBtn" onclick="openLoginModal()">INVITADO / ACCESO RESTRINGIDO</button>
+                <button class="status-badge" id="loginBtn" onclick="openLoginModal()" aria-label="Iniciar sesión">INVITADO / ACCESO RESTRINGIDO</button>
             </section>
 
             <!-- Home Page -->
-            <section id="home-page" class="content-page active">
-                <section class="hero">
+            <section id="home-page" class="content-page active" role="region" aria-label="Página de inicio">
+                <section class="hero" aria-label="Hero section">
                     <p class="system-command">EJECUTANDO: <span class="text-cyan">PROYECTO_ORIGEN.EXE</span></p>
+                    
                     <div class="recruitment-counter">
                         <div class="counter-header"><span class="text-magenta">RECLUTAMIENTO</span> <span class="text-white">PROYECTO ORIGEN</span></div>
                         <div class="counter-main">
                             <div class="counter-number" id="availableSpots">40</div>
                             <div class="counter-label">/ 40 PLAZAS</div>
                         </div>
-                        <div class="counter-subtext">* Los 3 fundadores actuales no ocupan estas plazas</div>
+                        <div class="counter-subtext">* Los 3 fundadores actuales no ocupan estas plazas de captación</div>
                         <div class="status-available">ESTADO: CERRADO - PRÓXIMAMENTE</div>
                     </div>
+                    
                     <div class="icon-nav-row">
-                        <a href="#" class="icon-nav-item" onclick="showPage('protocolo'); return false;">
+                        <a href="#" class="icon-nav-item" onclick="showPage('protocolo');return false">
                             <svg viewBox="0 0 100 100"><rect x="20" y="25" width="60" height="50" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="30" y1="40" x2="70" y2="40" stroke="currentColor" stroke-width="1"/></svg>
                             <span class="icon-nav-label">PROTOCOLO</span>
                         </a>
-                        <a href="#" class="icon-nav-item" onclick="showPage('infraestructura'); return false;">
-                            <svg viewBox="0 0 100 100"><path d="M20 80L20 40L50 20L80 40L80 80" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="35" y1="80" x2="35" y2="50" stroke="currentColor" stroke-width="1"/></svg>
+                        <a href="#" class="icon-nav-item" onclick="showPage('infraestructura');return false">
+                            <svg viewBox="0 0 100 100"><path d="M20 80L20 40L50 20L80 40L80 80" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
                             <span class="icon-nav-label">INFRAESTRUCTURA</span>
                         </a>
-                        <a href="#" class="icon-nav-item" onclick="showPage('legal'); return false;">
-                            <svg viewBox="0 0 100 100"><rect x="30" y="20" width="40" height="60" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="50" cy="50" r="10" stroke="currentColor" stroke-width="1.5"/></svg>
+                        <a href="#" class="icon-nav-item" onclick="showPage('legal');return false">
+                            <svg viewBox="0 0 100 100"><rect x="30" y="20" width="40" height="60" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
                             <span class="icon-nav-label">LEGAL</span>
                         </a>
-                        <a href="#" class="icon-nav-item" onclick="showPage('crew'); return false;">
-                            <svg viewBox="0 0 100 100"><circle cx="50" cy="40" r="10" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M35 75C35 65 42 55 50 55C58 55 65 65 65 75" stroke="currentColor" stroke-width="1.5"/></svg>
+                        <a href="#" class="icon-nav-item" onclick="showPage('crew');return false">
+                            <svg viewBox="0 0 100 100"><circle cx="50" cy="40" r="10" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
                             <span class="icon-nav-label">CREW</span>
                         </a>
                         <div class="join-btn-wrapper" onclick="openModal()">
@@ -140,42 +174,72 @@
                 </div>
             </section>
 
-            <!-- Placeholder Pages -->
-            <section id="protocolo-page" class="content-page">
-                <h2>PROTOCOLO</h2>
-                <p>Contenido de protocolo en desarrollo...</p>
+            <!-- Placeholder pages (se cargarán dinámicamente) -->
+            <section id="protocolo-page" class="content-page" role="region" aria-label="Protocolo" hidden>
+                <a href="#" class="back-button" onclick="showHome();return false">← VOLVER</a>
+                <div class="hud-panel full-width">
+                    <h2 class="section-title">> PROTOCOLO_DE_INICIO</h2>
+                    <div class="terminal-text">
+                        <p><strong class="text-cyan">MODO 2</strong> no es un club social; es un nodo de operaciones técnicas.</p>
+                        <p>Nuestra misión es profesionalizar el sector UAS en Aragón bajo el marco legal del <strong class="text-cyan">Art. 16</strong>.</p>
+                    </div>
+                </div>
             </section>
-            <section id="infraestructura-page" class="content-page">
-                <h2>INFRAESTRUCTURA</h2>
-                <p>Contenido de infraestructura en desarrollo...</p>
+
+            <section id="infraestructura-page" class="content-page" role="region" aria-label="Infraestructura" hidden>
+                <a href="#" class="back-button" onclick="showHome();return false">← VOLVER</a>
+                <div class="hud-panel full-width">
+                    <h2 class="section-title">> SEDE OPERATIVA</h2>
+                    <div class="terminal-text">
+                        <p><strong class="text-cyan">Superficie Total:</strong> 4.676 m²</p>
+                    </div>
+                </div>
             </section>
-            <section id="legal-page" class="content-page">
-                <h2>MARCO LEGAL</h2>
-                <p>Contenido legal en desarrollo...</p>
+
+            <section id="legal-page" class="content-page" role="region" aria-label="Marco Legal" hidden>
+                <a href="#" class="back-button" onclick="showHome();return false">← VOLVER</a>
+                <div class="hud-panel full-width">
+                    <h2 class="section-title">> MARCO_LEGAL</h2>
+                    <div class="terminal-text">
+                        <p><strong class="text-cyan">NIF Provisional:</strong> G26829788</p>
+                        <p>Asociación legalmente constituida y registrada.</p>
+                    </div>
+                </div>
             </section>
-            <section id="crew-page" class="content-page">
-                <h2>CREW</h2>
-                <p>Contenido del crew en desarrollo...</p>
+
+            <section id="crew-page" class="content-page" role="region" aria-label="Crew" hidden>
+                <a href="#" class="back-button" onclick="showHome();return false">← VOLVER</a>
+                <div class="hud-panel full-width">
+                    <h2 class="section-title">> CENTRO DE ENTRENAMIENTO</h2>
+                    <div class="terminal-text">
+                        <p>La excelencia técnica es el requisito. Aquí gestionas tu progresión en el PROTOCOLO R.P.M.</p>
+                    </div>
+                </div>
             </section>
+
         </main>
 
         <!-- Footer -->
-        <footer>
-            <nav class="social-links">
-                <a href="#" class="social-btn">Instagram</a>
-                <a href="#" class="social-btn">Discord</a>
-                <a href="#" class="social-btn">YouTube</a>
+        <footer role="contentinfo">
+            <nav class="social-links" aria-label="Redes sociales">
+                <a href="#" class="social-btn" aria-label="Instagram">Instagram</a>
+                <a href="#" class="social-btn" aria-label="Discord">Discord</a>
+                <a href="#" class="social-btn" aria-label="YouTube">YouTube</a>
             </nav>
             <p class="copyright">© 2026 MODO 2. Asociación legalmente constituida - NIF: G26829788.</p>
         </footer>
     </div>
 
-    <!-- Registration Modal -->
-    <div class="modal-overlay" id="registerModal" role="dialog" aria-modal="true" hidden>
+    <!-- Modals -->
+    <div class="modal-overlay" id="registerModal" role="dialog" aria-labelledby="registerModalTitle" aria-modal="true" hidden>
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal()" aria-label="Cerrar">&times;</button>
-            <h2 class="modal-title">> INSCRIPCIÓN</h2>
+            <h2 class="modal-title" id="registerModalTitle">> INSCRIPCIÓN</h2>
             <form id="registerForm" onsubmit="handleRegister(event)">
+                <div class="form-group">
+                    <label for="regName">> IDENTIFICADOR</label>
+                    <input type="text" id="regName" required disabled>
+                </div>
                 <div class="form-group">
                     <label for="regEmail">> EMAIL</label>
                     <input type="email" id="regEmail" required disabled>
@@ -184,17 +248,16 @@
                     <label for="regPassword">> CONTRASEÑA</label>
                     <input type="password" id="regPassword" required disabled>
                 </div>
-                <button type="submit" class="submit-btn blocked" disabled>⚠ SISTEMA BLOQUEADO</button>
+                <button type="submit" class="submit-btn blocked" id="registerBtn" disabled>⚠ SISTEMA BLOQUEADO</button>
                 <div class="blocked-notice">SISTEMA DE PAGOS TEMPORALMENTE INACTIVO</div>
             </form>
         </div>
     </div>
 
-    <!-- Login Modal -->
-    <div class="modal-overlay" id="loginModal" role="dialog" aria-modal="true" hidden>
-        <div class="modal-content">
+    <div class="modal-overlay" id="loginModal" role="dialog" aria-labelledby="loginModalTitle" aria-modal="true" hidden>
+        <div class="modal-content login-modal-content">
             <button class="modal-close" onclick="closeLoginModal()" aria-label="Cerrar">&times;</button>
-            <h2 class="modal-title">> ACCESO</h2>
+            <h2 class="modal-title" id="loginModalTitle">> ACCESO</h2>
             <form id="loginForm" onsubmit="handleLogin(event)">
                 <div class="form-group">
                     <label for="loginUsername">> USUARIO / EMAIL</label>
@@ -204,16 +267,35 @@
                     <label for="loginPassword">> CONTRASEÑA</label>
                     <input type="password" id="loginPassword" required>
                 </div>
-                <button type="submit" class="submit-btn active">>> CONECTAR</button>
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="rememberMe">
+                    <label for="rememberMe">RECORDAR</label>
+                </div>
+                <button type="submit" class="submit-btn active" id="loginBtnSubmit">>> CONECTAR</button>
             </form>
-            <p class="mono" style="margin-top: 1rem; color: var(--gray);">¿Sin cuenta? <span style="color: var(--red);">REGISTRO BLOQUEADO</span></p>
+            <p class="mono">¿Sin cuenta? <span style="color:var(--magenta)">REGISTRO TEMPORALMENTE BLOQUEADO</span></p>
         </div>
     </div>
 
-    <!-- Privacy Banner -->
-    <div class="privacy-banner" id="privacyBanner" role="banner" hidden>
-        <p class="privacy-text">⚠ AVISO DE PRIVACIDAD: Este sitio utiliza cookies para mejorar tu experiencia.</p>
-        <button class="privacy-btn" onclick="acceptPrivacy()">ACEPTAR PROTOCOLO</button>
-    </div>
+    <!-- Firebase SDK - Cargar ANTES de los scripts de la app -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    
+    <!-- Scripts de la app - ORDEN CORRECTO Y CON DEFER -->
+    <script src="assets/js/firestore.js" defer></script>
+    <script src="assets/js/auth.js" defer></script>
+    <script src="assets/js/app.js" defer></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('[MODO 2] SW registrado:', reg.scope))
+                    .catch(err => console.error('[MODO 2] SW error:', err));
+            });
+        }
+    </script>
 </body>
 </html>
