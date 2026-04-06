@@ -30,23 +30,36 @@
   
   <!-- Scanlines Effect -->
   <div class="scanlines" aria-hidden="true"></div>
-    
-    <!-- XP Popup -->
-    <div class="xp-popup-overlay" id="xpPopupOverlay" aria-hidden="true"></div>
-    <div class="xp-popup" id="xpPopup" role="dialog" aria-labelledby="xpPopupTitle" aria-modal="true" hidden>
-        <button class="modal-close" onclick="closeXpPopup()" aria-label="Cerrar ventana">&times;</button>
-        <h3 class="xp-popup-title" id="xpPopupTitle">⚠ ¡NIVEL MÁXIMO ALCANZADO!</h3>
-        <p class="xp-popup-message">¿A qué esperas para unirte?<br><br>Ya has llegado a la categoría de <strong style="color: var(--magenta);">OBSERVADOR COTILLA</strong>.</p>
-        <div class="xp-popup-stats" id="xpPopupStats">
-            > VISITAS: <span id="visitCount">0</span><br>
-            > XP: <span id="xpCount">0</span><br>
-            > ESTADO: SIN REGISTRAR
-        </div>
-        <p class="xp-popup-message">Deja de mirar y empieza a volar.</p>
-        <button class="xp-popup-btn" onclick="closeXpPopup()">>> ENTENDIDO</button>
+  
+  <!-- Skip to Main Content (Accessibility) -->
+  <a href="#main-content" class="skip-link" aria-label="Saltar al contenido principal">Saltar al contenido principal</a>
+  
+  <!-- Firebase Status Indicator -->
+  <div class="firebase-status" id="firebaseStatus" role="status" aria-live="polite">
+    <span class="status-text">MAINFRAME: INICIALIZANDO...</span>
+  </div>
+  
+  <!-- XP Max Popup -->
+  <div class="xp-popup-overlay" id="xpPopupOverlay" aria-hidden="true"></div>
+  <div class="xp-popup" id="xpPopup" role="dialog" aria-labelledby="xpPopupTitle" aria-modal="true" hidden>
+    <button class="modal-close" onclick="closeXpPopup()" aria-label="Cerrar ventana">&times;</button>
+    <h3 class="xp-popup-title" id="xpPopupTitle">⚠ ¡NIVEL MÁXIMO ALCANZADO!</h3>
+    <p class="xp-popup-message">¿A qué esperas para unirte?<br><br>Ya has llegado a la categoría de <strong style="color: var(--magenta);">OBSERVADOR COTILLA</strong>.</p>
+    <div class="xp-popup-stats" id="xpPopupStats">
+      > VISITAS: <span id="visitCount">0</span><br>
+      > XP: <span id="xpCount">0</span><br>
+      > ESTADO: SIN REGISTRAR
     </div>
-    
-    <div class="container">
+    <p class="xp-popup-message">Deja de mirar y empieza a volar.</p>
+    <button class="xp-popup-btn" onclick="closeXpPopup()">>> ENTENDIDO</button>
+  </div>
+  
+  <!-- Privacy Banner -->
+  <div class="privacy-banner" id="privacyBanner" role="banner" aria-label="Aviso de privacidad" hidden>
+    <p class="privacy-text">⚠ AVISO DE PRIVACIDAD Y COOKIES: Este sitio utiliza cookies para mejorar tu experiencia en el sistema.</p>
+    <button class="privacy-btn" onclick="acceptPrivacy()" aria-label="Aceptar protocolo">ACEPTAR PROTOCOLO</button>
+  </div>
+  
         <!-- Header -->
         <header role="banner">
             <a href="#" class="logo-container" onclick="showHome(); return false;" aria-label="Ir a inicio">
