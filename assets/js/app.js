@@ -754,25 +754,27 @@ function initGlobalListeners() {
  * Verifica y muestra el banner de privacidad si es necesario
  */
 function checkPrivacyBanner() {
-  // TEMPORALMENTE DESACTIVADO PARA DEBUG
-  return;
-  
-  /*
   try {
     const banner = document.getElementById('privacyBanner');
-    if (!banner) return;
+    if (!banner) {
+      console.warn('[MODO 2] ⚠️ Banner de privacidad no existe en HTML');
+      return;
+    }
     
     const accepted = localStorage.getItem(CONFIG.storageKeys.privacy);
     
     if (!accepted) {
       banner.hidden = false;
-      console.log(`[MODO 2] 🔐 Banner de privacidad mostrado`);
+      banner.style.display = 'flex'; // Forzar visualización
+      console.log('[MODO 2] 🔐 Banner de privacidad mostrado');
+    } else {
+      banner.hidden = true;
+      console.log('[MODO 2] ✅ Privacidad ya aceptada');
     }
   } catch (error) {
-    console.error(`[MODO 2] ❌ Error en banner de privacidad:`, error);
+    console.error('[MODO 2] ❌ Error en banner de privacidad:', error);
   }
-  */
-}
+}  
 
 /**
  * Marca la privacidad como aceptada y oculta el banner
