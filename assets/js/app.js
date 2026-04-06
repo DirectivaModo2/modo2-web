@@ -474,28 +474,29 @@ function handleRegister(event) {
  */
 function handleLogin(event) {
   event.preventDefault();
-  
   try {
     const username = document.getElementById('loginUsername').value;
     const password = document.getElementById('loginPassword').value;
     const remember = document.getElementById('rememberMe').checked;
     
     console.log(`[${CONFIG.appName}] 🔑 Intento de login: ${username}`);
-    
+
     // Validación básica
     if (!username || !password) {
       alert('⚠️ Por favor, completa todos los campos');
       return;
     }
-    
+
     // Modo demo: login simulado (eliminar en producción)
     if (CONFIG.firebase.enabled === false) {
       console.log(`[${CONFIG.appName}] 🎭 Modo demo: login simulado`);
       
-      // Crear usuario simulado
+      // Crear usuario simulado - CORRECCIÓN AQUÍ
+      const userName = username.split('@')[0].toUpperCase() || 'PILOTO';
+      
       AppState.currentUser = {
         id: 'demo_user_' + Date.now(),
-        name: username.split('@')[0].toUpperCase(),
+        name: userName,
         email: username,
         joined: new Date().toISOString()
       };
@@ -515,19 +516,11 @@ function handleLogin(event) {
       
       return;
     }
-    
-    // Firebase: lógica real de autenticación
-    // import { signInWithEmailAndPassword } from 'firebase/auth';
-    // signInWithEmailAndPassword(auth, username, password)
-    //   .then((userCredential) => { ... })
-    //   .catch((error) => { ... });
-    
   } catch (error) {
     console.error(`[${CONFIG.appName}] ❌ Error en login:`, error);
     showFirebaseStatus('ERROR_LOGIN', 'error');
   }
 }
-
 /**
  * Abre el perfil de usuario (placeholder)
  */
