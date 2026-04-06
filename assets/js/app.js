@@ -754,6 +754,10 @@ function initGlobalListeners() {
  * Verifica y muestra el banner de privacidad si es necesario
  */
 function checkPrivacyBanner() {
+  // TEMPORALMENTE DESACTIVADO PARA DEBUG
+  return;
+  
+  /*
   try {
     const banner = document.getElementById('privacyBanner');
     if (!banner) return;
@@ -762,11 +766,12 @@ function checkPrivacyBanner() {
     
     if (!accepted) {
       banner.hidden = false;
-      console.log(`[${CONFIG.appName}] 🔐 Banner de privacidad mostrado`);
+      console.log(`[MODO 2] 🔐 Banner de privacidad mostrado`);
     }
   } catch (error) {
-    console.error(`[${CONFIG.appName}] ❌ Error en banner de privacidad:`, error);
+    console.error(`[MODO 2] ❌ Error en banner de privacidad:`, error);
   }
+  */
 }
 
 /**
