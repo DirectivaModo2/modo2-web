@@ -758,16 +758,17 @@ function checkPrivacyBanner() {
     
     if (!accepted) {
       banner.hidden = false;
-      banner.style.display = 'flex'; // Forzar visualización
+      banner.style.display = 'flex';
       console.log('[MODO 2] 🔐 Banner de privacidad mostrado');
     } else {
       banner.hidden = true;
+      banner.style.display = 'none';
       console.log('[MODO 2] ✅ Privacidad ya aceptada');
     }
   } catch (error) {
     console.error('[MODO 2] ❌ Error en banner de privacidad:', error);
   }
-}  
+}
 
 /**
  * Marca la privacidad como aceptada y oculta el banner
