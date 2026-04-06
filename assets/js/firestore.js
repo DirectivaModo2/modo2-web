@@ -1,9 +1,9 @@
 /**
  * firestore.js - MODO 2 Firestore Module
- * Esqueleto para operaciones con base de datos
+ * Versión: 1.0.0
  */
 
-export const firestoreModule = {
+const firestoreModule = {
   async saveUserXP(userId, xpData) {
     console.log('[FIRESTORE] Save XP placeholder', { userId, xpData });
     return { success: false };
@@ -19,3 +19,5 @@ export const firestoreModule = {
     return { success: false };
   }
 };
+
+console.log('[MODO 2] ✅ firestore.js cargado');
