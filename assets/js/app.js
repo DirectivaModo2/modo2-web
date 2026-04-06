@@ -555,7 +555,13 @@ function initEffects() {
  */
 function initDroneTrails() {
   const container = document.getElementById('drone-trails-container');
-  if (!container) return;
+  
+  // Verificar que el contenedor existe en el HTML
+  if (!container) {
+    console.warn('[MODO 2] ⚠️ Elemento #drone-trails-container no existe en el HTML');
+    console.warn('[MODO 2] 💡 Añade: <div id="drone-trails-container" aria-hidden="true"></div>');
+    return; // Salir sin error
+  }
   
   // Crear partículas de estela (limitadas para performance)
   const particleCount = Math.min(15, Math.floor(window.innerWidth / 100));
@@ -573,24 +579,34 @@ function initDroneTrails() {
  * @param {HTMLElement} container - Contenedor donde añadir la partícula
  */
 function createDroneTrail(container) {
-  const trail = document.createElement('div');
-  trail.className = 'drone-trail';
-  trail.style.cssText = `
-    position: absolute;
-    width: 2px;
-    height: 2px;
-    background: var(--accent);
-    border-radius: 50%;
-    opacity: 0.6;
-    pointer-events: none;
-    left: ${Math.random() * 100}%;
-    top: ${Math.random() * 100}%;
-    box-shadow: 0 0 10px var(--accent);
-  `;
-  container.appendChild(trail);
+  // Verificar que el contenedor existe
+  if (!container) {
+    console.warn('[MODO 2] ⚠️ Drone trails container no encontrado');
+    return;
+  }
   
-  // Animar y remover después
-  animateTrail(trail);
+  try {
+    const trail = document.createElement('div');
+    trail.className = 'drone-trail';
+    trail.style.cssText = `
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 50%;
+      opacity: 0.6;
+      pointer-events: none;
+      left: ${Math.random() * 100}%;
+      top: ${Math.random() * 100}%;
+      box-shadow: 0 0 10px var(--accent);
+    `;
+    container.appendChild(trail);
+    
+    // Animar y remover después
+    animateTrail(trail);
+  } catch (error) {
+    console.error('[MODO 2] ❌ Error creando drone trail:', error);
+  }
 }
 
 /**
