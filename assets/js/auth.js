@@ -1,13 +1,12 @@
 /**
  * auth.js - MODO 2 Authentication Module
- * Esqueleto para integración con Firebase Auth
+ * Versión: 1.0.0
  */
 
 // Funciones placeholder - se implementarán al activar Firebase
-export const authModule = {
+const authModule = {
   async login(email, password) {
     console.log('[AUTH] Login placeholder');
-    // Implementar con Firebase Auth cuando esté listo
     return { success: false, message: 'Sistema de auth en mantenimiento' };
   },
   
@@ -22,6 +21,8 @@ export const authModule = {
   },
   
   getCurrentUser() {
-    return null; // Placeholder
+    return null;
   }
 };
+
+console.log('[MODO 2] ✅ auth.js cargado');
