@@ -3,81 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Primary Meta Tags -->
     <title>MODO 2 | SISTEMA OPERATIVO</title>
+    <meta name="title" content="MODO 2 | Sistema Operativo UAS Aragón">
+    <meta name="description" content="Asociación profesional de pilotos UAS en Aragón. Formación, certificación y comunidad.">
+    <meta name="keywords" content="drones, UAS, FPV, Aragón, Zaragoza, pilotos, drones profesionales">
+    <meta name="author" content="MODO 2 Asociación">
+    <meta name="theme-color" content="#020405">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="MODO 2">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Titillium+Web:wght@300;400;600;700&display=swap" rel="stylesheet">
     
-    <!-- Firebase SDK -->
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    
+    <!-- Firebase SDK (Compatible) -->
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-
-    <!-- Tus scripts -->
+    
+    <!-- Defer Non-Critical JS -->
     <script src="assets/js/app.js" defer></script>
     <script src="assets/js/auth.js" defer></script>
     <script src="assets/js/firestore.js" defer></script>
-    
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/components.css">
 </head>
 <body data-brand="modo2" role="document">
-  <!-- Drone Trails Container -->
-  <div id="drone-trails-container" aria-hidden="true"></div>
-  
-  <!-- Scanlines Effect -->
-  <div class="scanlines" aria-hidden="true"></div>
-  
-  <!-- Skip to Main Content (Accessibility) -->
-  <a href="#main-content" class="skip-link" aria-label="Saltar al contenido principal">Saltar al contenido principal</a>
-  
-  <!-- Firebase Status Indicator -->
-  <div class="firebase-status" id="firebaseStatus" role="status" aria-live="polite">
-    <span class="status-text">MAINFRAME: INICIALIZANDO...</span>
-  </div>
-  
-  <!-- XP Max Popup -->
-  <div class="xp-popup-overlay" id="xpPopupOverlay" aria-hidden="true"></div>
-  <div class="xp-popup" id="xpPopup" role="dialog" aria-labelledby="xpPopupTitle" aria-modal="true" hidden>
-    <button class="modal-close" onclick="closeXpPopup()" aria-label="Cerrar ventana">&times;</button>
-    <h3 class="xp-popup-title" id="xpPopupTitle">⚠ ¡NIVEL MÁXIMO ALCANZADO!</h3>
-    <p class="xp-popup-message">¿A qué esperas para unirte?<br><br>Ya has llegado a la categoría de <strong style="color: var(--magenta);">OBSERVADOR COTILLA</strong>.</p>
-    <div class="xp-popup-stats" id="xpPopupStats">
-      > VISITAS: <span id="visitCount">0</span><br>
-      > XP: <span id="xpCount">0</span><br>
-      > ESTADO: SIN REGISTRAR
+    <!-- Drone Trails Container -->
+    <div id="drone-trails-container" aria-hidden="true"></div>
+    
+    <!-- Scanlines Effect -->
+    <div class="scanlines" aria-hidden="true"></div>
+    
+    <!-- Skip to Main Content -->
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+    
+    <!-- Firebase Status Indicator -->
+    <div class="firebase-status" id="firebaseStatus" role="status" aria-live="polite">
+        <span class="status-text">MAINFRAME: INICIALIZANDO...</span>
     </div>
-    <p class="xp-popup-message">Deja de mirar y empieza a volar.</p>
-    <button class="xp-popup-btn" onclick="closeXpPopup()">>> ENTENDIDO</button>
-  </div>
-  
-  <!-- Privacy Banner -->
-  <div class="privacy-banner" id="privacyBanner" role="banner" aria-label="Aviso de privacidad" hidden>
-    <p class="privacy-text">⚠ AVISO DE PRIVACIDAD Y COOKIES: Este sitio utiliza cookies para mejorar tu experiencia en el sistema.</p>
-    <button class="privacy-btn" onclick="acceptPrivacy()" aria-label="Aceptar protocolo">ACEPTAR PROTOCOLO</button>
-  </div>
-  
-        <!-- Header -->
+    
+    <!-- XP Max Popup -->
+    <div class="xp-popup-overlay" id="xpPopupOverlay" aria-hidden="true"></div>
+    <div class="xp-popup" id="xpPopup" role="dialog" aria-labelledby="xpPopupTitle" aria-modal="true" hidden>
+        <button class="modal-close" onclick="closeXpPopup()" aria-label="Cerrar ventana">&times;</button>
+        <h3 class="xp-popup-title" id="xpPopupTitle">⚠ ¡NIVEL MÁXIMO ALCANZADO!</h3>
+        <p class="xp-popup-message">¿A qué esperas para unirte?<br><br>Ya has llegado a la categoría de <strong style="color: var(--magenta);">OBSERVADOR COTILLA</strong>.</p>
+        <div class="xp-popup-stats" id="xpPopupStats">
+            > VISITAS: <span id="visitCount">0</span><br>
+            > XP: <span id="xpCount">0</span><br>
+            > ESTADO: SIN REGISTRAR
+        </div>
+        <p class="xp-popup-message">Deja de mirar y empieza a volar.</p>
+        <button class="xp-popup-btn" onclick="closeXpPopup()">>> ENTENDIDO</button>
+    </div>
+    
+    <div class="container">
+        <!-- Main Header -->
         <header role="banner">
             <a href="#" class="logo-container" onclick="showHome(); return false;" aria-label="Ir a inicio">
-                <svg class="logo-svg" viewBox="0 0 100 115" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <g class="logo-hexagon">
-                        <path d="M50 2L93.3 27.5V77.5L50 103L6.7 77.5V27.5L50 2Z" fill="#020405" stroke="#00f2ff" stroke-width="1.5"/>
-                        <path d="M50 15L80 32.5V67.5L50 85L20 67.5V32.5L50 15Z" fill="none" stroke="#00f2ff" stroke-width="1" opacity="0.5"/>
-                        <path d="M35 45C35 45 30 45 30 55C30 65 35 65 35 65L45 65C45 65 50 68 50 68C50 68 55 65 55 65L65 65C65 65 70 65 70 55C70 45 65 45 65 45" fill="none" stroke="#00f2ff" stroke-width="1"/>
-                        <circle cx="40" cy="55" r="5" fill="none" stroke="#00f2ff" stroke-width="1"/>
-                        <path d="M40 52L40 58M38 54L40 52L42 54" stroke="#00f2ff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                        <circle cx="60" cy="55" r="4" fill="none" stroke="#00f2ff" stroke-width="1"/>
-                        <circle cx="60" cy="55" r="1.5" fill="#00f2ff"/>
-                        <line x1="42" y1="32" x2="42" y2="42" stroke="#00f2ff" stroke-width="1.5" stroke-linecap="round"/>
-                        <line x1="58" y1="32" x2="58" y2="42" stroke="#00f2ff" stroke-width="1.5" stroke-linecap="round"/>
-                    </g>
-                </svg>
                 <div class="brand-name glitch-wrapper">
-                    <span class="glitch" data-text="MODO 2"><span class="brand-white">MODO</span> <span class="brand-cyan">2</span></span>
+                    <span class="glitch" data-text="MODO2">MODO<span style="color: var(--cyan);">2</span></span>
                 </div>
             </a>
             
@@ -123,25 +122,6 @@
                 <button class="status-badge" id="loginBtn" onclick="openLoginModal()" aria-label="Iniciar sesión">INVITADO / ACCESO RESTRINGIDO</button>
             </section>
 
-            <!-- User Database Panel (Admin) -->
-            <section class="user-db-panel" id="userDbPanel" aria-label="Base de datos de usuarios" hidden>
-                <h3 class="section-title">> BASE_DE_DATOS_USUARIOS</h3>
-                <p class="mono">* Firebase Mainframe</p>
-                <table class="user-db-table">
-                    <thead>
-                        <tr>
-                            <th scope="col">USUARIO</th>
-                            <th scope="col">EMAIL</th>
-                            <th scope="col">ESTADO</th>
-                            <th scope="col">NIVEL</th>
-                            <th scope="col">RANGO</th>
-                            <th scope="col">XP</th>
-                        </tr>
-                    </thead>
-                    <tbody id="userDbBody"></tbody>
-                </table>
-            </section>
-
             <!-- Home Page -->
             <section id="home-page" class="content-page active" role="region" aria-label="Página de inicio">
                 <section class="hero" aria-label="Hero section">
@@ -183,7 +163,26 @@
                 </div>
             </section>
 
-            <!-- Additional content pages would go here -->
+            <!-- Additional Pages (Placeholders) -->
+            <section id="protocolo-page" class="content-page" role="region" aria-label="Protocolo">
+                <h2>PROTOCOLO</h2>
+                <p>Contenido de protocolo en desarrollo...</p>
+            </section>
+
+            <section id="infraestructura-page" class="content-page" role="region" aria-label="Infraestructura">
+                <h2>INFRAESTRUCTURA</h2>
+                <p>Contenido de infraestructura en desarrollo...</p>
+            </section>
+
+            <section id="legal-page" class="content-page" role="region" aria-label="Marco Legal">
+                <h2>MARCO LEGAL</h2>
+                <p>Contenido legal en desarrollo...</p>
+            </section>
+
+            <section id="crew-page" class="content-page" role="region" aria-label="Crew">
+                <h2>CREW</h2>
+                <p>Contenido del crew en desarrollo...</p>
+            </section>
         </main>
 
         <!-- Footer -->
@@ -257,28 +256,10 @@
         </div>
     </div>
 
-    <!-- Service Worker Registration -->
-<script>
-  // COMENTADO TEMPORALMENTE
-  /*
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js')
-        .then(registration => {
-          console.log('ServiceWorker registration successful:', registration.scope);
-        })
-        .catch(err => {
-          console.log('ServiceWorker registration failed:', err);
-        });
-    });
-  }
-  */
-</script>
-    
     <!-- Privacy Banner -->
     <div class="privacy-banner" id="privacyBanner" role="banner" aria-label="Aviso de privacidad" hidden>
         <p class="privacy-text">⚠ AVISO DE PRIVACIDAD Y COOKIES: Este sitio utiliza cookies para mejorar tu experiencia en el sistema.</p>
         <button class="privacy-btn" onclick="acceptPrivacy()" aria-label="Aceptar protocolo">ACEPTAR PROTOCOLO</button>
     </div>
-</body> 
+</body>
 </html>
