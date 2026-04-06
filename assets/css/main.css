@@ -255,23 +255,31 @@ h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); }
   z-index: 2;
 }
 
-/* Skip link para accesibilidad */
+/* Skip link - Accesibilidad */
 .skip-link {
   position: absolute;
-  top: -40px;
+  top: -100px; /* Fuera de pantalla por defecto */
   left: 0;
-  background: var(--accent);
+  background: var(--cyan);
   color: var(--darker);
-  padding: var(--space-2) var(--space-4);
-  font-weight: 600;
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
   z-index: 10000;
-  transition: top var(--transition-fast);
+  transition: top 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 242, 255, 0.4);
 }
 
 .skip-link:focus {
-  top: 0;
-  outline: var(--focus-outline);
-  outline-offset: var(--focus-offset);
+  top: 0; /* Visible al recibir foco */
+  outline: 3px solid var(--magenta);
+  outline-offset: 2px;
+}
+
+.skip-link:hover {
+  background: var(--white);
 }
 
 /* -----------------------------------------------------------------------------
