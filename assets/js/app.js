@@ -779,9 +779,9 @@ function acceptPrivacy() {
     const banner = document.getElementById('privacyBanner');
     if (banner) {
       banner.hidden = true;
+      banner.style.display = 'none';
     }
     console.log(`[${CONFIG.appName}] ✅ Privacidad aceptada`);
-    
     // Añadir XP por aceptar (opcional)
     addXP(5, 'privacidad');
   } catch (error) {
