@@ -3,107 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
-    <!-- Primary Meta Tags -->
-    <title>MODO 2 | Sistema Operativo UAS Aragón</title>
-    <meta name="title" content="MODO 2 | Sistema Operativo UAS Aragón">
-    <meta name="description" content="Asociación profesional de pilotos UAS en Aragón. Formación, certificación y comunidad de pilotos de drones profesionales.">
-    <meta name="keywords" content="drones, UAS, FPV, Aragón, Zaragoza, pilotos, drones profesionales, certificación AESA">
-    <meta name="author" content="MODO 2 Asociación">
-    <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#020405">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://modo2.es/">
-    <meta property="og:title" content="MODO 2 | Sistema Operativo UAS Aragón">
-    <meta property="og:description" content="Asociación profesional de pilotos UAS en Aragón. Formación, certificación y comunidad.">
-    <meta property="og:image" content="assets/img/og-image.jpg">
-    <meta property="og:site_name" content="MODO 2">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://modo2.es/">
-    <meta property="twitter:title" content="MODO 2 | Sistema Operativo UAS Aragón">
-    <meta property="twitter:description" content="Asociación profesional de pilotos UAS en Aragón.">
-    <meta property="twitter:image" content="assets/img/og-image.jpg">
-    
-    <!-- PWA Manifest -->
-    <link rel="manifest" href="manifest.json">
-    
-    <!-- PWA Meta Tags -->
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="MODO 2">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
+    <title>MODO 2 | SISTEMA OPERATIVO</title>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Titillium+Web:wght@300;400;600;700&display=swap" rel="stylesheet">
     
-    <!-- Preload Critical Assets -->
-    <link rel="preload" href="assets/css/main.css" as="style">
-    <link rel="preload" href="assets/js/app.js" as="script">
-    
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/components.css">
-    
-    <!-- Firebase SDK (Compatible) -->
+    <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
     
-    <!-- Defer Non-Critical JS -->
-    <script src="assets/js/app.js" defer></script>
-    <script src="assets/js/auth.js" defer></script>
-    <script src="assets/js/firestore.js" defer></script>
-    
-    <!-- Schema.org Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "MODO 2 Asociación",
-        "url": "https://modo2.es",
-        "logo": "https://modo2.es/assets/img/logo.png",
-        "description": "Asociación profesional de pilotos UAS en Aragón",
-        "address": {
-            "@type": "PostalAddress",
-            "addressRegion": "Zaragoza",
-            "addressCountry": "ES"
-        },
-        "contactPoint": {
-            "@type": "ContactPoint",
-            "contactType": "customer service",
-            "email": "info@modo2.es"
-        }
-    }
-    </script>
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/components.css">
 </head>
-<body role="document">
-    <!-- Skip to Main Content (Accessibility) -->
-    <a href="#main-content" class="skip-link" aria-label="Saltar al contenido principal">Saltar al contenido principal</a>
-    
-    <!-- Scanlines Effect -->
-    <div class="scanlines" aria-hidden="true"></div>
-    
-    <!-- Drone Trails Container -->
-    <div id="drone-trails-container" aria-hidden="true"></div>
-    
-    <!-- Firebase Status Indicator -->
+<body data-brand="modo2" role="document">
+    <div class="scanlines"></div>
+    <div id="drone-trails-container"></div>
     <div class="firebase-status" id="firebaseStatus" role="status" aria-live="polite">
         <span class="status-text">MAINFRAME: INICIALIZANDO...</span>
     </div>
     
-    <!-- XP Max Popup -->
+    <!-- XP Popup -->
     <div class="xp-popup-overlay" id="xpPopupOverlay" aria-hidden="true"></div>
     <div class="xp-popup" id="xpPopup" role="dialog" aria-labelledby="xpPopupTitle" aria-modal="true" hidden>
         <button class="modal-close" onclick="closeXpPopup()" aria-label="Cerrar ventana">&times;</button>
@@ -118,14 +41,8 @@
         <button class="xp-popup-btn" onclick="closeXpPopup()">>> ENTENDIDO</button>
     </div>
     
-    <!-- Privacy Banner -->
-    <div class="privacy-banner" id="privacyBanner" role="banner" aria-label="Aviso de privacidad" hidden>
-        <p class="privacy-text">⚠ AVISO DE PRIVACIDAD Y COOKIES: Este sitio utiliza cookies para mejorar tu experiencia en el sistema.</p>
-        <button class="privacy-btn" onclick="acceptPrivacy()" aria-label="Aceptar protocolo">ACEPTAR PROTOCOLO</button>
-    </div>
-    
     <div class="container">
-        <!-- Main Header -->
+        <!-- Header -->
         <header role="banner">
             <a href="#" class="logo-container" onclick="showHome(); return false;" aria-label="Ir a inicio">
                 <svg class="logo-svg" viewBox="0 0 100 115" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -324,7 +241,6 @@
 
     <!-- Service Worker Registration -->
     <script>
-        // Service Worker Registration
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('/sw.js')
